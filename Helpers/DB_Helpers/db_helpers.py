@@ -1,9 +1,15 @@
-# Helpers/db_helpers.py
+"""
+Database Helpers Module
+High-level database operations for managing match data and predictions.
+Responsible for saving predictions, schedules, standings, teams, and region-leagues.
+"""
 
 import os
 import csv
 from datetime import datetime as dt
 from typing import Dict, Any, List, Optional
+
+from .csv_operations import _read_csv, _append_to_csv, _write_csv, upsert_entry
 
 # --- CSV File Paths ---
 DB_DIR = "DB"
@@ -21,11 +27,11 @@ def init_csvs():
 
     files_and_headers = {
         PREDICTIONS_CSV: [
-            'fixture_id', 'date', 'match_time', 'region_league', 'home_team', 'away_team', 
-            'home_team_id', 'away_team_id', 'prediction', 'confidence', 'reason', 'xg_home', 
-            'xg_away', 'btts', 'over_2.5', 'best_score', 'top_scores', 'home_form_n', 
-            'away_form_n', 'home_tags', 'away_tags', 'h2h_tags', 'standings_tags', 
-            'h2h_count', 'form_count', 'actual_score', 'outcome_correct', 
+            'fixture_id', 'date', 'match_time', 'region_league', 'home_team', 'away_team',
+            'home_team_id', 'away_team_id', 'prediction', 'confidence', 'reason', 'xg_home',
+            'xg_away', 'btts', 'over_2.5', 'best_score', 'top_scores', 'home_form_n',
+            'away_form_n', 'home_tags', 'away_tags', 'h2h_tags', 'standings_tags',
+            'h2h_count', 'form_count', 'actual_score', 'outcome_correct',
             'generated_at', 'status', 'match_link'
         ],
         SCHEDULES_CSV: [
@@ -34,7 +40,7 @@ def init_csvs():
         ],
         STANDINGS_CSV: [
             'region_league', 'position', 'team_name', 'team_id', 'played', 'wins', 'draws',
-            'losses', 'goals_for', 'goals_against', 'goal_difference', 'points', 'last_updated', 'url'
+            'losses', 'goals_for', 'goals_against', 'goal_difference', 'points', 'last_updated', 'url', 'standings_key'
         ],
         TEAMS_CSV: ['team_id', 'team_name', 'region_league', 'team_url'],
     REGION_LEAGUE_CSV: ['region_league_id', 'region', 'league_name', 'url']
@@ -46,64 +52,6 @@ def init_csvs():
             with open(filepath, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
                 writer.writerow(headers)
-
-def _read_csv(filepath: str) -> List[Dict[str, str]]:
-    """Safely reads a CSV file into a list of dictionaries."""
-    if not os.path.exists(filepath) or os.path.getsize(filepath) == 0:
-        return []
-    try:
-        with open(filepath, 'r', newline='', encoding='utf-8') as f:
-            return list(csv.DictReader(f))
-    except Exception as e:
-        print(f"    [File Error] Could not read {filepath}: {e}")
-        return []
-
-def _append_to_csv(filepath: str, data_row: Dict, fieldnames: List[str]):
-    """Safely appends a single dictionary row to a CSV file."""
-    file_exists = os.path.exists(filepath) and os.path.getsize(filepath) > 0
-    try:
-        with open(filepath, 'a', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-            if not file_exists:
-                writer.writeheader()
-            writer.writerow(data_row)
-    except Exception as e:
-        print(f"    [File Error] Failed to write to {filepath}: {e}")
-
-def _write_csv(filepath: str, data: List[Dict], fieldnames: List[str]):
-    """Safely writes a list of dictionaries to a CSV file, overwriting it."""
-    # This function is kept for operations that require a full rewrite, like updating statuses.
-    try:
-        with open(filepath, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
-            writer.writeheader()
-            writer.writerows(data)
-    except Exception as e:
-        print(f"    [File Error] Failed to write to {filepath}: {e}")
-
-def upsert_entry(filepath: str, data_row: Dict, fieldnames: List[str], unique_key: str):
-    """
-    Performs a robust UPSERT (Update or Insert) operation on a CSV file.
-    It reads the file, updates the row if it exists, or appends it if it's new.
-    """
-    unique_id = data_row.get(unique_key)
-    if not unique_id:
-        print(f"    [DB UPSERT Warning] Skipping entry due to missing unique key '{unique_key}'.")
-        return
-
-    all_rows = _read_csv(filepath)
-    
-    updated = False
-    for row in all_rows:
-        if row.get(unique_key) == unique_id:
-            row.update(data_row)
-            updated = True
-            break
-    
-    if not updated:
-        all_rows.append(data_row)
-    
-    _write_csv(filepath, all_rows, fieldnames)
 
 def save_prediction(match_data: Dict[str, Any], prediction_result: Dict[str, Any]):
     """UPSERTs a prediction into the predictions.csv file."""
@@ -175,19 +123,26 @@ def save_schedule_entry(match_info: Dict[str, Any]):
     upsert_entry(SCHEDULES_CSV, match_info, files_and_headers[SCHEDULES_CSV], 'fixture_id')
 
 def save_standings(standings_data: List[Dict[str, Any]], region_league: str):
-    """Overwrites the standings for a specific league in standings.csv."""
+    """UPSERTs standings data for a specific league in standings.csv."""
     if not standings_data or not region_league: return
 
     last_updated = dt.now().isoformat()
+    updated_count = 0
+
     for row in standings_data:
         row['region_league'] = region_league
         row['last_updated'] = last_updated
 
-    other_leagues_rows = [row for row in _read_csv(STANDINGS_CSV) if row.get('region_league') != region_league]
-    all_rows = other_leagues_rows + standings_data
-    fieldnames = files_and_headers[STANDINGS_CSV]
-    _write_csv(STANDINGS_CSV, all_rows, fieldnames)
-    print(f"      [DB] Updated standings for {region_league}")
+        # Create composite unique key from region_league + team_name
+        team_name = row.get('team_name', '').strip()
+        if team_name:
+            unique_key = f"{region_league}_{team_name}".replace(' ', '_').replace('-', '_').upper()
+            row['standings_key'] = unique_key
+            upsert_entry(STANDINGS_CSV, row, files_and_headers[STANDINGS_CSV], 'standings_key')
+            updated_count += 1
+
+    if updated_count > 0:
+        print(f"      [DB] UPSERTed {updated_count} standings entries for {region_league}")
 
 def save_region_league_entry(region_league_info: Dict[str, Any]):
     """Saves or updates a single region-league entry in region_league.csv."""
@@ -249,7 +204,7 @@ files_and_headers = {
     ],
     STANDINGS_CSV: [
         'region_league', 'position', 'team_name', 'team_id', 'played', 'wins', 'draws',
-        'losses', 'goals_for', 'goals_against', 'goal_difference', 'points', 'last_updated', 'url'
+        'losses', 'goals_for', 'goals_against', 'goal_difference', 'points', 'last_updated', 'url', 'standings_key'
     ],
     TEAMS_CSV: ['team_id', 'team_name', 'region_league', 'team_url'],
     REGION_LEAGUE_CSV: ['region_league_id', 'region', 'league_name', 'url']

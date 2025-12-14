@@ -1,0 +1,71 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 08:30:10 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 2 past predictions to review (Limit: 5).
+[Processing] Starting batch review for 2 matches...
+  [Score Check] Nacional vs Tondela (Attempt 1)
+  [Score Check] JS Talangai vs Juk (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Nacional vs Tondela Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Nacional vs Tondela (Attempt 2)
+    [Fail] JS Talangai vs Juk Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] JS Talangai vs Juk (Attempt 2)
+    [Fail] Nacional vs Tondela Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Nacional vs Tondela (Attempt 3)
+    [Fail] JS Talangai vs Juk Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] JS Talangai vs Juk (Attempt 3)
+    [Fail] Nacional vs Tondela Could not extract score from page.
+    [Review Failed] Nacional vs Tondela
+    [Fail] JS Talangai vs Juk Could not extract score from page.
+    [Match Canceled] JS Talangai vs Juk
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  Saturday, 13th December, 2025: 49.0% Accurate - 351 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 52.0% Accurate - 298 Predictions
+  High Confidence: 61.5% Accurate - 13 Predictions
+  Low Confidence: 54.9% Accurate - 142 Predictions
+  ==================================================
+  Friday, 12th December, 2025 to Saturday, 13th December, 2025: 53.2% Accurate - 453 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID AiP82Dvp on 14.12.2025
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Extractor] Extracting match data from page...
+    [Time Filter] Removed 18 past matches for today.
+    [Matches Found] 334 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: AiP82Dvp on this date.
+    [Resume] Last processed ID AiP82Dvp not found in current scan. Starting day from beginning.
+    [Batching] Processing 334 matches concurrently...
+    [Batch Start] WS Wanderers W vs Central Coast Mariners W: 14.12.2025 - 09:00
+    [Batch Start] FC Bihor vs Metalul Buzau: 14.12.2025 - 10:00
+    [Batch Start] Verona U20 vs Juventus U20: 14.12.2025 - 10:45
+    [Batch Start] Hong Kong FC vs Kowloon City: 14.12.2025 - 09:30
+
+   --- LEO: Shutting down gracefully. ---

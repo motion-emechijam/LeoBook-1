@@ -18,6 +18,7 @@ from Helpers.utils import AUTH_DIR, log_error_state
 from Neo.intelligence import get_selector_auto
 from Helpers.Site_Helpers.site_helpers import get_main_frame
 from Helpers.Neo_Helpers.Managers.api_key_manager import gemini_api_call_with_rotation
+from Helpers.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
 
 PHONE = os.getenv("FB_PHONE")
 PASSWORD = os.getenv("FB_PASSWORD")
@@ -119,7 +120,7 @@ async def get_bet_slip_count(page: Page) -> int:
     try:
         counter_sel = "section[data-op='betslip-icon'] span.odds"
         if await page.locator(counter_sel).count() > 0:
-            text = await page.locator(counter_sel).inner_text(timeout=2000)
+            text = await page.locator(counter_sel).inner_text(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
             return int(re.sub(r'\D', '', text) or 0)
     except:
         pass
@@ -129,7 +130,7 @@ async def get_bet_slip_count(page: Page) -> int:
 async def extract_all_markets(page: Page) -> List[Dict]:
     """Expands all market containers and extracts all available betting outcomes."""
     print("    [Harvest] Expanding and harvesting markets...")
-    market_container_sel = await get_main_frame(page, "fb_match_page", "match_market_details_container") or ".market-details-container"
+    market_container_sel = await get_selector_auto(page, "fb_match_page", "match_market_details_container") or ".market-details-container"
     market_header_sel = ".market-title, .group-header"
     market_name_sel = ".market-name, .market-title-text, .group-header__title"
     odds_button_sel = "[data-op*='odds'], .odds-button, .m-odds, .odds"
@@ -146,7 +147,7 @@ async def extract_all_markets(page: Page) -> List[Dict]:
             if await header.count() > 0:
                 is_collapsed_icon = header.locator("svg[class*='down'], i[class*='down']")
                 if await is_collapsed_icon.count() > 0 and await is_collapsed_icon.is_visible():
-                    await header.click(timeout=3000)
+                    await header.click(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                     await asyncio.sleep(0.75)
 
             market_data = await container.evaluate("""(container, selectors) => {
@@ -191,7 +192,7 @@ async def get_balance(page: Page) -> float:
     try:
         balance_sel = await get_selector_auto(page, "fb_main_page", "navbar_balance")
         if balance_sel and await page.locator(balance_sel).count() > 0:
-            balance_text = await page.locator(balance_sel).inner_text(timeout=5000)
+            balance_text = await page.locator(balance_sel).inner_text(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
             cleaned_text = re.sub(r'[^\d.]', '', balance_text)
             if cleaned_text:
                 print(f"  [Money] Found balance: {balance_text}")
@@ -215,12 +216,12 @@ async def login(page: Page):
         password_selector = await get_selector_auto(page, "fb_login_page", "center_input_password") or "input[type='password']"
         login_btn_selector = await get_selector_auto(page, "fb_login_page", "bottom_button_login") or "button:has-text('Login')"
 
-        await page.wait_for_selector(mobile_selector, state="visible", timeout=15000)
+        await page.wait_for_selector(mobile_selector, state="visible", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
         # Ensure PHONE and PASSWORD are not None before passing to fill
         if PHONE: await page.fill(mobile_selector, PHONE)
         if PASSWORD: await page.fill(password_selector, PASSWORD)
         await page.click(login_btn_selector)
-        await page.wait_for_load_state('domcontentloaded', timeout=30000)
+        await page.wait_for_load_state('domcontentloaded', timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
         print("[Login] Football.com Login Successful.")
     except Exception as e:
         print(f"[Login Error] {e}")
@@ -243,10 +244,10 @@ async def extract_all_matches_via_expansion(page: Page, target_date: str) -> Lis
         for i, header_locator in enumerate(league_headers):
             try:
                 league_element = header_locator.locator(league_title_sel).first
-                league_text = (await league_element.inner_text(timeout=2000)).strip().replace('\n', ' - ') if await league_element.is_visible() else f"Unknown League {i+1}"
+                league_text = (await league_element.inner_text(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)).strip().replace('\n', ' - ') if await league_element.is_visible() else f"Unknown League {i+1}"
                 print(f"  -> Processing: {league_text}")
 
-                await header_locator.click(timeout=5000)
+                await header_locator.click(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await asyncio.sleep(2.0)
 
                 matches_container = await header_locator.evaluate_handle('(el) => el.nextElementSibling')
@@ -311,7 +312,7 @@ async def run_football_com_booking(browser: Browser):
             print("  [Auth] Found saved session. Loading state...")
             context = await browser.new_context(storage_state=AUTH_FILE, viewport={'width': 375, 'height': 812})
             page = await context.new_page()
-            await page.goto("https://www.football.com/ng/m/", wait_until='domcontentloaded', timeout=180000)
+            await page.goto("https://www.football.com/ng/m/", wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
         else:
             print("  [Auth] No saved session found. Performing new login...")
             context = await browser.new_context(viewport={'width': 375, 'height': 812})
@@ -329,8 +330,8 @@ async def run_football_com_booking(browser: Browser):
             target_dt = dt.strptime(target_date, "%d.%m.%Y")
             day_of_week = (target_dt.weekday() + 1) % 7
             base_url = f"https://www.football.com/ng/m/sport/football/?sort=2&tab=Matches&time={day_of_week}"
-            await page.goto(base_url, timeout=180000)
-            await page.wait_for_load_state('networkidle', timeout=300000)
+            await page.goto(base_url, timeout=NAVIGATION_TIMEOUT)
+            await page.wait_for_load_state('networkidle', timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
 
             # Harvest and Map
             all_site_matches = await extract_all_matches_via_expansion(page, target_date)
@@ -349,7 +350,7 @@ async def run_football_com_booking(browser: Browser):
                 processed_urls.add(match_url)
 
                 try:
-                    await page.goto(match_url, wait_until='domcontentloaded', timeout=180000)
+                    await page.goto(match_url, wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
                     frame = await get_main_frame(page)
                     if not frame: continue
 
@@ -358,7 +359,7 @@ async def run_football_com_booking(browser: Browser):
                     btn_selector = await choose_best_bet_with_gemini(all_markets, found_pred, page)
                     
                     if btn_selector:
-                        await frame.locator(btn_selector).click(timeout=5000)
+                        await frame.locator(btn_selector).click(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                         await asyncio.sleep(1)
 
                         count_after = count_before

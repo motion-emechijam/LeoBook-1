@@ -1,0 +1,42 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 08:05:15 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.5: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Chateauroux vs Dijon (Attempt 1)
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+  [Score Check] Valenciennes vs Sochaux (Attempt 1)
+  [Score Check] Oliveirense vs Chaves (Attempt 1)
+  [Score Check] Betis B vs Alcorcon (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Attempt 1 Failed] Error for 8CODBOBi: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chateauroux-jZ2ZFJqe/dijon-dIvQQaE7/?mid=8CODBOBi", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for vBaBbOi3: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/flint-mountain-biWWzDD9/mold-alexandra-Es9411nk/?mid=vBaBbOi3", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for EV2dMuQ9: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/sochaux-jPojkLXK/valenciennes-O8dsB372/?mid=EV2dMuQ9", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for vaP7S9yA: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chaves-vsToxqA5/oliveirense-tA7VEKwU/?mid=vaP7S9yA", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Chateauroux vs Dijon (Attempt 2)
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 2)
+  [Score Check] Valenciennes vs Sochaux (Attempt 2)
+  [Score Check] Oliveirense vs Chaves (Attempt 2)
+
+   --- LEO: Shutting down gracefully. ---

@@ -1,0 +1,191 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 14:26:29 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 0 past predictions to review (Limit: 50).
+--- No new past matches to review. ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  Saturday, 13th December, 2025: 49.0% Accurate - 351 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 52.0% Accurate - 298 Predictions
+  High Confidence: 61.5% Accurate - 13 Predictions
+  Low Confidence: 54.9% Accurate - 142 Predictions
+  ==================================================
+  Friday, 12th December, 2025 to Saturday, 13th December, 2025: 53.2% Accurate - 453 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID U9aNRfbn on 16.12.2025
+
+--- SKIPPING DAY: 14.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Cookies] Accepted via text: I Accept
+    [Success] Next day clicked and page updated.
+
+--- SKIPPING DAY: 15.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 16.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Extractor] Extracting match data from page...
+    [Matches Found] 47 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: U9aNRfbn on this date.
+    [Resume] Match found at index 6. Skipping 7 previously processed matches.
+    [Batching] Processing 40 matches concurrently...
+    [Batch Start] Rayong FC vs Ratchaburi: 16.12.2025 - 13:00
+    [Batch Start] Uttar Pradesh vs Haryana: 16.12.2025 - 12:00
+    [Batch Start] Uttarakhand vs Chandigarh: 16.12.2025 - 12:00
+    [Batch Start] Lazio U20 vs Torino U20: 16.12.2025 - 12:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Expansion] Expanding available match history...
+    [H2H Expansion] Expanding available match history...
+    [H2H Expansion] Expanding available match history...
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 1 H2H matches.
+      [OK H2H] H2H tab data extracted for Uttarakhand_vs_Chandigarh (21 matches found)
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 5 H2H matches.
+      [OK H2H] H2H tab data extracted for Rayong FC_vs_Ratchaburi (25 matches found)
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+      [Extractor] Found 10 home, 10 away, 0 H2H matches.
+      [OK H2H] H2H tab data extracted for Uttar Pradesh_vs_Haryana (20 matches found)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 2 H2H matches.
+      [OK H2H] H2H tab data extracted for Lazio U20_vs_Torino U20 (22 matches found)
+      [Extractor] Extracting Standings tab...
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 4 teams in standings for 'INDIA - SANTOSH TROPHY'.
+      [DB] UPSERTed 4 standings entries for INDIA - SANTOSH TROPHY
+      [OK Standing] Standings tab data extracted for INDIA - SANTOSH TROPHY
+      [Extractor Validation] Updated League to: INDIA - SANTOSH TROPHY
+      [DB] UPSERTed 4 standings entries for INDIA - SANTOSH TROPHY
+      [OK Standing] Standings tab data extracted for INDIA - SANTOSH TROPHY
+            [OK Signal] Uttarakhand_vs_Chandigarh
+      [Extractor] Found 16 teams in standings for 'THAILAND - THAI LEAGUE 1 - ROUND 15'.
+      [DB] UPSERTed 16 standings entries for THAILAND - THAI LEAGUE 1 - ROUND 15
+      [OK Standing] Standings tab data extracted for THAILAND - THAI LEAGUE 1 - ROUND 15
+      [Extractor Validation] Updated League to: THAILAND - THAI LEAGUE 1 - ROUND 15
+      [DB] UPSERTed 16 standings entries for THAILAND - THAI LEAGUE 1 - ROUND 15
+      [OK Standing] Standings tab data extracted for THAILAND - THAI LEAGUE 1 - ROUND 15
+            [OK Signal] Rayong FC_vs_Ratchaburi
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [Batch Start] AS New Soger vs St Eloi Lupopo: 16.12.2025 - 14:00
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 4 teams in standings for 'INDIA - SANTOSH TROPHY'.
+      [DB] UPSERTed 4 standings entries for INDIA - SANTOSH TROPHY
+      [OK Standing] Standings tab data extracted for INDIA - SANTOSH TROPHY
+      [Extractor Validation] Updated League to: INDIA - SANTOSH TROPHY
+      [DB] UPSERTed 4 standings entries for INDIA - SANTOSH TROPHY
+      [OK Standing] Standings tab data extracted for INDIA - SANTOSH TROPHY
+            [OK Signal] Uttar Pradesh_vs_Haryana
+    [Batch Start] Maniema vs Celeste: 16.12.2025 - 14:00
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 20 teams in standings for 'ITALY - PRIMAVERA 1 - ROUND 16'.
+      [DB] UPSERTed 20 standings entries for ITALY - PRIMAVERA 1 - ROUND 16
+      [OK Standing] Standings tab data extracted for ITALY - PRIMAVERA 1 - ROUND 16
+      [Extractor Validation] Updated League to: ITALY - PRIMAVERA 1 - ROUND 16
+      [DB] UPSERTed 20 standings entries for ITALY - PRIMAVERA 1 - ROUND 16
+      [OK Standing] Standings tab data extracted for ITALY - PRIMAVERA 1 - ROUND 16
+            [OK Signal] Lazio U20_vs_Torino U20
+    [Batch Start] AC Milan U20 vs Parma U20: 16.12.2025 - 14:00
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Batch Start] Monza U20 vs AS Roma U20: 16.12.2025 - 14:00
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Expansion] Expanding available match history...
+    [H2H Expansion] Expanding available match history...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 5 H2H matches.
+      [OK H2H] H2H tab data extracted for Maniema_vs_Celeste (25 matches found)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 4 H2H matches.
+      [OK H2H] H2H tab data extracted for AS New Soger_vs_St Eloi Lupopo (24 matches found)
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 15 teams in standings for 'DR CONGO - LIGUE 1 - ROUND 8'.
+      [DB] UPSERTed 15 standings entries for DR CONGO - LIGUE 1 - ROUND 8
+      [OK Standing] Standings tab data extracted for DR CONGO - LIGUE 1 - ROUND 8
+      [Extractor Validation] Updated League to: DR CONGO - LIGUE 1 - ROUND 8
+      [DB] UPSERTed 15 standings entries for DR CONGO - LIGUE 1 - ROUND 8
+      [OK Standing] Standings tab data extracted for DR CONGO - LIGUE 1 - ROUND 8
+            [OK Signal] Maniema_vs_Celeste
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 16 teams in standings for 'DR CONGO - LIGUE 1 - ROUND 15'.
+      [DB] UPSERTed 16 standings entries for DR CONGO - LIGUE 1 - ROUND 15
+      [OK Standing] Standings tab data extracted for DR CONGO - LIGUE 1 - ROUND 15
+      [Extractor Validation] Updated League to: DR CONGO - LIGUE 1 - ROUND 15
+      [DB] UPSERTed 16 standings entries for DR CONGO - LIGUE 1 - ROUND 15
+      [OK Standing] Standings tab data extracted for DR CONGO - LIGUE 1 - ROUND 15
+            [OK Signal] AS New Soger_vs_St Eloi Lupopo
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Extractor] Found 10 home, 10 away, 2 H2H matches.
+      [OK H2H] H2H tab data extracted for Monza U20_vs_AS Roma U20 (22 matches found)
+    [Batch Start] Leopards vs Ulinzi Stars: 16.12.2025 - 14:00
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [Batch Start] BUL vs Police: 16.12.2025 - 14:00
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 20 teams in standings for 'ITALY - PRIMAVERA 1 - ROUND 16'.
+
+   --- LEO: Shutting down gracefully. ---

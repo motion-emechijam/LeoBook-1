@@ -1,0 +1,256 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 06:17:05 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 2)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 2)
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 2)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Nkwazi vs MUZA (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 3)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 3)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 3)
+  [Score Check] Nkwazi vs MUZA (Attempt 3)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 3)
+    [Fail] Could not extract score from page.
+    [Review Failed] Mufulira vs Green Buffaloes
+    [Fail] Could not extract score from page.
+  [Score Check] Konkola vs Mines (Attempt 1)
+    [Review Failed] Zanaco vs NAPSA Stars
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 1)
+    [Fail] Could not extract score from page.
+    [Review Failed] Mutondo Stars vs Power Dynamos
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Green Eagles vs Red Arrows (Attempt 1)
+    [Fail] Could not extract score from page.
+    [Review Failed] Nkwazi vs MUZA
+  [Score Check] Nkana vs ZESCO (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+    [Review Failed] Prison Leopards vs Kansanshi
+  [Score Check] Golden Star vs RC Saint Joseph (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Golden Star vs RC Saint Joseph -> Score: 1-5
+  [Score Check] Morne des Esses vs Espoir (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Konkola vs Mines (Attempt 2)
+    [Success] Morne des Esses vs Espoir -> Score: 2-3
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 2)
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Green Eagles vs Red Arrows (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Success] Deportivo Nacional vs Real Koyari -> Score: 5-0
+  [Score Check] Nkana vs ZESCO (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Getafe vs Espanyol (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Getafe vs Espanyol -> Score: 0-1
+  [Score Check] Eagles FC vs Central FC (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Konkola vs Mines (Attempt 3)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Success] Eagles FC vs Central FC -> Score: 2-3
+  [Score Check] Sporting Jax W vs Fort Lauderdale W (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 3)
+    [Success] Sporting Jax W vs Fort Lauderdale W -> Score: 1-1
+  [Score Check] GV San Jose vs Universitario de Vinto (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Green Eagles vs Red Arrows (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] GV San Jose vs Universitario de Vinto -> Score: 5-0
+  [Score Check] Dallas Trinity W vs Carolina Ascent W (Attempt 1)
+  [Score Check] Nkana vs ZESCO (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+    [Review Failed] Konkola vs Mines
+    [Success] Dallas Trinity W vs Carolina Ascent W -> Score: 1-0
+  [Score Check] Sporting CP vs AFS (Attempt 1)
+  [Score Check] Macara vs Dep. Cuenca (Attempt 1)
+    [Fail] Could not extract score from page.
+    [Review Failed] Kabwe vs Nchanga Rangers
+  [Score Check] Murcia vs Sabadell (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Macara vs Dep. Cuenca -> Score: 0-1
+    [Cookies] Accepted via text: I Accept
+  [Score Check] Delfin vs Aucas (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+    [Review Failed] Green Eagles vs Red Arrows
+  [Score Check] Paris FC vs Toulouse (Attempt 1)
+    [Success] Murcia vs Sabadell -> Score: 0-1
+  [Score Check] Zaragoza vs Cadiz CF (Attempt 1)
+    [Success] Sporting CP vs AFS -> Score: 6-0
+  [Score Check] Dep. La Coruna vs Real Sociedad B (Attempt 1)
+    [Fail] Could not extract score from page.
+    [Review Failed] Nkana vs ZESCO
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Falkirk vs Hearts (Attempt 1)
+    [Success] Delfin vs Aucas -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Braga B vs Vitoria Guimaraes B (Attempt 1)
+    [Success] Dep. La Coruna vs Real Sociedad B -> Score: 0-3
+    [Success] Zaragoza vs Cadiz CF -> Score: 1-2
+    [Success] Paris FC vs Toulouse -> Score: 0-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Braga B vs Vitoria Guimaraes B -> Score: 0-0
+    [Success] Falkirk vs Hearts -> Score: 0-2
+  [Score Check] Jarabacoa vs San Cristobal (Attempt 1)
+  [Score Check] Zwolle vs Sittard (Attempt 1)
+  [Score Check] Hard Rock vs Hurricanes (Attempt 1)
+  [Score Check] Anderlecht vs St. Truiden (Attempt 1)
+  [Score Check] Arsenal vs Wolves (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Arsenal vs Wolves -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Europa FC vs Magpies (Attempt 1)
+    [Success] Jarabacoa vs San Cristobal -> Score: 3-0
+    [Success] Anderlecht vs St. Truiden -> Score: 2-1
+    [Success] Hard Rock vs Hurricanes -> Score: 2-3
+    [Success] Zwolle vs Sittard -> Score: 1-0
+  [Score Check] Robert vs Inter de Sainte-Anne (Attempt 1)
+  [Score Check] Thun vs St. Gallen (Attempt 1)
+  [Score Check] Atalanta vs Cagliari (Attempt 1)
+  [Score Check] Hannover vs Bochum (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Europa FC vs Magpies -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Zoman vs Stade d'Abidjan (Attempt 1)
+    [Success] Atalanta vs Cagliari -> Score: 2-1
+  [Score Check] Atletico Pantoja vs Moca (Attempt 1)
+    [Success] Thun vs St. Gallen -> Score: 0-2
+  [Score Check] Lexington W vs DC Power W (Attempt 1)
+    [Success] Robert vs Inter de Sainte-Anne -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] St Etienne vs Bastia (Attempt 1)
+    [Success] Zoman vs Stade d'Abidjan -> Score: 0-0
+  [Score Check] Francs Borains vs K. Lierse S.K. (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hannover vs Bochum -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] RWDM Brussels vs OC Charleroi (Attempt 1)
+    [Success] Lexington W vs DC Power W -> Score: 2-2
+    [Success] Atletico Pantoja vs Moca -> Score: 1-0
+  [Score Check] Beerschot VA vs Patro Eisden (Attempt 1)
+  [Score Check] PSV vs Heracles (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] St Etienne vs Bastia -> Score: 2-2
+  [Score Check] FC Rapid Bucuresti vs Otelul (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] RWDM Brussels vs OC Charleroi -> Score: 3-3
+    [Success] Francs Borains vs K. Lierse S.K. -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Cesena vs Mantova (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Teuta vs KF Tirana (Attempt 1)
+    [Success] PSV vs Heracles -> Score: 4-3
+  [Score Check] Madrid C. W vs Athletic Bilbao W (Attempt 1)
+    [Success] FC Rapid Bucuresti vs Otelul -> Score: 0-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Rio Ave vs Vitoria Guimaraes (Attempt 1)
+    [Success] Beerschot VA vs Patro Eisden -> Score: 0-2
+  [Score Check] US Bougouni vs Korofina (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Teuta vs KF Tirana -> Score: 1-1
+    [Success] Cesena vs Mantova -> Score: 3-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Madrid C. W vs Athletic Bilbao W -> Score: 0-2
+    [Success] Rio Ave vs Vitoria Guimaraes -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] US Bougouni vs Korofina -> Score: 2-1
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+  Saturday, 13th December, 2025: 48.8% Accurate - 244 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 52.9% Accurate - 225 Predictions
+  High Confidence: 63.6% Accurate - 11 Predictions
+  Low Confidence: 56.9% Accurate - 109 Predictions
+  ==================================================
+  Friday, 12th December, 2025 to Saturday, 13th December, 2025: 54.5% Accurate - 345 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+   [Phase 2] Starting booking process (Football.com)...
+
+   --- LEO: Cycle Complete. ---
+Sleeping for 6 hours until the next cycle...
+
+   --- LEO: Shutting down gracefully. ---

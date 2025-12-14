@@ -1,0 +1,123 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 10:12:14 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 40 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 40 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+  [Score Check] Aigle Noir vs Musongati (Attempt 1)
+  [Score Check] Al Bidda vs Qatar SC (Attempt 1)
+  [Score Check] Douanes Niamey vs Olympic Niamey (Attempt 1)
+  [Score Check] Bougouba vs Derby Academie (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Douanes Niamey vs Olympic Niamey -> Score: 3-1
+    [Success] Aigle Noir vs Musongati -> Score: 1-1
+    [Success] Bougouba vs Derby Academie -> Score: 0-0
+    [Success] Al Bidda vs Qatar SC -> Score: 1-2
+  [Score Check] AS ZAM vs Renaissance (Attempt 1)
+  [Score Check] Obolon vs Metalist 1925 (Attempt 1)
+  [Score Check] Heart of Lions vs Aduana (Attempt 1)
+  [Score Check] Sepsi Sf. Gheorghe vs Concordia (Attempt 1)
+    [Cookies] Accepted via text: I Accept
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+  [Score Check] USFA vs ASF Dioulasso (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] AS ZAM vs Renaissance -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Obolon vs Metalist 1925 -> Score: 1-3
+  [Score Check] Al Bukiryah vs Al Taee (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Sepsi Sf. Gheorghe vs Concordia -> Score: 3-1
+    [Success] USFA vs ASF Dioulasso -> Score: 1-0
+    [Success] Heart of Lions vs Aduana -> Score: 0-1
+    [Success] Al Bukiryah vs Al Taee -> Score: 1-2
+  [Score Check] ADVSA vs Port City (Attempt 1)
+  [Score Check] Bel Air vs Saint Louis (Attempt 1)
+  [Score Check] Al Rayyan vs Al-Sadd (Attempt 1)
+  [Score Check] Renaissance vs Maniema (Attempt 1)
+  [Score Check] JS Talangai vs Juk (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] ADVSA vs Port City -> Score: 0-1
+    [Success] Bel Air vs Saint Louis -> Score: 1-0
+  [Score Check] Oleksandriya vs Kudrivka (Attempt 1)
+  [Score Check] OLS Oulu (Fin) vs AC Oulu (Fin) (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  JS Talangai vs Juk Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Rayyan vs Al-Sadd -> Score: 5-3
+    [Success] Renaissance vs Maniema -> Score: 0-1
+  [Score Check] Kitara vs Maroons (Attempt 1)
+  [Score Check] Police vs Gasogi United (Attempt 1)
+  [Score Check] Bologna U20 vs AC Milan U20 (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  OLS Oulu (Fin) vs AC Oulu (Fin) Match not finished yet.
+    [Success] Oleksandriya vs Kudrivka -> Score: 1-1
+  [Score Check] MS Kafr Qasim vs Ironi Modiin (Attempt 1)
+  [Score Check] Hapoel Hadera vs Hap. Ramat Gan (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Kitara vs Maroons -> Score: 2-0
+    [Success] Bologna U20 vs AC Milan U20 -> Score: 1-1
+  [Score Check] Maccabi Petah Tikva vs H. Ironi Rishon (Attempt 1)
+    [Success] Police vs Gasogi United -> Score: 1-0
+  [Score Check] Maccabi Jaffa vs Hapoel Kfar Shalem (Attempt 1)
+  [Score Check] Don Bosco vs Tshikas (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] MS Kafr Qasim vs Ironi Modiin -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] H. Raanana vs Nof Hagalil (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hapoel Hadera vs Hap. Ramat Gan -> Score: 0-1
+  [Score Check] Abha vs Al-Ula (Attempt 1)
+    [Success] Maccabi Petah Tikva vs H. Ironi Rishon -> Score: 2-1
+  [Score Check] Tadamon vs Nejmeh SC (Attempt 1)
+    [Success] Don Bosco vs Tshikas -> Score: 3-0
+    [Success] Maccabi Jaffa vs Hapoel Kfar Shalem -> Score: 1-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Chonburi vs Kanchanaburi (Attempt 1)
+  [DB Check] Al Jandal vs Al Jubail -> Score: 1-0
+  [DB Check] Bourj FC vs Racing -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] H. Raanana vs Nof Hagalil -> Score: 2-2
+  [DB Check] Bidco United vs Mathare Utd. -> Score: 0-0
+    [Success] Abha vs Al-Ula -> Score: 2-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Tadamon vs Nejmeh SC -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Chonburi vs Kanchanaburi -> Score: 1-1
+  [DB Check] Lightstars vs Cote d'Or -> Score: 1-6
+  [DB Check] Usce vs Dinamo Jug -> Score: 0-0
+  [DB Check] Bandari vs Gor Mahia -> Score: 1-1
+  [DB Check] APS Bomet vs Posta Rangers -> Score: 0-0
+  [DB Check] Kakamega Homeboyz vs Shabana -> Score: 2-2
+  [DB Check] Adana Demirspor vs Boluspor -> Score: 1-6
+  [DB Check] Bashundara Kings vs Mohammedan -> Score: 2-0
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+
+   --- LEO: Shutting down gracefully. ---

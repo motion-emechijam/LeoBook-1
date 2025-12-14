@@ -1,0 +1,56 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 00:25:21 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Zanaco vs NAPSA Stars Match not finished yet.
+    [Skip]  Mufulira vs Green Buffaloes Match not finished yet.
+  [Score Check] Konkola vs Mines (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Nkwazi vs MUZA Match not finished yet.
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 1)
+  [Score Check] Green Eagles vs Red Arrows (Attempt 1)
+    [Skip]  Prison Leopards vs Kansanshi Match not finished yet.
+    [Skip]  Mutondo Stars vs Power Dynamos Match not finished yet.
+  [Score Check] Nkana vs ZESCO (Attempt 1)
+  [Score Check] Golden Star vs RC Saint Joseph (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Konkola vs Mines Match not finished yet.
+  [Score Check] Morne des Esses vs Espoir (Attempt 1)
+    [Skip]  Kabwe vs Nchanga Rangers Match not finished yet.
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Green Eagles vs Red Arrows Match not finished yet.
+  [Score Check] Eagles FC vs Central FC (Attempt 1)
+    [Skip]  Nkana vs ZESCO Match not finished yet.
+    [Skip]  Golden Star vs RC Saint Joseph Match not finished yet.
+  [Score Check] GV San Jose vs Universitario de Vinto (Attempt 1)
+  [Score Check] Sporting Jax W vs Fort Lauderdale W (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Morne des Esses vs Espoir Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Jarabacoa vs San Cristobal (Attempt 1)
+    [Skip]  Deportivo Nacional vs Real Koyari Match not finished yet.
+  [Score Check] Burnley vs Fulham (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Eagles FC vs Central FC Match not finished yet.
+
+   --- LEO: Shutting down gracefully. ---

@@ -1,0 +1,18 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 05:46:41 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.5: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Web Check] Cacereno vs Zamora
+  [Web Check] Vega Real vs Delfines Del Este
+  [Web Check] Prison Service vs Defence Force
+  [Web Check] Hibernians vs Tarxien
+  [Web Check] Torreense vs Feirense
+    [Fail] Could not extract score.
+
+   --- LEO: Shutting down gracefully. ---

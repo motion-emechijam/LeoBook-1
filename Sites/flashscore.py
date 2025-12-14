@@ -11,15 +11,14 @@ from Helpers.DB_Helpers.db_helpers import get_last_processed_info, save_schedule
 from Helpers.Site_Helpers.site_helpers import fs_universal_popup_dismissal, click_next_day
 from Helpers.utils import BatchProcessor, log_error_state
 from Neo.intelligence import analyze_page_and_update_selectors, get_selector, get_selector_auto
-from Helpers.Site_Helpers.Extractors.extractor import extract_h2h_data, extract_standings_data, save_extracted_h2h_to_schedules
+from Helpers.Site_Helpers.Extractors.h2h_extractor import extract_h2h_data, save_extracted_h2h_to_schedules
+from Helpers.Site_Helpers.Extractors.standings_extractor import extract_standings_data
 from Neo.model import RuleEngine
 from Helpers.DB_Helpers.db_helpers import save_prediction
-from Helpers.DB_Helpers.review_outcomes import enrich_past_schedule_entries
+from Helpers.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
 
 # --- CONFIGURATION ---
 NIGERIA_TZ = ZoneInfo("Africa/Lagos")
-NAVIGATION_TIMEOUT = 360000
-WAIT_FOR_LOAD_STATE_TIMEOUT = 360000
 
 
 async def process_match_task(match_data: dict, browser: Browser):
@@ -40,21 +39,24 @@ async def process_match_task(match_data: dict, browser: Browser):
 
         full_match_url = f"{match_data['match_link']}"
         await page.goto(full_match_url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
-        await asyncio.sleep(2.0)
+        await asyncio.sleep(10.0)
         await fs_universal_popup_dismissal(page, "match_page")
         await page.wait_for_load_state("domcontentloaded", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
         await analyze_page_and_update_selectors(page, "match_page")
         await fs_universal_popup_dismissal(page, "match_page")
 
         # --- H2H Tab & Expansion ---
+        await analyze_page_and_update_selectors(page, "match_page")
         h2h_tab_selector = get_selector("match_page", "nav_tab_h2h")
+
         h2h_data = {}
         if h2h_tab_selector and await page.locator(h2h_tab_selector).is_visible(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT):
             try:
                 await page.click(h2h_tab_selector, timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await page.wait_for_load_state("domcontentloaded", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
-                await asyncio.sleep(3.0)
+                await asyncio.sleep(5.0)
                 await fs_universal_popup_dismissal(page, "h2h_tab")
+                await asyncio.sleep(3.0)  # Shorter wait time
 
                 # More robust H2H expansion with better error handling
                 show_more_selector = "button:has-text('Show more matches'), a:has-text('Show more matches')"
@@ -66,7 +68,7 @@ async def process_match_task(match_data: dict, browser: Browser):
                         print("    [H2H Expansion] Expanding available match history...")
                         try:
                             await show_more_buttons.click(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
-                            await asyncio.sleep(1.0)
+                            await asyncio.sleep(5.0)
                             # Check if clicking reveals more buttons
                             second_button = page.locator(show_more_selector).nth(1)
                             if await second_button.count() > 0:
@@ -106,6 +108,7 @@ async def process_match_task(match_data: dict, browser: Browser):
                 await page.click(standings_tab_selector, timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await page.wait_for_load_state("domcontentloaded", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await analyze_page_and_update_selectors(page, "standings_tab")
+                await asyncio.sleep(5.0)
                 await fs_universal_popup_dismissal(page, "standings_tab")
                 await asyncio.sleep(3.0)
                 standings_result = await extract_standings_data(page)
@@ -387,7 +390,16 @@ async def run_flashscore_analysis(browser: Browser):
                 print(f"    [Resume] Match found at index {found_index}. Skipping {found_index + 1} previously processed matches.")
                 valid_matches = valid_matches[found_index + 1:]
             except IndexError:
-                 print(f"    [Resume] Last processed ID {last_id} not found in current scan. Starting day from beginning.")
+                 print(f"    [Resume] Last processed ID {last_id} not found in current scan. Trying to start from last 5 matches.")
+                 if len(valid_matches) >= 5:
+                     valid_matches = valid_matches[-5:]
+                 else:
+                     print(f"    [Resume] Less than 5 matches, trying last 10.")
+                     if len(valid_matches) >= 10:
+                         valid_matches = valid_matches[-10:]
+                     else:
+                         print(f"    [Resume] Less than 10 matches, starting from beginning.")
+                 
 
         # --- Batch Processing ---
         if valid_matches:
@@ -399,3 +411,4 @@ async def run_flashscore_analysis(browser: Browser):
 
     await context.close()
     print(f"\n--- Flashscore Analysis Complete: {total_cycle_predictions} new predictions found. ---")
+    return  # Explicit return to ensure coroutine is properly formed

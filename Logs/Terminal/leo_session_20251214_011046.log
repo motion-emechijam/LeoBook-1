@@ -1,0 +1,197 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 01:10:48 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 10 past predictions to review (Limit: 10).
+[Processing] Starting batch review for 10 matches...
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 1)
+  [Score Check] Morne des Esses vs Espoir (Attempt 1)
+  [Score Check] Nacional vs Tondela (Attempt 1)
+  [Score Check] OC Kerkennah vs EM Mahdia (Attempt 1)
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 1)
+    [Attempt 1 Failed] Error for YeuvJ9R8: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for CM2ZF7lB: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for Cz6rJ0h2: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for EBlvjZrn: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for YsG2OeUs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Morne des Esses vs Espoir (Attempt 2)
+  [Score Check] Nacional vs Tondela (Attempt 2)
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 2)
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 2)
+  [Score Check] OC Kerkennah vs EM Mahdia (Attempt 2)
+    [Attempt 2 Failed] Error for EBlvjZrn: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for CM2ZF7lB: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for YsG2OeUs: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for Cz6rJ0h2: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for YeuvJ9R8: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 3)
+  [Score Check] Nacional vs Tondela (Attempt 3)
+  [Score Check] OC Kerkennah vs EM Mahdia (Attempt 3)
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 3)
+  [Score Check] Morne des Esses vs Espoir (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Gemini Error] Quota exceeded for key index 3.
+  [API Key] Rotating from key index 3 due to quota limit.
+  [API Key] Switched to key index: 4
+    [Gemini Error] Quota exceeded for key index 4.
+  [API Key] Rotating from key index 4 due to quota limit.
+  [API Key] Switched to key index: 5
+    [Gemini Error] Quota exceeded for key index 5.
+  [API Key] Rotating from key index 5 due to quota limit.
+  [API Key] Switched to key index: 6
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Gemini Error] Quota exceeded for key index 6.
+  [API Key] Rotating from key index 6 due to quota limit.
+  [API Key] Switched to key index: 7
+    [AI INTEL] Successfully mapped 84 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .fixedHeaderDuel__detailStatus
+    [AI INTEL] Successfully mapped 79 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .fixedHeaderDuel__detailStatus
+    [Success] OC Kerkennah vs EM Mahdia -> Score: 1-0
+  [Score Check] Hamam-Sousse vs Hammam-Lif (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hamam-Sousse vs Hammam-Lif -> Score: 1-0
+  [Score Check] Chebba vs Msaken (Attempt 1)
+    [AI INTEL] Successfully mapped 128 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .fixedHeaderDuel__detailStatus
+    [Success] Menzel Bourguiba vs Sporting Ben Arous -> Score: 0-0
+  [Score Check] Torremolinos vs Marbella (Attempt 1)
+    [AI INTEL] Successfully mapped 107 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .fixedHeaderDuel__detailStatus
+    [AI INTEL] Successfully mapped 131 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+    [Attempt 1 Failed] Error for lCiQa0v1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Torremolinos vs Marbella (Attempt 2)
+    [Fail] Could not extract score from page.
+    [Review Failed] Deportivo Nacional vs Real Koyari
+  [Score Check] AS Agareb vs Sfax Railways (Attempt 1)
+    [Attempt 1 Failed] Error for 6eEAMZbf: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/as-agareb-v3ZUa2na/sfax-railways-h2041Zso/?mid=6eEAMZbf
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/as-agareb-v3ZUa2na/sfax-railways-h2041Zso/?mid=6eEAMZbf", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 2 Failed] Error for lCiQa0v1: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+  [Score Check] AS Agareb vs Sfax Railways (Attempt 2)
+  [Score Check] Torremolinos vs Marbella (Attempt 3)
+    [Fail] Could not extract score from page.
+    [Review Failed] Morne des Esses vs Espoir
+    [Fail] Could not extract score from page.
+    [Review Failed] Nacional vs Tondela
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Gemini Error] Quota exceeded for key index 7.
+  [API Key] Rotating from key index 7 due to quota limit.
+  [API Key] Switched to key index: 8
+    [Gemini Error] Quota exceeded for key index 8.
+  [API Key] Rotating from key index 8 due to quota limit.
+  [API Key] Switched to key index: 9
+  [Score Check] Real Madrid B vs Guadalajara (Attempt 1)
+    [Gemini Error] Quota exceeded for key index 9.
+  [API Key] Rotating from key index 9 due to quota limit.
+  [API Key Warning] All keys exhausted. Resetting and starting from index 0.
+    [API Key] All keys are rate-limited. Waiting for 60 seconds...
+    [Gemini Error] Quota exceeded for key index 0.
+  [API Key] Rotating from key index 0 due to quota limit.
+  [API Key] Switched to key index: 1
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 101 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': span.fixedHeaderDuel__detailStatus
+    [AI INTEL] Successfully mapped 109 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .fixedHeaderDuel__detailStatus
+    [Success] Torremolinos vs Marbella -> Score: 1-1
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Chebba vs Msaken (Attempt 2)
+
+   --- LEO: Shutting down gracefully. ---

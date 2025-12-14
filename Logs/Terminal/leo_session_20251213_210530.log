@@ -1,0 +1,145 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 21:05:32 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 1 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 1 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 74.0% Accurate - 50 Predictions
+  High Confidence: 50.0% Accurate - 8 Predictions
+  Low Confidence: 63.6% Accurate - 44 Predictions
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID G2clGJdd on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Extractor] Extracting match data from page...
+    [Matches Found] 352 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: G2clGJdd on this date.
+    [Resume] Match found at index 283. Skipping 284 previously processed matches.
+    [Batching] Processing 68 matches concurrently...
+    [Batch Start] Apollon vs Aris: 14.12.2025 - 18:00
+    [Batch Start] Paralimni vs Pafos: 14.12.2025 - 18:00
+    [Batch Start] Slovan Bratislava vs Zilina: 14.12.2025 - 18:00
+    [Batch Start] Samsunspor vs Basaksehir: 14.12.2025 - 18:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: 'div[data-testid="wcl-tabs"][data-type="primary"] a[data-analytics-alias="h2h"] button'
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: 'div[data-testid="wcl-tabs"][data-type="primary"] a[data-analytics-alias="h2h"] button'
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: 'div[data-testid="wcl-tabs"][data-type="primary"] a[data-analytics-alias="h2h"] button'
+    [H2H Expansion] Expanding available match history...
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Warning] Failed to fully load/expand H2H tab for Samsunspor_vs_Basaksehir: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Element': The provided selector is empty.
+    at eval (eval at evaluate (:291:30), <anonymous>:31:34)
+    at NodeList.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:29:18)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:21:22)
+    at UtilityScript.evaluate (<anonymous>:298:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Warning] Failed to fully load/expand H2H tab for Slovan Bratislava_vs_Zilina: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Element': The provided selector is empty.
+    at eval (eval at evaluate (:291:30), <anonymous>:31:34)
+    at NodeList.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:29:18)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:21:22)
+    at UtilityScript.evaluate (<anonymous>:298:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+      [Warning] Failed to fully load/expand H2H tab for Paralimni_vs_Pafos: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Element': The provided selector is empty.
+    at eval (eval at evaluate (:291:30), <anonymous>:31:34)
+    at NodeList.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:29:18)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:21:22)
+    at UtilityScript.evaluate (<anonymous>:298:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 18 teams in standings for 'TURKEY - SUPER LIG - ROUND 16'.
+      [DB] UPSERTed 18 standings entries for TURKEY - SUPER LIG - ROUND 16
+      [OK Standing] Standings tab data extracted for TURKEY - SUPER LIG - ROUND 16
+      [Extractor Validation] Updated League to: TURKEY - SUPER LIG - ROUND 16
+      [DB] UPSERTed 18 standings entries for TURKEY - SUPER LIG - ROUND 16
+      [OK Standing] Standings tab data extracted for TURKEY - SUPER LIG - ROUND 16
+      [NO Signal] Samsunspor_vs_Basaksehir
+    [Cookies] Accepted via OneTrust
+    [Cookies] Accepted via OneTrust
+    [Cookies] Accepted via OneTrust
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 12 teams in standings for 'SLOVAKIA - NIKE LIGA - ROUND 18'.
+      [DB] UPSERTed 12 standings entries for SLOVAKIA - NIKE LIGA - ROUND 18
+      [OK Standing] Standings tab data extracted for SLOVAKIA - NIKE LIGA - ROUND 18
+      [Extractor Validation] Updated League to: SLOVAKIA - NIKE LIGA - ROUND 18
+      [DB] UPSERTed 12 standings entries for SLOVAKIA - NIKE LIGA - ROUND 18
+      [OK Standing] Standings tab data extracted for SLOVAKIA - NIKE LIGA - ROUND 18
+      [NO Signal] Slovan Bratislava_vs_Zilina
+      [Extractor] Extracting Standings tab...
+    [Batch Start] Trabzonspor vs Besiktas: 14.12.2025 - 18:00
+      [Extractor] Found 14 teams in standings for 'CYPRUS - CYPRUS LEAGUE - ROUND 14'.
+      [DB] UPSERTed 14 standings entries for CYPRUS - CYPRUS LEAGUE - ROUND 14
+      [OK Standing] Standings tab data extracted for CYPRUS - CYPRUS LEAGUE - ROUND 14
+      [Extractor Validation] Updated League to: CYPRUS - CYPRUS LEAGUE - ROUND 14
+      [DB] UPSERTed 14 standings entries for CYPRUS - CYPRUS LEAGUE - ROUND 14
+      [OK Standing] Standings tab data extracted for CYPRUS - CYPRUS LEAGUE - ROUND 14
+      [NO Signal] Paralimni_vs_Pafos
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: 'div[data-testid="wcl-tabs"][data-type="primary"] a[data-analytics-alias="h2h"] button'
+    [Batch Start] Valletta vs Sliema: 14.12.2025 - 18:15
+    [Batch Start] Pontevedra vs Arenas Getxo: 14.12.2025 - 18:15
+
+   --- LEO: Shutting down gracefully. ---

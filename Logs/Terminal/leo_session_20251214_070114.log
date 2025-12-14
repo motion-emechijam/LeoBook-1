@@ -1,0 +1,294 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 07:01:26 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 150 past predictions to review (Limit: 150).
+[Processing] Starting batch review for 150 matches...
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Cookies] Accepted via text: I Accept
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Mufulira vs Green Buffaloes Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Mutondo Stars vs Power Dynamos Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Zanaco vs NAPSA Stars Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 2)
+    [Fail] Nkwazi vs MUZA Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 2)
+  [Score Check] Nkwazi vs MUZA (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Prison Leopards vs Kansanshi Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Mufulira vs Green Buffaloes Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 3)
+    [Fail] Mutondo Stars vs Power Dynamos Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Zanaco vs NAPSA Stars Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Nkwazi vs MUZA Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 3)
+    [Fail] Prison Leopards vs Kansanshi Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 3)
+  [Score Check] Nkwazi vs MUZA (Attempt 3)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Mufulira vs Green Buffaloes Could not extract score from page.
+    [Review Failed] Mufulira vs Green Buffaloes
+  [Score Check] Konkola vs Mines (Attempt 1)
+    [Fail] Mutondo Stars vs Power Dynamos Could not extract score from page.
+    [Review Failed] Mutondo Stars vs Power Dynamos
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Zanaco vs NAPSA Stars Could not extract score from page.
+    [Review Failed] Zanaco vs NAPSA Stars
+  [Score Check] Green Eagles vs Red Arrows (Attempt 1)
+    [Fail] Nkwazi vs MUZA Could not extract score from page.
+    [Review Failed] Nkwazi vs MUZA
+  [Score Check] Nkana vs ZESCO (Attempt 1)
+    [Fail] Prison Leopards vs Kansanshi Could not extract score from page.
+    [Review Failed] Prison Leopards vs Kansanshi
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Nacional vs Tondela (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Konkola vs Mines Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Nacional vs Tondela Match not finished yet.
+  [Score Check] Ponferradina vs Arenteiro (Attempt 1)
+  [Score Check] Konkola vs Mines (Attempt 2)
+    [Fail] Kabwe vs Nchanga Rangers Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Ponferradina vs Arenteiro -> Score: 1-3
+  [Score Check] Osasuna B vs Lugo (Attempt 1)
+    [Fail] Green Eagles vs Red Arrows Could not extract score from page.
+      Retrying in 5 seconds...
+    [Cookies] Accepted via text: I Accept
+    [Fail] Nkana vs ZESCO Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Green Eagles vs Red Arrows (Attempt 2)
+  [Score Check] Nkana vs ZESCO (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Konkola vs Mines Could not extract score from page.
+      Retrying in 10 seconds...
+    [Success] Osasuna B vs Lugo -> Score: 0-0
+  [Score Check] Valladolid vs Andorra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Konkola vs Mines (Attempt 3)
+    [Fail] Kabwe vs Nchanga Rangers Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 3)
+    [Success] Valladolid vs Andorra -> Score: 0-1
+  [Score Check] Gijon vs Granada CF (Attempt 1)
+    [Fail] Green Eagles vs Red Arrows Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Nkana vs ZESCO Could not extract score from page.
+      Retrying in 10 seconds...
+    [Success] Gijon vs Granada CF -> Score: 1-0
+  [Score Check] Green Eagles vs Red Arrows (Attempt 3)
+  [Score Check] Mallorca vs Elche (Attempt 1)
+  [Score Check] Nkana vs ZESCO (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Konkola vs Mines Could not extract score from page.
+    [Review Failed] Konkola vs Mines
+  [Score Check] Unisport vs Tambo (Attempt 1)
+    [Success] Mallorca vs Elche -> Score: 3-1
+  [Score Check] Stirling vs Spartans (Attempt 1)
+    [Fail] Kabwe vs Nchanga Rangers Could not extract score from page.
+    [Review Failed] Kabwe vs Nchanga Rangers
+  [Score Check] Entente II vs Kara (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Unisport vs Tambo -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Elgin City vs Stranraer (Attempt 1)
+    [Success] Stirling vs Spartans -> Score: 1-1
+  [Score Check] Edinburgh City vs Clyde (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Entente II vs Kara -> Score: 0-1
+    [Fail] Green Eagles vs Red Arrows Could not extract score from page.
+    [Review Failed] Green Eagles vs Red Arrows
+  [Score Check] Annan vs Forfar Athletic (Attempt 1)
+  [Score Check] Dumbarton vs East Kilbride (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Elgin City vs Stranraer -> Score: 1-2
+    [Success] Edinburgh City vs Clyde -> Score: 1-4
+  [Score Check] Peterhead vs Kelty Hearts (Attempt 1)
+  [Score Check] Montrose vs Stenhousemuir (Attempt 1)
+    [Fail] Nkana vs ZESCO Could not extract score from page.
+    [Review Failed] Nkana vs ZESCO
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Inverness vs Hamilton (Attempt 1)
+    [Success] Dumbarton vs East Kilbride -> Score: 2-0
+    [Success] Annan vs Forfar Athletic -> Score: 3-1
+  [Score Check] Alloa vs Queen of South (Attempt 1)
+  [Score Check] Cove Rangers vs East Fife (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Montrose vs Stenhousemuir -> Score: 3-0
+  [Score Check] Raith vs Ross County (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Peterhead vs Kelty Hearts -> Score: 3-2
+  [Score Check] Queen's Park vs Dunfermline (Attempt 1)
+    [Success] Inverness vs Hamilton -> Score: 4-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Arbroath vs Partick Thistle (Attempt 1)
+    [Success] Cove Rangers vs East Fife -> Score: 0-1
+  [Score Check] Livingston vs Dundee FC (Attempt 1)
+    [Success] Raith vs Ross County -> Score: 6-0
+    [Success] Alloa vs Queen of South -> Score: 0-2
+  [Score Check] Morton vs Airdrieonians (Attempt 1)
+  [Score Check] Dundee Utd vs Motherwell (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Queen's Park vs Dunfermline -> Score: 1-1
+  [Score Check] Carrick Rangers vs Dungannon (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Arbroath vs Partick Thistle -> Score: 2-1
+  [Score Check] FC Arges vs FC Botosani (Attempt 1)
+    [Success] Livingston vs Dundee FC -> Score: 2-2
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Dundee Utd vs Motherwell -> Score: 0-0
+  [Score Check] Sao Joao Ver vs Sanjoanense (Attempt 1)
+    [Success] Morton vs Airdrieonians -> Score: 0-1
+    [Success] Carrick Rangers vs Dungannon -> Score: 3-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Atletico CP vs Lusitano GC (Attempt 1)
+    [Success] FC Arges vs FC Botosani -> Score: 0-0
+  [Score Check] Paredes vs Varzim (Attempt 1)
+  [Score Check] Loughgall vs Queens Univ. (Attempt 1)
+    [Success] Sao Joao Ver vs Sanjoanense -> Score: 2-1
+  [Score Check] Limavady vs Armagh (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Atletico CP vs Lusitano GC -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Paredes vs Varzim -> Score: 0-0
+  [Score Check] Institute vs H&W Welders (Attempt 1)
+  [Score Check] Ballinamallard vs Warrenpoint (Attempt 1)
+    [Success] Loughgall vs Queens Univ. -> Score: 1-1
+  [Score Check] Ards vs Newington (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Limavady vs Armagh -> Score: 3-1
+  [Score Check] Annagh vs Dundela (Attempt 1)
+    [Fail] Inter Club vs CARA Brazzaville Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Institute vs H&W Welders -> Score: 0-4
+    [Success] Ballinamallard vs Warrenpoint -> Score: 0-4
+    [Success] Ards vs Newington -> Score: 3-3
+  [Score Check] Portadown vs Ballymena (Attempt 1)
+  [Score Check] Linfield vs Crusaders (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Cliftonville vs Glenavon (Attempt 1)
+    [Success] Annagh vs Dundela -> Score: 2-1
+  [Score Check] Bendel vs Rangers Int'l (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Portadown vs Ballymena -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Floriana vs Birkirkara (Attempt 1)
+    [Success] Linfield vs Crusaders -> Score: 4-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Cliftonville vs Glenavon -> Score: 5-2
+  [Score Check] Kiryat Shmona vs Hapoel Tel Aviv (Attempt 1)
+  [Score Check] Levadiakos vs AEL Larissa (Attempt 1)
+    [Success] Bendel vs Rangers Int'l -> Score: 1-1
+  [Score Check] Nania vs Home Stars (Attempt 1)
+    [Fail] Inter Club vs CARA Brazzaville Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Floriana vs Birkirkara -> Score: 2-0
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 3)
+    [Success] Kiryat Shmona vs Hapoel Tel Aviv -> Score: 2-2
+  [Score Check] Golden Kick vs Great Olympics (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Berekum Arsenal vs Techiman Liberty (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Levadiakos vs AEL Larissa -> Score: 3-0
+    [Success] Nania vs Home Stars -> Score: 0-0
+  [Score Check] Ebony FC vs King Faisal (Attempt 1)
+  [Score Check] Walsall vs Shrewsbury (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Berekum Arsenal vs Techiman Liberty -> Score: 1-0
+    [Success] Golden Kick vs Great Olympics -> Score: 0-2
+  [Score Check] Tranmere vs Crewe (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Ebony FC vs King Faisal -> Score: 0-0
+  [Score Check] Newport vs Fleetwood (Attempt 1)
+  [Score Check] MK Dons vs Cambridge Utd (Attempt 1)
+    [Fail] Inter Club vs CARA Brazzaville Could not extract score from page.
+    [Review Failed] Inter Club vs CARA Brazzaville
+  [Score Check] Grimsby vs Notts Co (Attempt 1)
+    [Attempt 1 Failed] Error for C8sfnR15: Page.goto: net::ERR_CONNECTION_RESET at https://www.flashscore.com/match/football/crewe-YacqHHdS/tranmere-jVhkb1QE/?mid=C8sfnR15
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/crewe-YacqHHdS/tranmere-jVhkb1QE/?mid=C8sfnR15", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for 2RXCPhWO: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/fleetwood-town-tCZ3D68d/newport-ChwgcrNJ/?mid=2RXCPhWO
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/fleetwood-town-tCZ3D68d/newport-ChwgcrNJ/?mid=2RXCPhWO", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for ptOpj92t: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/cambridge-utd-lnb8EJRp/milton-keynes-dons-f9KDxtkU/?mid=ptOpj92t
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/cambridge-utd-lnb8EJRp/milton-keynes-dons-f9KDxtkU/?mid=ptOpj92t", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Tranmere vs Crewe (Attempt 2)
+    [Success] Walsall vs Shrewsbury -> Score: 1-1
+  [Score Check] Newport vs Fleetwood (Attempt 2)
+  [Score Check] MK Dons vs Cambridge Utd (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Gillingham vs Barrow (Attempt 1)
+    [Success] Grimsby vs Notts Co -> Score: 0-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Tranmere vs Crewe -> Score: 1-4
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Newport vs Fleetwood -> Score: 0-2
+    [Success] Gillingham vs Barrow -> Score: 2-2
+    [Success] MK Dons vs Cambridge Utd -> Score: 1-1
+
+   --- LEO: Shutting down gracefully. ---

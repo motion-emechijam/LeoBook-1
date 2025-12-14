@@ -1,0 +1,85 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 12:12:14 --- 
+     Launching new browser instance...
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Extractor] Extracting match data from page...
+    [Matches Found] 353 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: YyJr9Sh3 on this date.
+    [Resume] Match found at index 286. Skipping 287 previously processed matches.
+    [Batching] Processing 66 matches concurrently...
+    [Batch Start] Valletta vs Sliema: 14.12.2025 - 18:15
+    [Batch Start] Trabzonspor vs Besiktas: 14.12.2025 - 18:00
+    [Batch Start] Slovan Bratislava vs Zilina: 14.12.2025 - 18:00
+    [Batch Start] Samsunspor vs Basaksehir: 14.12.2025 - 18:00
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+      [Error] Match failed Samsunspor_vs_Basaksehir: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Samsunspor_vs_Basaksehir'. See 'Logs/Errors' folder.
+      [Error] Match failed Valletta_vs_Sliema: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Valletta_vs_Sliema'. See 'Logs/Errors' folder.
+    [Logger Failure] Could not write error state: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+
+      [Error] Match failed Trabzonspor_vs_Besiktas: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Trabzonspor_vs_Besiktas'. See 'Logs/Errors' folder.
+    [Logger Failure] Could not write error state: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+

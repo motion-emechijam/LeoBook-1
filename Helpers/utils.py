@@ -1,4 +1,8 @@
-# Helpers/utils.py
+"""
+Utilities Module
+General-purpose utility functions and classes for the LeoBook system.
+Responsible for error logging, batch processing, and system utilities.
+"""
 
 import asyncio
 import sys

@@ -1,0 +1,182 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 07:50:29 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Accrington vs Bromley (Attempt 1)
+  [Score Check] Nacional vs Tondela (Attempt 1)
+  [Score Check] Crawley vs Oldham (Attempt 1)
+  [Score Check] Chesterfield vs Barnet (Attempt 1)
+  [Score Check] Cheltenham vs Harrogate (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Chesterfield vs Barnet -> Score: 3-1
+    [Success] Cheltenham vs Harrogate -> Score: 1-1
+    [Skip]  Nacional vs Tondela Match not finished yet.
+  [Score Check] Stockport County vs Stevenage (Attempt 1)
+    [Success] Accrington vs Bromley -> Score: 0-1
+    [Success] Crawley vs Oldham -> Score: 2-2
+  [Score Check] Plymouth vs Rotherham (Attempt 1)
+  [Score Check] Peterborough vs Northampton (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Stockport County vs Stevenage -> Score: 1-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Plymouth vs Rotherham -> Score: 1-0
+    [Success] Peterborough vs Northampton -> Score: 2-1
+  [Score Check] Luton vs Port Vale (Attempt 1)
+  [Score Check] Cardiff vs Doncaster (Attempt 1)
+  [Score Check] Burton vs Wycombe (Attempt 1)
+  [Score Check] Bradford City vs Reading (Attempt 1)
+  [Score Check] Bolton vs Exeter (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Cardiff vs Doncaster -> Score: 4-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Blackpool vs Lincoln (Attempt 1)
+    [Success] Burton vs Wycombe -> Score: 0-0
+    [Success] Bolton vs Exeter -> Score: 2-1
+    [Success] Luton vs Port Vale -> Score: 2-2
+    [Success] Bradford City vs Reading -> Score: 2-0
+  [Score Check] Barnsley vs Leyton Orient (Attempt 1)
+  [Score Check] Wrexham vs Watford (Attempt 1)
+  [Score Check] Portsmouth vs Blackburn (Attempt 1)
+  [Score Check] Millwall vs Hull (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Blackpool vs Lincoln -> Score: 2-2
+  [Score Check] Leicester vs Ipswich (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Barnsley vs Leyton Orient -> Score: 3-2
+    [Success] Portsmouth vs Blackburn -> Score: 2-1
+    [Success] Wrexham vs Watford -> Score: 2-2
+  [Score Check] Middlesbrough vs QPR (Attempt 1)
+    [Success] Millwall vs Hull -> Score: 1-3
+  [Score Check] Coventry vs Bristol City (Attempt 1)
+  [Score Check] Birmingham vs Charlton (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Leicester vs Ipswich -> Score: 3-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Coventry vs Bristol City -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Birmingham vs Charlton -> Score: 1-1
+    [Success] Middlesbrough vs QPR -> Score: 3-1
+  [Score Check] Chloraka vs Achnas (Attempt 1)
+  [Score Check] Zeljeznicar vs Radnik Bijeljina (Attempt 1)
+  [Score Check] Sloga Doboj vs Velez Mostar (Attempt 1)
+  [Score Check] Krake vs Coton FC (Attempt 1)
+  [Score Check] Dragons vs ASVO (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Chloraka vs Achnas -> Score: 3-1
+    [Success] Sloga Doboj vs Velez Mostar -> Score: 1-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Buffles du Borgou vs Ayema (Attempt 1)
+  [Score Check] ASPAC vs Hodio (Attempt 1)
+    [Success] Krake vs Coton FC -> Score: 1-2
+    [Success] Zeljeznicar vs Radnik Bijeljina -> Score: 0-0
+    [Success] Dragons vs ASVO -> Score: 0-2
+  [Score Check] AS Cotonou vs FC Loto (Attempt 1)
+  [Score Check] Kortrijk vs Seraing (Attempt 1)
+  [Score Check] Cercle Brugge KSV vs KV Mechelen (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] ASPAC vs Hodio -> Score: 5-1
+    [Success] Buffles du Borgou vs Ayema -> Score: 1-0
+  [Score Check] Liverpool vs Brighton (Attempt 1)
+  [Score Check] Chelsea vs Everton (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] AS Cotonou vs FC Loto -> Score: 0-0
+    [Success] Kortrijk vs Seraing -> Score: 1-0
+    [Success] Cercle Brugge KSV vs KV Mechelen -> Score: 2-3
+  [Score Check] Al Zulfi vs Al Arabi (Attempt 1)
+  [Score Check] Cambrian United vs Carmarthen Town (Attempt 1)
+  [Score Check] Trnava vs Skalica (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Liverpool vs Brighton -> Score: 2-0
+    [Success] Chelsea vs Everton -> Score: 2-0
+  [Score Check] Ruzomberok vs Trencin (Attempt 1)
+  [Score Check] St. Pauli vs Heidenheim (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Trnava vs Skalica -> Score: 2-0
+    [Success] Cambrian United vs Carmarthen Town -> Score: 3-0
+  [Score Check] Podbrezova vs Dun. Streda (Attempt 1)
+  [Score Check] Hoffenheim vs Hamburger SV (Attempt 1)
+    [Success] Al Zulfi vs Al Arabi -> Score: 1-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Eintracht Frankfurt vs Augsburg (Attempt 1)
+    [Success] St. Pauli vs Heidenheim -> Score: 2-1
+  [Score Check] B. Monchengladbach vs Wolfsburg (Attempt 1)
+    [Success] Ruzomberok vs Trencin -> Score: 0-0
+  [Score Check] Safa vs Al Ahed (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hoffenheim vs Hamburger SV -> Score: 4-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Podbrezova vs Dun. Streda -> Score: 0-1
+    [Success] Eintracht Frankfurt vs Augsburg -> Score: 1-0
+  [Score Check] Kayserispor vs Alanyaspor (Attempt 1)
+  [Score Check] Caersws FC vs Ruthin (Attempt 1)
+    [Success] B. Monchengladbach vs Wolfsburg -> Score: 1-3
+  [Score Check] Badalona W vs Barcelona W (Attempt 1)
+  [Score Check] San Marino Academy U22 vs San Giovanni (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Safa vs Al Ahed -> Score: 0-1
+  [Score Check] Murata vs Virtus (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Caersws FC vs Ruthin -> Score: 5-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Libertas vs Tre Fiori (Attempt 1)
+    [Success] San Marino Academy U22 vs San Giovanni -> Score: 1-1
+    [Success] Badalona W vs Barcelona W -> Score: 1-5
+    [Success] Kayserispor vs Alanyaspor -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Murata vs Virtus -> Score: 0-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Libertas vs Tre Fiori -> Score: 0-4
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+  Saturday, 13th December, 2025: 48.8% Accurate - 244 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 52.9% Accurate - 225 Predictions
+  High Confidence: 63.6% Accurate - 11 Predictions
+  Low Confidence: 56.9% Accurate - 109 Predictions
+  ==================================================
+  Friday, 12th December, 2025 to Saturday, 13th December, 2025: 54.5% Accurate - 345 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+   [Phase 2] Starting booking process (Football.com)...
+
+   --- LEO: Cycle Complete. ---
+Sleeping for 6 hours until the next cycle...
+
+   --- LEO: Shutting down gracefully. ---

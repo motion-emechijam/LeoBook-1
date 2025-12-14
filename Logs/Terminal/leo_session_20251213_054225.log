@@ -1,2 +1,27 @@
     --- LEO: Initializing Databases ---      
      Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 05:42:56 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.5: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Web Check] PSG W vs Montpellier W
+  [Web Check] Flint Mountain vs Mold Alexandra
+  [Web Check] Real Sociedad vs Girona
+  [Web Check] West Brom vs Sheffield Utd
+  [Web Check] Mons Calpe vs St Josephs
+    [Timeout] Could not load https://www.flashscore.com/match/football/montpellier-6yx58ded/psg-8U7ZUNF2/?mid=dMMaXqlf
+    [Timeout] Could not load https://www.flashscore.com/match/football/flint-mountain-biWWzDD9/mold-alexandra-Es9411nk/?mid=vBaBbOi3
+    [Timeout] Could not load https://www.flashscore.com/match/football/girona-nNNpcUSL/real-sociedad-jNvak2f3/?mid=McVk3O4b
+    [Timeout] Could not load https://www.flashscore.com/match/football/sheffield-utd-MeKPSerA/west-brom-CCBWpzjj/?mid=EskJ7jo4
+    [Timeout] Could not load https://www.flashscore.com/match/football/mons-calpe-69Ioq0e8/st-josephs-Gh9HoULa/?mid=nBBiHbn2
+  [Web Check] Larne vs Glentoran
+  [Web Check] Coleraine vs Bangor FC
+  [Web Check] Lecce vs Pisa
+  [Web Check] St. Liege vs Leuven
+  [Web Check] Ayr vs St Johnstone
+
+   --- LEO: Shutting down gracefully. ---

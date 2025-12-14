@@ -1,0 +1,798 @@
+2025-12-13T09:51:26.968142 [MEDIUM] review_task_error: Review failed for McVk3O4b: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/girona-nNNpcUSL/real-sociedad-jNvak2f3/?mid=McVk3O4b", waiting until "domcontentloaded"
+
+2025-12-13T09:52:00.501185 [MEDIUM] review_task_error: Review failed for beErPng3: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/ayr-ruTxaWrd/st-johnstone-ULK83EjM/?mid=beErPng3", waiting until "domcontentloaded"
+
+2025-12-13T09:52:01.363890 [MEDIUM] review_task_error: Review failed for 6g5ygQk5: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/glentoran-Uax8a0SC/larne-44wiLnI5/?mid=6g5ygQk5", waiting until "domcontentloaded"
+
+2025-12-13T09:52:05.065727 [MEDIUM] review_task_error: Review failed for nikzenLh: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/bangor-fc-l85WT9To/coleraine-2B9zTTrh/?mid=nikzenLh", waiting until "domcontentloaded"
+
+2025-12-13T09:52:17.056042 [MEDIUM] review_task_error: Review failed for McVk3O4b: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/girona-nNNpcUSL/real-sociedad-jNvak2f3/?mid=McVk3O4b", waiting until "domcontentloaded"
+
+2025-12-13T09:52:55.138844 [MEDIUM] review_task_error: Review failed for nikzenLh: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/bangor-fc-l85WT9To/coleraine-2B9zTTrh/?mid=nikzenLh", waiting until "domcontentloaded"
+
+2025-12-13T09:54:41.391480 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-13T09:54:41.393010 [MEDIUM] review_task_error: Review failed for nBBiHbn2: Score extraction failed
+2025-12-13T09:57:37.337536 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(3)").first
+
+2025-12-13T09:57:37.339209 [MEDIUM] review_task_error: Review failed for vBaBbOi3: Score extraction failed
+2025-12-13T09:59:03.443739 [MEDIUM] review_task_error: Review failed for xth4FO0b: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/rapperswil-jona-I3q2AOtB/vaduz-G6Ih9GOj/?mid=xth4FO0b", waiting until "domcontentloaded"
+
+2025-12-13T10:02:07.999876 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(3)").first
+
+2025-12-13T10:02:08.016628 [MEDIUM] review_task_error: Review failed for vBaBbOi3: Score extraction failed
+2025-12-13T11:36:19.483699 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Target page, context or browser has been closed
+2025-12-13T11:36:19.529911 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Score extraction failed
+2025-12-13T11:36:24.534946 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-13T11:42:39.053354 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-13T11:42:39.230372 [MEDIUM] review_task_error: Review failed for vBaBbOi3: Score extraction failed
+2025-12-13T16:57:38.444082 [MEDIUM] score_extraction_error: Failed to extract score: Page.screenshot: Target page, context or browser has been closed
+2025-12-13T16:57:38.505343 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Score extraction failed
+2025-12-13T16:57:43.525926 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-13T16:57:53.530750 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-13T17:32:42.053986 [MEDIUM] score_extraction_error: Failed to extract score: Page.screenshot: Target page, context or browser has been closed
+2025-12-13T17:32:42.055675 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Score extraction failed
+2025-12-13T17:32:47.062151 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-13T17:32:57.082348 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-13T17:45:04.782570 [MEDIUM] score_extraction_error: Failed to extract score: Page.screenshot: Target page, context or browser has been closed
+2025-12-13T17:58:00.430397 [MEDIUM] score_extraction_error: Failed to extract score: Page.screenshot: Target page, context or browser has been closed
+2025-12-13T17:58:00.437783 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Locator.is_visible: Target page, context or browser has been closed
+2025-12-13T17:58:05.450967 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+2025-12-14T00:47:29.549535 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(1)").first
+
+2025-12-14T00:53:14.167988 [MEDIUM] review_task_error: Review failed for Q9jkW93e: Page.goto: Timeout 180000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/ac-libertas-EizmiPoN/tre-fiori-Yq1P1sCB/?mid=Q9jkW93e", waiting until "domcontentloaded"
+
+2025-12-14T00:58:24.528467 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:58:35.668338 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:58:36.572833 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:58:36.972340 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:58:37.322619 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:59:10.983887 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:59:29.586016 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:59:33.241274 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:59:33.489096 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T00:59:34.608633 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:00:02.704194 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:00:16.446317 [MEDIUM] review_task_error: Review failed for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+2025-12-14T01:00:23.521838 [MEDIUM] review_task_error: Review failed for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+2025-12-14T01:00:24.128878 [MEDIUM] review_task_error: Review failed for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+2025-12-14T01:00:24.845161 [MEDIUM] review_task_error: Review failed for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+2025-12-14T01:00:33.901018 [MEDIUM] review_task_error: Review failed for 0C0Mj1GE: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+2025-12-14T01:00:48.087940 [MEDIUM] review_task_error: Review failed for KGNZScO7: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+2025-12-14T01:00:55.787498 [MEDIUM] review_task_error: Review failed for EJKRUJge: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge", waiting until "domcontentloaded"
+
+2025-12-14T01:00:55.988872 [MEDIUM] review_task_error: Review failed for 0zq9scw1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1", waiting until "domcontentloaded"
+
+2025-12-14T01:00:56.593939 [MEDIUM] review_task_error: Review failed for 6kmhe6Z1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1", waiting until "domcontentloaded"
+
+2025-12-14T01:01:02.389773 [MEDIUM] review_task_error: Review failed for KGNZScO7: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+2025-12-14T01:01:02.451216 [MEDIUM] review_task_error: Review failed for 0C0Mj1GE: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+2025-12-14T01:01:07.200578 [MEDIUM] review_task_error: Review failed for 0zq9scw1: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1", waiting until "domcontentloaded"
+
+2025-12-14T01:01:07.251402 [MEDIUM] review_task_error: Review failed for 6kmhe6Z1: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1", waiting until "domcontentloaded"
+
+2025-12-14T01:01:07.284485 [MEDIUM] review_task_error: Review failed for EJKRUJge: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge", waiting until "domcontentloaded"
+
+2025-12-14T01:01:13.301587 [MEDIUM] review_task_error: Review failed for KGNZScO7: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+2025-12-14T01:01:13.353425 [MEDIUM] review_task_error: Review failed for 0C0Mj1GE: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+2025-12-14T01:01:14.469694 [MEDIUM] review_task_error: Review failed for YeuvJ9R8: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+2025-12-14T01:01:14.508612 [MEDIUM] review_task_error: Review failed for EBlvjZrn: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+2025-12-14T01:02:26.993562 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:02:27.403951 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:04:03.294952 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:04:49.302323 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:05:40.460295 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:06:41.149601 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:06:51.860556 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:08:22.913436 [MEDIUM] review_task_error: Review failed for Cz6rJ0h2: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+2025-12-14T01:08:31.688969 [MEDIUM] review_task_error: Review failed for QcUBKDT6: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/hamam-sousse-j1Jcpg7r/hammam-lif-l8FEjeUE/?mid=QcUBKDT6
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/hamam-sousse-j1Jcpg7r/hammam-lif-l8FEjeUE/?mid=QcUBKDT6", waiting until "domcontentloaded"
+
+2025-12-14T01:08:35.152803 [MEDIUM] review_task_error: Review failed for vsbUt4p9: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/chebba-Ug6FEthC/msaken-rDVOdEQh/?mid=vsbUt4p9
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chebba-Ug6FEthC/msaken-rDVOdEQh/?mid=vsbUt4p9", waiting until "domcontentloaded"
+
+2025-12-14T01:11:20.690924 [MEDIUM] review_task_error: Review failed for YeuvJ9R8: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+2025-12-14T01:11:20.711058 [MEDIUM] review_task_error: Review failed for CM2ZF7lB: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB", waiting until "domcontentloaded"
+
+2025-12-14T01:11:20.736774 [MEDIUM] review_task_error: Review failed for Cz6rJ0h2: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+2025-12-14T01:11:20.750996 [MEDIUM] review_task_error: Review failed for EBlvjZrn: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+2025-12-14T01:11:20.758925 [MEDIUM] review_task_error: Review failed for YsG2OeUs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs", waiting until "domcontentloaded"
+
+2025-12-14T01:11:40.034106 [MEDIUM] review_task_error: Review failed for EBlvjZrn: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+2025-12-14T01:11:40.062951 [MEDIUM] review_task_error: Review failed for CM2ZF7lB: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nacional-4ETLrR7n/tondela-nFFgCnVo/?mid=CM2ZF7lB", waiting until "domcontentloaded"
+
+2025-12-14T01:11:40.086912 [MEDIUM] review_task_error: Review failed for YsG2OeUs: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/em-mahdia-MLjHOQFJ/kerkennah-Kj7tWyzJ/?mid=YsG2OeUs", waiting until "domcontentloaded"
+
+2025-12-14T01:11:40.105570 [MEDIUM] review_task_error: Review failed for Cz6rJ0h2: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+2025-12-14T01:11:40.133811 [MEDIUM] review_task_error: Review failed for YeuvJ9R8: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+2025-12-14T01:14:58.169278 [MEDIUM] review_task_error: Review failed for lCiQa0v1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1", waiting until "domcontentloaded"
+
+2025-12-14T01:15:06.015350 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:15:19.750686 [MEDIUM] review_task_error: Review failed for 6eEAMZbf: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/as-agareb-v3ZUa2na/sfax-railways-h2041Zso/?mid=6eEAMZbf
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/as-agareb-v3ZUa2na/sfax-railways-h2041Zso/?mid=6eEAMZbf", waiting until "domcontentloaded"
+
+2025-12-14T01:15:19.760661 [MEDIUM] review_task_error: Review failed for lCiQa0v1: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/marbella-fw2i3K6O/torremolinos-AB8XRSBQ/?mid=lCiQa0v1", waiting until "domcontentloaded"
+
+2025-12-14T01:15:30.882843 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:15:43.515895 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T01:18:12.201394 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(1)").first
+
+2025-12-14T01:21:01.851492 [MEDIUM] review_task_error: Review failed for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+2025-12-14T01:21:01.868545 [MEDIUM] review_task_error: Review failed for nqid3v0K: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K", waiting until "domcontentloaded"
+
+2025-12-14T01:21:01.887374 [MEDIUM] review_task_error: Review failed for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+2025-12-14T01:21:01.893857 [MEDIUM] review_task_error: Review failed for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+2025-12-14T01:21:01.918604 [MEDIUM] review_task_error: Review failed for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+2025-12-14T01:21:37.238107 [MEDIUM] review_task_error: Review failed for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+2025-12-14T01:21:37.281633 [MEDIUM] review_task_error: Review failed for nqid3v0K: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K", waiting until "domcontentloaded"
+
+2025-12-14T01:21:37.293988 [MEDIUM] review_task_error: Review failed for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+2025-12-14T01:21:37.304589 [MEDIUM] review_task_error: Review failed for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+2025-12-14T01:21:37.324869 [MEDIUM] review_task_error: Review failed for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+2025-12-14T06:02:09.991088 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:02:10.044528 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:02:10.055733 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:02:10.071926 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:02:10.136202 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:03:07.305645 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:03:07.348220 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:03:07.640561 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:03:07.658210 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:03:11.558741 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:04:05.388646 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:04:05.655742 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:04:12.990980 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:04:13.190934 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:04:22.223458 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:01.698450 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:01.761606 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:05.791297 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:07.334994 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:08.468957 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:43.850733 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:45.080984 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:54.123435 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:58.383513 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:18:58.604962 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:19:28.986381 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:19:30.448287 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:19:38.784664 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:19:49.294737 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:19:51.243743 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:20:12.181326 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:20:15.873897 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:20:22.917204 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:20:35.627194 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:20:56.209882 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:21:07.672567 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:21:15.413246 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:21:23.081281 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:21:41.864517 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:21:53.593688 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:22:03.303333 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:22:14.365819 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:15.566545 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:24.505033 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:24.511091 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:24.513803 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:24.657767 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:34:56.318163 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:35:15.320743 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:35:17.187485 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:35:19.529884 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:35:19.579323 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:35:41.327459 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:01.613519 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:11.168948 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:15.430424 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:16.299892 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:24.980677 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:49.057631 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:36:58.261289 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:37:06.935926 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:37:14.707885 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:37:41.578144 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T06:46:52.777054 [MEDIUM] review_task_error: Review failed for MgoI4p4n: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/arenteiro-lWjqRFF0/ponferradina-0UFPgH6a/?mid=MgoI4p4n
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/arenteiro-lWjqRFF0/ponferradina-0UFPgH6a/?mid=MgoI4p4n", waiting until "domcontentloaded"
+
+2025-12-14T07:02:31.455682 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:02:41.483062 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:02:45.897222 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:02:46.815052 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:02:54.129707 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:03:13.389450 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:03:25.355391 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:03:34.215076 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:03:34.998038 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:03:42.037569 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:00.425685 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:09.489031 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:23.355313 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:28.305331 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:35.876565 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:49.095359 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:04:55.603940 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:05:12.942210 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:05:15.270354 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:05:33.908000 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:05:47.609009 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:06:03.658968 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:06:12.471721 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:06:24.973132 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:06:36.207345 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:06:55.532064 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:07:10.213202 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:09:07.379810 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:10:04.594013 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:11:02.527413 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T07:11:17.572898 [MEDIUM] review_task_error: Review failed for C8sfnR15: Page.goto: net::ERR_CONNECTION_RESET at https://www.flashscore.com/match/football/crewe-YacqHHdS/tranmere-jVhkb1QE/?mid=C8sfnR15
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/crewe-YacqHHdS/tranmere-jVhkb1QE/?mid=C8sfnR15", waiting until "domcontentloaded"
+
+2025-12-14T07:11:17.668342 [MEDIUM] review_task_error: Review failed for 2RXCPhWO: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/fleetwood-town-tCZ3D68d/newport-ChwgcrNJ/?mid=2RXCPhWO
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/fleetwood-town-tCZ3D68d/newport-ChwgcrNJ/?mid=2RXCPhWO", waiting until "domcontentloaded"
+
+2025-12-14T07:11:18.484392 [MEDIUM] review_task_error: Review failed for ptOpj92t: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/cambridge-utd-lnb8EJRp/milton-keynes-dons-f9KDxtkU/?mid=ptOpj92t
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/cambridge-utd-lnb8EJRp/milton-keynes-dons-f9KDxtkU/?mid=ptOpj92t", waiting until "domcontentloaded"
+
+2025-12-14T08:07:26.677265 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:08:17.837263 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:09:16.306904 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:12:12.726894 [MEDIUM] review_task_error: Review failed for xxveNNpn: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/espanyol-rBhPzPFk/levante-UVjgz3p2/?mid=xxveNNpn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espanyol-rBhPzPFk/levante-UVjgz3p2/?mid=xxveNNpn", waiting until "domcontentloaded"
+
+2025-12-14T08:12:32.243484 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:13:18.727250 [HIGH] csv_save_error: Failed to save CSV: [WinError 5] Access is denied: 'DB\\predictions.csv.tmp' -> 'DB\\predictions.csv'
+2025-12-14T08:13:22.604670 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:14:23.043904 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:17:07.559187 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:17:48.164880 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:18:36.165988 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper span:nth-child(3)").first
+
+2025-12-14T08:19:25.169919 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Target page, context or browser has been closed
+2025-12-14T08:19:30.181765 [MEDIUM] review_task_error: Review failed for 4lmIIfVh: Page.goto: Target page, context or browser has been closed
+2025-12-14T08:24:26.491677 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-14T08:28:05.973669 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-14T08:31:17.445051 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(3)").first
+
+2025-12-14T08:31:23.008786 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-14T08:32:26.711616 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(3)").first
+
+2025-12-14T08:32:38.491775 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+
+2025-12-14T08:33:39.475158 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(3)").first
+
+2025-12-14T08:33:58.913994 [MEDIUM] score_extraction_error: Failed to extract score: Locator.inner_text: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.detailScore__wrapper > span:nth-child(1)").first
+

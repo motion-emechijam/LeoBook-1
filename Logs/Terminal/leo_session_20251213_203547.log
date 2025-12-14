@@ -1,0 +1,145 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 20:35:49 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 1 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 1 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 74.0% Accurate - 50 Predictions
+  High Confidence: 50.0% Accurate - 8 Predictions
+  Low Confidence: 63.6% Accurate - 44 Predictions
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Extractor] Extracting match data from page...
+    [Matches Found] 379 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: YyJr9Sh3 on this date.
+    [Resume] Last processed ID YyJr9Sh3 not found in current scan. Starting day from beginning.
+    [Batching] Processing 379 matches concurrently...
+    [Batch Start] Port Louis vs Pamplemousses: 14.12.2025 - 12:30FRO
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [AI INTEL] Using logged HTML: match_page.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 113 elements.
+    [H2H Debug] H2H tab selector: 'a[data-analytics-alias="h2h"]'
+    [Cookies] Accepted via OneTrust
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+    [Auto-Heal] Selector 'h2h_section_home_last_5' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 84 elements.
+    [Auto-Heal Success] New selector for 'h2h_section_home_last_5': div.h2h__section:nth-of-type(1)
+    [Auto-Heal] Selector 'h2h_row_link' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 69 elements.
+    [Auto-Heal Failed] AI could not find 'h2h_row_link' even after refresh.
+      [Warning] Failed to fully load/expand H2H tab for Port Louis_vs_Pamplemousses: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Element': The provided selector is empty.
+    at eval (eval at evaluate (:291:30), <anonymous>:31:34)
+    at NodeList.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:29:18)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:21:22)
+    at UtilityScript.evaluate (<anonymous>:298:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 10 teams in standings for 'MAURITIUS - SUPER LEAGUE - ROUND 7'.
+      [DB] UPSERTed 10 standings entries for MAURITIUS - SUPER LEAGUE - ROUND 7
+      [OK Standing] Standings tab data extracted for MAURITIUS - SUPER LEAGUE - ROUND 7
+      [Extractor Validation] Updated League to: MAURITIUS - SUPER LEAGUE - ROUND 7
+      [DB] UPSERTed 10 standings entries for MAURITIUS - SUPER LEAGUE - ROUND 7
+      [OK Standing] Standings tab data extracted for MAURITIUS - SUPER LEAGUE - ROUND 7
+      [NO Signal] Port Louis_vs_Pamplemousses
+    [Batch Start] Abacha City vs Luawa: 14.12.2025 - 17:15FRO
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [AI INTEL] Using logged HTML: match_page.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 118 elements.
+    [H2H Debug] H2H tab selector: 'div[data-testid="wcl-tabs"][data-type="primary"] a[data-analytics-alias="h2h"] button'
+    [H2H Expansion] Expanding available match history...
+    [AI INTEL] Selectors found for 'h2h_tab'. Skipping AI analysis.
+      [Extractor] Extracting H2H tab...
+    [Auto-Heal] Selector 'h2h_row_link' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 83 elements.
+    [Auto-Heal Failed] AI could not find 'h2h_row_link' even after refresh.
+      [Warning] Failed to fully load/expand H2H tab for Abacha City_vs_Luawa: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Element': The provided selector is empty.
+    at eval (eval at evaluate (:291:30), <anonymous>:31:34)
+    at NodeList.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:29:18)
+    at Array.forEach (<anonymous>)
+    at eval (eval at evaluate (:291:30), <anonymous>:21:22)
+    at UtilityScript.evaluate (<anonymous>:298:18)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    [AI INTEL] Selectors found for 'standings_tab'. Skipping AI analysis.
+      [Extractor] Extracting Standings tab...
+      [Extractor] Found 18 teams in standings for 'SIERRA LEONE - PREMIER LEAGUE - ROUND 6'.
+      [DB] UPSERTed 18 standings entries for SIERRA LEONE - PREMIER LEAGUE - ROUND 6
+      [OK Standing] Standings tab data extracted for SIERRA LEONE - PREMIER LEAGUE - ROUND 6
+      [Extractor Validation] Updated League to: SIERRA LEONE - PREMIER LEAGUE - ROUND 6
+      [DB] UPSERTed 18 standings entries for SIERRA LEONE - PREMIER LEAGUE - ROUND 6
+      [OK Standing] Standings tab data extracted for SIERRA LEONE - PREMIER LEAGUE - ROUND 6
+      [NO Signal] Abacha City_vs_Luawa
+    [Batch Start] Europa FC vs Magpies: 14.12.2025 - 19:30FRO
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [AI INTEL] Using logged HTML: match_page.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+
+   --- LEO: Shutting down gracefully. ---

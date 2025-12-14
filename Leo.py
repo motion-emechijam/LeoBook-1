@@ -46,6 +46,12 @@ async def main():
                 from Helpers.DB_Helpers.review_outcomes import run_review_process
                 await run_review_process(browser)
 
+                # Print prediction accuracy report
+                print("   [Phase 0] Analyzing prediction accuracy across all reviewed matches...")
+                from Helpers.DB_Helpers.prediction_accuracy import print_accuracy_report
+                print_accuracy_report()
+                print("   [Phase 0] Accuracy analysis complete.")
+
                 # --- PHASE 1: ANALYSIS (Observe and Decide) ---
                 print("\n   [Phase 1] Starting analysis engine (Flashscore)...")
                 await run_flashscore_analysis(browser)
@@ -54,6 +60,7 @@ async def main():
                 print("\n   [Phase 2] Starting booking process (Football.com)...")
                 # await run_football_com_booking(browser)
 
+                # --- PHASE 3: SLEEP (The wait) ---
                 print("\n   --- LEO: Cycle Complete. ---")
                 print(f"Sleeping for {CYCLE_WAIT_HOURS} hours until the next cycle...")
                 await asyncio.sleep(CYCLE_WAIT_HOURS * 3600)

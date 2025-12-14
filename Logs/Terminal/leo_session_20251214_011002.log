@@ -1,0 +1,17 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 01:10:04 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Morne des Esses vs Espoir (Attempt 1)
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 1)
+  [Score Check] Nacional vs Tondela (Attempt 1)
+  [Score Check] OC Kerkennah vs EM Mahdia (Attempt 1)
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 1)
+
+   --- LEO: Shutting down gracefully. ---

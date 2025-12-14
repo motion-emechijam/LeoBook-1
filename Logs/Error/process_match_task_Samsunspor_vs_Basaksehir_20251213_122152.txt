@@ -1,0 +1,45 @@
+Error Context: process_match_task_Samsunspor_vs_Basaksehir
+Timestamp: 2025-12-13T12:21:55.264153
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\ProProjection\LeoBook - Copy\Sites\flashscore.py", line 49, in process_match_task
+    await analyze_page_and_update_selectors(page, "match_page", force_refresh=True)
+  File "C:\Users\Admin\Desktop\ProProjection\LeoBook - Copy\Neo\intelligence.py", line 25, in analyze_page_and_update_selectors
+    return await VisualAnalyzer.analyze_page_and_update_selectors(page, context_key, force_refresh, info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\Desktop\ProProjection\LeoBook - Copy\Neo\visual_analyzer.py", line 47, in analyze_page_and_update_selectors
+    await log_page_html(page, context_key)
+  File "C:\Users\Admin\Desktop\ProProjection\LeoBook - Copy\Helpers\Site_Helpers\page_logger.py", line 22, in log_page_html
+    await page.screenshot(path=png_file, full_page=True)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 9739, in screenshot
+    await self._impl_obj.screenshot(
+    ...<13 lines>...
+    )
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 818, in screenshot
+    encoded_binary = await self._channel.send(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+        "screenshot", self._timeout_settings.timeout, params
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+
+--- Error Message ---
+Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded

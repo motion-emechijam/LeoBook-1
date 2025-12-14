@@ -1,0 +1,227 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 06:39:52 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 150 past predictions to review (Limit: 150).
+[Processing] Starting batch review for 150 matches...
+  [Score Check] Real Aviles vs Tenerife (Attempt 1)
+  [Score Check] Kifisia vs Asteras Tripolis (Attempt 1)
+  [Score Check] Metz vs PSG (Attempt 1)
+  [Score Check] Groningen vs FC Volendam (Attempt 1)
+  [Score Check] Ourense CF vs Barakaldo (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Ourense CF vs Barakaldo -> Score: 2-2
+    [Success] Kifisia vs Asteras Tripolis -> Score: 0-0
+    [Success] Groningen vs FC Volendam -> Score: 3-0
+    [Success] Metz vs PSG -> Score: 2-3
+  [Score Check] Racing Santander vs Leganes (Attempt 1)
+  [Score Check] Partizan vs Napredak (Attempt 1)
+    [Success] Real Aviles vs Tenerife -> Score: 0-1
+  [Score Check] H. Beer Sheva vs Netanya (Attempt 1)
+  [Score Check] Siroki Brijeg vs Posusje (Attempt 1)
+  [Score Check] Barcelona vs Osasuna (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Racing Santander vs Leganes -> Score: 1-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Partizan vs Napredak -> Score: 3-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Bayer Leverkusen vs FC Koln (Attempt 1)
+    [Success] Siroki Brijeg vs Posusje -> Score: 1-1
+    [Success] Barcelona vs Osasuna -> Score: 2-0
+  [Score Check] Al Wakra vs Al-Gharafa (Attempt 1)
+    [Success] H. Beer Sheva vs Netanya -> Score: 2-0
+  [Score Check] Waregem vs RAAL La Louviere (Attempt 1)
+  [Score Check] Vipers vs BUL (Attempt 1)
+  [Score Check] Antalyaspor vs Galatasaray (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Wakra vs Al-Gharafa -> Score: 2-3
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Lausanne Ouchy vs Yverdon (Attempt 1)
+    [Success] Bayer Leverkusen vs FC Koln -> Score: 2-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Waregem vs RAAL La Louviere -> Score: 2-2
+  [Score Check] Zurich vs Winterthur (Attempt 1)
+  [Score Check] Sion vs Grasshoppers (Attempt 1)
+    [Success] Vipers vs BUL -> Score: 3-1
+  [Score Check] Presov vs Michalovce (Attempt 1)
+    [Success] Antalyaspor vs Galatasaray -> Score: 1-4
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Al Hussein vs Al-Faisaly Amman (Attempt 1)
+    [Success] Lausanne Ouchy vs Yverdon -> Score: 4-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Ternana W vs AS Roma W (Attempt 1)
+    [Success] Zurich vs Winterthur -> Score: 2-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Sion vs Grasshoppers -> Score: 1-0
+  [Score Check] Omonia Aradippou vs Anorthosis (Attempt 1)
+  [Score Check] Slavia Prague vs Jablonec (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Presov vs Michalovce -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Parma vs Lazio (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Hussein vs Al-Faisaly Amman -> Score: 0-2
+    [Success] Ternana W vs AS Roma W -> Score: 0-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Lok. Zagreb vs Hajduk Split (Attempt 1)
+  [Score Check] Dakar SC vs Generation F. (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Omonia Aradippou vs Anorthosis -> Score: 1-0
+    [Success] Slavia Prague vs Jablonec -> Score: 4-3
+  [Score Check] Forli vs Carpi (Attempt 1)
+  [Score Check] Renate vs Trento (Attempt 1)
+    [Success] Parma vs Lazio -> Score: 0-1
+  [Score Check] Alcione Milano vs Virtus Verona (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Lok. Zagreb vs Hajduk Split -> Score: 1-3
+    [Success] Dakar SC vs Generation F. -> Score: 1-1
+    [Success] Forli vs Carpi -> Score: 4-2
+  [Score Check] Bo Rangers vs Kallon (Attempt 1)
+  [Score Check] Mighty Blackpool vs Ports Authority (Attempt 1)
+    [Success] Renate vs Trento -> Score: 1-1
+  [Score Check] Abacha City vs Luawa (Attempt 1)
+  [Score Check] Catanzaro vs Avellino (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Alcione Milano vs Virtus Verona -> Score: 0-1
+  [Score Check] Polissya Zhytomyr vs Karpaty Lviv (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Mighty Blackpool vs Ports Authority -> Score: 1-3
+    [Success] Bo Rangers vs Kallon -> Score: 1-1
+  [Score Check] Amedspor vs Bandirmaspor (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Sevilla FC W vs Alhama W (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Catanzaro vs Avellino -> Score: 1-0
+    [Success] Abacha City vs Luawa -> Score: 0-2
+    [Success] Polissya Zhytomyr vs Karpaty Lviv -> Score: 3-2
+  [Score Check] Mafra vs Covilha (Attempt 1)
+  [Score Check] US Gendarmerie vs Espoir (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Tagour Provincial Club vs Nigelec (Attempt 1)
+    [Success] Amedspor vs Bandirmaspor -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Sevilla FC W vs Alhama W -> Score: 2-1
+  [Score Check] ASFAN vs Liberte (Attempt 1)
+  [Score Check] USFAS Bamako vs Diarra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Tagour Provincial Club vs Nigelec -> Score: 0-3
+    [Success] Mafra vs Covilha -> Score: 2-0
+  [Score Check] Hapoel Haifa vs Ironi Tiberias (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Mali Coura vs Real Bamako (Attempt 1)
+    [Success] ASFAN vs Liberte -> Score: 2-0
+    [Success] USFAS Bamako vs Diarra -> Score: 2-1
+  [Score Check] Horoya vs Ashanti GB (Attempt 1)
+  [Score Check] OFI Crete vs Panserraikos (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hapoel Haifa vs Ironi Tiberias -> Score: 2-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Hearts of Oak vs Nations FC (Attempt 1)
+    [Success] Mali Coura vs Real Bamako -> Score: 0-3
+    [Success] OFI Crete vs Panserraikos -> Score: 3-0
+  [Score Check] Strasbourg W vs Paris FC W (Attempt 1)
+    [Success] Horoya vs Ashanti GB -> Score: 3-1
+    [Success] US Gendarmerie vs Espoir -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Le Havre W vs Lyon W (Attempt 1)
+  [Score Check] Fleury 91 W vs St Etienne W (Attempt 1)
+  [Score Check] APOEL vs Krasava (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hearts of Oak vs Nations FC -> Score: 1-0
+  [Score Check] Dijon W vs Lens W (Attempt 1)
+    [Success] Strasbourg W vs Paris FC W -> Score: 0-0
+  [Score Check] Ried vs Altach (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] APOEL vs Krasava -> Score: 0-0
+    [Success] Fleury 91 W vs St Etienne W -> Score: 0-0
+    [Success] Le Havre W vs Lyon W -> Score: 0-7
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Hartberg vs Tirol (Attempt 1)
+  [Score Check] Grazer AK vs LASK (Attempt 1)
+  [Score Check] Rennes vs Brest (Attempt 1)
+    [Success] Dijon W vs Lens W -> Score: 1-1
+  [Score Check] Vojvodina vs OFK Beograd Mozzart Bet (Attempt 1)
+    [Success] Ried vs Altach -> Score: 3-0
+  [Score Check] Casa Pia vs Gil Vicente (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Rennes vs Brest -> Score: 3-1
+    [Success] Hartberg vs Tirol -> Score: 2-1
+    [Success] Grazer AK vs LASK -> Score: 1-2
+  [Score Check] Tchologo vs Agboville (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Bouake vs SO Armee (Attempt 1)
+  [Score Check] Academie de FAD vs SOL (Attempt 1)
+    [Success] Casa Pia vs Gil Vicente -> Score: 1-1
+  [Score Check] Puskas Academy vs DVTK (Attempt 1)
+    [Success] Vojvodina vs OFK Beograd Mozzart Bet -> Score: 0-0
+  [Score Check] Lynx vs Europa Point (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Academie de FAD vs SOL -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Bouake vs SO Armee -> Score: 0-2
+    [Success] Puskas Academy vs DVTK -> Score: 2-1
+  [Score Check] Verl vs RW Essen (Attempt 1)
+  [Score Check] RDF vs Sonabel Ouagadougou (Attempt 1)
+  [Score Check] Partizani vs Flamurtari (Attempt 1)
+    [Success] Lynx vs Europa Point -> Score: 3-1
+    [Success] Tchologo vs Agboville -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Telstar vs Nijmegen (Attempt 1)
+  [Score Check] Vora vs AF Elbasani (Attempt 1)
+    [Success] Verl vs RW Essen -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Al-Shabab vs Al-Samail (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Partizani vs Flamurtari -> Score: 2-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Al Khaboora vs Al Nasr (Attempt 1)
+    [Success] RDF vs Sonabel Ouagadougou -> Score: 1-2
+    [Success] Telstar vs Nijmegen -> Score: 2-2
+  [Score Check] Eldense vs Tarazona (Attempt 1)
+  [Score Check] Ponferradina vs Arenteiro (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Vora vs AF Elbasani -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Attempt 1 Failed] Error for MgoI4p4n: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/arenteiro-lWjqRFF0/ponferradina-0UFPgH6a/?mid=MgoI4p4n
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/arenteiro-lWjqRFF0/ponferradina-0UFPgH6a/?mid=MgoI4p4n", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Khaboora vs Al Nasr -> Score: 0-1
+  [Score Check] Ponferradina vs Arenteiro (Attempt 2)
+    [Success] Al-Shabab vs Al-Samail -> Score: 1-3
+    [Success] Eldense vs Tarazona -> Score: 1-0
+  [Score Check] Osasuna B vs Lugo (Attempt 1)
+  [Score Check] Valladolid vs Andorra (Attempt 1)
+  [Score Check] Gijon vs Granada CF (Attempt 1)
+  [Score Check] Mallorca vs Elche (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+
+   --- LEO: Shutting down gracefully. ---

@@ -1,0 +1,18 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 06:09:16 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+
+   --- LEO: Shutting down gracefully. ---

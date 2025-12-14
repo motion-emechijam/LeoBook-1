@@ -1,0 +1,341 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 20:15:44 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 1 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 1 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+--- Learning Engine: Updated 16 rule weights ---
+--- Review Process Complete ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 74.0% Accurate - 50 Predictions
+  High Confidence: 50.0% Accurate - 8 Predictions
+  Low Confidence: 63.6% Accurate - 44 Predictions
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Extractor] Extracting match data from page...
+    [Matches Found] 352 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: YyJr9Sh3 on this date.
+    [Resume] Match found at index 285. Skipping 286 previously processed matches.
+    [Batching] Processing 66 matches concurrently...
+    [Batch Start] Samsunspor vs Basaksehir: 14.12.2025 - 18:00
+    [Batch Start] Slovan Bratislava vs Zilina: 14.12.2025 - 18:00
+    [Batch Start] Trabzonspor vs Besiktas: 14.12.2025 - 18:00
+    [Batch Start] Valletta vs Sliema: 14.12.2025 - 18:15
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Valletta_vs_Sliema
+      [NO Signal] Valletta_vs_Sliema
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Batch Start] Pontevedra vs Arenas Getxo: 14.12.2025 - 18:15
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Slovan Bratislava_vs_Zilina
+      [NO Signal] Slovan Bratislava_vs_Zilina
+    [Batch Start] Gimnastic vs FC Cartagena SAD: 14.12.2025 - 18:15
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Samsunspor_vs_Basaksehir
+      [NO Signal] Samsunspor_vs_Basaksehir
+    [Batch Start] Sanluqueno vs Hercules: 14.12.2025 - 18:15
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Pontevedra_vs_Arenas Getxo
+      [NO Signal] Pontevedra_vs_Arenas Getxo
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Batch Start] Levante vs Villarreal: 14.12.2025 - 18:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Gimnastic_vs_FC Cartagena SAD
+      [NO Signal] Gimnastic_vs_FC Cartagena SAD
+    [Batch Start] Charleroi vs Royale Union SG: 14.12.2025 - 18:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Sanluqueno_vs_Hercules
+      [NO Signal] Sanluqueno_vs_Hercules
+    [Batch Start] Sparta Prague vs Liberec: 14.12.2025 - 18:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Charleroi_vs_Royale Union SG
+      [NO Signal] Charleroi_vs_Royale Union SG
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Levante_vs_Villarreal
+      [NO Signal] Levante_vs_Villarreal
+    [Batch Start] RB Leipzig W vs Hoffenheim W: 14.12.2025 - 18:30
+    [Batch Start] Os Belenenses vs Academica: 14.12.2025 - 18:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Sparta Prague_vs_Liberec
+      [NO Signal] Sparta Prague_vs_Liberec
+    [Batch Start] Almeria vs Burgos CF: 14.12.2025 - 18:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Os Belenenses_vs_Academica
+      [NO Signal] Os Belenenses_vs_Academica
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for RB Leipzig W_vs_Hoffenheim W
+      [NO Signal] RB Leipzig W_vs_Hoffenheim W
+    [Batch Start] Kisvarda vs Zalaegerszegi: 14.12.2025 - 18:45
+    [Batch Start] Dinamo Tirana vs Egnatia: 14.12.2025 - 19:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Almeria_vs_Burgos CF
+      [NO Signal] Almeria_vs_Burgos CF
+    [Batch Start] Atletic Escaldes vs Penya: 14.12.2025 - 19:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Kisvarda_vs_Zalaegerszegi
+      [NO Signal] Kisvarda_vs_Zalaegerszegi
+    [Batch Start] Aris vs Olympiacos Piraeus: 14.12.2025 - 19:00
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Atletic Escaldes_vs_Penya
+      [NO Signal] Atletic Escaldes_vs_Penya
+    [Batch Start] Olympique Sport vs ASEC Mimosas: 14.12.2025 - 19:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Aris_vs_Olympiacos Piraeus
+      [NO Signal] Aris_vs_Olympiacos Piraeus
+    [Batch Start] Moreirense vs Benfica: 14.12.2025 - 19:00
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Dinamo Tirana_vs_Egnatia
+      [NO Signal] Dinamo Tirana_vs_Egnatia
+    [Batch Start] Pacos Ferreira vs Lusitania FC: 14.12.2025 - 19:00
+      [Error] Match failed Trabzonspor_vs_Besiktas: Page.goto: Timeout 360000ms exceeded.
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/besiktas-IDmErJCR/trabzonspor-MmsYDc03/?mid=v9MYzMY1", waiting until "domcontentloaded"
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Trabzonspor_vs_Besiktas'. See 'Logs/Errors' folder.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Olympique Sport_vs_ASEC Mimosas
+      [NO Signal] Olympique Sport_vs_ASEC Mimosas
+    [Batch Start] Genk vs Westerlo: 14.12.2025 - 19:15
+    [Batch Start] Maccabi Bnei Raina vs Maccabi Haifa: 14.12.2025 - 19:15
+      [Error] Match failed Genk_vs_Westerlo: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/genk-r3jWUIiN/westerlo-hYaM5Gqp/?mid=tzj3betn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/genk-r3jWUIiN/westerlo-hYaM5Gqp/?mid=tzj3betn", waiting until "domcontentloaded"
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Genk_vs_Westerlo'. See 'Logs/Errors' folder.
+      [Error] Match failed Maccabi Bnei Raina_vs_Maccabi Haifa: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.flashscore.com/match/football/maccabi-bnei-raina-GGDwMfj9/maccabi-haifa-zVucZzyE/?mid=tfK49oNE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/maccabi-bnei-raina-GGDwMfj9/maccabi-haifa-zVucZzyE/?mid=tfK49oNE", waiting until "domcontentloaded"
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Maccabi Bnei Raina_vs_Maccabi Haifa'. See 'Logs/Errors' folder.
+    [Batch Start] Werder Bremen vs Stuttgart: 14.12.2025 - 19:30
+    [Batch Start] Schweinfurt vs TSV Havelse: 14.12.2025 - 19:30
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Pacos Ferreira_vs_Lusitania FC
+      [NO Signal] Pacos Ferreira_vs_Lusitania FC
+    [Batch Start] Lions Gibraltar vs Lincoln Red Imps: 14.12.2025 - 19:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Schweinfurt_vs_TSV Havelse
+      [NO Signal] Schweinfurt_vs_TSV Havelse
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Werder Bremen_vs_Stuttgart
+      [NO Signal] Werder Bremen_vs_Stuttgart
+    [Batch Start] FC Hermannstadt vs Univ. Craiova: 14.12.2025 - 19:30
+    [Batch Start] Independiente vs Always Ready: 14.12.2025 - 20:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Lions Gibraltar_vs_Lincoln Red Imps
+      [NO Signal] Lions Gibraltar_vs_Lincoln Red Imps
+    [Batch Start] Oriente Petrolero vs Bolivar: 14.12.2025 - 20:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for FC Hermannstadt_vs_Univ. Craiova
+      [NO Signal] FC Hermannstadt_vs_Univ. Craiova
+    [Batch Start] The Strongest vs Wilstermann: 14.12.2025 - 20:00
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Moreirense_vs_Benfica
+      [NO Signal] Moreirense_vs_Benfica
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Independiente_vs_Always Ready
+      [NO Signal] Independiente_vs_Always Ready
+    [Batch Start] Panathinaikos vs Volos: 14.12.2025 - 20:00
+    [Batch Start] Legia vs Piast Gliwice: 14.12.2025 - 20:15
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Oriente Petrolero_vs_Bolivar
+      [NO Signal] Oriente Petrolero_vs_Bolivar
+    [Batch Start] Salcedo vs Cibao: 14.12.2025 - 20:30
+      [Error] Match failed Legia_vs_Piast Gliwice: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/legia-K6kUepBs/piast-gliwice-ve2oT9ck/?mid=xtphkLM7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/legia-K6kUepBs/piast-gliwice-ve2oT9ck/?mid=xtphkLM7", waiting until "domcontentloaded"
+
+  [CRITICAL ERROR] Logging state for 'process_match_task_Legia_vs_Piast Gliwice'. See 'Logs/Errors' folder.
+    [Batch Start] Universidad O&M vs Atlantico: 14.12.2025 - 20:30
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for The Strongest_vs_Wilstermann
+      [NO Signal] The Strongest_vs_Wilstermann
+    [Batch Start] Arzignano vs Pro Patria: 14.12.2025 - 20:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Universidad O&M_vs_Atlantico
+      [NO Signal] Universidad O&M_vs_Atlantico
+    [Batch Start] Altamura vs Audace Cerignola: 14.12.2025 - 20:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Arzignano_vs_Pro Patria
+      [NO Signal] Arzignano_vs_Pro Patria
+    [Batch Start] Atl. Madrid B vs Sevilla FC B: 14.12.2025 - 20:30
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Salcedo_vs_Cibao
+      [NO Signal] Salcedo_vs_Cibao
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [H2H Debug] Forcing selector refresh for match page...
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [H2H Debug] H2H tab selector: ''
+      [Warning] H2H tab inaccessible for Panathinaikos_vs_Volos
+      [NO Signal] Panathinaikos_vs_Volos
+    [Batch Start] Marseille vs Monaco: 14.12.2025 - 20:45
+    [Batch Start] Bologna vs Juventus: 14.12.2025 - 20:45
+
+   --- LEO: Shutting down gracefully. ---

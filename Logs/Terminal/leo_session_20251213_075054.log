@@ -1,0 +1,203 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 07:50:55 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.5: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Web Check] Cacereno vs Zamora (Attempt 1)
+  [Web Check] Prison Service vs Defence Force (Attempt 1)
+  [Web Check] Vega Real vs Delfines Del Este (Attempt 1)
+  [Web Check] Hibernians vs Tarxien (Attempt 1)
+  [Web Check] Torreense vs Feirense (Attempt 1)
+    [Success] Prison Service vs Defence Force -> Score: 1-2
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for lzzDbnsQ: Score extraction failed
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for xWCan3lI: Score extraction failed
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for EX796DBk: Score extraction failed
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for 2uZd6JK7: Score extraction failed
+      Retrying in 5 seconds...
+  [Web Check] Hibernians vs Tarxien (Attempt 2)
+  [Web Check] Cacereno vs Zamora (Attempt 2)
+  [Web Check] Vega Real vs Delfines Del Este (Attempt 2)
+  [Web Check] Torreense vs Feirense (Attempt 2)
+  [Web Check] Amstetten vs Admira (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Hibernians vs Tarxien -> Score: 1-0
+    [Success] Vega Real vs Delfines Del Este -> Score: 0-2
+    [Success] Cacereno vs Zamora -> Score: 0-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Mons Calpe vs St Josephs (Attempt 1)
+  [Web Check] PSG W vs Montpellier W (Attempt 1)
+  [Web Check] West Brom vs Sheffield Utd (Attempt 1)
+    [Success] Torreense vs Feirense -> Score: 2-3
+    [Success] Amstetten vs Admira -> Score: 2-1
+  [Web Check] Real Sociedad vs Girona (Attempt 1)
+  [Web Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] PSG W vs Montpellier W -> Score: 2-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Mons Calpe vs St Josephs -> Score: 1-3
+  [Web Check] Ayr vs St Johnstone (Attempt 1)
+    [Skip] Match not finished yet.
+    [Success] Real Sociedad vs Girona -> Score: 1-2
+    [Success] West Brom vs Sheffield Utd -> Score: 2-0
+  [Web Check] Larne vs Glentoran (Attempt 1)
+  [Web Check] Coleraine vs Bangor FC (Attempt 1)
+  [Web Check] St. Liege vs Leuven (Attempt 1)
+  [Web Check] Lecce vs Pisa (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Larne vs Glentoran -> Score: 1-0
+    [Success] St. Liege vs Leuven -> Score: 0-1
+    [Success] Ayr vs St Johnstone -> Score: 2-4
+    [Success] Lecce vs Pisa -> Score: 1-0
+  [Web Check] Angers vs Nantes (Attempt 1)
+  [Web Check] CE Europa vs Antequera (Attempt 1)
+  [Web Check] Cultural Leonesa vs Huesca (Attempt 1)
+  [Web Check] Juventus U23 vs Pianese (Attempt 1)
+    [Success] Coleraine vs Bangor FC -> Score: 2-0
+  [Web Check] Palermo vs Sampdoria (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Angers vs Nantes -> Score: 4-1
+    [Success] Juventus U23 vs Pianese -> Score: 0-0
+    [Success] CE Europa vs Antequera -> Score: 2-0
+    [Success] Cultural Leonesa vs Huesca -> Score: 0-2
+  [Web Check] Union Berlin vs RB Leipzig (Attempt 1)
+  [Web Check] Oss vs Den Haag (Attempt 1)
+  [Web Check] Maastricht vs Jong Ajax (Attempt 1)
+  [Web Check] Willem II vs Cambuur (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Palermo vs Sampdoria -> Score: 1-0
+  [Web Check] Aarau vs Etoile-Carouge (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Maastricht vs Jong Ajax -> Score: 2-1
+    [Success] Oss vs Den Haag -> Score: 3-4
+    [Success] Union Berlin vs RB Leipzig -> Score: 3-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Jong AZ vs Jong Utrecht (Attempt 1)
+  [Web Check] Jong PSV vs Almere City (Attempt 1)
+  [Web Check] De Graafschap vs Roda (Attempt 1)
+    [Success] Willem II vs Cambuur -> Score: 0-1
+  [Web Check] Den Bosch vs Venlo (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Aarau vs Etoile-Carouge -> Score: 2-1
+  [Web Check] FC Emmen vs Helmond (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Jong AZ vs Jong Utrecht -> Score: 1-4
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] De Graafschap vs Roda -> Score: 2-3
+    [Success] Jong PSV vs Almere City -> Score: 2-3
+    [Success] FC Emmen vs Helmond -> Score: 4-1
+  [Web Check] Rodez vs Guingamp (Attempt 1)
+  [Web Check] Dordrecht vs Eindhoven FC (Attempt 1)
+  [Web Check] Rouen vs Quevilly Rouen (Attempt 1)
+  [Web Check] Rapperswil-Jona vs Vaduz (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Den Bosch vs Venlo -> Score: 0-1
+  [Web Check] Nancy vs Clermont (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Rouen vs Quevilly Rouen -> Score: 1-0
+    [Success] Dordrecht vs Eindhoven FC -> Score: 3-4
+  [Web Check] Pau FC vs Amiens (Attempt 1)
+  [Web Check] Laval vs Dunkerque (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Rodez vs Guingamp -> Score: 2-1
+    [Success] Rapperswil-Jona vs Vaduz -> Score: 0-4
+  [Web Check] Annecy vs Le Mans (Attempt 1)
+  [Web Check] Nottingham U21 vs Millwall U21 (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Laval vs Dunkerque -> Score: 1-2
+    [Success] Pau FC vs Amiens -> Score: 1-2
+  [Web Check] Norwich U21 vs Sunderland U21 (Attempt 1)
+  [Web Check] Cardiff U21 vs QPR U21 (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Nottingham U21 vs Millwall U21 -> Score: 2-1
+    [Success] Annecy vs Le Mans -> Score: 1-2
+  [Web Check] Lommel SK vs Gent U23 (Attempt 1)
+  [Web Check] Beveren vs Anderlecht U23 (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Norwich U21 vs Sunderland U21 -> Score: 1-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Valenciennes vs Sochaux (Attempt 1)
+    [Success] Lommel SK vs Gent U23 -> Score: 2-0
+    [Success] Beveren vs Anderlecht U23 -> Score: 2-1
+    [Success] Cardiff U21 vs QPR U21 -> Score: 3-1
+  [Web Check] CFR Cluj vs Csikszereda M. Ciuc (Attempt 1)
+  [Web Check] Paris 13 Atl. vs Concarneau (Attempt 1)
+  [Web Check] Stade Briochin vs Aubagne (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip] Match not finished yet.
+  [Web Check] Orleans vs Versailles (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] CFR Cluj vs Csikszereda M. Ciuc -> Score: 3-1
+  [Web Check] Le Puy-en-Velay vs Fleury-Merogis (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Stade Briochin vs Aubagne -> Score: 1-3
+    [Success] Orleans vs Versailles -> Score: 2-0
+    [Success] Paris 13 Atl. vs Concarneau -> Score: 0-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Le Puy-en-Velay vs Fleury-Merogis -> Score: 2-1
+    [Selector Stale] 'meta_match_status' ('.detailScore__status') not found after 2 min wait.
+    [Auto-Heal] Selector 'meta_match_status' in 'match_page' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [VISION] Analyzing screenshot: match_page.png
+    [VISION] Analysis complete.
+    [AI INTEL] Using logged HTML: match_page.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 62 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for pdC56Nm3: Score extraction failed
+      Retrying in 5 seconds...
+  [Web Check] Nancy vs Clermont (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'match_page' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'match_page' (Force: True)...
+    [AI INTEL] Capturing page state for 'match_page'...
+    [VISION] Analyzing screenshot: match_page.png
+    [VISION] Analysis complete.
+    [AI INTEL] Using logged HTML: match_page.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 95 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .detailScore__status .fixedHeaderDuel__detailStatus
+    [Success] Nancy vs Clermont -> Score: 1-0
+--- Learning Engine: Updated 16 rule weights ---
+ML Models trained - RF: 0.600, GB: 0.600
+--- ML Engine: Retrained models with new data ---
+--- Selective Enrichment: Checking recent predictions ---
+--- Selective Enrichment: Processing 675 recent predictions ---
+--- Selective Enrichment: 675 unique matches to enrich ---
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+
+   --- LEO: Shutting down gracefully. ---

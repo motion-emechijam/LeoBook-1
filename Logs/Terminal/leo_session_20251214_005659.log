@@ -1,0 +1,325 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 00:57:13 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 2)
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Nkwazi vs MUZA (Attempt 2)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 2)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 2)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 3)
+    [Cookies] Accepted via text: I Accept
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+  [Score Check] Nkwazi vs MUZA (Attempt 3)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 3)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 3)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 3)
+    [Fail] Could not extract score from page.
+    [Review Failed] Prison Leopards vs Kansanshi
+  [Score Check] Konkola vs Mines (Attempt 1)
+    [Attempt 3 Failed] Error for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+    [Review Failed] Nkwazi vs MUZA
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 1)
+    [Attempt 3 Failed] Error for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+    [Review Failed] Zanaco vs NAPSA Stars
+    [Attempt 3 Failed] Error for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+    [Review Failed] Mufulira vs Green Buffaloes
+    [Attempt 3 Failed] Error for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+  [Score Check] Green Eagles vs Red Arrows (Attempt 1)
+  [Score Check] Nkana vs ZESCO (Attempt 1)
+    [Review Failed] Mutondo Stars vs Power Dynamos
+  [Score Check] Golden Star vs RC Saint Joseph (Attempt 1)
+    [Attempt 1 Failed] Error for 0C0Mj1GE: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Konkola vs Mines (Attempt 2)
+    [Attempt 1 Failed] Error for KGNZScO7: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 2)
+    [Attempt 1 Failed] Error for EJKRUJge: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for 0zq9scw1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for 6kmhe6Z1: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Green Eagles vs Red Arrows (Attempt 2)
+  [Score Check] Nkana vs ZESCO (Attempt 2)
+  [Score Check] Golden Star vs RC Saint Joseph (Attempt 2)
+    [Attempt 2 Failed] Error for KGNZScO7: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for 0C0Mj1GE: Page.goto: net::ERR_NETWORK_CHANGED at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for 0zq9scw1: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nkana-GdboAWKS/zesco-0f5FgmUG/?mid=0zq9scw1", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for 6kmhe6Z1: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/golden-star-dShMo0xi/rc-saint-joseph-KzllndiT/?mid=6kmhe6Z1", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for EJKRUJge: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-eagles-nRQlruHO/red-arrows-40edj3GC/?mid=EJKRUJge", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+  [Score Check] Kabwe vs Nchanga Rangers (Attempt 3)
+  [Score Check] Konkola vs Mines (Attempt 3)
+    [Attempt 3 Failed] Error for KGNZScO7: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kabwe-nBcVV8UJ/nchanga-rangers-YThXPY0r/?mid=KGNZScO7", waiting until "domcontentloaded"
+
+    [Attempt 3 Failed] Error for 0C0Mj1GE: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/konkola-blades-GCFGgmS2/mines-vqmBQ5VG/?mid=0C0Mj1GE", waiting until "domcontentloaded"
+
+    [Review Failed] Kabwe vs Nchanga Rangers
+    [Review Failed] Konkola vs Mines
+  [Score Check] Morne des Esses vs Espoir (Attempt 1)
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 1)
+    [Attempt 1 Failed] Error for YeuvJ9R8: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/espoir-dvAheZTq/morne-des-esses-W27yf4QG/?mid=YeuvJ9R8", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for EBlvjZrn: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/deportivo-nacional-YRcRD9V7/real-koyari-UgRYNYVT/?mid=EBlvjZrn", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Nkana vs ZESCO (Attempt 3)
+  [Score Check] Golden Star vs RC Saint Joseph (Attempt 3)
+  [Score Check] Green Eagles vs Red Arrows (Attempt 3)
+  [Score Check] Morne des Esses vs Espoir (Attempt 2)
+  [Score Check] Deportivo Nacional vs Real Koyari (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Fail] Could not extract score from page.
+    [Review Failed] Green Eagles vs Red Arrows
+    [Fail] Could not extract score from page.
+    [Review Failed] Nkana vs ZESCO
+  [Score Check] Eagles FC vs Central FC (Attempt 1)
+  [Score Check] Sporting Jax W vs Fort Lauderdale W (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Eagles FC vs Central FC -> Score: 2-3
+  [Score Check] GV San Jose vs Universitario de Vinto (Attempt 1)
+    [Success] Sporting Jax W vs Fort Lauderdale W -> Score: 1-1
+  [Score Check] Jarabacoa vs San Cristobal (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] GV San Jose vs Universitario de Vinto -> Score: 5-0
+    [Success] Jarabacoa vs San Cristobal -> Score: 3-0
+  [Score Check] Nacional vs Tondela (Attempt 1)
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 1)
+    [Skip]  Nacional vs Tondela Match not finished yet.
+  [Score Check] Ards vs Newington (Attempt 1)
+    [Selector Stale] 'meta_match_status' ('.fixedHeaderDuel__detailStatus') not found after 2 min wait.
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Selector Stale] 'meta_match_status' ('.fixedHeaderDuel__detailStatus') not found after 2 min wait.
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Selector Stale] 'meta_match_status' ('.fixedHeaderDuel__detailStatus') not found after 2 min wait.
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Success] Ards vs Newington -> Score: 3-3
+  [Score Check] Trapani vs Cosenza (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 5 seconds...
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 2)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Trapani vs Cosenza -> Score: 1-1
+  [Score Check] Cavese vs Siracusa (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Success] Cavese vs Siracusa -> Score: 1-1
+  [Score Check] Gubbio vs Torres (Attempt 1)
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Gubbio vs Torres -> Score: 0-0
+  [Score Check] Lumezzane vs Lecco (Attempt 1)
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Lumezzane vs Lecco -> Score: 1-1
+  [Score Check] Campobasso vs Perugia (Attempt 1)
+  [Score Check] Inter Club vs CARA Brazzaville (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Campobasso vs Perugia -> Score: 1-0
+  [Score Check] A. Salzburg vs First Vienna (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] A. Salzburg vs First Vienna -> Score: 0-0
+  [Score Check] Dhofar vs Sur Club (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Dhofar vs Sur Club -> Score: 3-2
+  [Score Check] Calvary vs Mbarara City (Attempt 1)
+    [Fail] Could not extract score from page.
+    [Review Failed] Inter Club vs CARA Brazzaville
+    [AI INTEL] Successfully mapped 99 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+  [Score Check] Sivasspor vs Corum (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Successfully mapped 107 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .detailScore__status
+    [Skip]  Deportivo Nacional vs Real Koyari Match not finished yet.
+  [Score Check] US Tataouine vs BS Bouhajla (Attempt 1)
+    [AI INTEL] Successfully mapped 96 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Fail] Could not extract score from page.
+    [Review Failed] Golden Star vs RC Saint Joseph
+  [Score Check] OC Kerkennah vs EM Mahdia (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [Fail] Could not extract score from page.
+      Retrying in 10 seconds...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+  [Score Check] Morne des Esses vs Espoir (Attempt 3)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [Gemini Error] Quota exceeded for key index 2.
+  [API Key] Rotating from key index 2 due to quota limit.
+  [API Key] Switched to key index: 3
+    [AI INTEL] Successfully mapped 78 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .duelParticipant__score .detailScore__status .fixedHeaderDuel__detailStatus
+    [Success] US Tataouine vs BS Bouhajla -> Score: 2-2
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 1)
+    [AI INTEL] Successfully mapped 82 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': span.fixedHeaderDuel__detailStatus
+    [Success] Sivasspor vs Corum -> Score: 1-1
+  [Score Check] Hamam-Sousse vs Hammam-Lif (Attempt 1)
+    [AI INTEL] Successfully mapped 120 elements.
+    [Auto-Heal Success] New selector for 'meta_match_status': .detailScore__matchInfo .fixedHeaderDuel__detailStatus
+    [Success] Calvary vs Mbarara City -> Score: 1-1
+  [Score Check] Chebba vs Msaken (Attempt 1)
+    [Attempt 1 Failed] Error for Cz6rJ0h2: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/menzel-bourguiba-UwOmw3Dk/sporting-ben-arous-jRc8yt6s/?mid=Cz6rJ0h2", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Menzel Bourguiba vs Sporting Ben Arous (Attempt 2)
+    [Attempt 1 Failed] Error for QcUBKDT6: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/hamam-sousse-j1Jcpg7r/hammam-lif-l8FEjeUE/?mid=QcUBKDT6
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/hamam-sousse-j1Jcpg7r/hammam-lif-l8FEjeUE/?mid=QcUBKDT6", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for vsbUt4p9: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/chebba-Ug6FEthC/msaken-rDVOdEQh/?mid=vsbUt4p9
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chebba-Ug6FEthC/msaken-rDVOdEQh/?mid=vsbUt4p9", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Hamam-Sousse vs Hammam-Lif (Attempt 2)
+    [AI INTEL] Successfully mapped 155 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+  [Score Check] Chebba vs Msaken (Attempt 2)
+    [AI INTEL] Successfully mapped 72 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+
+   --- LEO: Shutting down gracefully. ---

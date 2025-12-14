@@ -1,0 +1,16 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 17:45:24 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 2 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 2 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+  [Score Check] JS Talangai vs Juk (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+
+   --- LEO: Shutting down gracefully. ---

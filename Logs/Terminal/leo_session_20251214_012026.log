@@ -1,0 +1,77 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 01:20:29 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 10 past predictions to review (Limit: 10).
+[Processing] Starting batch review for 10 matches...
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 1)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 1)
+  [Score Check] Nkwazi vs MUZA (Attempt 1)
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 1)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 1)
+    [Attempt 1 Failed] Error for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for nqid3v0K: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+    [Attempt 1 Failed] Error for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+      Retrying in 5 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 2)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 2)
+  [Score Check] Nkwazi vs MUZA (Attempt 2)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 2)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 2)
+    [Attempt 2 Failed] Error for 8x4UluoR: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/green-buffaloes-fc-CffBeNbc/mufulira-wanderers-86p2Mfs4/?mid=8x4UluoR", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for nqid3v0K: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/kansanshi-G0mMqgU3/prison-leopards-IHT1r1nN/?mid=nqid3v0K", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for KxaAuy8D: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/muza-fc-OACto324/nkwazi-UFobNzSc/?mid=KxaAuy8D", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for SMp1qJ8l: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/mutondo-stars-dKTLZW2H/power-dynamos-KlN00gNJ/?mid=SMp1qJ8l", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+    [Attempt 2 Failed] Error for WGSScINs: Page.goto: net::ERR_TIMED_OUT at https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/napsa-stars-t8U62r2t/zanaco-UaYLa3g3/?mid=WGSScINs", waiting until "domcontentloaded"
+
+      Retrying in 10 seconds...
+  [Score Check] Mufulira vs Green Buffaloes (Attempt 3)
+  [Score Check] Prison Leopards vs Kansanshi (Attempt 3)
+  [Score Check] Nkwazi vs MUZA (Attempt 3)
+  [Score Check] Mutondo Stars vs Power Dynamos (Attempt 3)
+  [Score Check] Zanaco vs NAPSA Stars (Attempt 3)
+
+   --- LEO: Shutting down gracefully. ---

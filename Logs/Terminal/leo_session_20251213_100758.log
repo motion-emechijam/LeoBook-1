@@ -1,0 +1,64 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 10:08:05 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Chateauroux vs Dijon (Attempt 1)
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+  [Score Check] Oliveirense vs Chaves (Attempt 1)
+  [Score Check] Ulm vs VfL Osnabruck (Attempt 1)
+  [Score Check] Betis B vs Alcorcon (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Chateauroux vs Dijon -> Score: 0-0
+    [Success] Ulm vs VfL Osnabruck -> Score: 3-5
+    [Success] Betis B vs Alcorcon -> Score: 2-1
+  [Score Check] Mosta vs Zabbar (Attempt 1)
+    [Success] Oliveirense vs Chaves -> Score: 2-3
+    [Skip] Match not finished yet.
+  [Score Check] Werder Bremen W vs Bayer Leverkusen W (Attempt 1)
+  [Score Check] SG Dynamo Dresden vs Braunschweig (Attempt 1)
+  [Score Check] Greuther Furth vs Hertha Berlin (Attempt 1)
+  [Score Check] Kampala City vs NEC FC (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Mosta vs Zabbar -> Score: 1-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] AS Roma U20 vs Lazio U20 (Attempt 1)
+    [Success] Werder Bremen W vs Bayer Leverkusen W -> Score: 1-0
+    [Success] Kampala City vs NEC FC -> Score: 2-1
+  [Score Check] Liefering vs SK Rapid II (Attempt 1)
+    [Success] Greuther Furth vs Hertha Berlin -> Score: 3-3
+    [Success] SG Dynamo Dresden vs Braunschweig -> Score: 2-3
+  [Score Check] Hertha Wels vs A. Lustenau (Attempt 1)
+  [Score Check] Austria Vienna (Am) vs A. Klagenfurt (Attempt 1)
+  [Score Check] Kapfenberg vs Floridsdorfer AC (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Liefering vs SK Rapid II -> Score: 1-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Al Mesaimeer vs Al Sailiya (Attempt 1)
+    [Success] Hertha Wels vs A. Lustenau -> Score: 0-1
+    [Success] AS Roma U20 vs Lazio U20 -> Score: 1-2
+    [Success] Austria Vienna (Am) vs A. Klagenfurt -> Score: 2-1
+    [Success] Kapfenberg vs Floridsdorfer AC -> Score: 0-0
+  [Score Check] Aigle Noir vs Musongati (Attempt 1)
+  [Score Check] Al Bidda vs Qatar SC (Attempt 1)
+  [Score Check] Bougouba vs Derby Academie (Attempt 1)
+  [Score Check] Douanes Niamey vs Olympic Niamey (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Mesaimeer vs Al Sailiya -> Score: 3-0
+
+   --- LEO: Shutting down gracefully. ---

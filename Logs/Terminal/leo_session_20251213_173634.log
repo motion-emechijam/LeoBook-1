@@ -1,0 +1,55 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 17:36:35 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Score Check] Paralimni vs Pafos (Attempt 1)
+  [Score Check] Apollon vs Aris (Attempt 1)
+  [Score Check] Genoa vs Inter (Attempt 1)
+  [Score Check] US Goree vs Pikine (Attempt 1)
+  [Score Check] Istra 1961 vs Rijeka (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Istra 1961 vs Rijeka Match not finished yet.
+    [Skip]  Paralimni vs Pafos Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Linguere vs Sonacos (Attempt 1)
+  [Score Check] Ouakam vs AJEL (Attempt 1)
+    [Skip]  Genoa vs Inter Match not finished yet.
+    [Skip]  Apollon vs Aris Match not finished yet.
+  [Score Check] Guediawaye vs Jaraaf (Attempt 1)
+  [Score Check] Casa vs Teungueth (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Linguere vs Sonacos Match not finished yet.
+  [Score Check] ASC HLM vs Wally Daan (Attempt 1)
+    [Skip]  US Goree vs Pikine Match not finished yet.
+  [Score Check] AS Camberene vs Mbour (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Ouakam vs AJEL Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Score Check] Shamal vs Al Ahli Doha (Attempt 1)
+    [Skip]  Casa vs Teungueth Match not finished yet.
+    [Skip]  Guediawaye vs Jaraaf Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  ASC HLM vs Wally Daan Match not finished yet.
+  [Score Check] Al-Shahaniya vs Al-Duhail (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  AS Camberene vs Mbour Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Shamal vs Al Ahli Doha Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Al-Shahaniya vs Al-Duhail Match not finished yet.
+  [Score Check] Motor Lublin vs Jagiellonia (Attempt 1)
+  [Score Check] Casertana vs Latina (Attempt 1)
+  [Score Check] Benevento vs Giugliano (Attempt 1)
+  [Score Check] Guidonia vs Ascoli (Attempt 1)
+  [Score Check] Ospitaletto vs Pro Vercelli (Attempt 1)
+
+   --- LEO: Shutting down gracefully. ---

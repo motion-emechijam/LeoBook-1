@@ -1,0 +1,34 @@
+Error Context: process_match_task_Nottingham_vs_Tottenham
+Timestamp: 2025-12-13T18:58:04.196666
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\ProProjection\LeoBook - Copy\Sites\flashscore.py", line 40, in process_match_task
+    await page.goto(full_match_url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\async_api\_generated.py", line 8992, in goto
+    await self._impl_obj.goto(
+        url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+    )
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_page.py", line 556, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python313\Lib\site-packages\playwright\_impl\_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/nottingham-UsushcZr/tottenham-UDg08Ohm/?mid=6oRwwNAj
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nottingham-UsushcZr/tottenham-UDg08Ohm/?mid=6oRwwNAj", waiting until "domcontentloaded"
+
+
+--- Error Message ---
+Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flashscore.com/match/football/nottingham-UsushcZr/tottenham-UDg08Ohm/?mid=6oRwwNAj
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/nottingham-UsushcZr/tottenham-UDg08Ohm/?mid=6oRwwNAj", waiting until "domcontentloaded"

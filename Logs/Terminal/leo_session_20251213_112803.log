@@ -1,0 +1,33 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 11:28:04 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 3 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 3 matches...
+  [Score Check] Flint Mountain vs Mold Alexandra (Attempt 1)
+  [Score Check] JS Talangai vs Juk (Attempt 1)
+  [Score Check] OLS Oulu (Fin) vs AC Oulu (Fin) (Attempt 1)
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip]  Flint Mountain vs Mold Alexandra Match not finished yet.
+    [Skip]  OLS Oulu (Fin) vs AC Oulu (Fin) Match not finished yet.
+    [Selector Stale] 'meta_match_status' ('.detailScore__status') not found after 2 min wait.
+    [Auto-Heal] Selector 'meta_match_status' in 'h2h_tab' invalid/missing. Initiating AI repair...
+    [AI INTEL] Starting Full Discovery for context: 'h2h_tab' (Force: True)...
+    [AI INTEL] Capturing page state for 'h2h_tab'...
+    [AI INTEL] Using logged HTML: h2h_tab.html
+    [AI INTEL] Mapping UI Elements to HTML Selectors...
+    [AI INTEL] Successfully mapped 5 elements.
+    [Auto-Heal Failed] AI could not find 'meta_match_status' even after refresh.
+    [Fail] Could not extract score from page.
+    [Attempt 1 Failed] Error for 4lmIIfVh: Score extraction failed
+      Retrying in 5 seconds...
+  [Score Check] JS Talangai vs Juk (Attempt 2)
+    [Attempt 2 Failed] Error for 4lmIIfVh: Page.goto: Connection closed while reading from the driver
+      Retrying in 10 seconds...
+
+   --- LEO: Shutting down gracefully. ---

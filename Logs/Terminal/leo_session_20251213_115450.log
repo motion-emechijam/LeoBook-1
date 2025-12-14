@@ -1,0 +1,64 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 11:54:53 --- 
+     Launching new browser instance...
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+  ==================================================
+  Friday, 12th December, 2025: 68.3% Accurate - 101 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Extractor] Extracting match data from page...
+    [Matches Found] 379 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: YyJr9Sh3 on this date.
+    [Resume] Last processed ID YyJr9Sh3 not found in current scan. Starting day from beginning.
+    [Batching] Processing 379 matches concurrently...
+    [Batch Start] Freiburg W vs SGS Essen W: 14.12.2025 - 12:00
+    [Batch Start] Olympiacos Piraeus B vs Athens Kallithea: 14.12.2025 - 12:00
+    [Batch Start] Ellas Syrou vs Marko: 14.12.2025 - 12:00
+    [Batch Start] Mara Sugar vs Kariobangi Sharks: 14.12.2025 - 12:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+      [Warning] H2H tab inaccessible for Freiburg W_vs_SGS Essen W
+      [NO Signal] Freiburg W_vs_SGS Essen W
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+      [Warning] H2H tab inaccessible for Mara Sugar_vs_Kariobangi Sharks
+      [NO Signal] Mara Sugar_vs_Kariobangi Sharks
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+      [Warning] H2H tab inaccessible for Ellas Syrou_vs_Marko
+      [NO Signal] Ellas Syrou_vs_Marko
+    [Batch Start] Leiria vs Felgueiras: 14.12.2025 - 12:00
+    [Batch Start] Granada CF W vs Real Madrid W: 14.12.2025 - 12:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Batch Start] Levante W vs Espanyol W: 14.12.2025 - 12:00
+      [Warning] H2H tab inaccessible for Olympiacos Piraeus B_vs_Athens Kallithea
+      [NO Signal] Olympiacos Piraeus B_vs_Athens Kallithea
+
+   --- LEO: Shutting down gracefully. ---

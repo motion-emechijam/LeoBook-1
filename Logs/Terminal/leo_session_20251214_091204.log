@@ -1,0 +1,249 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-14 09:12:05 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.6: Outcome Review Engine (Concurrent) ---
+[Review] Found 0 past predictions to review (Limit: 50).
+--- No new past matches to review. ---
+   [Phase 0] Analyzing prediction accuracy across all reviewed matches...
+
+  [Prediction Accuracy Report]
+  ==================================================
+  Friday, 12th December, 2025: 67.6% Accurate - 102 Predictions
+  Saturday, 13th December, 2025: 49.0% Accurate - 351 Predictions
+  ==================================================
+  [Confidence-Based Accuracy]
+  Very High Confidence: 52.0% Accurate - 298 Predictions
+  High Confidence: 61.5% Accurate - 13 Predictions
+  Low Confidence: 54.9% Accurate - 142 Predictions
+  ==================================================
+  Friday, 12th December, 2025 to Saturday, 13th December, 2025: 53.2% Accurate - 453 Predictions
+
+   [Phase 0] Accuracy analysis complete.
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID pxvA07at on 14.12.2025
+
+--- ANALYZING DATE: 14.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Cookies] Accepted via text: I Accept
+    [Extractor] Extracting match data from page...
+    [Time Filter] Removed 19 past matches for today.
+    [Matches Found] 333 valid fixtures. (Sorted by Time)
+    [Resume] Checking for last processed ID: pxvA07at on this date.
+    [Resume] Last processed ID pxvA07at not found in current scan. Trying to start from last 5 matches.
+    [Batching] Processing 5 matches concurrently...
+    [Batch Start] Barcelona SC vs Orense: 14.12.2025 - 22:30
+    [Batch Start] Libertad vs LDU Quito: 14.12.2025 - 22:30
+    [Batch Start] U. Catolica vs Ind. del Valle: 14.12.2025 - 22:30
+    [Batch Start] Cavalier vs Racing United: 14.12.2025 - 22:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Barcelona SC_vs_Orense
+      [NO Signal] Barcelona SC_vs_Orense
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Libertad_vs_LDU Quito
+      [NO Signal] Libertad_vs_LDU Quito
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for U. Catolica_vs_Ind. del Valle
+      [NO Signal] U. Catolica_vs_Ind. del Valle
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Batch Start] Britannia vs Bubali: 14.12.2025 - 23:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Cavalier_vs_Racing United
+      [NO Signal] Cavalier_vs_Racing United
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Britannia_vs_Bubali
+      [NO Signal] Britannia_vs_Bubali
+  [Navigation] Clicking next day...
+    [Success] Next day clicked and page updated.
+
+--- ANALYZING DATE: 15.12.2025 ---
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Extractor] Extracting match data from page...
+    [Matches Found] 67 valid fixtures. (Sorted by Time)
+    [Batching] Processing 67 matches concurrently...
+    [Batch Start] River Plate vs La Fama: 15.12.2025 - 01:00
+    [Batch Start] Police vs Morvant Caledonia Utd: 15.12.2025 - 00:00
+    [Batch Start] FC Chernihiv vs SK Metalurh: 15.12.2025 - 10:00
+    [Batch Start] Imisli FK vs Karvan: 15.12.2025 - 11:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for River Plate_vs_La Fama
+      [NO Signal] River Plate_vs_La Fama
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Police_vs_Morvant Caledonia Utd
+      [NO Signal] Police_vs_Morvant Caledonia Utd
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Imisli FK_vs_Karvan
+      [NO Signal] Imisli FK_vs_Karvan
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for FC Chernihiv_vs_SK Metalurh
+      [NO Signal] FC Chernihiv_vs_SK Metalurh
+    [Batch Start] Kariobangi Sharks vs Bidco United: 15.12.2025 - 11:00
+    [Batch Start] Bihar vs Railways: 15.12.2025 - 12:00
+    [Batch Start] Himachal Pradesh vs Punjab FT: 15.12.2025 - 12:00
+    [Batch Start] Jammu Kashmir vs Ladakh: 15.12.2025 - 12:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Kariobangi Sharks_vs_Bidco United
+      [NO Signal] Kariobangi Sharks_vs_Bidco United
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Himachal Pradesh_vs_Punjab FT
+      [NO Signal] Himachal Pradesh_vs_Punjab FT
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Bihar_vs_Railways
+      [NO Signal] Bihar_vs_Railways
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Jammu Kashmir_vs_Ladakh
+      [NO Signal] Jammu Kashmir_vs_Ladakh
+    [Batch Start] Jharkhand vs Delhi: 15.12.2025 - 12:00
+    [Batch Start] Manipur vs Tripura: 15.12.2025 - 12:00
+    [Batch Start] Mizoram vs Nagaland: 15.12.2025 - 12:00
+    [Batch Start] Malavan vs Fajr Sepasi: 15.12.2025 - 13:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Jharkhand_vs_Delhi
+      [NO Signal] Jharkhand_vs_Delhi
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Manipur_vs_Tripura
+      [NO Signal] Manipur_vs_Tripura
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Mizoram_vs_Nagaland
+      [NO Signal] Mizoram_vs_Nagaland
+    [Batch Start] Chadormalu vs Esteghlal Khuzestan: 15.12.2025 - 13:45
+    [Batch Start] Gol Gohar vs Mes Rafsanjan: 15.12.2025 - 13:45
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Malavan_vs_Fajr Sepasi
+      [NO Signal] Malavan_vs_Fajr Sepasi
+    [Batch Start] Kheybar Khorramabad vs Esteghlal F.C.: 15.12.2025 - 13:45
+    [Batch Start] Etoile de Kivu vs MK Etancheite: 15.12.2025 - 14:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Chadormalu_vs_Esteghlal Khuzestan
+      [NO Signal] Chadormalu_vs_Esteghlal Khuzestan
+    [Batch Start] Mathare Utd. vs Sofapaka: 15.12.2025 - 14:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Cookies] Accepted via OneTrust
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Kheybar Khorramabad_vs_Esteghlal F.C.
+      [NO Signal] Kheybar Khorramabad_vs_Esteghlal F.C.
+    [Cookies] Accepted via text: I Accept
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Etoile de Kivu_vs_MK Etancheite
+      [NO Signal] Etoile de Kivu_vs_MK Etancheite
+    [Cookies] Accepted via text: I Accept
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Gol Gohar_vs_Mes Rafsanjan
+      [NO Signal] Gol Gohar_vs_Mes Rafsanjan
+    [Batch Start] US Panda vs Tshikas: 15.12.2025 - 15:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Batch Start] Fehra vs As Dgssie: 15.12.2025 - 15:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Mathare Utd._vs_Sofapaka
+      [NO Signal] Mathare Utd._vs_Sofapaka
+    [Batch Start] Gazelle vs Emat: 15.12.2025 - 15:30
+    [Batch Start] Foolad vs Sepahan: 15.12.2025 - 15:30
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for US Panda_vs_Tshikas
+      [NO Signal] US Panda_vs_Tshikas
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Fehra_vs_As Dgssie
+      [NO Signal] Fehra_vs_As Dgssie
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Cookies] Accepted via OneTrust
+    [Batch Start] Neftci Baku vs Sumqayit: 15.12.2025 - 16:00
+    [Batch Start] Accra Lions vs Great Ambitions: 15.12.2025 - 16:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Gazelle_vs_Emat
+      [NO Signal] Gazelle_vs_Emat
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Foolad_vs_Sepahan
+      [NO Signal] Foolad_vs_Sepahan
+    [Batch Start] Bolga AllStars vs Northern City: 15.12.2025 - 16:00
+    [Batch Start] TF Exponential vs Real Tamale: 15.12.2025 - 16:00
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [AI INTEL] Selectors found for 'match_page'. Skipping AI analysis.
+      [Warning] H2H tab inaccessible for Neftci Baku_vs_Sumqayit
+      [NO Signal] Neftci Baku_vs_Sumqayit
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+
+   --- LEO: Shutting down gracefully. ---

@@ -1,0 +1,191 @@
+    --- LEO: Initializing Databases ---      
+     Initializing databases...
+
+      --- LEO: Starting new cycle at 2025-12-13 07:05:39 --- 
+     Launching new browser instance...
+
+   [Phase 0] Checking for past matches to review...
+--- LEO V2.5: Outcome Review Engine (Concurrent) ---
+[Review] Found 50 past predictions to review (Limit: 50).
+[Processing] Starting batch review for 50 matches...
+  [Web Check] Flint Mountain vs Mold Alexandra
+  [Web Check] Betis B vs Alcorcon
+  [Web Check] Chateauroux vs Dijon
+  [Web Check] Valenciennes vs Sochaux
+  [Web Check] Oliveirense vs Chaves
+    [Error] EV2dMuQ9: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.flashscore.com/match/football/sochaux-jPojkLXK/valenciennes-O8dsB372/?mid=EV2dMuQ9
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/sochaux-jPojkLXK/valenciennes-O8dsB372/?mid=EV2dMuQ9", waiting until "domcontentloaded"
+
+    [Error] 8CODBOBi: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/chateauroux-jZ2ZFJqe/dijon-dIvQQaE7/?mid=8CODBOBi
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chateauroux-jZ2ZFJqe/dijon-dIvQQaE7/?mid=8CODBOBi", waiting until "domcontentloaded"
+
+    [Error] vBaBbOi3: Page.goto: net::ERR_CONNECTION_CLOSED at https://www.flashscore.com/match/football/flint-mountain-biWWzDD9/mold-alexandra-Es9411nk/?mid=vBaBbOi3
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/flint-mountain-biWWzDD9/mold-alexandra-Es9411nk/?mid=vBaBbOi3", waiting until "domcontentloaded"
+
+    [Error] 46fv94HE: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/alcorcon-0ranWp9D/betis-GzVElN7C/?mid=46fv94HE
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/alcorcon-0ranWp9D/betis-GzVElN7C/?mid=46fv94HE", waiting until "domcontentloaded"
+
+    [Error] vaP7S9yA: Page.goto: net::ERR_SOCKET_NOT_CONNECTED at https://www.flashscore.com/match/football/chaves-vsToxqA5/oliveirense-tA7VEKwU/?mid=vaP7S9yA
+Call log:
+  - navigating to "https://www.flashscore.com/match/football/chaves-vsToxqA5/oliveirense-tA7VEKwU/?mid=vaP7S9yA", waiting until "domcontentloaded"
+
+  [Web Check] Ulm vs VfL Osnabruck
+  [Web Check] Mosta vs Zabbar
+  [Web Check] Werder Bremen W vs Bayer Leverkusen W
+  [Web Check] SG Dynamo Dresden vs Braunschweig
+  [Web Check] Greuther Furth vs Hertha Berlin
+    [Success] Ulm vs VfL Osnabruck -> Score: 3-5
+    [Success] Werder Bremen W vs Bayer Leverkusen W -> Score: 1-0
+    [Success] Mosta vs Zabbar -> Score: 1-1
+    [Success] Greuther Furth vs Hertha Berlin -> Score: 3-3
+    [Success] SG Dynamo Dresden vs Braunschweig -> Score: 2-3
+  [Web Check] Kampala City vs NEC FC
+  [Web Check] AS Roma U20 vs Lazio U20
+  [Web Check] Liefering vs SK Rapid II
+  [Web Check] Hertha Wels vs A. Lustenau
+  [Web Check] Austria Vienna (Am) vs A. Klagenfurt
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Timeout] Could not load https://www.flashscore.com/match/football/a-lustenau-655zEcZJ/hogo-hertha-wels-6i1ocvXH/?mid=SQriL1no
+  [Web Check] Kapfenberg vs Floridsdorfer AC
+    [Success] AS Roma U20 vs Lazio U20 -> Score: 1-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Austria Vienna (Am) vs A. Klagenfurt -> Score: 2-1
+    [Success] Liefering vs SK Rapid II -> Score: 1-0
+  [Web Check] Al Mesaimeer vs Al Sailiya
+    [Success] Kampala City vs NEC FC -> Score: 2-1
+  [Web Check] Aigle Noir vs Musongati
+  [Web Check] Al Bidda vs Qatar SC
+  [Web Check] Douanes Niamey vs Olympic Niamey
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Kapfenberg vs Floridsdorfer AC -> Score: 0-0
+  [Web Check] Bougouba vs Derby Academie
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Al Mesaimeer vs Al Sailiya -> Score: 3-0
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] AS ZAM vs Renaissance
+    [Success] Al Bidda vs Qatar SC -> Score: 1-2
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Obolon vs Metalist 1925
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Bougouba vs Derby Academie -> Score: 0-0
+    [Success] Douanes Niamey vs Olympic Niamey -> Score: 3-1
+  [Web Check] Heart of Lions vs Aduana
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Sepsi Sf. Gheorghe vs Concordia
+    [Success] Aigle Noir vs Musongati -> Score: 1-1
+    [Success] AS ZAM vs Renaissance -> Score: 1-0
+  [Web Check] USFA vs ASF Dioulasso
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Al Bukiryah vs Al Taee
+    [Success] Obolon vs Metalist 1925 -> Score: 1-3
+  [Web Check] ADVSA vs Port City
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Sepsi Sf. Gheorghe vs Concordia -> Score: 3-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Bel Air vs Saint Louis
+    [Success] Heart of Lions vs Aduana -> Score: 0-1
+  [Web Check] Al Rayyan vs Al-Sadd
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] USFA vs ASF Dioulasso -> Score: 1-0
+  [Web Check] Renaissance vs Maniema
+    [Success] Al Bukiryah vs Al Taee -> Score: 1-2
+    [Success] ADVSA vs Port City -> Score: 0-1
+  [Web Check] JS Talangai vs Juk
+  [Web Check] Oleksandriya vs Kudrivka
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Bel Air vs Saint Louis -> Score: 1-0
+    [Success] Al Rayyan vs Al-Sadd -> Score: 5-3
+  [Web Check] OLS Oulu (Fin) vs AC Oulu (Fin)
+  [Web Check] Kitara vs Maroons
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Renaissance vs Maniema -> Score: 0-1
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] Police vs Gasogi United
+    [Success] Oleksandriya vs Kudrivka -> Score: 1-1
+    [Skip] Match not finished yet.
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+  [Web Check] MS Kafr Qasim vs Ironi Modiin
+  [Web Check] Bologna U20 vs AC Milan U20
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Kitara vs Maroons -> Score: 2-0
+  [Web Check] Hapoel Hadera vs Hap. Ramat Gan
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Skip] Match not finished yet.
+  [Web Check] Maccabi Petah Tikva vs H. Ironi Rishon
+    [Success] Police vs Gasogi United -> Score: 1-0
+  [Web Check] Maccabi Jaffa vs Hapoel Kfar Shalem
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] Bologna U20 vs AC Milan U20 -> Score: 1-1
+    [Success] Hapoel Hadera vs Hap. Ramat Gan -> Score: 0-1
+    [Success] MS Kafr Qasim vs Ironi Modiin -> Score: 0-0
+    [Success] Maccabi Jaffa vs Hapoel Kfar Shalem -> Score: 1-3
+    [Success] Maccabi Petah Tikva vs H. Ironi Rishon -> Score: 2-1
+  [Web Check] Don Bosco vs Tshikas
+  [Web Check] H. Raanana vs Nof Hagalil
+  [Web Check] Tadamon vs Nejmeh SC
+  [Web Check] Chonburi vs Kanchanaburi
+  [Web Check] Abha vs Al-Ula
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Success] H. Raanana vs Nof Hagalil -> Score: 2-2
+    [Success] Don Bosco vs Tshikas -> Score: 3-0
+  [DB Check] Al Jandal vs Al Jubail -> Score: 1-0
+    [Success] Tadamon vs Nejmeh SC -> Score: 0-0
+    [Success] Chonburi vs Kanchanaburi -> Score: 1-1
+    [Success] Abha vs Al-Ula -> Score: 2-0
+  [DB Check] Bourj FC vs Racing -> Score: 2-1
+  [DB Check] Bidco United vs Mathare Utd. -> Score: 0-0
+  [DB Check] Lightstars vs Cote d'Or -> Score: 1-6
+--- Learning Engine: Updated 16 rule weights ---
+ML Models trained - RF: 0.526, GB: 0.526
+--- ML Engine: Retrained models with new data ---
+--- Selective Enrichment: Checking recent predictions ---
+--- Selective Enrichment: Processing 675 recent predictions ---
+--- Selective Enrichment: 675 unique matches to enrich ---
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+    [Popup Handler] Clicked 'I understand' button via: button:has-text('I understand')
+--- Selective Enrichment: Complete ---
+--- Review Process Complete ---
+
+   [Phase 1] Starting analysis engine (Flashscore)...
+
+--- Running Flashscore Analysis ---
+  [Navigation] Going to Flashscore...
+  [Navigation] Flashscore loaded successfully.
+    [AI INTEL] Selectors found for 'home_page'. Skipping AI analysis.
+    [Resume] Last processed: ID YyJr9Sh3 on 14.12.2025
+
+--- SKIPPING DAY: 13.12.2025 (advancing to resume date) ---
+  [Navigation] Clicking next day...
+  [Critical] Daily navigation failed. Stopping session.
+
+--- Flashscore Analysis Complete: 0 new predictions found. ---
+
+   [Phase 2] Starting booking process (Football.com)...
+
+   --- LEO: Cycle Complete. ---
+Sleeping for 6 hours until the next cycle...
+
+   --- LEO: Shutting down gracefully. ---
