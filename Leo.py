@@ -40,14 +40,14 @@ async def main():
                     print("     Launching new browser instance...")
                     if browser: await browser.close() # Ensure old instance is closed     
                     browser = await p.chromium.launch(
-                        headless=False,
+                        headless=True,
                         args=["--disable-dev-shm-usage", "--no-sandbox"]
                     )
 
                 # --- PHASE 0: REVIEW (Observe past actions) ---
                 print("\n   [Phase 0] Checking for past matches to review...")
                 from Helpers.DB_Helpers.review_outcomes import run_review_process
-                #await run_review_process(browser)
+                await run_review_process(browser)
 
                 # Print prediction accuracy report
                 print("   [Phase 0] Analyzing prediction accuracy across all reviewed matches...")

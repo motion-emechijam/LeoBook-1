@@ -286,7 +286,7 @@ async def run_flashscore_analysis(browser: Browser):
         timezone_id="Africa/Lagos"
     )
     page = await context.new_page()
-    processor = BatchProcessor(max_concurrent=1)
+    processor = BatchProcessor(max_concurrent=4)
     total_cycle_predictions = 0
 
     # --- Navigation & Calibration ---
