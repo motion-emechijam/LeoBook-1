@@ -55,27 +55,27 @@ class BettingMarkets:
             predictions["1X2"] = {
                 "market_type": "Full Time Result (1X2)",
                 "market_prediction": "Draw",
-                "confidence_score": calc_confidence(draw_score, 6),
+                "confidence_score": calc_confidence(draw_score, 18), # Increased threshold for higher weights
                 "reason": "Draw most likely outcome"
             }
         elif home_score == max_score:
             predictions["1X2"] = {
                 "market_type": "Full Time Result (1X2)",
                 "market_prediction": f"{home_team} to win",
-                "confidence_score": calc_confidence(home_score, 8),
+                "confidence_score": calc_confidence(home_score, 20), # Increased threshold for higher weights
                 "reason": f"{home_team} favored to win"
             }
         else:
             predictions["1X2"] = {
                 "market_type": "Full Time Result (1X2)",
                 "market_prediction": f"{away_team} to win",
-                "confidence_score": calc_confidence(away_score, 8),
+                "confidence_score": calc_confidence(away_score, 20), # Increased threshold for higher weights
                 "reason": f"{away_team} favored to win"
             }
 
         # 2. Double Chance
         if home_score + draw_score > away_score + 2:
-            base_conf = calc_confidence((home_score + draw_score) / 2, 5) # Lower threshold for safe bet
+            base_conf = calc_confidence((home_score + draw_score) / 2, 12) # Increased threshold
             # Reduce confidence if xG strongly opposes (away favored)
             if away_xg > home_xg + 0.5:
                 base_conf *= 0.7  # Reduce by 30%
@@ -87,7 +87,7 @@ class BettingMarkets:
                 "reason": f"{home_team} unlikely to lose"
             }
         elif away_score + draw_score > home_score + 2:
-            base_conf = calc_confidence((away_score + draw_score) / 2, 5)
+            base_conf = calc_confidence((away_score + draw_score) / 2, 12) # Increased threshold
             # Reduce confidence if xG strongly opposes (home favored)
             if home_xg > away_xg + 0.5:
                 base_conf *= 0.7  # Reduce by 30%
@@ -102,7 +102,7 @@ class BettingMarkets:
             predictions["double_chance"] = {
                 "market_type": "Double Chance",
                 "market_prediction": f"{home_team} or {away_team}",
-                "confidence_score": calc_confidence(max(home_score, away_score), 4),
+                "confidence_score": calc_confidence(max(home_score, away_score), 10),
                 "reason": "Draw unlikely (12)"
             }
 
@@ -111,14 +111,14 @@ class BettingMarkets:
             predictions["draw_no_bet"] = {
                 "market_type": "Draw No Bet",
                 "market_prediction": f"{home_team} to win (DNB)",
-                "confidence_score": calc_confidence(home_score - away_score, 3),
+                "confidence_score": calc_confidence(home_score - away_score, 8),
                 "reason": f"{home_team} clear favorite"
             }
         elif away_score > home_score + 3:
             predictions["draw_no_bet"] = {
                 "market_type": "Draw No Bet",
                 "market_prediction": f"{away_team} to win (DNB)",
-                "confidence_score": calc_confidence(away_score - home_score, 3),
+                "confidence_score": calc_confidence(away_score - home_score, 8),
                 "reason": f"{away_team} clear favorite"
             }
 
