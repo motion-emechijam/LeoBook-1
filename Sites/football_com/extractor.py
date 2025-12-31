@@ -11,11 +11,13 @@ from playwright.async_api import Page
 from Neo.selector_manager import SelectorManager
 from Neo.intelligence import get_selector
 from Helpers.constants import WAIT_FOR_LOAD_STATE_TIMEOUT
+from .navigator import hide_overlays
 
 
 async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
     """Iterates through all league headers, expands them, and extracts matches for a specific date."""
     print("  [Harvest] Starting 'Expand & Harvest' sequence...")
+    await hide_overlays(page)
     all_matches = []
     
     league_header_sel = get_selector("fb_schedule_page", "league_header") or ".league-title-wrapper"
@@ -54,11 +56,21 @@ async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
                      print(f"    -> {league_text}: Default open state (League 1). Skipping expand click.")
                      await asyncio.sleep(1.0)
                 else:
-                     # Click to expand - Primary Method
-                     if await league_element.is_visible():
-                         await league_element.click()
-                     else:
-                         await header_locator.click()
+                     # Click to expand - Primary Method with Force & JS Fallback
+                     try:
+                         target_el = league_element if await league_element.is_visible() else header_locator
+                         await target_el.scroll_into_view_if_needed()
+                         # Center the element to avoid bottom nav
+                         await target_el.evaluate("el => el.scrollIntoView({block: 'center', inline: 'nearest'})")
+                         await asyncio.sleep(0.5)
+                         
+                         await target_el.click(force=True, timeout=5000)
+                     except Exception as click_error:
+                         print(f"    [Harvest Warning] Standard click failed for {league_text}, trying JS click: {click_error}")
+                         # Fallback to JS click which ignores overlays
+                         target_el = league_element if await league_element.is_visible() else header_locator
+                         await target_el.evaluate("el => el.click()")
+                     
                      await asyncio.sleep(1.0)
 
                 # Extraction Function (Reusable blob)

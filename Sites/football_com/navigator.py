@@ -15,6 +15,7 @@ from Helpers.Site_Helpers.site_helpers import fb_universal_popup_dismissal
 from Neo.intelligence import get_selector, fb_universal_popup_dismissal as neo_popup_dismissal
 from Neo.selector_manager import SelectorManager
 from Helpers.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
+from Helpers.utils import capture_debug_snapshot
 
 PHONE = cast(str, os.getenv("FB_PHONE"))
 PASSWORD = cast(str, os.getenv("FB_PASSWORD"))
@@ -32,7 +33,7 @@ async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page
         try:
             context = await browser.new_context(
                 storage_state=str(AUTH_FILE), 
-                viewport={'width': 375, 'height': 812},
+                viewport={'width': 375, 'height': 612},
                 user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
             )
             page = await context.new_page()
@@ -48,7 +49,7 @@ async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page
             print(f"  [Auth] Failed to load session: {e}. Deleting corrupted file and logging in anew...")
             AUTH_FILE.unlink(missing_ok=True)
             context = await browser.new_context(
-                viewport={'width': 375, 'height': 812},
+                viewport={'width': 375, 'height': 612},
                 user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
             )
             page = await context.new_page()
@@ -56,7 +57,7 @@ async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page
     else:
         print("  [Auth] No saved session found. Performing new login...")
         context = await browser.new_context(
-            viewport={'width': 375, 'height': 812},
+            viewport={'width': 375, 'height': 612},
             user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
         )
         page = await context.new_page()
@@ -70,7 +71,7 @@ async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page
 
 async def perform_login(page: Page):
     print("  [Navigation] Going to Football.com...")
-    await page.goto("https://www.football.com/ng/m/", wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
+    await page.goto("https://www.football.com/ng/m/", wait_until='networkidle', timeout=NAVIGATION_TIMEOUT)
     await asyncio.sleep(15)
     #await fb_universal_popup_dismissal(page, context="fb_login_page")
     try:
@@ -144,6 +145,27 @@ async def extract_balance(page: Page) -> float:
     return 0.0
 
 
+async def hide_overlays(page: Page):
+    """Inject CSS to hide obstructing overlays like bottom nav and download bars."""
+    try:
+        # Simplified CSS to avoid hiding core elements accidentally
+        await page.add_style_tag(content="""
+            .m-bottom-nav, .place-bet, .app-download-bar, .promotion-popup-wrapper, 
+            .download-app-bar, .cookie-banner {
+                display: none !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+            }
+        """)
+        # Force JS hide for persistent elements
+        await page.evaluate("""() => {
+            document.querySelectorAll('.m-bottom-nav, .place-bet, .app-download-bar').forEach(el => el.style.display = 'none');
+        }""")
+       # print("  [UI] Overlays hidden via CSS injection.")
+    except Exception as e:
+        print(f"  [UI] Failed to hide overlays: {e}")
+
+
 async def navigate_to_schedule(page: Page):
     """Navigate to the full schedule page using dynamic selectors."""
     
@@ -157,6 +179,7 @@ async def navigate_to_schedule(page: Page):
                 await page.locator(schedule_sel).first.click(timeout=5000)
                 await page.wait_for_load_state('domcontentloaded', timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 print("  [Navigation] Schedule page loaded via dynamic selector.")
+                await hide_overlays(page)
                 return
             else:
                  print(f"  [Navigation] Dynamic selector not found on page: {schedule_sel}")
@@ -167,6 +190,7 @@ async def navigate_to_schedule(page: Page):
     print("  [Navigation] Dynamic selector failed. Using direct URL navigation.")
     await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='domcontentloaded', timeout=30000)
     print("  [Navigation] Schedule page loaded via direct URL.")
+    await hide_overlays(page)
     await asyncio.sleep(1)
     
 
@@ -174,6 +198,7 @@ async def select_target_date(page: Page, target_date: str) -> bool:
     """Select the target date in the schedule and validate using dynamic and robust selectors."""
 
     print(f"  [Navigation] Selecting date: {target_date}")
+    await capture_debug_snapshot(page, "pre_date_select", f"Attempting to select {target_date}")
 
     # Dynamic Selector First
     dropdown_sel = get_selector("fb_schedule_page", "filter_dropdown_today")
@@ -191,6 +216,7 @@ async def select_target_date(page: Page, target_date: str) -> bool:
             
     if not dropdown_found:
         print("  [Filter] Could not find date dropdown")
+        await capture_debug_snapshot(page, "fail_date_dropdown", "Could not find the date dropdown selector.")
         return False
 
     # Parse target date and select appropriate day
@@ -251,10 +277,12 @@ async def select_target_date(page: Page, target_date: str) -> bool:
 
         if day_found and not league_sorted:
              print(f"  [Filter] Date selected but mandatory League sorting failed.")
+             await capture_debug_snapshot(page, "fail_league_sort", "Date selected, but failed to sort by League.")
              return False
 
     if not day_found:
         print(f"  [Filter] Day {possible_days} not available in dropdown for {target_date}")
+        await capture_debug_snapshot(page, "fail_day_select", f"Could not find day options {possible_days}")
         return False
 
     if not league_sorted:

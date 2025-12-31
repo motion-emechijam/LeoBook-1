@@ -8,11 +8,11 @@ import asyncio
 from playwright.async_api import Page
 from .ui import robust_click
 from Neo.selector_manager import SelectorManager
-from Neo.intelligence import get_selector
+from Neo.intelligence import get_selector, get_selector_auto
 
 async def get_bet_slip_count(page: Page) -> int:
     """Extract current number of bets in the slip using dynamic selector."""
-    count_sel = get_selector("fb_match_page", "betslip_count_badge")
+    count_sel = await get_selector_auto(page, "fb_match_page", "betslip_count_badge")
     
     if count_sel:
         try:
@@ -34,7 +34,7 @@ async def clear_bet_slip(page: Page):
             print("    [Slip] Bets detected. Opening slip to clear...")
 
             # Open bet slip
-            open_sel = get_selector("fb_match_page", "slip_trigger_button")
+            open_sel = await get_selector_auto(page, "fb_match_page", "slip_trigger_button")
             slip_opened = False
             
             if open_sel:
@@ -54,7 +54,7 @@ async def clear_bet_slip(page: Page):
                 return
 
             # Clear all bets
-            clear_sel = get_selector("fb_match_page", "betslip_clear_all")
+            clear_sel = await get_selector_auto(page, "fb_match_page", "betslip_clear_all")
             bets_cleared = False
             
             if clear_sel:
@@ -66,7 +66,7 @@ async def clear_bet_slip(page: Page):
                         await asyncio.sleep(1)
 
                         # Confirm clear action if confirmation appears
-                        confirm_sel = get_selector("fb_match_page", "confirm_bet_button")
+                        confirm_sel = await get_selector_auto(page, "fb_match_page", "confirm_bet_button")
                         if confirm_sel:
                             try:
                                 if await page.locator(confirm_sel).count() > 0:

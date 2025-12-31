@@ -10,9 +10,9 @@ from datetime import datetime as dt
 from playwright.async_api import Page
 from Helpers.Site_Helpers.site_helpers import get_main_frame
 from Helpers.DB_Helpers.db_helpers import update_prediction_status
-from Helpers.utils import log_error_state
+from Helpers.utils import log_error_state, capture_debug_snapshot
 from Neo.selector_manager import SelectorManager
-from Neo.intelligence import get_selector, fb_universal_popup_dismissal as neo_popup_dismissal
+from Neo.intelligence import get_selector, get_selector_auto, fb_universal_popup_dismissal as neo_popup_dismissal
 
 from .ui import robust_click, handle_page_overlays, dismiss_overlays
 from .mapping import find_market_and_outcome
@@ -97,7 +97,7 @@ async def place_bets_for_matches(page: Page, matched_urls: Dict[str, str], day_p
             print(f"    [Betting] Looking for market '{search_market_name}' with outcome '{o_name}'")
 
             # Find and click search icon using dynamic selector
-            search_sel = get_selector("fb_match_page", "search_icon")
+            search_sel = await get_selector_auto(page, "fb_match_page", "search_icon")
             search_clicked = False
             
             if search_sel:
@@ -114,19 +114,23 @@ async def place_bets_for_matches(page: Page, matched_urls: Dict[str, str], day_p
 
             if not search_clicked:
                 print("    [Betting] Could not find search icon")
+                await capture_debug_snapshot(page, f"fail_search_icon_{match_id}", "Search icon selector not found or not clickable.")
                 continue
 
             # Find and fill search input using dynamic selector
-            input_sel = get_selector("fb_match_page", "search_input")
+            input_sel = await get_selector_auto(page, "fb_match_page", "search_input")
             input_found = False
             
             if input_sel:
                 try:
                     if await frame.locator(input_sel).count() > 0:
-                        await frame.locator(input_sel).first.fill(search_market_name)
-                        print(f"    [Betting] Filled search input with selector: {input_sel}")
+                        search_input = frame.locator(input_sel).first
+                        await search_input.fill(search_market_name)
+                        await asyncio.sleep(0.5)
+                        await page.keyboard.press("Enter")
+                        print(f"    [Betting] Filled '{search_market_name}' and pressed Enter.")
                         input_found = True
-                        await asyncio.sleep(2)
+                        await asyncio.sleep(3) # Wait for filter to apply
                 except Exception as e:
                     print(f"    [Betting] Input selector failed: {input_sel} - {e}")
             else:
@@ -134,13 +138,24 @@ async def place_bets_for_matches(page: Page, matched_urls: Dict[str, str], day_p
 
             if not input_found:
                 print("    [Betting] Could not find search input")
+                await capture_debug_snapshot(page, f"fail_search_input_{match_id}", "Search input not found after clicking search icon.")
                 continue
 
             # Select Outcome using dynamic selector
-            row_container = get_selector("fb_match_page", "outcome_row_container")
+            row_container = await get_selector_auto(page, "fb_match_page", "outcome_row_container")
             bet_selected = False
             
             if row_container:
+                # Check if we actually have any rows visible after search
+                try:
+                    visible_rows = await frame.locator(row_container).count()
+                    if visible_rows == 0:
+                        print(f"    [Betting] No outcome rows visible after searching for '{search_market_name}'")
+                        await capture_debug_snapshot(page, f"vis_rows_zero_{match_id}", f"Search: {search_market_name}. No rows in container.")
+                except:
+                    pass
+
+                # Construct specific selector
                 # Construct specific selector
                 outcome_sel = f"{row_container} > div:has-text('{o_name}')"
                 try:
@@ -162,6 +177,7 @@ async def place_bets_for_matches(page: Page, matched_urls: Dict[str, str], day_p
                 continue
 
             print(f"    [Info] Could not place bet for {pred['home_team']} vs {pred['away_team']}")
+            await capture_debug_snapshot(page, f"fail_outcome_{match_id}", f"Market: {search_market_name}, Outcome: {o_name} not found.")
             update_prediction_status(match_id, target_date, 'dropped')
 
         except Exception as e:
@@ -194,13 +210,13 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
         await page.keyboard.press("End")
         
         # Check if slip is open
-        drawer_sel = get_selector("fb_match_page", "slip_drawer_container")
+        drawer_sel = await get_selector_auto(page, "fb_match_page", "slip_drawer_container")
         is_open = False
         if drawer_sel:
              is_open = await page.locator(drawer_sel).first.is_visible(timeout=500)
 
         if not is_open:
-            trigger_sel = get_selector("fb_match_page", "slip_trigger_button")
+            trigger_sel = await get_selector_auto(page, "fb_match_page", "slip_trigger_button")
             if trigger_sel:
                 if await robust_click(page.locator(trigger_sel).first, page):
                     await asyncio.sleep(3)
@@ -208,7 +224,7 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
                 print("    [Betting] Slip trigger selector missing")
 
         # Ensure 'Multiple' tab is selected for accumulators
-        multi_sel = get_selector("fb_match_page", "slip_tab_multiple")
+        multi_sel = await get_selector_auto(page, "fb_match_page", "slip_tab_multiple")
         
         if multi_sel and await page.locator(multi_sel).count() > 0:
             if await page.locator(multi_sel).is_visible(timeout=2000):
@@ -216,7 +232,7 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
                 await asyncio.sleep(1)
 
         # Enter Stake
-        stake_sel = get_selector("fb_match_page", "stake_input")
+        stake_sel = await get_selector_auto(page, "fb_match_page", "stake_input")
         stake_entered = False
         
         if stake_sel:
@@ -236,7 +252,7 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
             print("    [Warning] Could not enter stake. Attempting to place anyway.")
 
         # Place bet
-        place_sel = get_selector("fb_match_page", "place_bet_button")
+        place_sel = await get_selector_auto(page, "fb_match_page", "place_bet_button")
         bet_placed = False
         
         if place_sel:
@@ -253,7 +269,7 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
             return False
 
         # Confirm bet
-        confirm_sel = get_selector("fb_match_page", "confirm_bet_button")
+        confirm_sel = await get_selector_auto(page, "fb_match_page", "confirm_bet_button")
         
         if confirm_sel:
             try:
@@ -280,7 +296,7 @@ async def finalize_accumulator(page: Page, target_date: str) -> bool:
 
 async def extract_booking_details(page: Page) -> str:
     """Extract booking code using dynamic selector."""
-    code_sel = get_selector("fb_match_page", "booking_code_text")
+    code_sel = await get_selector_auto(page, "fb_match_page", "booking_code_text")
     
     if code_sel:
         try:
@@ -327,4 +343,3 @@ async def save_booking_code(target_date: str, booking_code: str, page: Page):
             
     except Exception as e:
         print(f"    [Booking] Failed to save booking code: {e}")
-

@@ -50,6 +50,34 @@ async def log_error_state(page: Page, context_label: str, error: Exception):
     except Exception as log_e:
         print(f"    [Logger Failure] Could not write error state: {log_e}")
 
+
+async def capture_debug_snapshot(page: Page, label: str, info_text: str = ""):
+    """Captures a debug snapshot (PNG + HTML + TXT) for analysis."""
+    DEBUG_DIR = LOG_DIR / "Debug"
+    DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        timestamp = dt.now().strftime("%Y%m%d_%H%M%S")
+        safe_label = label.replace(" ", "_").replace("/", "-").replace(":", "")[:50]
+        base_filename = f"{safe_label}_{timestamp}"
+        
+        # Write info text
+        with open(DEBUG_DIR / f"{base_filename}.txt", "w", encoding="utf-8") as f:
+            f.write(f"Context: {label}\nTimestamp: {dt.now().isoformat()}\n\nInfo:\n{info_text}")
+
+        if page and not page.is_closed():
+            try:
+                # Capture viewport screenshot (faster/safer than full page for dynamic apps)
+                await page.screenshot(path=DEBUG_DIR / f"{base_filename}.png")
+                # Save HTML
+                with open(DEBUG_DIR / f"{base_filename}.html", "w", encoding="utf-8") as f:
+                    f.write(await page.content())
+                print(f"    [Debug Saved] {base_filename}")
+            except Exception as e:
+                print(f"    [Debug Capture Fail] Screen/HTML: {e}")
+                
+    except Exception as e:
+        print(f"    [Debug Failure] Could not write debug snapshot: {e}") 
+
 class BatchProcessor:
     def __init__(self, max_concurrent: int = 4):
         self.semaphore = asyncio.Semaphore(max_concurrent)
