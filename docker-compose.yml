@@ -19,7 +19,7 @@ services:
 
   # Service 2: The AI Brain (Llama Server) - Automatically runs Linux version in Codespaces
   mind:
-    image: ghcr.io/ggerganov/llama.cpp:latest
+    image: ggerganov/llama.cpp:full
     container_name: leobook_mind
     ports:
       - "8080:8080"
