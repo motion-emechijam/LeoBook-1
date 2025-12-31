@@ -4,8 +4,13 @@
 # It embodies the "observe, decide, act" loop.
 
 import asyncio
+import asyncio
 import os
 import sys
+import subprocess
+import requests
+import time
+import platform
 from pathlib import Path
 from datetime import datetime as dt
 from dotenv import load_dotenv
@@ -29,6 +34,69 @@ from Helpers.utils import Tee, LOG_DIR
 CYCLE_WAIT_HOURS = 6
 PLAYWRIGHT_DEFAULT_TIMEOUT = 3600000 
 
+PLAYWRIGHT_DEFAULT_TIMEOUT = 3600000 
+
+def is_server_running(url="http://127.0.0.1:8080/health"):
+    """Check if the AI server is responsive."""
+    try:
+        # Some servers verify via /health, others via /v1/models
+        # We try a simple GET to root or health with short timeout
+        requests.get(url, timeout=1)
+        return True
+    except:
+        return False
+
+def start_ai_server():
+    """Attempt to auto-start the local AI server."""
+    if is_server_running():
+        print("    [System] AI Server is already running.")
+        return
+
+    print("    [System] AI Server not detected. Attempting to auto-start...")
+    mind_dir = Path("Mind")
+    
+    # Check if files exist
+    if not mind_dir.exists():
+        print(f"    [Error] 'Mind' directory not found at {mind_dir.absolute()}")
+        return
+
+    try:
+        if os.name == 'nt': # Windows
+            script = mind_dir / "run_split_model.bat"
+            if not script.exists():
+                print(f"    [Error] Startup script missing: {script}")
+                return
+                
+            print(f"    [System] Launching {script.name} in new console...")
+            # CREATE_NEW_CONSOLE is 0x10. Only works on Windows.
+            subprocess.Popen([str(script.absolute())], cwd=str(mind_dir.absolute()), creationflags=subprocess.CREATE_NEW_CONSOLE)
+            
+        else: # Linux/Mac/Codespaces
+            script = mind_dir / "run_split_model.sh"
+            if not script.exists():
+                print(f"    [Error] Startup script missing: {script}")
+                print("    [Info] For Linux, ensure 'run_split_model.sh' and 'llama-server' binary exist in 'Mind/'")
+                return
+            
+            print(f"    [System] Launching {script.name}...")
+            # Make sure it's executable
+            os.chmod(script, 0o755)
+            # Run in background (nohup equivalent via Popen)
+            subprocess.Popen(["bash", str(script.absolute())], cwd=str(mind_dir.absolute()))
+
+        # Wait for initialization
+        print("    [System] Waiting for server to initialize (max 60s)...")
+        for i in range(60):
+            if is_server_running():
+                print("    [System] AI Server is ONLINE.")
+                return
+            time.sleep(1)
+            if i % 5 == 0: print(".", end="", flush=True)
+        print("\n    [Warning] Server start timed out. Proceeding anyway (Manual check recommended).")
+        
+    except Exception as e:
+        print(f"    [Error] Failed to start AI server: {e}")
+
 async def main():
     """
     The main execution loop for Leo.
@@ -43,6 +111,9 @@ async def main():
         while True:
             try:
                 print(f"\n      --- LEO: Starting new cycle at {dt.now().strftime('%Y-%m-%d %H:%M:%S')} --- ")
+
+                # 0. Ensure AI Server is Running
+                start_ai_server()
 
                 # Launch browser if not running or if it has been closed
                 if not browser or not browser.is_connected():
