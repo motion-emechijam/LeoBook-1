@@ -16,6 +16,7 @@ from Neo.intelligence import get_selector, get_selector_auto, fb_universal_popup
 from Neo.selector_manager import SelectorManager
 from Helpers.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
 from Helpers.utils import capture_debug_snapshot
+from Helpers.monitor import PageMonitor
 
 PHONE = cast(str, os.getenv("FB_PHONE"))
 PASSWORD = cast(str, os.getenv("FB_PASSWORD"))
@@ -25,46 +26,72 @@ AUTH_FILE = AUTH_DIR / "storage_state.json"
 if not PHONE or not PASSWORD:
     raise ValueError("FB_PHONE and FB_PASSWORD environment variables must be set for login.")
 
+async def log_page_title(page: Page, label: str = ""):
+    """Logs the current page title and records it to the Page Registry."""
+    try:
+        title = await page.title()
+        print(f"  [Monitor] {label}: '{title}'")
+        # Vigilant Capture
+        await PageMonitor.capture(page, label)
+        return title
+    except Exception as e:
+        print(f"  [Simple Log] Could not get title: {e}")
+        return ""
 
-async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page]:
-    """Load saved session or create new one with login."""
-    if AUTH_FILE.exists():
-        print("  [Auth] Found saved session. Loading state...")
-        try:
-            context = await browser.new_context(
-                storage_state=str(AUTH_FILE), 
-                viewport={'width': 375, 'height': 612},
-                user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
-            )
-            page = await context.new_page()
-            await page.goto("https://www.football.com/ng/", wait_until='networkidle', timeout=NAVIGATION_TIMEOUT)
- 
-            await asyncio.sleep(5)
-            # Validate session by checking for login elements
-            login_sel = await get_selector_auto(page, "fb_login_page", "top_right_login")
-            if login_sel and await page.locator(login_sel).count() > 0:
-                print("  [Auth] Session expired. Performing new login...")
-                await perform_login(page)
-        except Exception as e:
-            print(f"  [Auth] Failed to load session: {e}. Deleting corrupted file and logging in anew...")
-            AUTH_FILE.unlink(missing_ok=True)
-            context = await browser.new_context(
-                viewport={'width': 375, 'height': 612},
-                user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
-            )
-            page = await context.new_page()
-            await perform_login(page)
-    else:
-        print("  [Auth] No saved session found. Performing new login...")
-        context = await browser.new_context(
-            viewport={'width': 375, 'height': 612},
-            user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1"
-        )
+
+async def load_or_create_session(context: BrowserContext) -> Tuple[BrowserContext, Page]:
+    """
+    Load session from valid persistent context or perform login if needed.
+    """
+    print("  [Auth] Using Persistent Context. Verifying session...")
+    
+    # Ensure we have a page
+    if not context.pages:
         page = await context.new_page()
-        await perform_login(page)
+    else:
+        page = context.pages[0]
 
-    AUTH_DIR.mkdir(parents=True, exist_ok=True)
-    await context.storage_state(path=str(AUTH_FILE))
+    # Navigate to check state
+    # Navigate to check state
+    try:
+        # Smart Resume Check
+        current_url = page.url
+        print(f"  [Resume] Current URL: {current_url}")
+        
+        if "football.com/ng/m/sport/football" in current_url and current_url != "about:blank":
+             print("  [Resume] Already on Football.com football section. Verifying integrity...")
+             # Just log title and move on
+             await log_page_title(page, "Session Check (Smart Resume)")
+        elif page.url == "about:blank":
+             await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
+             await log_page_title(page, "Session Check")
+        else:
+             print("  [Resume] On unknown page. Navigating to home base...")
+             await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
+             await log_page_title(page, "Session Check")
+        
+        # await asyncio.sleep(2) # Reduced sleep
+
+
+        
+        # Validate session by checking for login elements
+        login_sel = await get_selector_auto(page, "fb_login_page", "top_right_login")
+        
+        needs_login = False
+        if login_sel:
+            if await page.locator(login_sel).count() > 0 and await page.locator(login_sel).is_visible():
+                needs_login = True
+        
+        if needs_login:
+            print("  [Auth] Session expired or not logged in. Performing new login...")
+            await perform_login(page)
+        else:
+             print("  [Auth] Session checks out (Login button not visible).")
+
+    except Exception as e:
+        print(f"  [Auth] Session check failed: {e}. Attempting login flow...")
+        await perform_login(page)
+        
     #await neo_popup_dismissal(page, "fb_generic", monitor_interval=90)  # Advanced popup handling
     return context, page
 
@@ -72,8 +99,10 @@ async def load_or_create_session(browser: Browser) -> Tuple[BrowserContext, Page
 async def perform_login(page: Page):
     print("  [Navigation] Going to Football.com...")
     # Go directly to sports/football if possible, or main mobile page
-    await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='networkidle', timeout=NAVIGATION_TIMEOUT)
-    await asyncio.sleep(5)
+    await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
+    await log_page_title(page, "Login Entry")
+    # await asyncio.sleep(2) # Reduced sleep
+
     
     try:
         # Click Top Login Button (if visible)
@@ -140,10 +169,11 @@ async def perform_login(page: Page):
 async def extract_balance(page: Page) -> float:
     """Extract account balance."""
     print("  [Money] Retrieving account balance...")
-    await asyncio.sleep(2)
+    # await asyncio.sleep(2) # Removed fixed sleep
     try:
         balance_sel = await get_selector_auto(page, "fb_match_page", "navbar_balance")
-        await asyncio.sleep(2)
+        # await asyncio.sleep(1) # Reduced
+
         if balance_sel and await page.locator(balance_sel).count() > 0:
             balance_text = await page.locator(balance_sel).inner_text(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
             import re
@@ -179,9 +209,22 @@ async def hide_overlays(page: Page):
 
 async def navigate_to_schedule(page: Page):
     """Navigate to the full schedule page using dynamic selectors."""
-    
+
+    # 1. Check if we are ALREADY there (Smart Resume)
+    current_url = page.url
+    if "/sport/football" in current_url and "live" not in current_url:
+        print("  [Navigation] Smart Resume: Already on a football schedule page.")
+        await hide_overlays(page)
+        # Optional: check if Date filter is visible to confirm
+        date_filter = await get_selector_auto(page, "fb_schedule_page", "filter_dropdown_today")
+        if date_filter:
+            if await page.locator(date_filter).count() > 0:
+                 print("  [Navigation] Confirmed: Date filter is visible. No navigation needed.")
+                 return
+
     # Try dynamic selector first
     schedule_sel = get_selector("fb_main_page", "full_schedule_button")
+
     
     if schedule_sel:
         try:
@@ -189,6 +232,7 @@ async def navigate_to_schedule(page: Page):
             if await page.locator(schedule_sel).count() > 0:
                 await page.locator(schedule_sel).first.click(timeout=5000)
                 await page.wait_for_load_state('domcontentloaded', timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
+                await log_page_title(page, "Schedule Page")
                 print("  [Navigation] Schedule page loaded via dynamic selector.")
                 await hide_overlays(page)
                 return
@@ -200,6 +244,7 @@ async def navigate_to_schedule(page: Page):
     # Fallback: direct URL navigation
     print("  [Navigation] Dynamic selector failed. Using direct URL navigation.")
     await page.goto("https://www.football.com/ng/m/sport/football/", wait_until='domcontentloaded', timeout=30000)
+    await log_page_title(page, "Schedule Page (Direct)")
     print("  [Navigation] Schedule page loaded via direct URL.")
     await hide_overlays(page)
     await asyncio.sleep(1)

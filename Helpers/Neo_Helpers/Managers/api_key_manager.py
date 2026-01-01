@@ -47,6 +47,11 @@ def gemini_api_call_with_rotation(prompt_content, generation_config=None, **kwar
             temperature = generation_config['temperature']
 
     # 3. Construct Payload
+    response_format = None
+    if generation_config and isinstance(generation_config, dict):
+        if generation_config.get("response_mime_type") == "application/json":
+            response_format = {"type": "json_object"}
+
     payload = {
         "messages": [
             {
@@ -58,6 +63,9 @@ def gemini_api_call_with_rotation(prompt_content, generation_config=None, **kwar
         "max_tokens": 4096,
         "stream": False
     }
+
+    if response_format:
+        payload["response_format"] = response_format
 
     try:
         response = requests.post(api_url, json=payload, timeout=180)

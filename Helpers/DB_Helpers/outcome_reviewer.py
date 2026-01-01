@@ -12,6 +12,7 @@ from typing import List, Dict, Any
 
 from .prediction_evaluator import evaluate_prediction
 from .health_monitor import HealthMonitor
+from playwright.async_api import Playwright
 
 
 # --- CONFIGURATION ---
@@ -379,7 +380,7 @@ def update_region_league_url(region_league: str, url: str):
     upsert_entry(REGION_LEAGUE_CSV, entry, files_and_headers[REGION_LEAGUE_CSV], 'region_league_id')
 
 
-async def run_review_process(browser):
+async def run_review_process(playwright: Playwright):
     """Main review process orchestration"""
     print("--- LEO V2.6: Outcome Review Engine (Concurrent) ---")
     matches_to_review = get_predictions_to_review()
@@ -388,24 +389,33 @@ async def run_review_process(browser):
         print("--- No new past matches to review. ---")
         return
 
-    sem = asyncio.Semaphore(BATCH_SIZE)
-    tasks = []
+    browser = await playwright.chromium.launch(
+        headless=True,
+        args=["--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu"]
+    )
 
-    print(f"[Processing] Starting batch review for {len(matches_to_review)} matches...")
-
-    for match in matches_to_review:
-        task = asyncio.create_task(process_review_task(match, browser, sem))
-        tasks.append(task)
-
-    await asyncio.gather(*tasks)
-
-    # Update learning weights based on reviewed outcomes
     try:
-        from Neo.model import update_learning_weights
-        updated_weights = update_learning_weights()
-        print(f"--- Learning Engine: Updated {len(updated_weights)-1} rule weights ---")
-    except Exception as e:
-        HealthMonitor.log_error("learning_update_error", f"Failed to update learning weights: {e}", "medium")
-        print(f"--- Learning Engine Error: {e} ---")
+        sem = asyncio.Semaphore(BATCH_SIZE)
+        tasks = []
+
+        print(f"[Processing] Starting batch review for {len(matches_to_review)} matches...")
+
+        for match in matches_to_review:
+            task = asyncio.create_task(process_review_task(match, browser, sem))
+            tasks.append(task)
+
+        await asyncio.gather(*tasks)
+
+        # Update learning weights based on reviewed outcomes
+        try:
+            from Neo.model import update_learning_weights
+            updated_weights = update_learning_weights()
+            print(f"--- Learning Engine: Updated {len(updated_weights)-1} rule weights ---")
+        except Exception as e:
+            HealthMonitor.log_error("learning_update_error", f"Failed to update learning weights: {e}", "medium")
+            print(f"--- Learning Engine Error: {e} ---")
+            
+    finally:
+        await browser.close()
 
     print("--- Review Process Complete ---")

@@ -54,7 +54,8 @@ async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
                 # Expansion Logic
                 if i == 0:
                      print(f"    -> {league_text}: Default open state (League 1). Skipping expand click.")
-                     await asyncio.sleep(1.0)
+                     await asyncio.sleep(0.1) # Optimized
+
                 else:
                      # Click to expand - Primary Method with Force & JS Fallback
                      try:
@@ -62,22 +63,25 @@ async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
                          await target_el.scroll_into_view_if_needed()
                          # Center the element to avoid bottom nav
                          await target_el.evaluate("el => el.scrollIntoView({block: 'center', inline: 'nearest'})")
-                         await asyncio.sleep(0.5)
+                         # await asyncio.sleep(0.5) # Removed
+
                          
                          await target_el.click(force=True, timeout=5000)
                      except Exception as click_error:
-                         print(f"    [Harvest Warning] Standard click failed for {league_text}, trying JS click: {click_error}")
                          # Fallback to JS click which ignores overlays
                          target_el = league_element if await league_element.is_visible() else header_locator
                          await target_el.evaluate("el => el.click()")
                      
-                     await asyncio.sleep(1.0)
+                     # await asyncio.sleep(1.0) # Removed fixed sleep, relying on element appearance below
+
 
                 # Extraction Function (Reusable blob)
                 matches_in_section = []
+                # Efficiently wait for the container without arbitrary sleep
                 matches_container = await header_locator.evaluate_handle('(el) => el.nextElementSibling')
                 
-                await asyncio.sleep(1.0)
+                # await asyncio.sleep(1.0) # Removed
+
                 if matches_container:
                     matches_in_section = await matches_container.evaluate("""(container, args) => {
                         const { selectors, leagueText } = args;
@@ -169,7 +173,8 @@ async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
                      await league_element.click()
                 else:
                      await header_locator.click()
-                await asyncio.sleep(.5)
+                # await asyncio.sleep(.5) # Removed
+
 
             except Exception as e:
                 print(f"    [Harvest Error] Failed to process a league header: {e}")

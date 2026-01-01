@@ -1,11 +1,16 @@
-# LeoBook
+# Leo
+**Manufacturer**: Emenike Chinenye James  
+**Powered by**: Qwen3-VL & Custom Llama Server
+
 
 """
-LeoBook v2.8.0: Advanced Football Prediction & Betting System (Local AI Edition)
+Leo v3.0: Advanced Autonomous Agent (Manufacturer: Emenike Chinenye James)
+
 A comprehensive AI-powered system that observes, analyzes, predicts, and executes betting strategies.
 
 OVERVIEW:
-LeoBook is an intelligent football prediction system that combines advanced data analysis, machine learning,
+Leo is an intelligent football prediction system that combines advanced data analysis, machine learning,
+
 and automated betting execution. The system features a fully local, privacy-focused AI architecture using
 Qwen3-VL for vision analysis and Llama Server for semantic reasoning.
 
@@ -25,7 +30,8 @@ CORE ARCHITECTURE:
 
 MAIN WORKFLOW:
 1. INFRASTRUCTURE INIT:
-   - Start Local AI: `.\run_split_model.bat` (Port 8080)
+   - **Windows**: `.\Mind\run_split_model.bat` (or let Leo auto-start it)
+   - **Linux/Codespaces**: `bash Mind/setup_linux_env.sh` (one-time setup) -> `python Leo.py`
    - Initialize Databases: `python Leo.py`
 
 2. DATA COLLECTION PHASE:
@@ -76,8 +82,9 @@ SYSTEM COMPONENTS:
    - Manages browser sessions and local AI connectivity
 
 2. Mind/ (Local AI Core)
-   - `run_split_model.bat`: Launches the local Qwen3-VL server
-   - `llama-server.exe`: Uncensored inference engine
+   - `setup_linux_env.sh`: Automated installer for Linux/Codespaces
+   - `run_split_model.bat` / `.sh`: Auto-launch scripts for the local Qwen2-VL server
+   - `llama-server`: Cross-platform uncensored inference engine
    - `model.gguf` & `mmproj.gguf`: Model weights (Brain + Eyes)
 
 3. Neo/ (AI Engine)

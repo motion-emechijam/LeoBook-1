@@ -4,7 +4,6 @@
 # It embodies the "observe, decide, act" loop.
 
 import asyncio
-import asyncio
 import os
 import sys
 import subprocess
@@ -15,7 +14,6 @@ from pathlib import Path
 from datetime import datetime as dt
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 # Load environment variables from .env file
 load_dotenv()
 
@@ -29,10 +27,6 @@ from Sites.flashscore import run_flashscore_analysis
 from Sites.football_com import run_football_com_booking
 from Helpers.DB_Helpers.db_helpers import init_csvs
 from Helpers.utils import Tee, LOG_DIR
-
-# --- CONFIGURATION ---
-CYCLE_WAIT_HOURS = 6
-PLAYWRIGHT_DEFAULT_TIMEOUT = 3600000 
 
 # --- CONFIGURATION ---
 CYCLE_WAIT_HOURS = 6
@@ -135,7 +129,6 @@ async def main():
     init_csvs()
 
     async with async_playwright() as p:
-        browser = None
         while True:
             try:
                 print(f"\n      --- LEO: Starting new cycle at {dt.now().strftime('%Y-%m-%d %H:%M:%S')} --- ")
@@ -143,19 +136,10 @@ async def main():
                 # 0. Ensure AI Server is Running
                 start_ai_server()
 
-                # Launch browser if not running or if it has been closed
-                if not browser or not browser.is_connected():
-                    print("     Launching new browser instance...")
-                    if browser: await browser.close() # Ensure old instance is closed     
-                    browser = await p.chromium.launch(
-                        headless=True,
-                        args=["--disable-dev-shm-usage", "--no-sandbox"]
-                    )
-
                 # --- PHASE 0: REVIEW (Observe past actions) ---
                 print("\n   [Phase 0] Checking for past matches to review...")
                 from Helpers.DB_Helpers.review_outcomes import run_review_process
-                await run_review_process(browser)
+                await run_review_process(p)
 
                 # Print prediction accuracy report
                 print("   [Phase 0] Analyzing prediction accuracy across all reviewed matches...")
@@ -165,11 +149,11 @@ async def main():
 
                 # --- PHASE 1: ANALYSIS (Observe and Decide) ---
                 print("\n   [Phase 1] Starting analysis engine (Flashscore)...")
-                await run_flashscore_analysis(browser)
+                await run_flashscore_analysis(p)
 
                 # --- PHASE 2: BOOKING (Act) ---
                 print("\n   [Phase 2] Starting booking process (Football.com)...")
-                #await run_football_com_booking(browser)
+                #await run_football_com_booking(p)
 
                 # --- PHASE 3: SLEEP (The wait) ---
                 print("\n   --- LEO: Cycle Complete. ---")
@@ -179,9 +163,6 @@ async def main():
             except Exception as e:
                 print(f"[ERROR] An unexpected error occurred in the main loop: {e}")
                 print("Restarting cycle after a short delay...")
-                if browser and browser.is_connected():
-                    await browser.close()
-                browser = None # Ensure browser is relaunched in the next cycle
                 await asyncio.sleep(60) # Wait for 60 seconds before retrying
 
 

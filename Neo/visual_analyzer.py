@@ -927,7 +927,7 @@ class VisualAnalyzer:
         try:
             response = await gemini_api_call_with_rotation(
                 full_prompt,  # type: ignore
-                generation_config=GenerationConfig(response_mime_type="application/json")  # type: ignore
+                generation_config={"response_mime_type": "application/json"}  # type: ignore
             )
 
             # Extract text from response

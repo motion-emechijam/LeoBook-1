@@ -5,7 +5,7 @@ import asyncio
 from datetime import datetime as dt, timedelta
 from zoneinfo import ZoneInfo
 
-from playwright.async_api import Browser, Page
+from playwright.async_api import Browser, Page, Playwright
 
 from Helpers.DB_Helpers.db_helpers import get_last_processed_info, save_schedule_entry, save_team_entry, save_standings, save_region_league_entry
 from Helpers.Site_Helpers.site_helpers import fs_universal_popup_dismissal, click_next_day
@@ -17,6 +17,7 @@ from Helpers.Site_Helpers.Extractors.standings_extractor import extract_standing
 from Neo.model import RuleEngine
 from Helpers.DB_Helpers.db_helpers import save_prediction
 from Helpers.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
+from Helpers.monitor import PageMonitor
 
 # --- CONFIGURATION ---
 NIGERIA_TZ = ZoneInfo("Africa/Lagos")
@@ -34,14 +35,17 @@ async def process_match_task(match_data: dict, browser: Browser):
         timezone_id="Africa/Lagos"
     )
     page = await context.new_page()
+    PageMonitor.attach_listeners(page)
     match_label = f"{match_data.get('home_team', 'unknown')}_vs_{match_data.get('away_team', 'unknown')}"
+
 
     try:
         print(f"    [Batch Start] {match_data['home_team']} vs {match_data['away_team']}: {match_data['date']} - {match_data['time']}")
 
         full_match_url = f"{match_data['match_link']}"
         await page.goto(full_match_url, wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
-        await asyncio.sleep(10.0)
+        await asyncio.sleep(2.0) # Optimized from 10.0
+
         await fs_universal_popup_dismissal(page, "match_page")
         await page.wait_for_load_state("domcontentloaded", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
         await analyze_page_and_update_selectors(page, "match_page")
@@ -70,7 +74,8 @@ async def process_match_task(match_data: dict, browser: Browser):
                         print("    [H2H Expansion] Expanding available match history...")
                         try:
                             await show_more_buttons.click(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
-                            await asyncio.sleep(5.0)
+                            await asyncio.sleep(2.0) # Optimized from 5.0
+
                             # Check if clicking reveals more buttons
                             second_button = page.locator(show_more_selector).nth(1)
                             if await second_button.count() > 0:
@@ -111,7 +116,8 @@ async def process_match_task(match_data: dict, browser: Browser):
                 await page.click(standings_tab_selector, timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await page.wait_for_load_state("domcontentloaded", timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
                 await analyze_page_and_update_selectors(page, "standings_tab")
-                await asyncio.sleep(5.0)
+                await asyncio.sleep(2.0) # Optimized from 5.0
+
                 await fs_universal_popup_dismissal(page, "standings_tab")
                 await asyncio.sleep(3.0)
                 standings_result = await extract_standings_data(page)
@@ -169,8 +175,9 @@ async def process_match_task(match_data: dict, browser: Browser):
         await log_error_state(page, f"process_match_task_{match_label}", e)
         return False
     finally:
-        await asyncio.sleep(5.0)
+        await asyncio.sleep(1.0) # Optimized from 5.0
         await context.close()
+
 
 
 async def extract_matches_from_page(page: Page) -> list:
@@ -273,146 +280,160 @@ async def extract_matches_from_page(page: Page) -> list:
         }""", selectors)
 
 
-async def run_flashscore_analysis(browser: Browser):
+async def run_flashscore_analysis(playwright: Playwright):
     """
     Main function to handle Flashscore data extraction and analysis.
     """
     print("\n--- Running Flashscore Analysis ---")
-    context = await browser.new_context(
-        user_agent=(
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        ),
-        timezone_id="Africa/Lagos"
+    
+    browser = await playwright.chromium.launch(
+        headless=True,
+        args=["--disable-dev-shm-usage", "--no-sandbox", "--disable-gpu"]
     )
-    page = await context.new_page()
-    processor = BatchProcessor(max_concurrent=4)
-    total_cycle_predictions = 0
+    
+    try:
+        context = await browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            ),
+            timezone_id="Africa/Lagos"
+        )
+        page = await context.new_page()
+        PageMonitor.attach_listeners(page)
+        processor = BatchProcessor(max_concurrent=4)
 
-    # --- Navigation & Calibration ---
-    print("  [Navigation] Going to Flashscore...")
-    # Retry loop for initial navigation to handle network flakes and bot detection
-    MAX_RETRIES = 5
-    for attempt in range(MAX_RETRIES):
-        try:
-            await page.goto("https://www.flashscore.com/football/", wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
-            print("  [Navigation] Flashscore loaded successfully.")
-            break  # Exit loop on success
-        except Exception as e:
-            print(f"  [Navigation Error] Attempt {attempt + 1}/{MAX_RETRIES} failed: {e}")
-            if attempt < MAX_RETRIES - 1:
-                print("  Retrying in 5 seconds...")
-                await asyncio.sleep(5)
-            else:
-                print(f"  [Critical] All navigation attempts failed. Exiting analysis.")
-                await context.close()
-                return
-                
-    await analyze_page_and_update_selectors(page, "home_page")
-    await fs_universal_popup_dismissal(page, "home_page")
+        total_cycle_predictions = 0
 
-    last_processed_info = get_last_processed_info()
-
-    # --- Daily Loop ---
-    for day_offset in range(14):
-        target_date = dt.now(NIGERIA_TZ) + timedelta(days=day_offset)
-        target_full = target_date.strftime("%d.%m.%Y")
-        
-        if day_offset > 0:
-            match_row_sel = await SelectorManager.get_selector_auto(page, "home_page", "match_rows")
-            if not await click_next_day(page, match_row_sel):
-                print("  [Critical] Daily navigation failed. Stopping session.")
-                break
-            await asyncio.sleep(2)
-
-        if last_processed_info.get('date_obj') and target_date.date() < last_processed_info['date_obj']:
-            print(f"\n--- SKIPPING DAY: {target_full} (advancing to resume date) ---")
-            continue
-
-        print(f"\n--- ANALYZING DATE: {target_full} ---")
+        # --- Navigation & Calibration ---
+        print("  [Navigation] Going to Flashscore...")
+        # Retry loop for initial navigation to handle network flakes and bot detection
+        MAX_RETRIES = 5
+        for attempt in range(MAX_RETRIES):
+            try:
+                await page.goto("https://www.flashscore.com/football/", wait_until="domcontentloaded", timeout=NAVIGATION_TIMEOUT)
+                print("  [Navigation] Flashscore loaded successfully.")
+                break  # Exit loop on success
+            except Exception as e:
+                print(f"  [Navigation Error] Attempt {attempt + 1}/{MAX_RETRIES} failed: {e}")
+                if attempt < MAX_RETRIES - 1:
+                    print("  Retrying in 5 seconds...")
+                    await asyncio.sleep(5)
+                else:
+                    print(f"  [Critical] All navigation attempts failed. Exiting analysis.")
+                    await context.close()
+                    return
+                    
         await analyze_page_and_update_selectors(page, "home_page")
         await fs_universal_popup_dismissal(page, "home_page")
 
-        try:
-            scheduled_tab_sel = await SelectorManager.get_selector_auto(page, "home_page", "tab_scheduled")
-            if scheduled_tab_sel and await page.locator(scheduled_tab_sel).is_visible(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT):
-                await page.click(scheduled_tab_sel)
-                print("    [Info] Clicked scheduled tab.")
-                await asyncio.sleep(2.0)
-        except Exception:
-            print("    [Info] Could not click Scheduled tab.")
+        last_processed_info = get_last_processed_info()
 
-        await fs_universal_popup_dismissal(page, "home_page")
-        matches_data = await extract_matches_from_page(page)
-        
-        # --- TIME CLEANING, ADJUSTMENT & SORTING ---
-        for m in matches_data:
-            original_time_str = m.get('time')
-            if original_time_str:
-                clean_time_str = original_time_str.split('\n')[0].strip()
-                m['time'] = clean_time_str if clean_time_str and clean_time_str != 'N/A' else 'N/A'
+        # --- Daily Loop ---
+        for day_offset in range(14):
+            target_date = dt.now(NIGERIA_TZ) + timedelta(days=day_offset)
+            target_full = target_date.strftime("%d.%m.%Y")
+            
+            if day_offset > 0:
+                match_row_sel = await SelectorManager.get_selector_auto(page, "home_page", "match_rows")
+                if not await click_next_day(page, match_row_sel):
+                    print("  [Critical] Daily navigation failed. Stopping session.")
+                    break
+                await asyncio.sleep(2)
 
-        matches_data.sort(key=lambda x: x.get('time', '23:59'))
+            if last_processed_info.get('date_obj') and target_date.date() < last_processed_info['date_obj']:
+                print(f"\n--- SKIPPING DAY: {target_full} (advancing to resume date) ---")
+                continue
 
-        # --- Save to DB & Filter ---
-        valid_matches = []
-        now_time = dt.now(NIGERIA_TZ).time()
-        is_today = target_date.date() == dt.now(NIGERIA_TZ).date()
+            print(f"\n--- ANALYZING DATE: {target_full} ---")
+            await analyze_page_and_update_selectors(page, "home_page")
+            await fs_universal_popup_dismissal(page, "home_page")
 
-        for m in matches_data:
-            m['date'] = target_full
-            save_schedule_entry({
-                'fixture_id': m.get('id'), 'date': m.get('date'), 'match_time': m.get('time'),
-                'region_league': m.get('region_league'), 'home_team': m.get('home_team'),
-                'away_team': m.get('away_team'), 'home_team_id': m.get('home_team_id'),
-                'away_team_id': m.get('away_team_id'), 'match_status': 'scheduled',
-                'match_link': m.get('match_link')
-            })
-            save_team_entry({'team_id': m.get('home_team_id'), 'team_name': m.get('home_team'), 'region_league': m.get('region_league'), 'team_url': m.get('home_team_url')})
-            save_team_entry({'team_id': m.get('away_team_id'), 'team_name': m.get('away_team'), 'region_league': m.get('region_league'), 'team_url': m.get('away_team_url')})
+            try:
+                scheduled_tab_sel = await SelectorManager.get_selector_auto(page, "home_page", "tab_scheduled")
+                if scheduled_tab_sel and await page.locator(scheduled_tab_sel).is_visible(timeout=WAIT_FOR_LOAD_STATE_TIMEOUT):
+                    await page.click(scheduled_tab_sel)
+                    print("    [Info] Clicked scheduled tab.")
+                    await asyncio.sleep(2.0)
+            except Exception:
+                print("    [Info] Could not click Scheduled tab.")
+
+            await fs_universal_popup_dismissal(page, "home_page")
+            matches_data = await extract_matches_from_page(page)
+            
+            # --- TIME CLEANING, ADJUSTMENT & SORTING ---
+            for m in matches_data:
+                original_time_str = m.get('time')
+                if original_time_str:
+                    clean_time_str = original_time_str.split('\n')[0].strip()
+                    m['time'] = clean_time_str if clean_time_str and clean_time_str != 'N/A' else 'N/A'
+
+            matches_data.sort(key=lambda x: x.get('time', '23:59'))
+
+            # --- Save to DB & Filter ---
+            valid_matches = []
+            now_time = dt.now(NIGERIA_TZ).time()
+            is_today = target_date.date() == dt.now(NIGERIA_TZ).date()
+
+            for m in matches_data:
+                m['date'] = target_full
+                save_schedule_entry({
+                    'fixture_id': m.get('id'), 'date': m.get('date'), 'match_time': m.get('time'),
+                    'region_league': m.get('region_league'), 'home_team': m.get('home_team'),
+                    'away_team': m.get('away_team'), 'home_team_id': m.get('home_team_id'),
+                    'away_team_id': m.get('away_team_id'), 'match_status': 'scheduled',
+                    'match_link': m.get('match_link')
+                })
+                save_team_entry({'team_id': m.get('home_team_id'), 'team_name': m.get('home_team'), 'region_league': m.get('region_league'), 'team_url': m.get('home_team_url')})
+                save_team_entry({'team_id': m.get('away_team_id'), 'team_name': m.get('away_team'), 'region_league': m.get('region_league'), 'team_url': m.get('away_team_url')})
+
+                if is_today:
+                    try:
+                        if m.get('time') and m['time'] != 'N/A' and dt.strptime(m['time'], '%H:%M').time() > now_time:
+                            valid_matches.append(m)
+                    except ValueError:
+                        pass # Ignore matches with invalid time format for today
+                else:
+                    valid_matches.append(m)
 
             if is_today:
+                print(f"    [Time Filter] Removed {len(matches_data) - len(valid_matches)} past matches for today.")
+            
+            print(f"    [Matches Found] {len(valid_matches)} valid fixtures. (Sorted by Time)")
+
+            # --- Resume Logic ---
+            if last_processed_info.get('date') == target_full:
+                last_id = last_processed_info.get('id')
+                print(f"    [Resume] Checking for last processed ID: {last_id} on this date.")
                 try:
-                    if m.get('time') and m['time'] != 'N/A' and dt.strptime(m['time'], '%H:%M').time() > now_time:
-                        valid_matches.append(m)
-                except ValueError:
-                    pass # Ignore matches with invalid time format for today
-            else:
-                valid_matches.append(m)
-
-        if is_today:
-            print(f"    [Time Filter] Removed {len(matches_data) - len(valid_matches)} past matches for today.")
-        
-        print(f"    [Matches Found] {len(valid_matches)} valid fixtures. (Sorted by Time)")
-
-        # --- Resume Logic ---
-        if last_processed_info.get('date') == target_full:
-            last_id = last_processed_info.get('id')
-            print(f"    [Resume] Checking for last processed ID: {last_id} on this date.")
-            try:
-                found_index = [i for i, match in enumerate(valid_matches) if match.get('id') == last_id][0]
-                print(f"    [Resume] Match found at index {found_index}. Skipping {found_index + 1} previously processed matches.")
-                valid_matches = valid_matches[found_index + 1:]
-            except IndexError:
-                 print(f"    [Resume] Last processed ID {last_id} not found in current scan. Trying to start from last 5 matches.")
-                 if len(valid_matches) >= 5:
-                     valid_matches = valid_matches[-5:]
-                 else:
-                     print(f"    [Resume] Less than 5 matches, trying last 10.")
-                     if len(valid_matches) >= 10:
-                         valid_matches = valid_matches[-10:]
+                    found_index = [i for i, match in enumerate(valid_matches) if match.get('id') == last_id][0]
+                    print(f"    [Resume] Match found at index {found_index}. Skipping {found_index + 1} previously processed matches.")
+                    valid_matches = valid_matches[found_index + 1:]
+                except IndexError:
+                     print(f"    [Resume] Last processed ID {last_id} not found in current scan. Trying to start from last 5 matches.")
+                     if len(valid_matches) >= 5:
+                         valid_matches = valid_matches[-5:]
                      else:
-                         print(f"    [Resume] Less than 10 matches, starting from beginning.")
-                 
+                         print(f"    [Resume] Less than 5 matches, trying last 10.")
+                         if len(valid_matches) >= 10:
+                             valid_matches = valid_matches[-10:]
+                         else:
+                             print(f"    [Resume] Less than 10 matches, starting from beginning.")
+                     
 
-        # --- Batch Processing ---
-        if valid_matches:
-            print(f"    [Batching] Processing {len(valid_matches)} matches concurrently...")
-            results = await processor.run_batch(valid_matches, process_match_task, browser=browser)
-            total_cycle_predictions += sum(1 for r in results if r)
-        else:
-            print("    [Info] No new matches to process for this day.")
+            # --- Batch Processing ---
+            if valid_matches:
+                print(f"    [Batching] Processing {len(valid_matches)} matches concurrently...")
+                results = await processor.run_batch(valid_matches, process_match_task, browser=browser)
+                total_cycle_predictions += sum(1 for r in results if r)
+            else:
+                print("    [Info] No new matches to process for this day.")
 
-    await context.close()
+    finally:
+        if 'context' in locals():
+            await context.close()
+        if 'browser' in locals():
+             await browser.close()
+             
     print(f"\n--- Flashscore Analysis Complete: {total_cycle_predictions} new predictions found. ---")
-    return  # Explicit return to ensure coroutine is properly formed
+    return

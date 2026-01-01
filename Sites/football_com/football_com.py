@@ -9,19 +9,20 @@ from datetime import datetime as dt, timedelta
 from pathlib import Path
 from typing import List, Dict, Optional
 
-from playwright.async_api import Browser
+from playwright.async_api import Browser, Playwright
 
 from Helpers.constants import WAIT_FOR_LOAD_STATE_TIMEOUT
 
-from .navigator import load_or_create_session, navigate_to_schedule, select_target_date, extract_balance
+from .navigator import load_or_create_session, navigate_to_schedule, select_target_date, extract_balance, log_page_title
 from .extractor import extract_league_matches
 from .matcher import match_predictions_with_site, filter_pending_predictions
 from .booker import place_bets_for_matches, finalize_accumulator, clear_bet_slip
 from Helpers.DB_Helpers.db_helpers import PREDICTIONS_CSV
 from Helpers.utils import log_error_state
+from Helpers.monitor import PageMonitor
 
 
-async def run_football_com_booking(browser: Browser):
+async def run_football_com_booking(playwright: Playwright):
     """
     Main function to handle Football.com login, match mapping, and bet placement.
     Orchestrates the entire booking workflow using modular components.
@@ -55,11 +56,54 @@ async def run_football_com_booking(browser: Browser):
 
     print(f"  [Info] Dates with predictions: {sorted(predictions_by_date.keys())}")
 
+    user_data_dir = Path("DB/ChromeData").absolute()
+    user_data_dir.mkdir(parents=True, exist_ok=True)
+    
+    print("  [System] Launching Persistent Context for Football.com...")
     context = None
     page = None
+    
+    try:
+        context = await playwright.chromium.launch_persistent_context(
+            user_data_dir=str(user_data_dir),
+            headless=False,
+            args=[
+                "--disable-dev-shm-usage", 
+                "--no-sandbox", 
+                "--disable-gpu",
+                "--disable-extensions",
+                "--disable-blink-features=AutomationControlled" 
+            ],
+            viewport={'width': 375, 'height': 812}, # Taller viewport for modern mobile
+            user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Mobile/15E148 Safari/604.1",
+            timeout=60000 # Increased timeout
+        )
+    except Exception as launch_e:
+        print(f"  [CRITICAL ERROR] Failed to launch browser: {launch_e}")
+        
+        # Automatic Lock Cleanup
+        lock_file = user_data_dir / "SingletonLock"
+        if lock_file.exists():
+            print("  [Auto-Fix] detected Chrome SingletonLock. removing...")
+            try:
+                lock_file.unlink()
+                print("  [Auto-Fix] Lock file removed. Please restart.")
+                return 
+            except Exception as lock_e:
+                 print(f"  [Auto-Fix Failed] Could not remove lock file: {lock_e}")
+
+        print("  [Action Required] Please ensure no other Chrome/Playwright instances are running.")
+        print("  [Info] Try 'taskkill /F /IM chrome.exe /T' if this persists.")
+        return
+
     try:
         # 2. Load or create session
-        context, page = await load_or_create_session(browser)
+        # Note: navigator now accepts context directly
+        page = await load_or_create_session(context)
+        await log_page_title(page, "Session Loaded")
+        
+        # Activate Vigilance
+        PageMonitor.attach_listeners(page)
 
         # 2b. Clear any existing bets in the slip
         await clear_bet_slip(page)
@@ -70,8 +114,8 @@ async def run_football_com_booking(browser: Browser):
 
         # 4. Process each day's predictions
         for target_date, day_predictions in sorted(predictions_by_date.items()):
-            # Check browser/page state (context doesn't have is_closed() method)
-            if not page or page.is_closed() or not browser.is_connected():
+            # Check browser/page state 
+            if not page or page.is_closed():
                 print("  [Fatal] Browser connection lost or page closed. Aborting cycle.")
                 break
 
@@ -81,11 +125,12 @@ async def run_football_com_booking(browser: Browser):
             print("  [Navigation] Navigating to schedule...")
             try:
                 await navigate_to_schedule(page)
-                await asyncio.sleep(5)  # Allow page to load
+                await log_page_title(page, "Navigated to Schedule")
+                # await asyncio.sleep(5)  # Optimization: removed fixed sleep, reliance on navigate_to_schedule internal waits
             except Exception as nav_e:
                 print(f"  [Error] Navigation failed for {target_date}: {nav_e}. Trying url navigation...")
                 await page.goto("https://www.football.com/ng/m/sport/football", wait_until='domcontentloaded', timeout=WAIT_FOR_LOAD_STATE_TIMEOUT)
-                await asyncio.sleep(5)  # Allow page to load
+                await log_page_title(page, "Navigated (Fallback)")
                 continue
 
             # Navigate to schedule and select date
@@ -112,5 +157,5 @@ async def run_football_com_booking(browser: Browser):
         if page:
             await log_error_state(page, "football_com_fatal", e)
     finally:
-        if page and not page.is_closed():
-            await page.close()
+        if context:
+            await context.close()
