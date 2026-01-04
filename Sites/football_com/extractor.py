@@ -174,6 +174,7 @@ async def extract_league_matches(page: Page, target_date: str) -> List[Dict]:
                 if matches_in_section:
                     all_matches.extend(matches_in_section)
                     print(f"    -> {league_text}: Extracted {len(matches_in_section)} matches.")
+                    print(f"       Sample Match: {matches_in_section}")
                 else:
                     print(f"    -> {league_text}: No matches found in section after attempts.")
 
@@ -202,7 +203,6 @@ async def validate_match_data(matches: List[Dict]) -> List[Dict]:
         if all(k in match for k in ['home', 'away', 'url', 'league']):
             # Basic validation
             if match['home'] and match['away'] and match['url']:
-                print(f"    [Validation] Valid match: {match}")
                 valid_matches.append(match)
         else:
             print(f"    [Validation] Skipping invalid match: {match}")

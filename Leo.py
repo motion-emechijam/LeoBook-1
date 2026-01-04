@@ -154,7 +154,7 @@ async def main():
 
                 # --- PHASE 1: ANALYSIS (Observe and Decide) ---
                 print("\n   [Phase 1] Starting analysis engine (Flashscore)...")
-                await run_flashscore_analysis(p)
+                #await run_flashscore_analysis(p)
 
                 # --- PHASE 2: BOOKING (Act) ---
                 print("\n   [Phase 2] Starting booking process (Football.com)...")
