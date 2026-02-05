@@ -75,7 +75,7 @@ class UnifiedBatchMatcher:
             })
 
         prompt = f"""You are a high-intelligence sports betting data synchronizer.
-Current System Time: {now_str} (UTC+1/Nigerian Time)
+Current System Time: {now_str} (WAT - West Africa Time / Nigerian Time)
 Target Date: {date}
 
 TASK:
@@ -84,14 +84,17 @@ Return a mapping of 'fixture_id' from PREDICTIONS to the corresponding 'url' fro
 
 RULES:
 1. STRICT MATCHING: Be EXTREMELY precise. Only match if you are "100% sure" the fixtures represent the exact same physical event (Team A vs Team B).
-2. NO FUZZY OVERHEAD: Ignore minor spelling differences, suffixes (FC, United, etc.), or variations.
+2. NIGERIAN TIME (WAT): All dates and times provided in 'PREDICTIONS' are in Nigerian Time (UTC+1). Use this as your reference for all comparisons.
 3. TIME & STATUS FILTERING:
-   - Perform a WEB SEARCH (if available) to verify the real-time status of each candidate match.
-   - REMOVE any match that has already started or finished according to the Current System Time ({now_str}) AND your real-time search data.
-   - Compare the 'match_time' and 'date' in PREDICTIONS with the current time. If a match is LIVE or FINISHED, it MUST be discarded from the output.
-   - Matches starting in the next 5 minutes should also be removed as a safety buffer.
-4. NO PARTIALS: If a match in PREDICTIONS does not exist in SITE_MATCHES, DO NOT include it in the output.
-5. RESEARCH: Use your internal knowledge and search capabilities to verify team identities and match times to be absolutely 100% sure.
+   - Perform a WEB SEARCH to verify the real-time status and kickoff time of each candidate match.
+   - DISCARD any match that has already started or finished according to:
+     a) The kickoff time and date provided in 'PREDICTIONS' (Predictions.csv data).
+     b) The Current System Time ({now_str} WAT).
+     c) Your real-time web search results.
+   - If a match is LIVE, COMPLETED, or POSTPONED, it MUST be excluded.
+   - Discard matches starting within the next 5 minutes as a safety buffer.
+4. NO FUZZY OVERHEAD: Ignore minor spelling differences or team name suffixes (FC, SC, etc.).
+5. NO PARTIALS: Only include mappings for matches found in BOTH datasets. Return {{}} if no matches qualify.
 
 DATA:
 --- PREDICTIONS (Source: predictions.csv) ---
@@ -102,8 +105,7 @@ DATA:
 
 RESPONSE FORMAT:
 You MUST respond with a valid JSON object only. The keys should be 'fixture_id' and values should be the 'url'.
-Example: {{"12345": "https://www.football.com/match/xyz"}}
-If no matches are found, return {{}}.
+Example: {{"123456": "https://www.football.com/match/fixture-id"}}
 
 Response:"""
         return prompt
