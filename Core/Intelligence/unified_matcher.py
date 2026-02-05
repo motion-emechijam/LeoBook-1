@@ -131,8 +131,7 @@ Response:"""
 
     async def _call_gemini(self, prompt: str) -> Optional[str]:
         if not self.gemini_key: return None
-        # Using Gemini 1.5 Flash as standard "Gemini" fallback unless specified
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={self.gemini_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash:generateContent?key={self.gemini_key}"
         payload = {
             "contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}
@@ -153,7 +152,7 @@ Response:"""
             "X-Title": "LeoBook Matcher"
         }
         payload = {
-            "model": "google/gemini-2.0-flash-001",
+            "model": "google/gemini-2.5-flash",
             "messages": [{"role": "user", "content": prompt}],
             "temperature": 0
         }
