@@ -16,8 +16,33 @@ class UnifiedBatchMatcher:
 
     async def match_batch(self, date: str, predictions: List[Dict], site_matches: List[Dict]) -> Dict[str, str]:
         """
-        Coordinates the batch matching process with rotation.
+        Coordinates the batch matching process with rotation, using chunking to avoid LLM overload.
         """
+        all_results = {}
+        chunk_size = 20 # Conservative chunk size for stability
+        
+        # Sort predictions by fixture_id for consistent chunking
+        predictions = sorted(predictions, key=lambda x: x.get('fixture_id', ''))
+        total_chunks = (len(predictions) + chunk_size - 1) // chunk_size
+        
+        print(f"  [AI Matcher] Processing {len(predictions)} predictions in {total_chunks} chunks (Size: {chunk_size})...")
+
+        for i in range(0, len(predictions), chunk_size):
+            chunk_preds = predictions[i:i + chunk_size]
+            chunk_idx = (i // chunk_size) + 1
+            print(f"  [AI Matcher] Processing Chunk {chunk_idx}/{total_chunks} ({len(chunk_preds)} items)...")
+            
+            chunk_result = await self._process_single_chunk(date, chunk_preds, site_matches)
+            if chunk_result:
+                all_results.update(chunk_result)
+                print(f"  [AI Matcher] Chunk {chunk_idx} matched {len(chunk_result)} fixtures.")
+            else:
+                 print(f"  [AI Matcher] Chunk {chunk_idx} failed to resolve any matches.")
+
+        return all_results
+
+    async def _process_single_chunk(self, date: str, predictions: List[Dict], site_matches: List[Dict]) -> Dict[str, str]:
+        """Process a single chunk of predictions against ALL site matches."""
         prompt = self._build_batch_prompt(date, predictions, site_matches)
         
         # Define the rotation: (function, name)
@@ -30,22 +55,23 @@ class UnifiedBatchMatcher:
         for call_func, model_name in rotation:
             for attempt in range(1, self.max_retries + 1):
                 try:
-                    print(f"  [AI Matcher] Attempting batch match with {model_name} (Attempt {attempt}/3)...")
+                    # print(f"    [AI Chunk] {model_name} Attempt {attempt}...")
                     result = await call_func(prompt)
                     if result:
                         parsed = self._parse_response(result)
                         if parsed:
-                            print(f"  [AI Matcher] {model_name} successfully matched {len(parsed)} fixtures.")
                             return parsed
-                    print(f"  [AI Matcher] {model_name} returned empty or invalid response.")
+                        else:
+                            print(f"    [AI Error] {model_name} returned unparseable JSON. Raw start: {result[:50]}...")
+                    else:
+                        print(f"    [AI Error] {model_name} returned None (API Error).")
                 except Exception as e:
-                    print(f"  [AI Matcher] {model_name} attempt {attempt} failed: {e}")
+                    print(f"    [AI Exception] {model_name} attempt {attempt} failed: {e}")
                     if attempt < self.max_retries:
                         await asyncio.sleep(2)
             
-            print(f"  [AI Matcher] {model_name} failed after {self.max_retries} attempts. Rotating...")
+            print(f"    [AI Fail] {model_name} failed chunk after {self.max_retries} attempts. Rotating...")
             
-        print("  [AI Matcher] CRITICAL: All AI models failed to resolve the batch.")
         return {}
 
     def _build_batch_prompt(self, date: str, predictions: List[Dict], site_matches: List[Dict]) -> str:
@@ -88,7 +114,7 @@ RULES:
 3. TIME & STATUS FILTERING:
    - Perform a WEB SEARCH to verify the real-time status and kickoff time of each candidate match.
    - DISCARD any match that has already started or finished according to:
-     a) The kickoff time and date provided in 'PREDICTIONS' (Predictions.csv data) WAT.
+     a) The kickoff time and date provided in 'PREDICTIONS' (Predictions.csv data).
      b) The Current System Time ({now_str} WAT).
      c) Your real-time web search results.
    - If a match is LIVE, COMPLETED, or POSTPONED, it MUST be excluded.
@@ -127,10 +153,15 @@ Response:"""
             "temperature": 0
         }
         async with aiohttp.ClientSession(timeout=self.timeout) as session:
-            async with session.post(url, headers=headers, json=payload) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    return data['choices'][0]['message']['content']
+            try:
+                async with session.post(url, headers=headers, json=payload) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        return data['choices'][0]['message']['content']
+                    print(f"    [Grok Error] Status: {resp.status} - {await resp.text()}")
+                    return None
+            except Exception as e:
+                print(f"    [Grok Exception] {e}")
                 return None
 
     async def _call_gemini(self, prompt: str) -> Optional[str]:
@@ -141,11 +172,16 @@ Response:"""
             "generationConfig": {"temperature": 0, "responseMimeType": "application/json"}
         }
         async with aiohttp.ClientSession(timeout=self.timeout) as session:
-            async with session.post(url, json=payload) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    return data['candidates'][0]['content']['parts'][0]['text']
-                return None
+            try:
+                async with session.post(url, json=payload) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        return data['candidates'][0]['content']['parts'][0]['text']
+                    print(f"    [Gemini Error] Status: {resp.status} - {await resp.text()}")
+                    return None
+            except Exception as e:
+                 print(f"    [Gemini Exception] {e}")
+                 return None
 
     async def _call_openrouter(self, prompt: str) -> Optional[str]:
         if not self.openrouter_key: return None
@@ -161,11 +197,16 @@ Response:"""
             "temperature": 0
         }
         async with aiohttp.ClientSession(timeout=self.timeout) as session:
-            async with session.post(url, headers=headers, json=payload) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    return data['choices'][0]['message']['content']
-                return None
+            try:
+                async with session.post(url, headers=headers, json=payload) as resp:
+                    if resp.status == 200:
+                        data = await resp.json()
+                        return data['choices'][0]['message']['content']
+                    print(f"    [OpenRouter Error] Status: {resp.status} - {await resp.text()}")
+                    return None
+            except Exception as e:
+                 print(f"    [OpenRouter Exception] {e}")
+                 return None
 
     def _parse_response(self, text: str) -> Dict[str, str]:
         try:
@@ -176,5 +217,5 @@ Response:"""
                 text = text.split("```")[1].split("```")[0]
             return json.loads(text.strip())
         except Exception as e:
-            print(f"  [AI Matcher Parse Error] {e}")
+            print(f"  [AI Matcher Parse Error] {e} | Content Snippet: {text[:100]}...")
             return {}
