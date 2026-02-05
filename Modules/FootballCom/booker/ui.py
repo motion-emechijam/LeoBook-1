@@ -49,13 +49,15 @@ async def robust_click(locator: Locator, page: Page, timeout: int = 5000):
                     return True
                 except Exception as e:
                     # Fallback to dispatch event
-                    # print(f"    [Click Warning] Standard click failed, trying dispatch: {e}")
                     await locator.dispatch_event("click")
                     return True
             else:
-               # Element exists but not visible - try forceful dispatch if critical?
-               # For now, just return False to let caller handle
-               pass
+               # Element exists but not strictly 'visible' - try forceful dispatch
+               try:
+                   await locator.dispatch_event("click")
+                   return True
+               except:
+                   return False
                
         return False
     except Exception as e:

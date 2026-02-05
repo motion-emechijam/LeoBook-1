@@ -50,30 +50,57 @@ async def harvest_single_match_code(page: Page, match: Dict, prediction: Dict) -
             )
             await page.screenshot(path=f"Logs/Debug/harvest_pre_{fixture_id}_attempt{attempt}.png")
 
-            # Click search icon
-            search_icon = SelectorManager.get_selector_strict("fb_match_page", "search_icon")
-            await robust_click(page.locator(search_icon).first, page, timeout=15000)
-            await asyncio.sleep(3)  # Critical animation delay
+            # Click search icon - Try multiple candidates and find visible one
+            search_icon_sel = SelectorManager.get_selector_strict("fb_match_page", "search_icon")
+            icons = page.locator(search_icon_sel)
+            clicked = False
+            for i in range(await icons.count()):
+                icon = icons.nth(i)
+                if await icon.is_visible():
+                    await robust_click(icon, page)
+                    clicked = True
+                    break
+            
+            if not clicked:
+                # Fallback to general search icons if strict selector fails visible check
+                await robust_click(page.locator(".m-search-icon, .icon-search, [class*='search-icon']").first, page)
+            
+            await asyncio.sleep(2)  # Critical animation delay
 
-            # Wait for input with fallbacks
+            # Wait for input with more exhaustive fallbacks
             input_selectors = [
                 SelectorManager.get_selector_strict("fb_match_page", "search_input"),
                 'input[type="search"]',
+                '.m-search-input input',
                 'input[placeholder*="search" i]',
-                'input[aria-label*="search" i]'
+                'input[aria-label*="search" i]',
+                '.search-box input'
             ]
             search_input = None
             for sel in input_selectors:
                 loc = page.locator(sel).first
                 try:
-                    await loc.wait_for(state="visible", timeout=15000)
+                    # Check visibility without waiting 15s every time
+                    if await loc.is_visible():
+                        search_input = loc
+                        break
+                    # If not immediately visible, wait a short bit
+                    await loc.wait_for(state="visible", timeout=3000)
                     search_input = loc
                     break
                 except:
                     continue
 
             if not search_input:
-                raise TimeoutError("Search input not visible after fallbacks")
+                # Final attempt: just try to find ANY visible input in a search-like container
+                try:
+                    alt_input = page.locator("div[class*='search'] input, section[class*='search'] input").first
+                    if await alt_input.is_visible(timeout=2000):
+                        search_input = alt_input
+                except: pass
+
+            if not search_input:
+                raise TimeoutError("Search input not visible after multiple fallback attempts")
 
             from .mapping import find_market_and_outcome
             market_name, _ = await find_market_and_outcome(prediction)
