@@ -83,13 +83,15 @@ Match the fixtures from 'PREDICTIONS' to the exact same fixtures in 'SITE_MATCHE
 Return a mapping of 'fixture_id' from PREDICTIONS to the corresponding 'url' from SITE_MATCHES.
 
 RULES:
-1. STRICT MATCHING: Only match if you are 100% certain they represent the same physical event.
-2. NO FUZZY OVERHEAD: Ignore minor spelling differences, suffixes (FC, United, etc.), or regional variations in team names.
-3. TIME SENSITIVITY: 
-   - REMOVE any match that has already started or finished according to the Current System Time ({now_str}).
-   - Matches starting in the next 5 minutes should also be removed for safety.
+1. STRICT MATCHING: Be EXTREMELY precise. Only match if you are "100% sure" the fixtures represent the exact same physical event (Team A vs Team B).
+2. NO FUZZY OVERHEAD: Ignore minor spelling differences, suffixes (FC, United, etc.), or variations.
+3. TIME & STATUS FILTERING:
+   - Perform a WEB SEARCH (if available) to verify the real-time status of each candidate match.
+   - REMOVE any match that has already started or finished according to the Current System Time ({now_str}) AND your real-time search data.
+   - Compare the 'match_time' and 'date' in PREDICTIONS with the current time. If a match is LIVE or FINISHED, it MUST be discarded from the output.
+   - Matches starting in the next 5 minutes should also be removed as a safety buffer.
 4. NO PARTIALS: If a match in PREDICTIONS does not exist in SITE_MATCHES, DO NOT include it in the output.
-5. RESEARCH: Use your internal knowledge and search capabilities to verify team identities (e.g., Brazilian state suffixes like SP, RJ) to be absolutely 100% sure.
+5. RESEARCH: Use your internal knowledge and search capabilities to verify team identities and match times to be absolutely 100% sure.
 
 DATA:
 --- PREDICTIONS (Source: predictions.csv) ---
