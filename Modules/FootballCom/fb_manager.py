@@ -34,7 +34,7 @@ async def run_football_com_booking(playwright: Playwright):
     user_data_dir = Path("Data/Auth/ChromeData_v3").absolute()
     user_data_dir.mkdir(parents=True, exist_ok=True)
 
-    max_restarts = 1
+    max_restarts = 3
     restarts = 0
     
     while restarts <= max_restarts:

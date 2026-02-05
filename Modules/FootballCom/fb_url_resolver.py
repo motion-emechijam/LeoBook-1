@@ -12,13 +12,14 @@ from .matcher import match_predictions_with_site
 
 async def resolve_urls(page: Page, target_date: str, day_preds: list) -> dict:
     """
-    Resolves URLs for predictions by checking cache, then scraping if needed.
+    Resolves URLs for predictions by checking cache, then scraping ONLY if cache is empty for the date.
     Returns: mapped_urls {fixture_id: url}
     """
     cached_site_matches = load_site_matches(target_date)
     matched_urls = {}
+    
+    # 1. Direct ID check (Already matched in previous runs)
     unmatched_predictions = []
-
     for pred in day_preds:
         fid = str(pred.get('fixture_id'))
         cached_match = next((m for m in cached_site_matches if m.get('fixture_id') == fid), None)
@@ -28,18 +29,41 @@ async def resolve_urls(page: Page, target_date: str, day_preds: list) -> dict:
         else:
             unmatched_predictions.append(pred)
 
-    if unmatched_predictions:
-        print(f"  [Registry] Resolving {len(unmatched_predictions)} unmatched URLs...")
+    if not unmatched_predictions:
+        return matched_urls
+
+    # 2. If we have unmatched predictions but the cache is NOT empty, try AI matching first
+    if cached_site_matches:
+        print(f"  [Registry] Found {len(cached_site_matches)} cached matches for {target_date}. Attempting AI match...")
+        new_mappings = await match_predictions_with_site(unmatched_predictions, cached_site_matches)
+        
+        still_unmatched = []
+        for pred in unmatched_predictions:
+            fid = str(pred.get('fixture_id'))
+            if fid in new_mappings:
+                url = new_mappings[fid]
+                matched_urls[fid] = url
+                site_match = next((m for m in cached_site_matches if m.get('url') == url), None)
+                if site_match:
+                    update_site_match_status(site_match['site_match_id'], 'pending', fixture_id=fid)
+            else:
+                still_unmatched.append(pred)
+        unmatched_predictions = still_unmatched
+
+    # 3. Only Crawl if we still have unmatched AND the cache was completely empty for this date
+    if unmatched_predictions and not cached_site_matches:
+        print(f"  [Registry] Cache empty for {target_date}. Starting full crawl...")
         await navigate_to_schedule(page)
         if await select_target_date(page, target_date):
             site_matches = await extract_league_matches(page, target_date)
             if site_matches:
                 save_site_matches(site_matches)
-                cached_site_matches = load_site_matches(target_date)
-                new_mappings = await match_predictions_with_site(unmatched_predictions, cached_site_matches)
+                # Refresh cache from disk
+                new_cached_matches = load_site_matches(target_date)
+                new_mappings = await match_predictions_with_site(unmatched_predictions, new_cached_matches)
                 for fid, url in new_mappings.items():
                     matched_urls[fid] = url
-                    site_match = next((m for m in cached_site_matches if m.get('url') == url), None)
+                    site_match = next((m for m in new_cached_matches if m.get('url') == url), None)
                     if site_match:
                         update_site_match_status(site_match['site_match_id'], 'pending', fixture_id=fid)
 

@@ -91,21 +91,21 @@ flowchart TD
     Booking_Process --> PHASE3
 
     subgraph Phase2a ["Phase 2a: Harvest (Match Discovery)"]
-        P2A_START["fb_url_resolver: resolve_urls"] --> P2A_CACHE{"In Cache?"}
+        P2A_START["fb_url_resolver: resolve_urls"] --> P2A_REG_CHECK{"Registry Check:<br/>Matches for Date?"}
+        P2A_REG_CHECK -- "Empty" --> P2A_SCRAPE["extractor: extract_league_matches"]
+        P2A_SCRAPE --> P2A_SAVE["save_site_matches (Persistence)"]
+        
+        P2A_REG_CHECK -- "Populated" --> P2A_CACHE{"Fixture Mapped?"}
+        P2A_SAVE --> P2A_CACHE
+        
         P2A_CACHE -- Yes --> P2A_URL[Return URL]
-        P2A_CACHE -- No --> P2A_SCRAPE["extractor: extract_league_matches"]
-        P2A_SCRAPE --> P2A_BATCH["unified_matcher: Batch AI Match"]
+        P2A_CACHE -- No --> P2A_BATCH["unified_matcher: Batch AI Match"]
         
         subgraph AIRotation ["AI Rotation Layer"]
-            P2A_BATCH --> P2A_GROK["Grok Call (3x Retries)"]
-            P2A_GROK -- Fail --> P2A_GEM["Gemini Call (3x Retries)"]
-            P2A_GEM -- Fail --> P2A_OR["OpenRouter Call (3x Retries)"]
-            P2A_OR -- Success --> P2A_SAVE
-            P2A_GEM -- Success --> P2A_SAVE
-            P2A_GROK -- Success --> P2A_SAVE
+            P2A_BATCH --> P2A_GROK["Grok/Gemini/OpenRouter"]
+            P2A_GROK -- Success --> P2A_UPDATE_ST["update_site_match_status"]
+            P2A_UPDATE_ST --> P2A_URL
         end
-        
-        P2A_SAVE["save_site_matches (Persistence)"] --> P2A_URL
     end
     %% Phase 3: Completion
     PHASE3["<b>PHASE 3: COMPLETION</b>"]

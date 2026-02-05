@@ -68,11 +68,13 @@ For a high-level visual representation, see: [leobook_algorithm.mmd](file:///c:/
 **Objective**: Connect prediction data to live bookmaker URLs using high-intelligence AI.
 
 - **Orchestrator**: [fb_url_resolver.py](file:///c:/Users/Admin/Desktop/ProProjection/LeoBook/Modules/FootballCom/fb_url_resolver.py)
-- **Logic**: 
-  - Resolves all matches for a target date in a **single AI Batch Prompt**.
-  - **Rotation Layer**: [unified_matcher.py](file:///c:/Users/Admin/Desktop/ProProjection/LeoBook/Core/Intelligence/unified_matcher.py) (Rotates through Grok, Gemini, and OpenRouter).
-  - **Matching Strategy**: Bypasses local fuzzy matching; relies on AI semantic intelligence to map `fixture_id` to URLs while filtering for "already started" matches.
-  - **Action**: Extracts sharing booking codes for each matched fixture.
+- **Logic**:
+  - **Registry Check**: Checks `football_com_matches.csv` for the target date before crawling.
+  - **Match Matching (Direct)**: Re-uses URLs for already-mapped `fixture_id`s in the registry.
+  - **Match Matching (AI Batch)**: If unmatched predictions exist but registry is populated, runs **AI Batch Prompt** against cached matches.
+  - **Crawl Fallback**: ONLY triggers `extract_league_matches` (Expand & Harvest) if the registry for the date is empty.
+  - **Rotation Layer**: [unified_matcher.py](file:///c:/Users/Admin/Desktop/ProProjection/LeoBook/Core/Intelligence/unified_matcher.py) (Rotates through Grok, Gemini, and OpenRouter for AI Matching).
+  - **Action**: Extracts sharing booking codes for each matched fixture via [booking_code.py](file:///c:/Users/Admin/Desktop/ProProjection/LeoBook/Modules/FootballCom/booker/booking_code.py).
     - [booking_code.py](file:///c:/Users/Admin/Desktop/ProProjection/LeoBook/Modules/FootballCom/booker/booking_code.py): `place_bets_for_matches()` orchestrator:
         - **Time Check**: Skips matches <10 mins to start using `check_match_start_time()`.
         - **Navigation**: Visits match URL, ensures "Bet Insights" widget is collapsed.
