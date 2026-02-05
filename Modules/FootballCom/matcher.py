@@ -154,9 +154,37 @@ async def match_predictions_with_site(day_predictions: List[Dict], site_matches:
     # Initialize batch matcher
     matcher = UnifiedBatchMatcher()
     
+    # 1. Load Existing Matches (Persistence Check)
+    from Data.Access.db_helpers import load_site_matches
+    existing_matches = load_site_matches(target_date)
+    
+    # Filter out predictions that are already matched
+    unmatched_predictions = []
+    mapping = {} # Start with existing mappings
+    
+    for pred in day_predictions:
+        fid = str(pred.get('fixture_id'))
+        # Check if this fixture ID exists in our DB for this date with a valid URL
+        existing = next((m for m in existing_matches if str(m.get('fixture_id')) == fid and m.get('url')), None)
+        if existing:
+            mapping[fid] = existing.get('url')
+        else:
+            unmatched_predictions.append(pred)
+            
+    if mapping:
+        print(f"  [Matcher] Found {len(mapping)} matches already cached in DB. Skipping AI for these.")
+
+    if not unmatched_predictions:
+        print("  [Matcher] All matches already resolved via cache. Skipping AI call.")
+        return mapping
+
+    print(f"  [Matcher] Sending {len(unmatched_predictions)} remaining predictions to AI...")
+
     # Execute batch matching
     try:
-        mapping = await matcher.match_batch(target_date, day_predictions, site_matches)
+        new_mapping = await matcher.match_batch(target_date, unmatched_predictions, site_matches)
+        if new_mapping:
+            mapping.update(new_mapping)
         
         # Verify and log results
         matched_count = len(mapping)

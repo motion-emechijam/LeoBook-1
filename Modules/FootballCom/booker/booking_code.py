@@ -129,41 +129,22 @@ async def harvest_single_match_code(page: Page, match: Dict, prediction: Dict) -
 
             await asyncio.sleep(1)
 
-            # Expand market if collapsed
-            header_sel = SelectorManager.get_selector_strict("fb_match_page", "market_header")
-            if await page.locator(header_sel).is_visible(timeout=5000):
-                await robust_click(page.locator(header_sel).first, page)
-                await asyncio.sleep(2)
+            # Expand market if collapsed (Handled robustly in select_outcome now)
+            # Pre-expansion removed to avoid strict mode violations on generic selectors.
 
-            # Select outcome with fallbacks
-            outcome_selectors = [
-                f'button:has-text("{outcome}")',
-                f'.match-market-row:has-text("{outcome}")',
-                f'div:has-text("{outcome}")'
-            ]
-            outcome_loc = None
-            for sel in outcome_selectors:
-                loc = page.locator(sel).first
-                if await loc.count() > 0:
-                    outcome_loc = loc
-                    break
-
-            if not outcome_loc:
-                raise ValueError(f"Outcome '{outcome}' not found")
-
-            # Odds check (parse adjacent odds)
-            odds_text = await outcome_loc.evaluate(
-                "el => el.parentElement.querySelector('.odds, .coefficient')?.innerText || '0'"
-            )
-            odds = float(re.sub(r"[^\d.]", "", odds_text)) if odds_text else 0.0
-            if odds < 1.20:
-                print(f"    [Harvest Skip] Low odds: {odds}")
-                update_prediction_status(fixture_id, prediction.get('date'), "skipped_low_odds")
-                return False
-
-            await outcome_loc.scroll_into_view_if_needed()
-            await outcome_loc.click(timeout=10000)
-            await asyncio.sleep(3)
+            # Select outcome with logic for Tabular markets (Over/Under)
+            success = await select_outcome(page, prediction)
+            if not success:
+                 print(f"    [Harvest Failed] Could not select outcome for '{outcome}'")
+                 return False
+                 
+            # Note: select_outcome now handles locating the button. 
+            # We need to re-verify odds logic from the returned element if needed, 
+            # but select_outcome encapsulates that.  
+            
+            # Post-selection: The button is clicked inside select_outcome.
+            # We just need to proceed to booking.
+            await asyncio.sleep(2)
             await page.wait_for_selector("fb_match_page.bet_slip_container", timeout=15000)
 
             # Book Bet & Extract
@@ -211,7 +192,7 @@ async def expand_collapsed_market(page: Page, market_name: str):
         if header_sel:
              target_header = page.locator(header_sel).filter(has_text=market_name).first
              if await target_header.count() > 0:
-                 print(f"    [Market] Clicking market header for '{market_name}' to ensure expansion...")
+                 # print(f"    [Market] Clicking market header for '{market_name}' to ensure expansion...")
                  await robust_click(target_header, page)
                  await asyncio.sleep(1)
     except Exception as e:
@@ -220,13 +201,10 @@ async def expand_collapsed_market(page: Page, market_name: str):
 async def select_outcome(page: Page, prediction: Dict) -> bool:
     """
     Safe outcome selection with odds check (v2.7).
-    1. Maps prediction -> generic names.
-    2. Searches/Locates market (expands if collapsed).
-    3. Finds outcome button.
-    4. Extracts odds -> skips if < 1.20.
-    5. Clicks and verifies.
+    Handles standard buttons and Tabular markets (Over/Under).
     """
     from .mapping import find_market_and_outcome
+    import re
     
     # 1. Map Prediction
     m_name, o_name = await find_market_and_outcome(prediction)
@@ -236,7 +214,7 @@ async def select_outcome(page: Page, prediction: Dict) -> bool:
 
     try:
         # 2. Expand Market if needed
-        # We look for the market header and click if it's not 'open'
+        # Use first() to avoid strict mode violations if multiple matches found
         header_sel = SelectorManager.get_selector_strict("fb_match_page", "market_group_header")
         market_container = page.locator(header_sel).filter(has_text=m_name).first
         
@@ -250,7 +228,7 @@ async def select_outcome(page: Page, prediction: Dict) -> bool:
                            await market_container.locator(".icon-arrow-down").count() > 0
             
             if is_collapsed:
-                print(f"    [Selection] Market '{m_name}' is collapsed. Expanding...")
+                # print(f"    [Selection] Market '{m_name}' is collapsed. Expanding...")
                 await robust_click(market_container, page)
                 await asyncio.sleep(1.5)
         else:
@@ -263,65 +241,58 @@ async def select_outcome(page: Page, prediction: Dict) -> bool:
                                SelectorManager.get_selector_strict("fb_match_page", "search_input")
             
             if search_btn_sel and await page.locator(search_btn_sel).count() > 0:
-                 try:
-                     # Force click to bypass transparent overlays
-                     await page.locator(search_btn_sel).first.click(force=True)
-                     await asyncio.sleep(1)
-                     
-                     # Wait for input to be truly interactable
-                     await page.wait_for_selector(search_input_sel, state="visible", timeout=3000)
-                     
-                     if await page.locator(search_input_sel).count() > 0:
-                         print(f"    [Search] Searching for '{m_name}'...")
-                         await page.locator(search_input_sel).click() # Focus
-                         await page.locator(search_input_sel).fill(m_name)
-                         await page.keyboard.press("Enter")
-                         # Give time for results to render
-                         await asyncio.sleep(2.5) 
-                         
-                         # Re-verify market container after search
-                         market_container = page.locator(header_sel).filter(has_text=m_name).first
-                         if await market_container.count() > 0:
-                             await market_container.scroll_into_view_if_needed()
-                             print(f"    [Search] Found market '{m_name}' via search.")
-                         else:
-                             print(f"    [Search] Market '{m_name}' still not found after search.")
-                 except Exception as e:
-                     print(f"    [Search Error] Failed during search flow: {e}")
-
-            # Fallback Proactive Scroll if Search failed or wasn't available
-            if await market_container.count() == 0:
-                print(f"    [Selection] Attempting proactive scroll search as final fallback...")
-                potential_headers = page.locator(header_sel)
-                for i in range(await potential_headers.count()):
-                    h = potential_headers.nth(i)
-                    txt = await h.inner_text()
-                    if m_name.upper() in txt.upper():
-                        await h.scroll_into_view_if_needed()
-                        await robust_click(h, page)
-                        await asyncio.sleep(1.5)
-                        market_container = h
-                        break
+                await robust_click(page.locator(search_btn_sel).first, page)
+                
+            if search_input_sel:
+                 # CRITICAL: Max 1.5s delay allowed here per user request
+                 await asyncio.sleep(1.5)
+                 await page.fill(search_input_sel, m_name)
+                 await page.press(search_input_sel, "Enter")
+                 await asyncio.sleep(2)
+                 
+                 # After search, check again
+                 market_container = page.locator(header_sel).filter(has_text=m_name).first
+                 if await market_container.count() > 0:
+                      if await market_container.locator(".collapsed").count() > 0:
+                          await robust_click(market_container, page)
             
-            if await market_container.count() == 0:
-                print(f"    [Selection Error] Market '{m_name}' not found after all discovery attempts.")
-                return False
-
-        # 3. Locate Outcome Button & Check Odds
-        # We look for ANY clickable element containing the outcome name precisely or as a word
-        # Priority: Exact match in a child span/div, then has-text
-        outcome_btn = page.locator(f"//div[contains(@class, 'm-outcome-item')]//*[normalize-space()='{o_name}']").first
+        # 3. Locate Outcome Button
+        outcome_btn = None
         
-        # Fallback 1: button or div with role button
-        if await outcome_btn.count() == 0:
+        # A) Special Handling for Over/Under (Tabular)
+        # e.g. "Goals Over/Under", "Over 2.5"
+        if "Over/Under" in m_name:
+            ou_match = re.search(r"(Over|Under) (\d+\.5)", o_name, re.IGNORECASE)
+            if ou_match:
+                ou_type = ou_match.group(1).title() # "Over" or "Under"
+                line = ou_match.group(2) # "0.5", "1.5"
+                
+                # Find row with this line
+                # Look for 'em' tag with exact text inside a table row
+                row_loc = page.locator(f".m-table-row").filter(has=page.locator(f"em", has_text=line))
+                
+                if await row_loc.count() > 0:
+                    # Found row. Get buttons container (second cell usually)
+                    # The buttons are usually divs with 'un-rounded' class inside the flex container
+                    # We assume 1st = Over, 2nd = Under based on standard layout
+                    btn_index = 0 if ou_type == "Over" else 1
+                    outcome_btn = row_loc.locator(".un-rounded-rem-\[10px\]").nth(btn_index)
+                    print(f"    [Selection] Found tabular button for {ou_type} {line}")
+
+        # B) Standard Text Search (Fallback)
+        if not outcome_btn or await outcome_btn.count() == 0:
+            outcome_btn = page.locator(f"//div[contains(@class, 'm-outcome-item')]//*[normalize-space()='{o_name}']").first
+        
+        # C) Fallback 2: button or div with role button
+        if not outcome_btn or await outcome_btn.count() == 0:
             btn_sel = f"button:has-text('{o_name}'), div[role='button']:has-text('{o_name}'), .m-outcome-item:has-text('{o_name}')"
             outcome_btn = page.locator(btn_sel).filter(has_text=re.compile(f"^{o_name}$|^{o_name}\\s|\\s{o_name}$")).first
 
-        if await outcome_btn.count() == 0:
+        if not outcome_btn or await outcome_btn.count() == 0:
             print(f"    [Selection Error] Outcome button '{o_name}' not found.")
             return False
 
-        # Extract Odds
+        # Extract Odds & Verify
         odds_text = await outcome_btn.inner_text()
         # regex for float numbers
         odds_match = re.search(r'(\d+\.\d+)', odds_text)
@@ -330,16 +301,10 @@ async def select_outcome(page: Page, prediction: Dict) -> bool:
             if odds_val < 1.20:
                 print(f"    [Selection Skip] Odds {odds_val} for '{o_name}' are < 1.20 limit.")
                 return False
-            print(f"    [Selection] Found odds: {odds_val} for '{o_name}'.")
-        else:
-             print(f"    [Selection Warning] Could not parse odds from '{odds_text}'. Proceeding with caution.")
+            # print(f"    [Selection] Found odds: {odds_val} for '{o_name}'.")
 
         # 4. Click
         await robust_click(outcome_btn, page)
-        await asyncio.sleep(0.5)
-        
-        # Simple verification: button usually changes color or gets a specific class when selected
-        # But we'll rely on the slip counter verification in the main harvester
         return True
 
     except Exception as e:
@@ -376,6 +341,3 @@ async def extract_booking_info(page: Page) -> Tuple[str, str]:
     except Exception as e:
         print(f"    [Extraction Error] Modal extraction failed: {e}")
         return "", ""
-
-
-    return False
