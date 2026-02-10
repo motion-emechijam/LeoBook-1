@@ -8,10 +8,16 @@ graph TD
         E --> F[recommended.json]
     end
 
+    subgraph GitHub_Repo ["GitHub Repository (Cloud Data)"]
+        F[recommended.json]
+        I[schedules.csv]
+    end
+
     subgraph Flutter_App ["Flutter App (Pilot X)"]
         G[Data Repository] --> H[Home Cubit]
+        Z[Cache: shared_preferences] <--> G
         F -.-> G
-        I[schedules.csv] -.-> G
+        I -.-> G
         H --> P[Filtering Logic: Date & Sport]
         P --> J[HomeScreen]
         J --> S[SearchScreen]

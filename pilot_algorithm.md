@@ -28,7 +28,8 @@ The system is split into two main components:
 - **Data Layer**:
     - `DataRepository`: Fetches `schedules.csv` and `recommended.json` from the official GitHub repository using high-performance raw URLs.
     - **Caching**: Implements a `shared_preferences` based cache-aside pattern, allowing full offline support for previously loaded data.
-    - `NewsRepository`: Fetches latest sports news.
+    - `NewsRepository`: Fetches latest sports news from configured sources.
+
 - **Logic Layer**:
     - `HomeCubit`: Manages the state of the dashboard, coordinating data from multiple repositories.
 - **Presentation Layer**:

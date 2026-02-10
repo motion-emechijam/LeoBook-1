@@ -77,21 +77,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Mind (AI Models & Data) - Exclude platform-specific binaries
-#Mind/model.gguf
-#Mind/mmproj.gguf
-Mind/*.exe
-Mind/*.dll
-Mind/llama-server
-Mind/llama.cpp/
-Mind/*.gguf
 
 # Chrome Profile Data & Data Layer
 Data/Auth/
-Data/Store/*
-!Data/Store/schedules.csv
-!Data/Store/predictions.csv
-!Data/Store/recommended.json
-!Data/Store/teams.csv
-DB/
 storage_state.json
