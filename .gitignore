@@ -50,8 +50,9 @@ Thumbs.db
 .playwright/
 playwright-state/
 
-# Database
+# Database (exclude general db files but allow predictions.db for deployment)
 *.db
+!Data/Store/predictions.db
 *.sqlite
 *.sqlite3
 
