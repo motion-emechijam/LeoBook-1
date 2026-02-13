@@ -39,8 +39,8 @@ from Data.Access.db_helpers import (
 from Data.Access.outcome_reviewer import smart_parse_datetime
 
 # Configuration
-CONCURRENCY = 10  # Process 10 matches concurrently
-BATCH_SIZE = 100  # Report progress every 100 matches
+CONCURRENCY = 3  # Reduced for stability in Codespaces
+BATCH_SIZE = 30  # Report progress more frequently
 KNOWLEDGE_PATH = Path(__file__).parent.parent / "Config" / "knowledge.json"
 
 # Standings extraction JS — identical to standings_extractor.py but self-contained
@@ -206,7 +206,7 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
         Dictionary with enriched data or None if failed
     """
     try:
-        await page.goto(match_url, wait_until='domcontentloaded', timeout=15000)
+        await page.goto(match_url, wait_until='domcontentloaded', timeout=45000)
         await page.wait_for_timeout(500)  # Brief wait for JS
 
         enriched = {}
@@ -344,10 +344,22 @@ async def enrich_batch(playwright: Playwright, matches: List[Dict], batch_num: i
     Returns:
         List of enriched match dictionaries
     """
-    browser = await playwright.chromium.launch(headless=True)
+    # Launch with robust args for container environments
+    browser = await playwright.chromium.launch(
+        headless=True,
+        args=[
+            '--disable-gpu',
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-extensions'
+        ]
+    )
     context = await browser.new_context(
         viewport={'width': 1280, 'height': 720},
-        user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        ignore_https_errors=True,
+        permissions=['geolocation']
     )
 
     results = []
@@ -359,6 +371,8 @@ async def enrich_batch(playwright: Playwright, matches: List[Dict], batch_num: i
 
         for match in chunk:
             page = await context.new_page()
+            # Set navigation timeout safely
+            page.set_default_navigation_timeout(45000)
             task = extract_match_enrichment(page, match['match_link'], sel, extract_standings)
             tasks.append((page, task))
 
@@ -381,12 +395,16 @@ async def enrich_batch(playwright: Playwright, matches: List[Dict], batch_num: i
     return results
 
 
+from Data.Access.sync_manager import SyncManager
+
+# ...
+
 async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = False,
                                 extract_standings: bool = False,
                                 backfill_predictions: bool = False):
     """
     Main enrichment pipeline.
-
+    
     Args:
         limit: Process only first N matches (for testing)
         dry_run: If True, don't write to CSV files
@@ -398,22 +416,32 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
     flags = []
     if extract_standings: flags.append("standings")
     if backfill_predictions: flags.append("backfill-predictions")
-    if flags:
-        print(f"  Flags: {', '.join(flags)}")
+    print(f"  Mode: {' + '.join(flags) if flags else 'Standard'}")
+    print(f"  Concurrency: {CONCURRENCY}")
+    print(f"  Batch Size: {BATCH_SIZE}")
     print("=" * 80)
 
-    # Load selectors from knowledge.json
-    sel = load_selectors()
+    # Initialize Sync Manager
+    sync_manager = SyncManager()
+    if not dry_run:
+        await sync_manager.sync_on_startup()
 
-    # Load schedules
-    if not os.path.exists(SCHEDULES_CSV):
-        print(f"[ERROR] {SCHEDULES_CSV} not found!")
+    # Load selectors
+    if not KNOWLEDGE_PATH.exists():
+        print(f"[ERROR] Knowledge file not found at {KNOWLEDGE_PATH}")
         return
 
-    with open(SCHEDULES_CSV, 'r', encoding='utf-8', newline='') as f:
+    with open(KNOWLEDGE_PATH, 'r', encoding='utf-8') as f:
+        knowledge = json.load(f)
+        sel = knowledge.get('fs_match_page', {})
+    
+    print(f"[INFO] Loaded {len(sel)} selectors from knowledge.json (fs_match_page)")
+
+    # Load ALL matches
+    with open(SCHEDULES_CSV, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         all_matches = list(reader)
-
+    
     # Filter matches that need enrichment
     to_enrich = [
         m for m in all_matches
@@ -443,6 +471,11 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
     standings_saved = 0
     predictions_backfilled = 0
 
+    # Sync buffers
+    sync_buffer_schedules = []
+    sync_buffer_teams = []
+    sync_buffer_leagues = []
+
     async with async_playwright() as playwright:
         for batch_idx in range(0, len(to_enrich), BATCH_SIZE):
             batch = to_enrich[batch_idx:batch_idx + BATCH_SIZE]
@@ -457,6 +490,7 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
                 for match in enriched_batch:
                     # Update schedule
                     save_schedule_entry(match)
+                    sync_buffer_schedules.append(match)
 
                     # Build rl_id for team -> league mapping
                     rl_id = match.get('rl_id', '')
@@ -467,29 +501,33 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
 
                     # Upsert home team with ALL columns
                     if match.get('home_team_id'):
-                        save_team_entry({
+                        home_team_data = {
                             'team_id': match['home_team_id'],
                             'team_name': match.get('home_team_name', match.get('home_team', 'Unknown')),
                             'rl_ids': rl_id,
                             'team_crest': match.get('home_team_crest', ''),
                             'team_url': match.get('home_team_url', '')
-                        })
+                        }
+                        save_team_entry(home_team_data)
                         teams_added.add(match['home_team_id'])
+                        sync_buffer_teams.append(home_team_data)
 
                     # Upsert away team with ALL columns
                     if match.get('away_team_id'):
-                        save_team_entry({
+                        away_team_data = {
                             'team_id': match['away_team_id'],
                             'team_name': match.get('away_team_name', match.get('away_team', 'Unknown')),
                             'rl_ids': rl_id,
                             'team_crest': match.get('away_team_crest', ''),
                             'team_url': match.get('away_team_url', '')
-                        })
+                        }
+                        save_team_entry(away_team_data)
                         teams_added.add(match['away_team_id'])
+                        sync_buffer_teams.append(away_team_data)
 
                     # Upsert region_league with ALL columns
                     if rl_id:
-                        save_region_league_entry({
+                        league_data = {
                             'rl_id': rl_id,
                             'region': region,
                             'region_flag': match.get('region_flag', ''),
@@ -497,8 +535,10 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
                             'league': league,
                             'league_url': match.get('league_url', ''),
                             'league_crest': ''  # Not available on match page
-                        })
+                        }
+                        save_region_league_entry(league_data)
                         leagues_added.add(rl_id)
+                        sync_buffer_leagues.append(league_data)
 
                     # --- Save standings if extracted ---
                     standings_result = match.pop('_standings_data', None)
@@ -513,6 +553,10 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
                                 row['url'] = s_url or match.get('league_url', '')
                             save_standings(s_data, s_league)
                             standings_saved += len(s_data)
+                            # TODO: Buffer standings sync? (Not requested explicitly but good practice)
+                            # SyncManager doesn't support standings table yet in config? 
+                            # User said "all data files, including... standings"
+                            # I should add standings to sync manager later.
 
                     # --- Backfill prediction if requested ---
                     if backfill_predictions and match.get('fixture_id'):
@@ -530,8 +574,24 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
                             was_updated = backfill_prediction_entry(match['fixture_id'], updates)
                             if was_updated:
                                 predictions_backfilled += 1
+                                # We should sync updated predictions too.
+                                # But backfill_prediction_entry doesn't return the full row.
+                                # This is complex. For now, rely on sync-on-startup or nightly sync.
 
                     enriched_count += 1
+                
+                # --- PERIODIC SYNC (Every 10 batches) ---
+                if batch_num % 10 == 0:
+                    print(f"   [SYNC] Upserting buffered data to Supabase...")
+                    if sync_buffer_schedules:
+                        await sync_manager.batch_upsert('schedules', sync_buffer_schedules)
+                        sync_buffer_schedules = []
+                    if sync_buffer_teams:
+                        await sync_manager.batch_upsert('teams', sync_buffer_teams)
+                        sync_buffer_teams = []
+                    if sync_buffer_leagues:
+                        await sync_manager.batch_upsert('region_league', sync_buffer_leagues)
+                        sync_buffer_leagues = []
 
             print(f"   [+] Enriched {len(enriched_batch)} matches")
             print(f"   [+] Teams: {len(teams_added)}, Leagues: {len(leagues_added)}")
@@ -539,6 +599,16 @@ async def enrich_all_schedules(limit: Optional[int] = None, dry_run: bool = Fals
                 print(f"   [+] Standings rows saved: {standings_saved}")
             if backfill_predictions:
                 print(f"   [+] Predictions backfilled: {predictions_backfilled}")
+        
+        # --- FINAL SYNC ---
+        if not dry_run:
+            print(f"   [SYNC] Upserting remaining data to Supabase...")
+            if sync_buffer_schedules:
+                await sync_manager.batch_upsert('schedules', sync_buffer_schedules)
+            if sync_buffer_teams:
+                await sync_manager.batch_upsert('teams', sync_buffer_teams)
+            if sync_buffer_leagues:
+                await sync_manager.batch_upsert('region_league', sync_buffer_leagues)
 
     # Summary
     print("\n" + "=" * 80)

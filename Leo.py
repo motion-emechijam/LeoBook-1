@@ -60,6 +60,15 @@ async def main():
                     state["cycle_start_time"] = dt.now()
                     log_state(chapter="Cycle Start", action=f"Starting Cycle #{state['cycle_count']}")
 
+                    # --- PROLOGUE: DATA ENRICHMENT ---
+                    log_state(chapter="Prologue", action="Enriching Match Schedules")
+                    from Scripts.enrich_all_schedules import enrich_all_schedules
+                    try:
+                        # Run enrichment with standings extraction
+                        await enrich_all_schedules(extract_standings=True)
+                    except Exception as e:
+                        print(f"  [Error] Prologue failed: {e}")
+
                     # --- CHAPTER 0: REVIEW ---
                     log_state(chapter="Chapter 0", action="Reviewing Outcomes")
                     from Data.Access.review_outcomes import run_review_process
