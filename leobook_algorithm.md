@@ -131,5 +131,5 @@ This layer operates globally across all chapters to ensure the system never stop
 
 ---
 
-**Manufacturer**: Emenike Chinenye James  
+**Chief Engineer**: Emenike Chinenye James  
 **Source of Truth**: Refactored Clean Architecture (v2.7)

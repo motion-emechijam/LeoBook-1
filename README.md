@@ -1,5 +1,6 @@
 # Leo
-**Manufacturer**: Emenike Chinenye James (Materialless LLC)  
+**Developer**: Matterialless LLC  
+**Chief Engineer**: Emenike Chinenye James
 **Powered by**: Grok 4.1 & Gemini 3
 
 ## PROLOGUE
