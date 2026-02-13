@@ -30,111 +30,23 @@ from datetime import datetime
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from playwright.async_api import Playwright, async_playwright
+from playwright.async_api import Playwright, async_playwright, Browser
 from Data.Access.db_helpers import (
     SCHEDULES_CSV, TEAMS_CSV, REGION_LEAGUE_CSV, STANDINGS_CSV, PREDICTIONS_CSV,
     save_team_entry, save_region_league_entry, save_schedule_entry,
     save_standings, backfill_prediction_entry
 )
 from Data.Access.outcome_reviewer import smart_parse_datetime
+from Core.Browser.Extractors.standings_extractor import extract_standings_data, activate_standings_tab
+from Modules.Flashscore.fs_utils import retry_extraction
+from Core.Utils.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
 
 # Configuration
 CONCURRENCY = 3  # Reduced for stability (prevents "Page crashed")
 BATCH_SIZE = 50  # Process more matches per browser restart
 KNOWLEDGE_PATH = Path(__file__).parent.parent / "Config" / "knowledge.json"
 
-# Standings extraction JS — identical to standings_extractor.py but self-contained
-STANDINGS_JS = r"""(selectors) => {
-    const getText = (el, sel) => {
-        const elem = el?.querySelector(sel);
-        return elem ? elem.innerText?.trim() : null;
-    };
-    const getInt = (text) => {
-        if (text === null) return null;
-        const parsed = parseInt(text.replace(/[()]/g, ''), 10);
-        return isNaN(parsed) ? null : parsed;
-    };
-    const getHref = (el, sel) => {
-        const elem = el?.querySelector(sel);
-        return elem ? elem.href : null;
-    };
-
-    const table = [];
-    const rows = document.querySelectorAll(selectors.standings_row);
-    if (rows.length === 0) {
-        return { standings: [], region_league: 'Unknown', parsing_errors: ['No table rows found'] };
-    }
-
-    rows.forEach((row, index) => {
-        const teamLink = getHref(row, selectors.standings_col_team_link);
-        let teamId = null;
-        if (teamLink) {
-            const parts = teamLink.split('/').filter(p => p);
-            const teamIndex = parts.indexOf('team');
-            if (teamIndex !== -1 && parts.length > teamIndex + 2) {
-                teamId = parts[teamIndex + 2];
-            }
-        }
-
-        let gf = null, ga = null;
-        const goals = getText(row, selectors.standings_col_goals);
-        if (goals && goals.includes(':')) {
-            [gf, ga] = goals.split(':').map(p => {
-                const parsed = parseInt(p.trim());
-                return isNaN(parsed) ? null : parsed;
-            });
-        }
-
-        const positionText = getText(row, selectors.standings_col_rank);
-        const position = getInt(positionText) || (index + 1);
-        const teamName = getText(row, selectors.standings_col_team_name);
-
-        table.push({
-            position: position,
-            team_name: teamName || `Team ${index + 1}`,
-            team_id: teamId,
-            played: getInt(getText(row, selectors.standings_col_matches_played)),
-            wins: getInt(getText(row, selectors.standings_col_wins)),
-            draws: getInt(getText(row, selectors.standings_col_draws)),
-            losses: getInt(getText(row, selectors.standings_col_losses)),
-            goals_for: gf,
-            goals_against: ga,
-            goal_difference: (gf !== null && ga !== null) ? (gf - ga) : null,
-            points: getInt(getText(row, selectors.standings_col_points)),
-            form: getText(row, selectors.standings_col_form),
-        });
-    });
-
-    const country = document.querySelector(selectors.meta_breadcrumb_country)?.innerText?.trim()?.toUpperCase();
-    const leagueEl = document.querySelector(selectors.meta_breadcrumb_league);
-    const league = leagueEl?.innerText?.trim();
-    const league_url = leagueEl?.href || null;
-    const region_league = (country && league) ? `${country} - ${league}` : 'Unknown';
-
-    return {
-        standings: table,
-        region_league: region_league,
-        league_url: league_url,
-        parsing_errors: []
-    };
-}"""
-
-# Default standings selectors (same fallbacks as standings_extractor.py)
-STANDINGS_SELECTORS = {
-    "standings_row": ".ui-table__row",
-    "standings_col_rank": ".tableCellRank",
-    "standings_col_team_name": ".tableCellParticipant__name",
-    "standings_col_team_link": ".tableCellParticipant__name a",
-    "standings_col_matches_played": "td:nth-child(3)",
-    "standings_col_wins": "td:nth-child(4)",
-    "standings_col_draws": "td:nth-child(5)",
-    "standings_col_losses": "td:nth-child(6)",
-    "standings_col_goals": "td:nth-child(7)",
-    "standings_col_points": ".tableCellPoints",
-    "standings_col_form": ".tableCellForm",
-    "meta_breadcrumb_country": ".tournamentHeader__country",
-    "meta_breadcrumb_league": ".tournamentHeader__league a",
-}
+# Selective dynamic selectors will still be used but Core/ extracts will handle standings
 
 
 def load_selectors() -> Dict[str, str]:
@@ -195,19 +107,14 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
                                     extract_standings: bool = False) -> Optional[Dict]:
     """
     Extract team IDs, crests, URLs, league info, score, datetime, and optionally standings.
-
-    Args:
-        page: Playwright page instance
-        match_url: Full match URL
-        sel: Selectors dict from knowledge.json
-        extract_standings: If True, click Standings tab and extract league table
-
-    Returns:
-        Dictionary with enriched data or None if failed
     """
     try:
-        await page.goto(match_url, wait_until='domcontentloaded', timeout=45000)
-        await page.wait_for_timeout(500)  # Brief wait for JS
+        # Use retry for navigation
+        async def _navigate():
+            await page.goto(match_url, wait_until='domcontentloaded', timeout=NAVIGATION_TIMEOUT)
+            await asyncio.sleep(1.0)
+        
+        await retry_extraction(_navigate)
 
         enriched = {}
 
@@ -235,7 +142,7 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
         if away_crest_src:
             enriched['away_team_crest'] = _standardize_url(away_crest_src)
 
-        # --- REGION + LEAGUE (from breadcrumb, not URL slug) ---
+        # --- REGION + LEAGUE ---
         region_name = await _safe_text(page, sel.get('region_name', ''))
         if region_name:
             enriched['region'] = region_name
@@ -253,12 +160,10 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
             enriched['league_url'] = _standardize_url(league_url_href)
             enriched['rl_id'] = _id_from_href(league_url_href)
 
-        # Read league name from breadcrumb text, not URL slug
         league_name_text = await _safe_text(page, sel.get('league_url', ''))
         if league_name_text:
             enriched['league'] = league_name_text
 
-        # Build region_league for schedules.csv
         if region_name and league_name_text:
             enriched['region_league'] = f"{region_name.upper()} - {league_name_text}"
 
@@ -284,9 +189,10 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
 
         # --- STANDINGS (optional) ---
         if extract_standings:
-            standings_result = await _extract_standings_from_page(page, sel)
-            if standings_result:
-                enriched['_standings_data'] = standings_result
+            if await activate_standings_tab(page):
+                standings_result = await retry_extraction(extract_standings_data, page)
+                if standings_result:
+                    enriched['_standings_data'] = standings_result
 
         return enriched if enriched else None
 
@@ -295,105 +201,44 @@ async def extract_match_enrichment(page, match_url: str, sel: Dict[str, str],
         return None
 
 
-async def _extract_standings_from_page(page, sel: Dict[str, str]) -> Optional[Dict]:
-    """Click Standings tab and extract table using JS evaluation."""
+async def process_match_task_isolated(browser: Browser, match: Dict, sel: Dict[str, str], extract_standings: bool) -> Dict:
+    """Worker to enrich a single match within its own context."""
+    context = await browser.new_context(
+        viewport={'width': 1280, 'height': 720},
+        user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        ignore_https_errors=True
+    )
+    page = await context.new_page()
     try:
-        # Click Standings tab
-        tab_sel = sel.get('tab_standings', '')
-        if not tab_sel:
-            return None
-
-        tab = await page.query_selector(tab_sel)
-        if not tab:
-            return None
-
-        await tab.click()
-        await page.wait_for_timeout(2000)  # Wait for standings table to load
-
-        # Wait for table rows to appear
-        try:
-            await page.wait_for_selector(STANDINGS_SELECTORS['standings_row'], timeout=5000)
-        except:
-            return None
-
-        # Run JS extraction
-        result = await page.evaluate(STANDINGS_JS, STANDINGS_SELECTORS)
-        standings = result.get('standings', [])
-
-        if standings:
-            return result
-        return None
-
-    except Exception as e:
-        print(f"      [STANDINGS] Extraction failed: {e}")
-        return None
+        enriched = await extract_match_enrichment(page, match['match_link'], sel, extract_standings)
+        if enriched:
+            match.update(enriched)
+        return match
+    finally:
+        await context.close()
 
 
 async def enrich_batch(playwright: Playwright, matches: List[Dict], batch_num: int,
                        sel: Dict[str, str], extract_standings: bool = False) -> List[Dict]:
-    """
-    Process a batch of matches concurrently.
-
-    Args:
-        playwright: Playwright instance
-        matches: List of match dictionaries from schedules.csv
-        batch_num: Current batch number for logging
-        sel: Selectors dict from knowledge.json
-        extract_standings: Whether to extract standings data
-
-    Returns:
-        List of enriched match dictionaries
-    """
-    # Launch with robust args for container environments
+    """Process a batch of matches with isolated contexts and throttled concurrency."""
     browser = await playwright.chromium.launch(
         headless=True,
-        args=[
-            '--disable-gpu',
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-extensions'
-        ]
+        args=['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
     )
-    context = await browser.new_context(
-        viewport={'width': 1280, 'height': 720},
-        user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        ignore_https_errors=True,
-        permissions=['geolocation']
-    )
+    
+    semaphore = asyncio.Semaphore(CONCURRENCY)
 
-    results = []
+    async def worker(match):
+        async with semaphore:
+            # Brief jitter/stagger to prevent simultaneous CPU bursts
+            await asyncio.sleep(0.5)
+            return await process_match_task_isolated(browser, match, sel, extract_standings)
 
-    # Process matches in smaller concurrent chunks
-    for i in range(0, len(matches), CONCURRENCY):
-        chunk = matches[i:i + CONCURRENCY]
-        tasks = []
-
-        for match in chunk:
-            page = await context.new_page()
-            # Set navigation timeout safely
-            page.set_default_navigation_timeout(45000)
-            task = extract_match_enrichment(page, match['match_link'], sel, extract_standings)
-            tasks.append((page, task))
-            await asyncio.sleep(0.5) # Slight stagger to prevent CPU spikes
-
-        # Wait for all tasks
-        chunk_results = await asyncio.gather(*[t for _, t in tasks], return_exceptions=True)
-
-        # Close pages
-        for page, _ in tasks:
-            await page.close()
-
-        # Merge results with original match data
-        for match, enriched in zip(chunk, chunk_results):
-            if isinstance(enriched, dict):
-                match.update(enriched)
-            results.append(match)
-
-    await context.close()
+    # Gather results for all matches in the batch
+    results = await asyncio.gather(*(worker(m) for m in matches))
+    
     await browser.close()
-
-    return results
+    return list(results)
 
 
 from Data.Access.sync_manager import SyncManager
