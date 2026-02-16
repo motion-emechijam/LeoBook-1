@@ -305,6 +305,7 @@ CREATE POLICY "Public Read Access AccuracyReports" ON public.accuracy_reports FO
 
 -- Audit Log
 CREATE TABLE IF NOT EXISTS public.audit_log (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     event_type TEXT NOT NULL,
     description TEXT,
@@ -315,9 +316,7 @@ CREATE TABLE IF NOT EXISTS public.audit_log (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
--- We use a composite key or just allow duplicates for audit logs if needed, 
--- but sync_manager expects a unique key. We determined timestamp is sufficient.
-ALTER TABLE public.audit_log ADD CONSTRAINT audit_log_timestamp_unique UNIQUE (timestamp);
+-- We use a UUID primary key to avoid ON CONFLICT errors on duplicate timestamps.
 ALTER TABLE public.audit_log ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public Read Access AuditLog" ON public.audit_log;
 CREATE POLICY "Public Read Access AuditLog" ON public.audit_log FOR SELECT USING (true);

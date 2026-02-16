@@ -29,7 +29,7 @@ TABLE_CONFIG = {
     'custom_rules': {'csv': 'custom_rules.csv', 'table': 'custom_rules', 'key': 'id'},
     'rule_executions': {'csv': 'rule_executions.csv', 'table': 'rule_executions', 'key': 'id'},
     'accuracy_reports': {'csv': 'accuracy_reports.csv', 'table': 'accuracy_reports', 'key': 'report_id'},
-    'audit_log': {'csv': 'audit_log.csv', 'table': 'audit_log', 'key': 'timestamp'},
+    'audit_log': {'csv': 'audit_log.csv', 'table': 'audit_log', 'key': 'id'},
 }
 
 class SyncManager:

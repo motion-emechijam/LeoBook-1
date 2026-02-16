@@ -12,6 +12,7 @@ import os
 import csv
 from datetime import datetime as dt
 from typing import Dict, Any, List, Optional
+import uuid
 
 from .csv_operations import _read_csv, _append_to_csv, _write_csv, upsert_entry
 
@@ -49,6 +50,7 @@ def init_csvs():
 def log_audit_event(event_type: str, description: str, balance_before: Optional[float] = None, balance_after: Optional[float] = None, stake: Optional[float] = None, status: str = 'success'):
     """Logs a financial or system event to audit_log.csv."""
     row = {
+        'id': str(uuid.uuid4()),
         'timestamp': dt.now().strftime("%Y-%m-%d %H:%M:%S"),
         'event_type': event_type,
         'description': description,
@@ -57,7 +59,7 @@ def log_audit_event(event_type: str, description: str, balance_before: Optional[
         'stake': stake if stake is not None else '',
         'status': status
     }
-    _append_to_csv(AUDIT_LOG_CSV, row, ['timestamp', 'event_type', 'description', 'balance_before', 'balance_after', 'stake', 'status'])
+    _append_to_csv(AUDIT_LOG_CSV, row, ['id', 'timestamp', 'event_type', 'description', 'balance_before', 'balance_after', 'stake', 'status'])
 
 def save_prediction(match_data: Dict[str, Any], prediction_result: Dict[str, Any]):
     """UPSERTs a prediction into the predictions.csv file."""
