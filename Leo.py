@@ -69,7 +69,7 @@ from Core.System.monitoring import run_chapter_3_oversight
 from Scripts.recommend_bets import get_recommendations
 from Modules.Assets.asset_manager import sync_team_assets, sync_league_assets, sync_region_flags
 from Scripts.football_logos import download_all_logos
-from Scripts.scrape_leagues import main as run_league_scraper
+from Scripts.enrich_leagues import main as run_league_enricher
 from Scripts.upgrade_crests import upgrade_all_crests
 
 # Configuration
@@ -378,11 +378,11 @@ async def run_utility(args):
         download_all_logos(limit=limit)
         print("  [SUCCESS] Logo download complete.")
 
-    elif args.scrape_leagues:
-        print("\n  --- LEO: Flashscore League Scraper ---")
+    elif args.enrich_leagues:
+        print("\n  --- LEO: Flashscore League Enrichment ---")
         limit = getattr(args, 'limit', None)
         reset = getattr(args, 'reset_leagues', False) or getattr(args, 'reset', False)
-        await run_league_scraper(limit=limit, reset=reset)
+        await run_league_enricher(limit=limit, reset=reset)
 
     elif args.upgrade_crests:
         print("\n  --- LEO: Upgrade Team Crests to HQ Logos ---")
@@ -562,7 +562,7 @@ if __name__ == "__main__":
                       args.search_dict, args.review, args.backtest,
                       args.rule_engine, args.streamer, args.schedule,
                       args.enrich, args.assets,
-                      args.logos, args.scrape_leagues, args.upgrade_crests])
+                      args.logos, args.enrich_leagues, args.upgrade_crests])
     is_granular = args.prologue or args.chapter is not None
 
     try:

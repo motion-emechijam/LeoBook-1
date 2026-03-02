@@ -1,10 +1,10 @@
-# scrape_leagues.py: Scrape Flashscore league pages -> SQLite database.
+# enrich_leagues.py: Extract Flashscore league pages -> SQLite database.
 # Part of LeoBook Scripts — Data Collection
 #
 # Usage:
-#   python -m Scripts.scrape_leagues              # All leagues
-#   python -m Scripts.scrape_leagues --limit 5    # First 5 unprocessed
-#   python -m Scripts.scrape_leagues --reset      # Reset processed flags
+#   python -m Scripts.enrich_leagues              # All leagues
+#   python -m Scripts.enrich_leagues --limit 5    # First 5 unprocessed
+#   python -m Scripts.enrich_leagues --reset      # Reset processed flags
 #
 # Reads Data/Store/leagues.json -> populates leagues/teams/fixtures tables
 # Downloads crests concurrently via ThreadPoolExecutor
@@ -113,7 +113,7 @@ def seed_leagues_from_json(conn):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  Step 2-7: Scrape a single league page
+#  Step 2-7: Extract a single league page
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # ── JS to extract all match data from the page ──────────────────────────────
@@ -288,7 +288,7 @@ async def _expand_show_more(page: Page, max_clicks: int = MAX_SHOW_MORE):
         print(f"      [Expand] Clicked 'Show more' {clicks} times")
 
 
-async def scrape_tab(page: Page, league_url: str, tab: str, conn, league_db_id: int,
+async def extract_tab(page: Page, league_url: str, tab: str, conn, league_db_id: int,
                      season: str, country_code: str) -> int:
     """Navigate to a league tab (fixtures or results), expand, extract, and save matches."""
     url = league_url.rstrip("/") + f"/{tab}/"
@@ -432,7 +432,7 @@ async def scrape_tab(page: Page, league_url: str, tab: str, conn, league_db_id: 
     return len(fixture_rows)
 
 
-async def scrape_single_league(context, league: Dict[str, Any], conn, idx: int, total: int):
+async def enrich_single_league(context, league: Dict[str, Any], conn, idx: int, total: int):
     """Process a single league: crest + season + fixtures + results."""
     league_id = league["league_id"]
     name = league["name"]
@@ -488,13 +488,13 @@ async def scrape_single_league(context, league: Dict[str, Any], conn, idx: int, 
         })
         league_db_id = get_league_db_id(conn, league_id)
 
-        # ── Scrape Fixtures tab ──────────────────────────────────────────
-        fixtures_count = await scrape_tab(
+        # ── Extract Fixtures tab ──────────────────────────────────────────
+        fixtures_count = await extract_tab(
             page, url, "fixtures", conn, league_db_id, season, country_code
         )
 
-        # ── Scrape Results tab ───────────────────────────────────────────
-        results_count = await scrape_tab(
+        # ── Extract Results tab ───────────────────────────────────────────
+        results_count = await extract_tab(
             page, url, "results", conn, league_db_id, season, country_code
         )
 
@@ -515,9 +515,9 @@ async def scrape_single_league(context, league: Dict[str, Any], conn, idx: int, 
 # ═══════════════════════════════════════════════════════════════════════════════
 
 async def main(limit: Optional[int] = None, reset: bool = False):
-    """Main scraper entry point."""
+    """Main enrichment entry point."""
     print("\n" + "=" * 60)
-    print("  FLASHSCORE LEAGUE SCRAPER -> SQLite")
+    print("  FLASHSCORE LEAGUE ENRICHMENT -> SQLite")
     print("=" * 60)
 
     # ── Initialize DB ────────────────────────────────────────────────────
@@ -542,7 +542,7 @@ async def main(limit: Optional[int] = None, reset: bool = False):
         return
 
     total = len(leagues)
-    print(f"\n  [Scrape] {total} leagues to process (concurrency={MAX_CONCURRENCY})")
+    print(f"\n  [Enrich] {total} leagues to process (concurrency={MAX_CONCURRENCY})")
 
     # ── Ensure crest directories exist ───────────────────────────────────
     os.makedirs(LEAGUE_CRESTS_DIR, exist_ok=True)
@@ -565,7 +565,7 @@ async def main(limit: Optional[int] = None, reset: bool = False):
 
         async def _worker(league, idx):
             async with sem:
-                await scrape_single_league(context, league, conn, idx, total)
+                await enrich_single_league(context, league, conn, idx, total)
 
         tasks = [_worker(lg, i) for i, lg in enumerate(leagues, 1)]
         await asyncio.gather(*tasks)
@@ -593,7 +593,7 @@ async def main(limit: Optional[int] = None, reset: bool = False):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Scrape Flashscore leagues -> SQLite")
+    parser = argparse.ArgumentParser(description="Enrich Flashscore leagues -> SQLite")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of leagues to process")
     parser.add_argument("--reset", action="store_true", help="Reset all leagues to unprocessed")
     args = parser.parse_args()

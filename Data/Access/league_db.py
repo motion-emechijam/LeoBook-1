@@ -246,7 +246,7 @@ def bulk_upsert_fixtures(conn: sqlite3.Connection, fixtures: List[Dict[str, Any]
 
 
 def mark_league_processed(conn: sqlite3.Connection, league_id: str):
-    """Flag a league as fully scraped."""
+    """Flag a league as fully enriched."""
     conn.execute(
         "UPDATE leagues SET processed = 1, last_updated = ? WHERE league_id = ?",
         (datetime.now().isoformat(), league_id),

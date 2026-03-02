@@ -86,7 +86,7 @@ def setup_terminal_logging(args):
         elif args.chapter: prefix = f"leo_chapter{args.chapter}_session"
         elif args.assets: prefix = "leo_assets_session"
         elif args.logos: prefix = "leo_logos_session"
-        elif args.scrape_leagues: prefix = "leo_scrape_leagues_session"
+        elif args.enrich_leagues: prefix = "leo_enrich_leagues_session"
         elif args.upgrade_crests: prefix = "leo_upgrade_crests_session"
 
     TERMINAL_LOG_DIR = LOG_DIR / "Terminal"
@@ -156,9 +156,9 @@ Examples:
   python Leo.py --assets --limit 10         Sync assets with a limit
   python Leo.py --logos                     Download all football team logo packs
   python Leo.py --logos --limit 5           Download first 5 league logo packs
-  python Leo.py --scrape-leagues            Scrape Flashscore league pages -> SQLite
-  python Leo.py --scrape-leagues --limit 5  Scrape first 5 unprocessed leagues
-  python Leo.py --scrape-leagues --reset    Reset and scrape all leagues
+  python Leo.py --enrich-leagues            Extract Flashscore league pages -> SQLite
+  python Leo.py --enrich-leagues --limit 5  Extract first 5 unprocessed leagues
+  python Leo.py --enrich-leagues --reset    Reset and extract all leagues
         """
     )
     # --- Granular Chapter / Page Selection ---
@@ -200,10 +200,10 @@ Examples:
                        help='Limit the number of items processed (useful for testing)')
     parser.add_argument('--logos', action='store_true',
                        help='Download football team logo packs from football-logos.cc')
-    parser.add_argument('--scrape-leagues', action='store_true',
-                       help='Scrape Flashscore league pages -> SQLite (New Pipeline)')
+    parser.add_argument('--enrich-leagues', action='store_true',
+                       help='Extract Flashscore league pages -> SQLite')
     parser.add_argument('--reset-leagues', action='store_true',
-                       help='Reset all leagues to unprocessed (use with --scrape-leagues)')
+                       help='Reset all leagues to unprocessed (use with --enrich-leagues)')
     parser.add_argument('--upgrade-crests', action='store_true',
                        help='Upgrade team crests to high-quality logos from Modules/Assets/logos')
 
