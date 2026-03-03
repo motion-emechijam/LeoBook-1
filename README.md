@@ -1,9 +1,9 @@
 # LeoBook
 
-**Developer**: Matterialless LLC
+**Developer**: Materialless LLC
 **Chief Engineer**: Emenike Chinenye James
 **Powered by**: Multi-Key Gemini Rotation (25+ Keys, 5 Models) · xAI Grok API (Optional)
-**Architecture**: High-Velocity Concurrent Architecture v6.0 (Per-Match Pipeline + Live Streaming + Adaptive Learning + Neural RL)
+**Architecture**: Autonomous High-Velocity Architecture v7.0 (Data Readiness Gates + Task Scheduler + Neural RL)
 
 ---
 
@@ -13,65 +13,56 @@ LeoBook is an **autonomous sports prediction and betting system** with two halve
 
 | Component | Tech | Purpose |
 |-----------|------|---------|
-| `Leo.py` | Python 3.12 + Playwright + PyTorch | Data extraction, rule-based + neural RL prediction, odds harvesting, automated bet placement, withdrawal management |
+| `Leo.py` | Python 3.12 + Playwright + PyTorch | Autonomous data extraction, rule-based + neural RL prediction, odds harvesting, automated bet placement, and dynamic task scheduling |
 | `leobookapp/` | Flutter/Dart | Cross-platform dashboard with "Telegram-grade" UI density, Liquid Glass aesthetics, and real-time streaming |
 
-**Leo.py** is a **pure orchestrator** — it contains zero business logic. All logic lives in the modules it imports. It runs in an infinite loop, executing a cycle every 6h. The engine uses **High-Velocity Concurrent Execution** via a per-match sequential pipeline, protected by a global `CSV_LOCK` for storage integrity. A **live score streamer** runs in its own isolated Playwright session in parallel. **V5.0 transition**: The system now utilizes a data-driven selector architecture (`SelectorManager`) and enforces unified Nigerian timekeeping (`now_ng`). Data sovereignty is achieved via Flashscore-native string IDs for all entities.
+**Leo.py** is an **autonomous orchestrator** powered by a **dynamic Task Scheduler** (`Core/System/scheduler.py`). It no longer relies on a static 6h loop; instead, it wakes up at target task times (e.g., Weekly Enrichment at Monday 2:26am) or operates at default intervals. The system enforces **Data Readiness Gates** (Prologue P1-P3) to ensure data integrity before predictions. **Standings** are now computed on-the-fly via a Postgres VIEW in Supabase, eliminating redundant sync tables.
 
 For the complete file inventory and step-by-step execution trace, see [LeoBook_Technical_Master_Report.md](LeoBook_Technical_Master_Report.md).
 
 ---
 
-## System Architecture (v6.0 Per-Match Pipeline + Neural RL)
+## System Architecture (v7.0 Autonomous Pipeline)
 
 ```
 Leo.py (Orchestrator)
-├── Prologue P1 (Sequential Prerequisite):
-│   └── Cloud Sync → Outcome Review → Accuracy Report
-├── Concurrent Execution:
-│   ├── Prologue P2: Accuracy Generation & Final Sync
-│   └── Chapter 1→2 Pipeline:
-│       ├── Ch1 P1: [Match Worker Node] × MAX_CONCURRENCY
-│       │   └── H2H/Standings → League Enrichment → Search Dict → Prediction
-│       ├── Ch1 P2: Odds Harvesting & URL Resolution
-│       ├── Ch1 P3: Final Sync & Recommendations
-│       ├── Ch2 P1: Automated Booking (Football.com)
-│       └── Ch2 P2: Funds & Withdrawal Check
-├── Chapter 3 (Sequential Finality):
-│   └── Chief Engineer Oversight → Backtest → Final Sync
-└── Live Streamer: Isolated parallel task — 60s LIVE score streaming + status propagation
+├── Startup (Initialization):
+│   └── Ensure DB Parity → Bi-directional Cloud Sync (Bootstrap)
+├── Task Scheduler:
+│   └── Execute Pending Tasks (Weekly Enrichment, Day-before Predictions)
+├── Prologue (Data Readiness Gates):
+│   ├── P1: League/Team Threshold Check (90% Coverage)
+│   ├── P2: Historical Seasons Check (2+ Seasons)
+│   └── P3: RL Adapter Readiness Check
+├── Chapter 1 (Prediction Pipeline):
+│   ├── Ch1 P1: URL Resolution & Odds Harvesting (Football.com)
+│   ├── Ch1 P2: Predictions (Rule Engine + Neural RL Ensemble)
+│   │   └── Smart Scheduling: Max 1 per team/week (remaining vs Scheduler)
+│   └── Ch1 P3: Recommendations & Final Chapter Sync
+├── Chapter 2 (Betting Automation):
+│   ├── Ch2 P1: Automated Booking (Football.com)
+│   └── Ch2 P2: Funds & Withdrawal Check
+└── Live Streamer: Isolated parallel task — 60s LIVE score streaming + outcome review
 ```
 
 ### Key Subsystems
 
-- **Multi-Key/Multi-Model Gemini Rotation**: Adaptive load balancing across 25+ free-tier keys with 5 models and dual exclusive chains (DESCENDING for AIGO intelligence, ASCENDING for SearchDict throughput). Dead keys (403) are permanently excluded.
-- **Dual-LLM Intelligent Routing**: Smart failover between Grok (optional) and Gemini with per-context model selection.
-- **Adaptive Learning**: Per-league rule weight evolution via outcome feedback loop.
-- **Neural RL Engine** (`Core/Intelligence/rl/`): SharedTrunk + LoRA league adapters + league-conditioned team adapters. PPO training with chronological walk-through, composite reward (prediction accuracy primary). Same team produces different predictions in different competitions.
-- **Live Score Streaming**: Isolated Playwright session with delta-only Supabase pushes, 2.5hr auto-finish rule, and schedule/prediction propagation.
+- **Autonomous Task Scheduler**: Manages recurring tasks (Weekly enrichment, Monday 2:26am) and time-sensitive tasks (Day-before match predictions).
+- **Data Readiness Gates**: Automated pre-flight checks with **Auto-Remediation** — if leagues, historical seasons, or RL adapters are missing, Leo.py triggers the relevant enrichment/training scripts automatically.
+- **Standings VIEW**: High-performance standings computed directly from the `schedules` table via Postgres UNION ALL views. Zero storage, always fresh.
+- **Smart Prediction Scheduling**: Enforces a "1 Prediction Per Team Per Week" constraint. The earliest match is predicted immediately; subsequent matches for the same team are scheduled as `day_before_predict` tasks in the scheduler.
+- **Neural RL Engine** (`Core/Intelligence/rl/`): SharedTrunk + LoRA league adapters + league-conditioned team adapters. PPO training with chronological walkthrough and composite rewards.
 
 ### Core Modules
 
-- **`Core/Intelligence/`** — AI engine (rule-based prediction, **neural RL engine**, adaptive learning, AIGO self-healing, LLM health management)
-- **`Core/Browser/`** — Playwright automation and data extractors (H2H, standings, league pages)
-- **`Core/System/`** — Lifecycle, monitoring, withdrawal checker
-- **`Modules/Flashscore/`** — Schedule extraction, match processing, offline reprediction, live score streaming
-- **`Modules/FootballCom/`** — Betting platform automation (login, navigation, odds, booking, bet placement)
-- **`Data/Access/`** — CSV CRUD, Supabase bi-directional sync, outcome review, accuracy calculation
-- **`Scripts/`** — Enrichment pipeline, recommendation engine, search dictionary builder, backtest monitor
+- **`Core/Intelligence/`** — AI engine (rule-based prediction, **neural RL engine**, adaptive learning, AIGO self-healing)
+- **`Core/System/`** — **Task Scheduler**, **Data Readiness Checker**, lifecycle, withdrawal
+- **`Core/Browser/`** — Playwright-based AIGO extractors
+- **`Modules/Flashscore/`** — Schedule extraction, live score streaming, match data processing
+- **`Modules/FootballCom/`** — Betting platform automation (login, odds, booking, withdrawal)
+- **`Data/Access/`** — **Computed Standings**, Supabase sync, outcome review
+- **`Scripts/`** — Weekly enrichment, search dictionary builder, recommendation engine
 - **`leobookapp/`** — Flutter dashboard (Liquid Glass + Proportional Scaling)
-
-### AIGO (AI-Guided Operation) — Self-Healing Framework (v5.4)
-
-Five-phase recovery cascade for every browser interaction (~8-18% reach Phase 3):
-
-0. **Context Discovery** — selector lookup from `knowledge.json`
-1. **Reinforcement Learning** — memory-based strategy selection
-2. **Visual Analysis** — multi-strategy matching (CSS → XPath → text → fuzzy)
-3. **Expert Consultation** — Gemini/Grok API multimodal analysis (screenshot + DOM → primary + backup paths)
-4. **Self-Healing & Evolution** — persist AI-discoveries to `knowledge.json` and update `learning_weights.json` via the outcome review loop.
-
-See [AIGO_Learning_Guide.md](AIGO_Learning_Guide.md) for the full pipeline specification.
 
 ---
 
@@ -85,135 +76,76 @@ See [AIGO_Learning_Guide.md](AIGO_Learning_Guide.md) for the full pipeline speci
 
 ```
 LeoBook/
-├── Leo.py                  # Orchestrator (dispatch-based CLI)
-├── RULEBOOK.md             # Developer rules (MANDATORY reading)
-├── requirements.txt        # Core Python dependencies
-├── requirements-rl.txt     # PyTorch CPU + RL dependencies
-├── .devcontainer/          # GitHub Codespaces / VM auto-setup
+├── Leo.py                  # Autonomous Orchestrator
+├── RULEBOOK.md             # Developer rules (MANDATORY)
 ├── Core/
-│   ├── Browser/            # Playwright automation + extractors
-│   ├── Intelligence/       # AI engine, AIGO, LLM health, selectors, learning
-│   │   └── rl/             # Neural RL engine (SharedTrunk + LoRA adapters)
-│   ├── System/             # Lifecycle, monitoring, withdrawal
-│   └── Utils/              # Constants, utilities
+│   ├── System/             # Task Scheduler, Data Readiness, Lifecycle
+│   ├── Intelligence/       # RL Engine, AIGO, Learning
+│   ├── Browser/            # Playwright extractors
+│   └── Utils/              # Constants, now_ng utilities
 ├── Modules/
-│   ├── Flashscore/         # Sports data extraction + live streamer
-│   └── FootballCom/        # Betting platform automation
-│       └── booker/         # Booking sub-module
-├── Scripts/                # Pipeline scripts (called by Leo.py)
-│   ├── build_search_dict.py  # Team/league LLM enrichment
-├── enrich_leagues.py     # League metadata + Historical season extraction
-├── enrich_all_schedules.py # Deep schedule enrichment
-│   ├── recommend_bets.py     # Recommendation engine
-│   └── backtest_monitor.py   # Backtest integration
+│   ├── Flashscore/         # Live streamer, match processing
+│   └── FootballCom/        # Betting automation
+├── Scripts/
+│   ├── enrich_leagues.py   # Weekly enrichment mode
+│   ├── recommend_bets.py   # Recommendation engine
+│   └── build_search_dict.py # LLM enrichment
 ├── Data/
-│   ├── Access/             # Data access layer + sync
-│   ├── Store/              # CSV/JSON data stores (source of truth)
-│   └── Supabase/           # Cloud schema + auto-provisioning
-├── Config/
-│   └── knowledge.json      # CSS selector knowledge base
-└── leobookapp/lib/
-    ├── core/               # Theme, constants, animations
-    ├── data/               # Models, repositories, services
-    ├── logic/              # Cubits, state management (flutter_bloc)
-    └── presentation/
-        ├── screens/        # Pure viewport dispatchers
-        └── widgets/
-            ├── desktop/    # Desktop-only widgets
-            ├── mobile/     # Mobile-only widgets
-            └── shared/     # Reusable cross-platform widgets
+│   ├── Access/             # DB Helpers, Sync, Computed Standings
+│   ├── Store/              # Local SQLite (leobook.db)
+│   └── Supabase/           # Postgres VIEW definitions
+└── leobookapp/             # Flutter Frontend
 ```
 
 ---
 
 ## LeoBook App (Flutter)
 
-The app implements a **Telegram-inspired high-density aesthetic** optimized for maximum velocity and visual clarity.
+The app implements a **Telegram-inspired high-density aesthetic** optimized for visual clarity and real-time data response.
 
-- **Telegram Design Aesthetic** — 80% size reduction for high-density information, glass translucency (60% fill), and micro-radii (14dp).
-- **Proportional Scaling System** — Custom `Responsive` utility ensures perfect parity between mobile and web without hardcoded pixel values.
-- **Supabase Backend** — Cloud-native data for instant global access via bi-directional sync.
-- **Liquid Glass UI** — Premium frosted-glass containers with optimized BackdropFilter performance.
-- **Live Data-Driven UI** — Real-time accuracy indicators and team crests dynamically computed from backend match data.
-- **4-Tab Match System** — ALL | LIVE | FINISHED | SCHEDULED with automatic 2.5hr status propagation and real-time Supabase streaming.
-- **Accuracy Report Cards** — Dynamic per-league accuracy sorted by match count then accuracy percentage.
-- **State Management** — `flutter_bloc` / `Cubit` pattern (HomeCubit, UserCubit, SearchCubit).
-- **Double Chance Accuracy** — Supports team-name-based OR patterns (e.g., "Arsenal or Liverpool").
+- **Proportional Scaling System** — Custom system ensures perfect parity across all device sizes.
+- **Computed Standings** — The app queries the `computed_standings` VIEW for live-accurate tables. 
+- **Liquid Glass UI** — Premium frosted-glass design with micro-radii (14dp).
+- **4-Tab Match System** — Real-time 2.5hr status propagation and Supabase streaming.
+- **Double Chance Accuracy** — Supports pattern-based OR logic for team outcomes.
 
 ---
 
-## Quick Start
+## Quick Start (v7.0)
 
 ### Backend (Leo.py)
 
 ```bash
-# Core setup
+# Setup
 pip install -r requirements.txt
-pip install -r requirements-rl.txt  # PyTorch CPU + RL deps
 playwright install chromium
-cp .env.example .env  # Configure API keys
+bash .devcontainer/setup.sh  # Auto-config
 
-# Or use Codespace/VM one-shot setup:
-bash .devcontainer/setup.sh
-
-# Full cycle
-python Leo.py              # Full cycle (infinite loop)
-python Leo.py --prologue    # Run prologue only (P1 + P2)
-python Leo.py --prologue --page 1  # Prologue P1 only
-python Leo.py --chapter 1   # Run chapter 1 (P1 + P2 + P3)
-python Leo.py --chapter 2   # Run chapter 2 (Booking + Withdrawal)
-python Leo.py --chapter 3   # Run chapter 3 (Monitoring)
-python Leo.py --sync        # Force full cloud sync
-python Leo.py --review      # Run outcome review
-python Leo.py --accuracy    # Print accuracy report
-python Leo.py --recommend   # Generate recommendations
-python Leo.py --streamer    # Run live score streamer standalone
-python Leo.py --schedule    # Extract schedules
-python Leo.py --schedule --all  # Full deep schedule extraction
-python Leo.py --schedule --all --date 01.03.2026  # Redo/extract specific day
-python Leo.py --chapter 1 --page 1 --refresh     # Re-analyze today (bypass resume)
-python Leo.py --enrich-leagues  # Parallel league enrichment + search dict
-python Leo.py --enrich-leagues --seasons N  # Extract last N historical seasons
-python Leo.py --enrich-leagues --all-seasons # Extract ALL available history
-python Leo.py --search-dict # Rebuild team/league search dictionary
-python Leo.py --backtest    # Single-pass backtest
-python Leo.py --assets      # Sync team and league assets to Supabase
-python Leo.py --rule-engine --list  # List registered rule engines
-python Leo.py --rule-engine --set-default <name>  # Set default engine
-python Leo.py --rule-engine --backtest --from-date 2025-08-01 # Backtest with date
-python Leo.py --offline-repredict  # Offline reprediction mode
-
-# RL Model Training
-python Leo.py --train-rl               # Full chronological training
-python Leo.py --train-rl --league ID   # Fine-tune specific league adapter
-
-python Leo.py --help        # See all commands
-```
-
-### Frontend (leobookapp)
-
-```bash
-cd leobookapp
-flutter pub get
-flutter run -d chrome  # or: flutter run (mobile)
+# Execution
+python Leo.py              # Autonomous mode (dynamic scheduling)
+python Leo.py --prologue    # Data readiness check (P1-P3)
+python Leo.py --chapter 1   # Prediction pipeline (Odds → Predict → Sync)
+python Leo.py --chapter 2   # Betting automation
+python Leo.py --sync        # Bi-directional cloud sync
+python Leo.py --review      # Outcome review
+python Leo.py --recommend   # Recommendations
+python Leo.py --streamer    # Standalone live score streamer
+python Leo.py --enrich-leagues --weekly  # Lightweight weekly enrichment
+python Leo.py --train-rl    # Chronological RL training
+python Leo.py --help        # Full CLI catalog
 ```
 
 ---
 
 ## Environment Variables
 
-| Variable | Required | Purpose |
-|----------|:--------:|---------|
-| `GEMINI_API_KEY` | ✅ | Google Gemini API (comma-separated, 25+ keys for rotation) |
-| `GROK_API_KEY` | Optional | xAI Grok API for AIGO Phase 3 expert consultation |
-| `SUPABASE_URL` | ✅ | Supabase project URL |
-| `SUPABASE_SERVICE_KEY` | ✅ | Supabase service role key (Python backend, full write access) |
-| `SUPABASE_ANON_KEY` | ✅ | Supabase anon key (Flutter app, read-only via RLS) |
-| `FB_PHONE` | ✅ | Football.com phone number |
-| `FB_PASSWORD` | ✅ | Football.com password |
-| `LEO_CYCLE_WAIT_HOURS` | Optional | Hours between cycles (default: 6) |
-| `HEADLESS_MODE` | Optional | Browser headless mode (default: False) |
-| `MAX_CONCURRENCY` | Optional | Parallel match worker limit |
+| Variable | Purpose |
+|----------|---------|
+| `GEMINI_API_KEY` | Multi-key rotation for AI analysis |
+| `SUPABASE_URL` | Supabase endpoint |
+| `SUPABASE_SERVICE_KEY` | Backend service key (Admin) |
+| `FB_PHONE` / `FB_PASSWORD` | Betting platform credentials |
+| `LEO_CYCLE_WAIT_HOURS` | Default sleep between autonomous tasks (default: 6) |
 
 ---
 
@@ -221,28 +153,12 @@ flutter run -d chrome  # or: flutter run (mobile)
 
 | Document | Purpose |
 |----------|---------|
-| [RULEBOOK.md](RULEBOOK.md) | **MANDATORY** — Developer rules, architecture decisions, coding standards |
-| [LeoBook_Technical_Master_Report.md](LeoBook_Technical_Master_Report.md) | Complete file inventory, execution trace, data flow diagrams |
-| [leobook_algorithm.md](leobook_algorithm.md) | Algorithm reference — prediction pipeline, learning engine, concurrency |
-| [AIGO_Learning_Guide.md](AIGO_Learning_Guide.md) | Self-healing framework specification (5-phase pipeline) |
-| [SUPABASE_SETUP.md](SUPABASE_SETUP.md) | Supabase setup, credentials, sync architecture |
+| [RULEBOOK.md](RULEBOOK.md) | **MANDATORY** — Engineering standards & v7.0 decisions |
+| [LeoBook_Technical_Master_Report.md](LeoBook_Technical_Master_Report.md) | File inventory & system trace |
+| [leobook_algorithm.md](leobook_algorithm.md) | Algorithm reference (RuleEngine + Neural RL) |
+| [AIGO_Learning_Guide.md](AIGO_Learning_Guide.md) | Self-healing extraction pipeline |
 
 ---
 
-## Maintenance
-
-- `python Leo.py --sync` — Manual cloud sync
-- `python Leo.py --recommend` — Regenerate recommendations
-- `python Leo.py --accuracy` — Regenerate accuracy reports
-- `python Leo.py --review` — Run outcome review
-- `python Leo.py --backtest` — Run backtest check
-- `python Leo.py --streamer` — Run live streamer standalone
-- `python Leo.py --assets` — Sync team and league assets
-- `python Leo.py --train-rl` — Train/retrain the RL model from historical fixtures
-- Monitor `Data/Store/audit_log.csv` for real-time event transparency
-- Live streamer runs automatically in parallel — check `[Streamer]` logs
-
----
-
-*Last updated: March 3, 2026 (v6.0 — Neural RL Architecture)*
+*Last updated: March 3, 2026 (v7.0 — Autonomous Scheduler Architecture)*
 *LeoBook Engineering Team*

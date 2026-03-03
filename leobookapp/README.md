@@ -1,6 +1,6 @@
 # LeoBook App — High Density Liquid Glass Dashboard
 
-**Developer**: Matterialless LLC
+**Developer**: Materialless LLC
 **Chief Engineer**: Emenike Chinenye James
 **Goal**: Ship extreme UI density with premium translucency and zero hardcoded overflows.
 
@@ -93,4 +93,4 @@ flutter build apk --release                # Android APK
 ---
 
 *Last updated: March 1, 2026*
-*Matterialless LLC*
+*Materialless LLC*
