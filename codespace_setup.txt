@@ -4,6 +4,9 @@ python -m playwright install-deps
 python -m playwright install
 #sudo rm /etc/apt/sources.list.d/yarn.list
 
+type "Open User Settings (JSON)", and add/ensure this line exists:
+"python.terminal.useEnvFile": true
+
 # Codespace setup (runs automatically on container creation for rl_training)
 bash .devcontainer/setup.sh
 

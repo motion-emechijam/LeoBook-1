@@ -689,25 +689,54 @@ def upsert_team(conn: sqlite3.Connection, data: Dict[str, Any]) -> int:
             },
         )
     else:
-        # Fallback: scraper path uses name+country_code
-        cur = conn.execute(
-            """INSERT INTO teams (name, league_ids, crest, country_code, url, last_updated)
-               VALUES (:name, :league_ids, :crest, :country_code, :url, :last_updated)
-               ON CONFLICT(team_id) DO UPDATE SET
-                   league_ids   = :league_ids,
-                   crest        = COALESCE(excluded.crest, teams.crest),
-                   url          = COALESCE(excluded.url, teams.url),
-                   last_updated = excluded.last_updated
-            """,
-            {
-                "name": data["name"],
-                "league_ids": league_ids_json,
-                "crest": data.get("crest"),
-                "country_code": data.get("country_code"),
-                "url": data.get("url"),
-                "last_updated": now,
-            },
-        )
+        # Fallback: no team_id — look up by name+country_code to avoid duplicates
+        name = data.get("name", data.get("team_name", ""))
+        country_code = data.get("country_code")
+        existing = None
+        if country_code:
+            existing = conn.execute(
+                "SELECT id FROM teams WHERE name = ? AND country_code = ?",
+                (name, country_code),
+            ).fetchone()
+        if not existing:
+            existing = conn.execute(
+                "SELECT id FROM teams WHERE name = ?",
+                (name,),
+            ).fetchone()
+
+        if existing:
+            # Update existing row
+            cur = conn.execute(
+                """UPDATE teams SET
+                       league_ids   = :league_ids,
+                       crest        = COALESCE(:crest, crest),
+                       country_code = COALESCE(:country_code, country_code),
+                       url          = COALESCE(:url, url),
+                       last_updated = :last_updated
+                   WHERE id = :row_id""",
+                {
+                    "league_ids": league_ids_json,
+                    "crest": data.get("crest"),
+                    "country_code": country_code,
+                    "url": data.get("url"),
+                    "last_updated": now,
+                    "row_id": existing[0],
+                },
+            )
+        else:
+            # Truly new team
+            cur = conn.execute(
+                """INSERT INTO teams (name, league_ids, crest, country_code, url, last_updated)
+                   VALUES (:name, :league_ids, :crest, :country_code, :url, :last_updated)""",
+                {
+                    "name": name,
+                    "league_ids": league_ids_json,
+                    "crest": data.get("crest"),
+                    "country_code": country_code,
+                    "url": data.get("url"),
+                    "last_updated": now,
+                },
+            )
     conn.commit()
     return cur.lastrowid
 
@@ -815,12 +844,18 @@ def bulk_upsert_fixtures(conn: sqlite3.Connection, fixtures: List[Dict[str, Any]
            ON CONFLICT(fixture_id) DO UPDATE SET
                date           = COALESCE(excluded.date, fixtures.date),
                time           = COALESCE(excluded.time, fixtures.time),
+               league_id      = COALESCE(excluded.league_id, fixtures.league_id),
+               home_team_id   = COALESCE(excluded.home_team_id, fixtures.home_team_id),
+               away_team_id   = COALESCE(excluded.away_team_id, fixtures.away_team_id),
                home_score     = COALESCE(excluded.home_score, fixtures.home_score),
                away_score     = COALESCE(excluded.away_score, fixtures.away_score),
                extra          = COALESCE(excluded.extra, fixtures.extra),
+               league_stage   = COALESCE(excluded.league_stage, fixtures.league_stage),
                match_status   = COALESCE(excluded.match_status, fixtures.match_status),
+               season         = COALESCE(excluded.season, fixtures.season),
                home_crest     = COALESCE(excluded.home_crest, fixtures.home_crest),
                away_crest     = COALESCE(excluded.away_crest, fixtures.away_crest),
+               url            = COALESCE(excluded.url, fixtures.url),
                region_league  = COALESCE(excluded.region_league, fixtures.region_league),
                match_link     = COALESCE(excluded.match_link, fixtures.match_link),
                last_updated   = excluded.last_updated

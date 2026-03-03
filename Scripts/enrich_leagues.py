@@ -453,11 +453,13 @@ async def _expand_show_more(page: Page, max_clicks: int = MAX_SHOW_MORE):
 
 @AIGOSuite.aigo_retry(max_retries=2, delay=3.0)
 async def extract_tab(page: Page, league_url: str, tab: str, conn,
-                     league_id: str, season: str, country_code: str) -> int:
+                     league_id: str, season: str, country_code: str,
+                     region_league: str = "") -> int:
     """Navigate to a league tab (fixtures or results), expand, extract, and save matches.
 
     Args:
         league_id: Flashscore league_id string (NOT SQLite auto-increment).
+        region_league: Pre-constructed 'Region: League Name' string.
     """
     url = league_url.rstrip("/") + f"/{tab}/"
     print(f"    [{tab.upper()}] Navigating to {url}")
@@ -620,6 +622,7 @@ async def extract_tab(page: Page, league_url: str, tab: str, conn,
             "home_crest": home_crest_path,
             "away_crest": away_crest_path,
             "url": m.get("match_link") or f"https://www.flashscore.com/match/{m.get('fixture_id', '')}/#/match-summary",
+            "region_league": region_league,
             "match_link": m.get("match_link") or f"https://www.flashscore.com/match/{m.get('fixture_id', '')}/#/match-summary",
         })
 
@@ -634,10 +637,22 @@ async def extract_tab(page: Page, league_url: str, tab: str, conn,
             result = fut.result(timeout=30)
             if result:
                 downloaded += 1
-                conn.execute(
-                    "UPDATE teams SET crest = ? WHERE name = ? AND country_code = ?",
-                    (dest, name, country_code)
-                )
+                # Bug #5 fix: Use team_id for crest updates when available
+                team_id = None
+                for m in matches_raw:
+                    if side == "home" and m.get("home_team_name") == name:
+                        team_id = m.get("home_team_id")
+                        break
+                    elif side == "away" and m.get("away_team_name") == name:
+                        team_id = m.get("away_team_id")
+                        break
+                if team_id:
+                    conn.execute("UPDATE teams SET crest = ? WHERE team_id = ?", (dest, team_id))
+                else:
+                    conn.execute(
+                        "UPDATE teams SET crest = ? WHERE name = ? AND (country_code = ? OR country_code IS NULL)",
+                        (dest, name, country_code)
+                    )
         except Exception:
             pass
     if downloaded:
@@ -650,7 +665,7 @@ async def extract_tab(page: Page, league_url: str, tab: str, conn,
 async def enrich_single_league(context, league: Dict[str, Any], conn,
                                 idx: int, total: int,
                                 num_seasons: int = 0, all_seasons: bool = False):
-    """Process a single league: crest + season + fixtures + results.
+    """Process a single league: region + crest + season + fixtures + results.
 
     Args:
         num_seasons: Number of past seasons to extract (0 = current only)
@@ -686,6 +701,40 @@ async def enrich_single_league(context, league: Dict[str, Any], conn,
         # Retrieve all selectors once for this context
         selectors = selector_mgr.get_all_selectors_for_context(CONTEXT_LEAGUE)
 
+        # ── Bug #1 fix: Extract region data from breadcrumbs ─────────────
+        region_name = await page.evaluate("""(s) => {
+            const el = document.querySelector(s.region_name);
+            return el ? el.innerText.trim() : '';
+        }""", selectors)
+
+        region_flag_url = await page.evaluate("""(s) => {
+            const el = document.querySelector(s.region_flag);
+            return el ? (el.src || el.getAttribute('data-src') || '') : '';
+        }""", selectors)
+
+        region_url_href = await page.evaluate("""() => {
+            const el = document.querySelector('.breadcrumb__link');
+            if (!el) return '';
+            const href = el.getAttribute('href') || '';
+            return href.startsWith('http') ? href : (href ? 'https://www.flashscore.com' + href : '');
+        }""")
+
+        if region_name:
+            print(f"    [Region] {region_name}")
+
+        # Download region flag if available
+        region_flag_path = ""
+        if region_flag_url and not region_flag_url.startswith("data:"):
+            flag_dest = os.path.join(CRESTS_DIR, "flags", f"{_slugify(region_name or country_code or 'unknown')}.png")
+            try:
+                os.makedirs(os.path.join(BASE_DIR, os.path.dirname(flag_dest)), exist_ok=True)
+                future = schedule_image_download(region_flag_url, flag_dest)
+                result = future.result(timeout=10)
+                if result:
+                    region_flag_path = result
+            except Exception:
+                pass
+
         # ── Extract + download league crest ──────────────────────────────
         crest_url = await page.evaluate(EXTRACT_CREST_JS, selectors)
         crest_path = ""
@@ -704,7 +753,10 @@ async def enrich_single_league(context, league: Dict[str, Any], conn,
         season = await page.evaluate(EXTRACT_SEASON_JS, selectors)
         print(f"    [Season] {season or '(not found)'}")
 
-        # ── Update league in DB with fs_league_id ────────────────────────
+        # ── Bug #7 fix: Construct region_league ──────────────────────────
+        region_league = f"{region_name}: {name}" if region_name else name
+
+        # ── Update league in DB with all extracted data ───────────────────
         upsert_league(conn, {
             "league_id": league_id,
             "fs_league_id": fs_league_id or None,
@@ -714,14 +766,19 @@ async def enrich_single_league(context, league: Dict[str, Any], conn,
             "crest": crest_path,
             "current_season": season,
             "url": url,
+            "region": region_name or None,
+            "region_flag": region_flag_path or None,
+            "region_url": region_url_href or None,
         })
 
         # ── Extract current season (Fixtures + Results tabs) ─────────────
         fixtures_count = await extract_tab(
-            page, url, "fixtures", conn, league_id, season, country_code
+            page, url, "fixtures", conn, league_id, season, country_code,
+            region_league=region_league
         )
         results_count = await extract_tab(
-            page, url, "results", conn, league_id, season, country_code
+            page, url, "results", conn, league_id, season, country_code,
+            region_league=region_league
         )
         total_matches = fixtures_count + results_count
 
@@ -747,14 +804,16 @@ async def enrich_single_league(context, league: Dict[str, Any], conn,
                 # Results tab for historical seasons
                 r_count = await extract_tab(
                     page, season_base_url, "results", conn,
-                    league_id, season_label, country_code
+                    league_id, season_label, country_code,
+                    region_league=region_league
                 )
                 total_matches += r_count
 
                 # Fixtures tab (some historical seasons may still have upcoming fixtures)
                 f_count = await extract_tab(
                     page, season_base_url, "fixtures", conn,
-                    league_id, season_label, country_code
+                    league_id, season_label, country_code,
+                    region_league=region_league
                 )
                 total_matches += f_count
 
@@ -765,6 +824,7 @@ async def enrich_single_league(context, league: Dict[str, Any], conn,
     except Exception as e:
         print(f"\n  [{idx}/{total}] [FAIL] {name} FAILED: {e}")
         traceback.print_exc()
+        # Bug #6 fix: Do NOT mark as processed on failure
     finally:
         await page.close()
 
@@ -790,7 +850,7 @@ async def main(limit: Optional[int] = None, reset: bool = False,
     print("  FLASHSCORE LEAGUE ENRICHMENT -> SQLite")
     print("=" * 60)
 
-    # ── Initialize DB ────────────────────────────────────────────────────
+    # ── Initialize DB (main connection for seed/summary only) ────────────
     conn = init_db()
     print(f"  [DB] Initialized at {os.path.abspath(conn.execute('PRAGMA database_list').fetchone()[2])}")
 
@@ -852,11 +912,16 @@ async def main(limit: Optional[int] = None, reset: bool = False,
 
         async def _worker(league, idx):
             nonlocal completed_count
-            async with sem:
-                await enrich_single_league(
-                    context, league, conn, idx, total,
-                    num_seasons=num_seasons, all_seasons=all_seasons,
-                )
+            # Bug #3 fix: Per-worker SQLite connection
+            worker_conn = get_connection()
+            try:
+                async with sem:
+                    await enrich_single_league(
+                        context, league, worker_conn, idx, total,
+                        num_seasons=num_seasons, all_seasons=all_seasons,
+                    )
+            finally:
+                worker_conn.close()
             # Track progress and trigger sync at milestones
             async with progress_lock:
                 completed_count += 1
