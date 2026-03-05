@@ -185,8 +185,35 @@ class SyncManager:
         self.supabase = get_supabase_client()
         self.conn = init_db()
         self._created_tables = set()  # Track auto-created tables this session
+        self._ensure_watermark_table()
         if not self.supabase:
             logger.warning("[!] SyncManager initialized without Supabase connection. Sync disabled.")
+
+    def _ensure_watermark_table(self):
+        """Create the watermark table for tracking last sync timestamps."""
+        self.conn.execute("""
+            CREATE TABLE IF NOT EXISTS _sync_watermarks (
+                table_name TEXT PRIMARY KEY,
+                last_sync TEXT NOT NULL DEFAULT '1970-01-01T00:00:00'
+            )
+        """)
+        self.conn.commit()
+
+    def _get_watermark(self, table_name: str) -> str:
+        """Get the last sync timestamp for a table."""
+        row = self.conn.execute(
+            "SELECT last_sync FROM _sync_watermarks WHERE table_name = ?", (table_name,)
+        ).fetchone()
+        return row[0] if row else '1970-01-01T00:00:00'
+
+    def _set_watermark(self, table_name: str, timestamp: str):
+        """Update the last sync timestamp for a table."""
+        self.conn.execute(
+            "INSERT INTO _sync_watermarks (table_name, last_sync) VALUES (?, ?) "
+            "ON CONFLICT(table_name) DO UPDATE SET last_sync = excluded.last_sync",
+            (table_name, timestamp)
+        )
+        self.conn.commit()
 
     def _ensure_remote_table(self, remote_table: str) -> bool:
         """Auto-create a Supabase table if it's missing. Returns True if created.
@@ -229,32 +256,43 @@ class SyncManager:
             await self._sync_table(table_key, config)
 
     async def _sync_table(self, table_key: str, config: Dict):
-        """Sync a single table using timestamp-based delta detection."""
+        """Sync a single table using watermark-based delta detection.
+        Only fetches rows modified since the last sync — O(delta) not O(total)."""
         local_table = config['local_table']
         remote_table = config['remote_table']
         key_field = config['key']
 
         logger.info(f"  Syncing {local_table} <-> {remote_table}...")
 
-        # 1. Fetch Remote Metadata (ID + last_updated)
+        watermark = self._get_watermark(remote_table)
+        is_first_sync = watermark == '1970-01-01T00:00:00'
+
+        # 1. Fetch Remote Delta (only rows changed since watermark)
         try:
-            remote_meta = await self._fetch_remote_metadata(remote_table, key_field)
+            remote_delta = await self._fetch_remote_delta(remote_table, key_field, watermark)
         except Exception as e:
-            logger.error(f"    [x] Failed to fetch remote metadata for {remote_table}: {e}")
+            logger.error(f"    [x] Failed to fetch remote delta for {remote_table}: {e}")
             return
 
-        # 2. Load Local Data from SQLite
+        # 2. Fetch Local Delta (only rows changed since watermark)
         try:
-            local_rows = query_all(self.conn, local_table)
-            if not local_rows:
-                local_rows = []
-            local_meta = {str(r.get(key_field, '')): r.get('last_updated', '') for r in local_rows if r.get(key_field)}
+            if is_first_sync:
+                local_rows = query_all(self.conn, local_table)
+                if not local_rows:
+                    local_rows = []
+            else:
+                local_rows = self.conn.execute(
+                    f"SELECT * FROM {local_table} WHERE last_updated > ? OR last_updated IS NULL",
+                    (watermark,)
+                ).fetchall()
+                local_rows = [dict(r) for r in local_rows]
+            local_delta = {str(r.get(key_field, '')): r.get('last_updated', '') for r in local_rows if r.get(key_field)}
         except Exception as e:
             logger.error(f"    [x] Failed to query local {local_table}: {e}")
             return
 
-        # 3. Delta Detection (Latest Wins)
-        all_keys = set(local_meta.keys()) | set(remote_meta.keys())
+        # 3. Delta Detection (Latest Wins) — only on changed rows
+        all_keys = set(local_delta.keys()) | set(remote_delta.keys())
 
         def normalize_ts(ts):
             if not ts or ts in ('None', 'nan', ''):
@@ -268,8 +306,8 @@ class SyncManager:
         to_pull_ids = []
 
         for key in all_keys:
-            local_ts = normalize_ts(local_meta.get(key, ''))
-            remote_ts = normalize_ts(remote_meta.get(key, ''))
+            local_ts = normalize_ts(local_delta.get(key, ''))
+            remote_ts = normalize_ts(remote_delta.get(key, ''))
 
             if local_ts > remote_ts or (local_ts != '1970-01-01T00:00:00' and remote_ts == '1970-01-01T00:00:00'):
                 to_push_ids.append(key)
@@ -297,15 +335,31 @@ class SyncManager:
             await self.batch_upsert(table_key, rows_to_push)
             await self._verify_sync_parity(table_key, to_push_ids)
 
-    async def _fetch_remote_metadata(self, table_name: str, key_field: str) -> Dict[str, str]:
-        """Fetch all ID:last_updated pairs from Supabase. Auto-creates table if missing."""
+        # 6. Update watermark to max timestamp seen
+        all_ts = []
+        for ts in list(local_delta.values()) + list(remote_delta.values()):
+            norm = normalize_ts(ts)
+            if norm != '1970-01-01T00:00:00':
+                all_ts.append(norm)
+        if all_ts:
+            new_watermark = max(all_ts)
+            self._set_watermark(remote_table, new_watermark)
+
+    async def _fetch_remote_delta(self, table_name: str, key_field: str, watermark: str) -> Dict[str, str]:
+        """Fetch ID:last_updated pairs from Supabase for rows modified after watermark.
+        On first sync (watermark=epoch), fetches everything."""
         remote_map = {}
         batch_size = 1000
         offset = 0
+        is_first_sync = watermark == '1970-01-01T00:00:00'
 
         while True:
             try:
-                res = self.supabase.table(table_name).select(f"{key_field},last_updated").range(offset, offset + batch_size - 1).execute()
+                query = self.supabase.table(table_name).select(f"{key_field},last_updated")
+                if not is_first_sync:
+                    query = query.gt('last_updated', watermark)
+                query = query.order('last_updated', desc=False).range(offset, offset + batch_size - 1)
+                res = query.execute()
                 rows = res.data
                 if not rows:
                     break
@@ -318,16 +372,14 @@ class SyncManager:
                 offset += batch_size
             except Exception as e:
                 err_str = str(e)
-                # Auto-create table if PGRST205 (table not found)
                 if 'PGRST205' in err_str or 'Could not find the table' in err_str:
                     logger.info(f"      [AUTO] Table '{table_name}' not found — attempting auto-create...")
                     if self._ensure_remote_table(table_name):
-                        # Retry from the top after creating
                         continue
                     else:
                         logger.warning(f"      [!] Could not auto-create '{table_name}'. Skipping.")
                 else:
-                    logger.error(f"      [x] Metadata fetch error at offset {offset}: {e}")
+                    logger.error(f"      [x] Delta fetch error at offset {offset}: {e}")
                 break
 
         return remote_map

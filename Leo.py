@@ -198,7 +198,6 @@ async def run_chapter_1_p1(p):
         print("  CHAPTER 1 PAGE 1: URL Resolution & Odds Harvesting")
         print("=" * 60)
         await run_odds_harvesting(p)
-        await run_full_sync(session_name="Ch1 P1")
         log_audit_event("CH1_P1", "URL resolution and odds harvesting completed.", status="success")
         return True
     except Exception as e:
@@ -219,7 +218,6 @@ async def run_chapter_1_p2(p, scheduler: TaskScheduler = None,
         print("  CHAPTER 1 PAGE 2: Predictions")
         print("=" * 60)
         await run_flashscore_analysis(p, refresh=refresh, target_dates=target_dates)
-        await run_full_sync(session_name="Ch1 P2")
         log_audit_event("CH1_P2", "Predictions completed.", status="success")
     except Exception as e:
         print(f"  [Error] Chapter 1 Page 2 failed: {e}")
