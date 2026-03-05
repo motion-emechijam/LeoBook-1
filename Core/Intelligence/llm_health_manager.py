@@ -11,12 +11,13 @@ Multi-key, multi-model LLM health manager.
 - Gemini: comma-separated keys (GEMINI_API_KEY=key1,key2,...,key14)
   Round-robins through active keys AND models to maximize free-tier quota.
 
-Model Chains (Feb 2026 free-tier rate limits per key):
+Model Chains (Mar 2026 free-tier rate limits per key):
   gemini-2.5-pro           5 RPM /  100 RPD  (best reasoning)
   gemini-3-flash-preview   5 RPM /   20 RPD  (frontier preview)
   gemini-2.5-flash        10 RPM /  250 RPD  (balanced)
   gemini-2.0-flash        15 RPM / 1500 RPD  (high throughput)
-  gemini-2.5-flash-lite   15 RPM / 1000 RPD  (cheapest)
+  gemini-2.5-flash-lite   15 RPM / 1000 RPD  (cheap)
+  gemini-3.1-flash-lite   15 RPM / 1000 RPD  (cheapest, ultra-fast, 1M tokens)
 
 DESCENDING = pro-first (AIGO predictions, match analysis)
 ASCENDING  = lite-first (search-dict metadata enrichment)
@@ -52,6 +53,7 @@ class LLMHealthManager:
     # ASCENDING: max throughput first (search-dict / bulk enrichment)
     # gemini-2.5-pro excluded — reserved for AIGO
     MODELS_ASCENDING = [
+        "gemini-3.1-flash-lite",
         "gemini-2.5-flash-lite",
         "gemini-2.0-flash",
         "gemini-2.5-flash",
@@ -59,7 +61,7 @@ class LLMHealthManager:
     ]
 
     # Default model for health-check pings (cheapest)
-    PING_MODEL = "gemini-2.5-flash-lite"
+    PING_MODEL = "gemini-3.1-flash-lite"
 
     GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
     GROK_API_URL = "https://api.x.ai/v1/chat/completions"

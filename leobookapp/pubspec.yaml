@@ -1,7 +1,6 @@
 name: leobookapp
 description: "LeoBook: Elite Autonomous Betting Dashboard by Materialless LLC."
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
@@ -20,13 +19,12 @@ dependencies:
   intl: ^0.20.2
   url_launcher: ^6.3.2
   shimmer: ^3.0.0
-  google_fonts: ^4.0.0
+  google_fonts: ^8.0.2
   shared_preferences: ^2.5.2
   supabase_flutter: ^2.3.0
   flutter_dotenv: ^5.2.1
   provider: ^6.1.2
   google_sign_in: 6.2.1
-  
 
 dev_dependencies:
   flutter_test:
@@ -44,4 +42,4 @@ flutter:
 
   # Ensure the .env file exists in your project directory or update the path accordingly
   assets:
-    - .env # Verify that this file exists; create it if needed to fix the error.
+    - .env
