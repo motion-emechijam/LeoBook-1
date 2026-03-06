@@ -17,13 +17,34 @@ DB_PATH = os.path.join(DB_DIR, "leobook.db")
 
 
 def get_connection() -> sqlite3.Connection:
-    """Get a thread-safe SQLite connection with WAL mode."""
+    """Get a thread-safe SQLite connection with WAL mode.
+    Auto-recovers from corrupted DB by deleting and recreating."""
     os.makedirs(DB_DIR, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
-    conn.execute("PRAGMA journal_mode=WAL")
-    conn.execute("PRAGMA busy_timeout=10000")
-    conn.row_factory = sqlite3.Row
-    return conn
+    try:
+        conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=10000")
+        conn.row_factory = sqlite3.Row
+        return conn
+    except sqlite3.DatabaseError as e:
+        if "malformed" in str(e).lower():
+            print(f"  [!] Corrupted DB detected — deleting and recreating: {DB_PATH}")
+            try:
+                conn.close()
+            except Exception:
+                pass
+            # Remove corrupted DB + WAL/SHM files
+            for suffix in ('', '-wal', '-shm'):
+                path = DB_PATH + suffix
+                if os.path.exists(path):
+                    os.remove(path)
+            # Recreate fresh
+            conn = sqlite3.connect(DB_PATH, check_same_thread=False, timeout=30)
+            conn.execute("PRAGMA journal_mode=WAL")
+            conn.execute("PRAGMA busy_timeout=10000")
+            conn.row_factory = sqlite3.Row
+            return conn
+        raise
 
 
 # ---------------------------------------------------------------------------
