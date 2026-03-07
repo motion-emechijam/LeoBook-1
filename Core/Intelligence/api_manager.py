@@ -74,7 +74,7 @@ async def grok_api_call(prompt_content, generation_config=None, **kwargs):
         }
     ]
     payload = {
-        "model": "grok-4-latest",
+        "model": "grok-beta",
         "messages": messages_list,
         "temperature": temperature,
         "max_tokens": 4096,
@@ -187,7 +187,11 @@ async def gemini_api_call(prompt_content, generation_config=None, **kwargs):
             config=gen_config,
         )
 
-    response = await asyncio.to_thread(_make_gemini_request)
+    # 4. Execute Request with timeout to prevent SSL/Network hangs
+    try:
+        response = await asyncio.wait_for(asyncio.to_thread(_make_gemini_request), timeout=90.0)
+    except asyncio.TimeoutError:
+        raise Exception("Gemini API call timed out after 90s (possible SSL or network hang)")
 
     # Wrap response to match expected interface
     class MockGeminiResponse:
@@ -223,14 +227,12 @@ async def unified_api_call(prompt_content, generation_config=None, **kwargs):
             continue
 
         if provider_name == "Gemini":
-            # Model-chain rotation: try each model, exhaust keys per model
+            # Model-chain rotation: try each model, exhaust ALL keys per model
             for model_name in model_chain:
-                # Try up to 3 keys per model before downgrading
-                max_key_tries = min(3, len(health_manager._gemini_active or health_manager._gemini_keys))
-                for key_attempt in range(max_key_tries):
+                while True: # Try all available keys for this model
                     api_key = health_manager.get_next_gemini_key(model=model_name)
                     if not api_key:
-                        # All keys exhausted for this model — downgrade
+                        # All keys truly exhausted for this model — downgrade
                         print(f"    [AI] All keys exhausted for {model_name}, downgrading...")
                         break
                     try:
@@ -250,8 +252,14 @@ async def unified_api_call(prompt_content, generation_config=None, **kwargs):
                             print(f"    [AI] Key ...{key_suffix} rate-limited on {model_name}, rotating...")
                             await asyncio.sleep(1)
                             continue
+                        elif "400" in err_str and "INVALID_ARGUMENT" in err_str:
+                            health_manager.on_gemini_fatal_error(api_key, "400 Invalid Argument")
+                            continue
+                        elif "401" in err_str or "UNAUTHORIZED" in err_str:
+                            health_manager.on_gemini_fatal_error(api_key, "401 Unauthorized")
+                            continue
                         elif "403" in err_str:
-                            health_manager.on_gemini_403(api_key)
+                            health_manager.on_gemini_fatal_error(api_key, "403 Forbidden")
                             continue
                         elif "503" in err_str or "UNAVAILABLE" in err_str:
                             print(f"    [AI WARNING] Gemini {model_name} failed: 503 UNAVAILABLE. Backing off 8s...")

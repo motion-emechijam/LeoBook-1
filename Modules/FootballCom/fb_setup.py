@@ -1,10 +1,9 @@
-# fb_setup.py: fb_setup.py: Pre-booking initialization tasks.
+# fb_setup.py: Pre-booking initialization tasks.
 # Part of LeoBook Modules — Football.com
-#
-# Functions: get_pending_predictions_by_date()
 
 from datetime import datetime as dt
 from .matcher import filter_pending_predictions
+from Core.Utils.utils import parse_date_robust
 
 async def get_pending_predictions_by_date():
     """
@@ -22,7 +21,7 @@ async def get_pending_predictions_by_date():
         d_str = pred.get('date')
         if d_str:
             try:
-                if dt.strptime(d_str, "%d.%m.%Y").date() >= today:
+                if parse_date_robust(d_str).date() >= today:
                     predictions_by_date.setdefault(d_str, []).append(pred)
             except: continue
             

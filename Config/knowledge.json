@@ -319,7 +319,7 @@
         "app_iframe": "#app"
     },
     "fb_schedule_page": {
-        "filter_dropdown_today": ".m-choose-time",
+        "filter_dropdown_today": "li[data-cms-key='friday_(today)']",
         "sort_dropdown": ".m-choose-sort",
         "league_header": ".m-choose-league",
         "pre_match_list_league_container": ".pre-match-list-league-view-container",
@@ -561,7 +561,11 @@
         "popup_close_1770305322": ".close",
         "popup_close_1770305468": ".close",
         "popup_close_1770305597": ".close",
-        "popup_close_1770712672": ".close"
+        "popup_close_1770712672": ".close",
+        "popup_close_1772818587": ".close",
+        "popup_close_1772819451": ".close",
+        "popup_close_1772819956": ".close",
+        "popup_close_1772821315": ".close"
     },
     "_failures": {
         "test_context": {

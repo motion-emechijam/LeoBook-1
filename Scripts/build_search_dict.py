@@ -212,11 +212,10 @@ def query_llm_for_metadata(items, item_type="team", retries=2):
         if provider_name == "Gemini":
             # Model-chain rotation: try each model, exhaust keys per model
             for model_name in model_chain:
-                max_key_tries = min(3, len(health_manager._gemini_active or health_manager._gemini_keys))
-                for key_attempt in range(max_key_tries):
+                while True: # Try all available keys for this model
                     api_key = health_manager.get_next_gemini_key(model=model_name)
                     if not api_key:
-                        print(f"  [LLM] All keys exhausted for {model_name}, upgrading model...")
+                        print(f"  [LLM] All keys exhausted for {model_name}, downgrading model...")
                         break
                     provider = {
                         "name": "Gemini",
@@ -238,10 +237,18 @@ def query_llm_for_metadata(items, item_type="team", retries=2):
                                 health_manager.on_gemini_429(api_key, model=model_name)
                                 print(f"  [LLM] Key ...{key_suffix} rate-limited on {model_name}, rotating...")
                                 break  # Try next key for this model
+                            elif "400" in err_str and "INVALID_ARGUMENT" in err_str:
+                                health_manager.on_gemini_fatal_error(api_key, "400 Invalid Argument")
+                                print(f"  [LLM] Key ...{key_suffix} permanently dead (400), removing...")
+                                break
+                            elif "401" in err_str or "UNAUTHORIZED" in err_str:
+                                health_manager.on_gemini_fatal_error(api_key, "401 Unauthorized")
+                                print(f"  [LLM] Key ...{key_suffix} permanently dead (401), removing...")
+                                break
                             elif "403" in err_str:
-                                health_manager.on_gemini_403(api_key)
+                                health_manager.on_gemini_fatal_error(api_key, "403 Forbidden")
                                 print(f"  [LLM] Key ...{key_suffix} permanently dead (403), removing...")
-                                break  # Try next key
+                                break
                             print(f"  [Warning] Gemini {model_name} attempt {attempt}/{retries} failed: {e}")
                             time.sleep(3 * attempt)
                     else:

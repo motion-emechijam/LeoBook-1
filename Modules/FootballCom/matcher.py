@@ -11,9 +11,7 @@ Handles matching predictions.csv data with extracted Football.com matches using 
 from datetime import datetime
 from typing import List, Dict, Optional
 from pathlib import Path
-from Data.Access.db_helpers import update_prediction_status, _get_conn
-from Data.Access.league_db import query_all
-from Core.Intelligence.unified_matcher import UnifiedBatchMatcher
+from Core.Utils.utils import parse_date_robust
 
 
 async def filter_pending_predictions() -> List[Dict]:
@@ -53,17 +51,17 @@ def parse_match_datetime(date_str: str, time_str: str, is_site_format: bool = Fa
                 dt_site_time = datetime.strptime(site_time_part, "%H:%M")
                 
                 # Use year from date_str (targetDate)
-                target_year = datetime.strptime(date_str, "%d.%m.%Y").year
+                target_year = parse_date_robust(date_str).year
                 return datetime(target_year, dt_site_date.month, dt_site_date.day, dt_site_time.hour, dt_site_time.minute)
 
             # Case 2: "14:00"
             if ':' in time_str:
                 dt_time = datetime.strptime(time_str.strip(), "%H:%M")
-                dt_date = datetime.strptime(date_str, "%d.%m.%Y")
+                dt_date = parse_date_robust(date_str)
                 return datetime(dt_date.year, dt_date.month, dt_date.day, dt_time.hour, dt_time.minute)
 
             # Case 3: "Live", "45'", etc. (Treat as "now" on the target date)
-            dt_date = datetime.strptime(date_str, "%d.%m.%Y")
+            dt_date = parse_date_robust(date_str)
             return datetime(dt_date.year, dt_date.month, dt_date.day, datetime.now().hour, datetime.now().minute)
 
         except Exception as e:
@@ -71,7 +69,8 @@ def parse_match_datetime(date_str: str, time_str: str, is_site_format: bool = Fa
             return None
     else:
         try:
-            return datetime.strptime(f"{date_str} {time_str}", "%d.%m.%Y %H:%M")
+            dt_date = parse_date_robust(date_str)
+            return datetime.combine(dt_date.date(), datetime.strptime(time_str, "%H:%M").time())
         except ValueError:
             return None
 

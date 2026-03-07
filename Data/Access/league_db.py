@@ -411,7 +411,13 @@ def computed_standings(conn=None, league_id=None, season=None):
     sql = _COMPUTED_STANDINGS_SQL.format(filters=filters)
     cursor = conn.execute(sql, params)
     columns = [d[0] for d in cursor.description]
-    return [dict(zip(columns, row)) for row in cursor.fetchall()]
+    results = [dict(zip(columns, row)) for row in cursor.fetchall()]
+    
+    # Add rank/position since tag_generator expects it
+    for i, res in enumerate(results):
+        res["position"] = i + 1
+    
+    return results
 
 
 def _run_alter_migrations(conn: sqlite3.Connection):

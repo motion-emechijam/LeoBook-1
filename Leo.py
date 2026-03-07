@@ -233,7 +233,7 @@ async def run_chapter_1_p1(p):
                 if unenriched:
                     from Scripts.build_search_dict import enrich_batch_teams_search_dict
                     cap = min(len(unenriched), 100)
-                    print(f"    [SearchDict] Enriching {cap}/{len(unenriched)} unenriched teams for this week...")
+                    print(f"    [SearchDict] Retrying enrichment for {cap}/{len(unenriched)} teams needed for this week...")
                     await enrich_batch_teams_search_dict(unenriched[:cap])
                     print(f"    [SearchDict] Done.")
                 else:

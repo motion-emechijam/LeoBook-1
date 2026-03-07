@@ -10,7 +10,7 @@ Pure coordinator of Chapter 1A and 1B logic.
 
 import asyncio
 import os
-from datetime import datetime as dt, timedelta
+from Core.Utils.utils import parse_date_robust
 from zoneinfo import ZoneInfo
 from playwright.async_api import Playwright
 
@@ -84,7 +84,7 @@ async def run_flashscore_analysis(playwright: Playwright, refresh: bool = False,
         else:
             if target_dates:
                  print(f"  [Chapter 1A] Starting analysis loop for specific dates: {target_dates}")
-                 processing_dates = [(dt.strptime(d, "%d.%m.%Y"), d) for d in target_dates]
+                 processing_dates = [(parse_date_robust(d), d) for d in target_dates]
             else:
                  print(f"  [Chapter 1A] Starting analysis loop for 7 days (Refresh: {refresh})...")
                  processing_dates = [(dt.now(NIGERIA_TZ) + timedelta(days=i), (dt.now(NIGERIA_TZ) + timedelta(days=i)).strftime("%d.%m.%Y")) for i in range(7)]
@@ -347,7 +347,7 @@ async def run_flashscore_schedule_only(playwright: Playwright, refresh: bool = F
 
         if target_dates:
             print(f"  [Schedule] Processing specific dates: {target_dates}")
-            processing_dates = [(dt.strptime(d, "%d.%m.%Y"), d) for d in target_dates]
+            processing_dates = [(parse_date_robust(d), d) for d in target_dates]
         else:
             processing_dates = [(dt.now(NIGERIA_TZ) + timedelta(days=i), (dt.now(NIGERIA_TZ) + timedelta(days=i)).strftime("%d.%m.%Y")) for i in range(days)]
 

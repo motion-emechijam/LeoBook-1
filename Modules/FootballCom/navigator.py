@@ -20,7 +20,7 @@ from Core.Browser.site_helpers import fb_universal_popup_dismissal
 from Core.Intelligence.intelligence import fb_universal_popup_dismissal as neo_popup_dismissal
 from Core.Intelligence.selector_manager import SelectorManager
 from Core.Utils.constants import NAVIGATION_TIMEOUT, WAIT_FOR_LOAD_STATE_TIMEOUT
-from Core.Utils.utils import capture_debug_snapshot
+from Core.Utils.utils import capture_debug_snapshot, parse_date_robust
 from Core.Intelligence.aigo_suite import AIGOSuite
 
 PHONE = cast(str, os.getenv("FB_PHONE"))
@@ -198,10 +198,10 @@ async def navigate_to_schedule(page: Page):
     """Simplified navigation to schedule with AIGO safety net."""
     await fb_universal_popup_dismissal(page)
     
-    if "/sport/football/" in page.url:
-         return await hide_overlays(page)
+    #if "/sport/football/" in page.url:
+         #return await hide_overlays(page)
 
-    sel = SelectorManager.get_selector_strict("fb_global", "full_schedule_button")
+    sel = SelectorManager.get_selector_strict("fb_main_page", "full_schedule_button")
     
     # Standard Playwright: Check visibility and click
     if sel and await page.locator(sel).count() > 0:
@@ -227,7 +227,7 @@ async def select_target_date(page: Page, target_date: str) -> bool:
     await asyncio.sleep(1)
 
     # ... remaining date selection logic ...
-    target_dt = dt.strptime(target_date, "%d.%m.%Y")
+    target_dt = parse_date_robust(target_date)
     day_str = "Today" if target_dt.date() == dt.now().date() else target_dt.strftime("%A")
     
     day_item_tmpl = SelectorManager.get_selector_strict("fb_schedule_page", "day_list_item_template")
@@ -269,7 +269,10 @@ async def select_target_date(page: Page, target_date: str) -> bool:
                     if sample_time:
                         try:
                             # Intelligent Date Validation: Compare "29 Dec" (sample) with "29.12" (target)
-                            target_dt = dt.strptime(target_date, "%d.%m.%Y")
+                            try:
+                                target_dt = parse_date_robust(target_date)
+                            except ValueError:
+                                return False
                             
                             # Sample format expected: "29 Dec, 17:00"
                             date_part_str = sample_time.split(',')[0].strip()

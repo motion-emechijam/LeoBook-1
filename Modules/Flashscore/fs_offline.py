@@ -10,6 +10,7 @@ from Data.Access.db_helpers import get_all_schedules, get_standings, save_predic
 from Scripts.recommend_bets import get_recommendations
 from Core.Intelligence.rule_engine import RuleEngine
 from Core.Intelligence.rule_config import RuleConfig
+from Core.Utils.utils import parse_date_robust
 import csv
 import os
 
@@ -42,7 +43,8 @@ async def run_flashscore_offline_repredict(playwright: Playwright, custom_config
             if not date_str or not time_str or time_str == 'N/A':
                 continue
                 
-            match_dt = dt.strptime(f"{date_str} {time_str}", "%d.%m.%Y %H:%M").replace(tzinfo=NIGERIA_TZ)
+            dt_date = parse_date_robust(date_str)
+            match_dt = dt_date.replace(hour=int(time_str.split(':')[0]), minute=int(time_str.split(':')[1])).replace(tzinfo=NIGERIA_TZ)
             if match_dt > threshold:
                 to_process.append(m)
         except Exception:
@@ -60,7 +62,7 @@ async def run_flashscore_offline_repredict(playwright: Playwright, custom_config
     # Sort historical matches once
     def parse_date(d_str):
         try:
-            return dt.strptime(d_str, "%d.%m.%Y")
+            return parse_date_robust(d_str)
         except:
             return dt.min
 

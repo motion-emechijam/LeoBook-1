@@ -96,3 +96,16 @@ class BatchProcessor:
     async def run_batch(self, items: List[T], func: Callable, *args, **kwargs):
         tasks = [self._worker(func, item, *args, **kwargs) for item in items]
         return await asyncio.gather(*tasks)
+
+
+def parse_date_robust(date_str: str) -> dt:
+    """Parse date string robustly, supporting YYYY-MM-DD or DD.MM.YYYY."""
+    if not date_str:
+        raise ValueError("Empty date string")
+    date_str = date_str.strip()
+    try:
+        if "-" in date_str:
+            return dt.strptime(date_str, "%Y-%m-%d")
+        return dt.strptime(date_str, "%d.%m.%Y")
+    except ValueError:
+        raise ValueError(f"Could not parse date '{date_str}'. Expected YYYY-MM-DD or DD.MM.YYYY")

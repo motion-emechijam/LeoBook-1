@@ -52,7 +52,7 @@ class LLMHealthManager:
     PING_MODEL = "gemini-3.1-flash-lite-preview"
     GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
     GROK_API_URL = "https://api.x.ai/v1/chat/completions"
-    GROK_MODEL = "grok-4-1-fast-reasoning"
+    GROK_MODEL = "grok-beta"
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
@@ -156,15 +156,19 @@ class LLMHealthManager:
                     print(f" [LLM Health] Gemini key rotated out (429). {remaining} keys remaining.")
                     if remaining == 0:
                         print(f" [LLM Health] [!] All {len(self._gemini_keys)} Gemini keys exhausted!")
-    def on_gemini_403(self, failed_key: str):
-        """Called when a Gemini key hits 403. Permanently remove from ALL pools."""
+    def on_gemini_fatal_error(self, failed_key: str, reason: str = "403/400/401"):
+        """Called when a Gemini key hits a fatal error (400 Invalid, 401 Unauth, 403 Forbidden). 
+        Permanently remove from ALL pools.
+        """
         with self._state_lock:
+            if failed_key in self._dead_keys:
+                return
             self._dead_keys.add(failed_key)
             if failed_key in self._gemini_active:
                 self._gemini_active.remove(failed_key)
             if failed_key in self._gemini_keys:
                 self._gemini_keys.remove(failed_key)
-            print(f" [LLM Health] Gemini key permanently removed (403 Forbidden). "
+            print(f" [LLM Health] Gemini key permanently removed ({reason}). "
                   f"{len(self._gemini_active)} active, {len(self._gemini_keys)} total.")
     def reset_model_exhaustion(self):
         """Reset per-model exhaustion tracking (call at start of each cycle)."""
@@ -198,8 +202,13 @@ class LLMHealthManager:
             sample_indices = list(dict.fromkeys(sample_indices)) # deterministic + unique
             sample_results = []
             for idx in sample_indices:
-                alive = await self._ping_key("Gemini", self.GEMINI_API_URL, self.PING_MODEL, self._gemini_keys[idx])
-                sample_results.append(alive)
+                key = self._gemini_keys[idx]
+                status = await self._ping_key("Gemini", self.GEMINI_API_URL, self.PING_MODEL, key)
+                if status == "FATAL":
+                    self.on_gemini_fatal_error(key, "Dead Key detected in ping")
+                    sample_results.append(False)
+                else:
+                    sample_results.append(status == "OK")
             if any(sample_results):
                 self._gemini_active = list(self._gemini_keys)
                 print(f" [LLM Health] Gemini: [OK] Active ({len(self._gemini_keys)} keys, "
@@ -216,10 +225,10 @@ class LLMHealthManager:
             self._gemini_index = 0 # reset round-robin pointer after fresh ping cycle
         if not self._grok_active and not self._gemini_active:
             print(" [LLM Health] [!] CRITICAL -- All LLM providers are offline! User action required.")
-    async def _ping_key(self, name: str, api_url: str, model: str, api_key: str) -> bool:
-        """Ping a single API key. 200/429 = active, 401/403 = dead."""
+    async def _ping_key(self, name: str, api_url: str, model: str, api_key: str) -> str:
+        """Ping a single API key. OK (200/429), FATAL (401/403/400-Invalid), or FAIL (other)."""
         if not api_key:
-            return False
+            return "FAIL"
         headers = {
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
@@ -233,9 +242,12 @@ class LLMHealthManager:
         def _do_ping():
             try:
                 resp = requests.post(api_url, headers=headers, json=payload, timeout=10)
-                return resp.status_code in (200, 429)
+                # 400 Bad Request with INVALID_ARGUMENT is a dead key (usually bad API key)
+                if resp.status_code in (401, 403) or (resp.status_code == 400 and "INVALID_ARGUMENT" in resp.text):
+                    return "FATAL"
+                return "OK" if resp.status_code in (200, 429) else "FAIL"
             except Exception:
-                return False
+                return "FAIL"
         return await asyncio.to_thread(_do_ping)
 # Module-level singleton
 health_manager = LLMHealthManager()
