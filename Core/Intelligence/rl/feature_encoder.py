@@ -16,7 +16,7 @@ import numpy as np
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timedelta
 
-FEATURE_DIM = 192  # Fixed feature vector size
+FEATURE_DIM = 200  # Fixed feature vector size (192 base + 8 market priors)
 
 # Recency decay: match at index 0 (most recent) = weight 1.0, index 9 = weight ~0.37
 _RECENCY_WEIGHTS = [math.exp(-0.1 * i) for i in range(10)]
@@ -84,7 +84,10 @@ class FeatureEncoder:
         # --- 9. League Metadata (4 floats) ---
         features.extend(FeatureEncoder._encode_league_meta(league_meta))
 
-        # --- 10. Padding to FEATURE_DIM ---
+        # --- 10. Market Likelihood Priors (8 floats) ---
+        features.extend(FeatureEncoder._encode_market_likelihoods())
+
+        # --- 11. Padding to FEATURE_DIM ---
         current_len = len(features)
         if current_len < FEATURE_DIM:
             features.extend([0.0] * (FEATURE_DIM - current_len))
@@ -327,3 +330,12 @@ class FeatureEncoder:
             meta.get("home_advantage_factor", 0.45), # Home win %
             meta.get("draw_rate", 0.25),             # League draw rate
         ]
+
+    @staticmethod
+    def _encode_market_likelihoods() -> List[float]:
+        """Encode base market likelihoods for all 8 RL actions (8 floats).
+        Gives the model calibrated priors rather than learning base rates from scratch.
+        """
+        from .trainer import get_action_likelihood
+        return [get_action_likelihood(i) / 100.0 if get_action_likelihood(i) > 1 else get_action_likelihood(i)
+                for i in range(8)]

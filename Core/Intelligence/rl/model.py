@@ -94,7 +94,7 @@ class LeoBookRLModel(nn.Module):
 
     def __init__(
         self,
-        feature_dim: int = 192,
+        feature_dim: int = 200,
         hidden_dim: int = 256,
         trunk_out_dim: int = 128,
         league_emb_dim: int = 32,

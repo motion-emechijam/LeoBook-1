@@ -1,0 +1,2942 @@
+[
+  {
+    "league_id": "football_com_england_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - Premier League",
+    "url": "/ng/m/sport/football/England/Premier_League/Burnley_vs_Bournemouth/sr:match:61301103/",
+    "match_count": 18,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_clubs_-_uefa_champions_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Clubs - UEFA Champions League",
+    "url": "/ng/m/sport/football/International_Clubs/UEFA_Champions_League/Galatasaray_Istanbul_vs_Liverpool/sr:match:69348496/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Serie A",
+    "url": "/ng/m/sport/football/Italy/Serie_A/US_Lecce_vs_US_Cremonese/sr:match:61061499/",
+    "match_count": 16,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_japan_-_j1_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Japan - J1 League",
+    "url": "/ng/m/sport/football/Japan/J1_League/Fagiano_Okayama_vs_Kyoto_Sanga_FC/sr:match:67644868/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_-_super_lig",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye - Super Lig",
+    "url": "/ng/m/sport/football/Turkiye/Super_Lig/Caykur_Rizespor_vs_Antalyaspor/sr:match:61730080/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_argentina_-_primera_lpf",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Argentina - Primera LPF",
+    "url": "/ng/m/sport/football/Argentina/Primera_LPF/CA_Independiente_Avellaneda_vs_Union_de_Santa_Fe/sr:match:67091788/",
+    "match_count": 17,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_belgium_-_pro_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Belgium - Pro League",
+    "url": "/ng/m/sport/football/Belgium/Pro_League/Brugge_vs_RSC_Anderlecht/sr:match:61359089/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_brasileiro_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Brasileiro Serie A",
+    "url": "/ng/m/sport/football/Brazil/Brasileiro_Serie_A/Mirassol_FC_SP_vs_Santos_FC_SP/sr:match:66886566/",
+    "match_count": 19,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_china_-_chinese_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "China - Chinese Super League",
+    "url": "/ng/m/sport/football/China/Chinese_Super_League/Zhejiang_FC_vs_Qingdao_West_Coast_FC/sr:match:68994976/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_1._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - 1. Liga",
+    "url": "/ng/m/sport/football/Czechia/1._Liga/FC_Banik_Ostrava_vs_FC_Zlin/sr:match:61324651/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_efl_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - EFL Cup",
+    "url": "/ng/m/sport/football/England/EFL_Cup/Arsenal_vs_Man_City/sr:match:68673336/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_ligue_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - Ligue 1",
+    "url": "/ng/m/sport/football/France/Ligue_1/RC_Lens_vs_Metz/sr:match:61526430/",
+    "match_count": 13,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_clubs_-_uefa_europa_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Clubs - UEFA Europa League",
+    "url": "/ng/m/sport/football/International_Clubs/UEFA_Europa_League/Bologna_vs_Roma/sr:match:69351080/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_clubs_-_afc_champions_league_elite",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Clubs - AFC Champions League Elite",
+    "url": "/ng/m/sport/football/International_Clubs/AFC_Champions_League_Elite/Machida_Zelvia_vs_Gangwon_FC/sr:match:68567006/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_netherlands_-_eredivisie",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Netherlands - Eredivisie",
+    "url": "/ng/m/sport/football/Netherlands/Eredivisie/Sparta_Rotterdam_vs_PEC_Zwolle/sr:match:61320131/",
+    "match_count": 14,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_norway_-_eliteserien",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Norway - Eliteserien",
+    "url": "/ng/m/sport/football/Norway/Eliteserien/Sarpsborg_08_vs_Bodoe,Glimt/sr:match:67015058/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_ekstraklasa",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - Ekstraklasa",
+    "url": "/ng/m/sport/football/Poland/Ekstraklasa/LKP_Motor_Lublin_vs_Gornik_Zabrze/sr:match:61062155/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_portugal_-_liga_portugal",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Portugal - Liga Portugal",
+    "url": "/ng/m/sport/football/Portugal/Liga_Portugal/Estrela_Amadora_vs_Gil_Vicente_Barcelos/sr:match:61731384/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_scotland_-_premiership",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Scotland - Premiership",
+    "url": "/ng/m/sport/football/Scotland/Premiership/Aberdeen_vs_Falkirk_FC/sr:match:61352683/",
+    "match_count": 12,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_-_laliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain - LaLiga",
+    "url": "/ng/m/sport/football/Spain/LaLiga/Villarreal_vs_Elche_CF/sr:match:61624470/",
+    "match_count": 16,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_usa_-_mls",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "USA - MLS",
+    "url": "/ng/m/sport/football/USA/MLS/Atlanta_United_FC_vs_Real_Salt_Lake/sr:match:66000404/",
+    "match_count": 12,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_fa_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - FA Cup",
+    "url": "/ng/m/sport/football/England/FA_Cup/Fulham_vs_Southampton/sr:match:69029718/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_-_bundesliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany - Bundesliga",
+    "url": "/ng/m/sport/football/Germany/Bundesliga/FC_St._Pauli_vs_Eintracht_Frankfurt/sr:match:61514052/",
+    "match_count": 11,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_clubs_-_uefa_conference_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Clubs - UEFA Conference League",
+    "url": "/ng/m/sport/football/International_Clubs/UEFA_Conference_League/Alkmaar_vs_Sparta_Prague/sr:match:69352746/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_clubs_-_conmebol_libertadores",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Clubs - CONMEBOL Libertadores",
+    "url": "/ng/m/sport/football/International_Clubs/CONMEBOL_Libertadores/Botafogo_FR_RJ_vs_Barcelona_SC/sr:match:66942270/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_coupe_de_france",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - Coupe de France",
+    "url": "/ng/m/sport/football/France/Coupe_de_France/RC_Lens_vs_Toulouse/sr:match:69623604/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_saudi_arabia_-_saudi_pro_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Saudi Arabia - Saudi Pro League",
+    "url": "/ng/m/sport/football/Saudi_Arabia/Saudi_Pro_League/Al-Hazm_vs_Al-Kholood/sr:match:64055745/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_albania_-_kategoria_superiore",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Albania - Kategoria Superiore",
+    "url": "/ng/m/sport/football/Albania/Kategoria_Superiore/Bylis_Ballsh_vs_FK_Vora/sr:match:62155352/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_algeria_-_ligue_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Algeria - Ligue 1",
+    "url": "/ng/m/sport/football/Algeria/Ligue_1/Olympique_Akbou_vs_JS_Saoura/sr:match:69284922/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_algeria_-_ligue_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Algeria - Ligue 2",
+    "url": "/ng/m/sport/football/Algeria/Ligue_2/HB_Chelghoum_Laid_vs_CA_Batna/sr:match:69312026/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_andorra_-_primera_divisio",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Andorra - Primera Divisio",
+    "url": "/ng/m/sport/football/Andorra/Primera_Divisio/CF_Esperanca_D_Andorra_vs_CE_Carroi/sr:match:61737668/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_argentina_-_primera_nacional",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Argentina - Primera Nacional",
+    "url": "/ng/m/sport/football/Argentina/Primera_Nacional/Atletico_de_Rafaela_vs_San_Martin_de_San_Juan/sr:match:67118240/",
+    "match_count": 18,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_armenia_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Armenia - Premier League",
+    "url": "/ng/m/sport/football/Armenia/Premier_League/FC_BKMA_Yerevan_vs_FC_Noah_Yerevan/sr:match:69042192/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_nsw_npl_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - NSW NPL 1",
+    "url": "/ng/m/sport/football/Australia/NSW_NPL_1/Wollongong_Wolves_FC_vs_Sydney_FC_Youth/sr:match:67690708/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_u23_queensland_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - U23 Queensland NPL",
+    "url": "/ng/m/sport/football/Australia/U23_Queensland_NPL/Magic_United_TFA_vs_Gold_Coast_Knights_FC/sr:match:67905090/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_northern_nsw_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Northern NSW NPL",
+    "url": "/ng/m/sport/football/Australia/Northern_NSW_NPL/Newcastle_Olympic_FC_vs_Adamstown_Rosebud_FC/sr:match:67807282/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_tasmania_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Tasmania NPL",
+    "url": "/ng/m/sport/football/Australia/Tasmania_NPL/South_East_United_FC_vs_Clarence_Zebras_FC/sr:match:68679992/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_nsw_league_one",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - NSW League One",
+    "url": "/ng/m/sport/football/Australia/NSW_League_One/Central_Coast_Mariners_Academy_vs_Bankstown_City_FC/sr:match:67691446/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_northern_nsw_npl_reserves",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Northern NSW NPL, Reserves",
+    "url": "/ng/m/sport/football/Australia/Northern_NSW_NPL,_Reserves/Newcastle_Olympic_FC_Reserve_vs_Adamstown_Rosebud_FC_Reserve/sr:match:67808358/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_a-league_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - A-League, Women",
+    "url": "/ng/m/sport/football/Australia/A-League,_Women/Adelaide_United_FC_vs_Perth_Glory_FC/sr:match:63685135/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_nsw_npl_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - NSW NPL, Women",
+    "url": "/ng/m/sport/football/Australia/NSW_NPL,_Women/Macarthur_Rams_vs_Manly_United_FC/sr:match:67692462/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_northern_nsw_npl_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Northern NSW NPL, Women",
+    "url": "/ng/m/sport/football/Australia/Northern_NSW_NPL,_Women/New_Lambton_FC_vs_Adamstown_Rosebud_JFC/sr:match:67807778/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_a-league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - A-League",
+    "url": "/ng/m/sport/football/Australia/A-League/Auckland_FC_vs_Perth_Glory_FC/sr:match:63684673/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_u20_nsw_league_one",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - U20 NSW League One",
+    "url": "/ng/m/sport/football/Australia/U20_NSW_League_One/Prospect_United_vs_Hills_United_FC/sr:match:67693374/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_queensland_premier_league_3_metro",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Queensland Premier League 3 Metro",
+    "url": "/ng/m/sport/football/Australia/Queensland_Premier_League_3_Metro/Logan_Roos_FC_vs_Ipswich_Knights/sr:match:67904330/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_u23_victoria_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - U23 Victoria NPL",
+    "url": "/ng/m/sport/football/Australia/U23_Victoria_NPL/Preston_Lions_FC_vs_Heidelberg_United_FC/sr:match:68161198/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_queensland_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Queensland NPL",
+    "url": "/ng/m/sport/football/Australia/Queensland_NPL/Brisbane_Roar_FC_vs_Gold_Coast_United_FC/sr:match:67878142/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_victoria_npl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Victoria, NPL",
+    "url": "/ng/m/sport/football/Australia/Victoria,_NPL/Melbourne_City_FC_2_vs_Oakleigh_Cannons/sr:match:68159912/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_victoria_premier_league_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Victoria Premier League 1",
+    "url": "/ng/m/sport/football/Australia/Victoria_Premier_League_1/Melbourne_Victory_vs_FC_Bulleen_Lions/sr:match:68160436/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_australia_-_queensland_premier_league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Australia - Queensland Premier League 2",
+    "url": "/ng/m/sport/football/Australia/Queensland_Premier_League_2/Grange_Thistle_vs_Southside_Eagles/sr:match:67904056/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_austria_-_2._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Austria - 2. Liga",
+    "url": "/ng/m/sport/football/Austria/2._Liga/FC_Admira_Wacker_Modling_vs_SK_Austria_Klagenfurt/sr:match:61591204/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_austria_-_bundesliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Austria - Bundesliga",
+    "url": "/ng/m/sport/football/Austria/Bundesliga/LASK_Linz_vs_Wolfsberger_AC/sr:match:61518794/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_austria_amateur_-_burgenlandliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Austria Amateur - Burgenlandliga",
+    "url": "/ng/m/sport/football/Austria_Amateur/Burgenlandliga/SK_Pama_vs_Bad_Sauerbrunn/sr:match:61893896/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_austria_amateur_-_wiener_stadtliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Austria Amateur - Wiener Stadtliga",
+    "url": "/ng/m/sport/football/Austria_Amateur/Wiener_Stadtliga/SK_Slovan_HAC_vs_A-Xiii_Auhof_Center/sr:match:61911402/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_austria_amateur_-_steiermark_landesliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Austria Amateur - Steiermark, Landesliga",
+    "url": "/ng/m/sport/football/Austria_Amateur/Steiermark,_Landesliga/Fsc_Eggendorf_Hartberg_II_vs_SC_Stadtwerke_Bruck,Mur/sr:match:61901786/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_azerbaijan_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Azerbaijan - Premier League",
+    "url": "/ng/m/sport/football/Azerbaijan/Premier_League/Shamakhi_FK_vs_Imisli_FK/sr:match:63185669/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_belarus_-_belarus_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Belarus - Belarus Cup",
+    "url": "/ng/m/sport/football/Belarus/Belarus_Cup/FC_Brest_vs_Maxline_Rogachev/sr:match:68900656/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_belgium_-_nationale_1_vv",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Belgium - Nationale 1 VV",
+    "url": "/ng/m/sport/football/Belgium/Nationale_1_VV/Belisia_Bilzen_SV_vs_Royal_Knokke_FC/sr:match:61791174/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_belgium_-_nationale_1_acff",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Belgium - Nationale 1 ACFF",
+    "url": "/ng/m/sport/football/Belgium/Nationale_1_ACFF/Crossing_Schaerbeek_vs_Sporting_Charleroi_B/sr:match:69096476/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_belgium_-_challenger_pro_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Belgium - Challenger Pro League",
+    "url": "/ng/m/sport/football/Belgium/Challenger_Pro_League/KSC_Lokeren_Temse_vs_KV_Waasland-Beveren/sr:match:61755168/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_bosnia_&_herzegovina_-_premijer_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Bosnia & Herzegovina - Premijer Liga",
+    "url": "/ng/m/sport/football/Bosnia_&_Herzegovina/Premijer_Liga/HSK_Zrinjski_Mostar_vs_FK_Radnik_Bijeljina/sr:match:61737232/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paranaense_2._divisao",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paranaense, 2. Divisao",
+    "url": "/ng/m/sport/football/Brazil/Paranaense,_2._Divisao/EC_Laranja_Mecanica_PR_vs_Parana_Clube_PR/sr:match:68641164/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_cearense_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Cearense, Serie A",
+    "url": "/ng/m/sport/football/Brazil/Cearense,_Serie_A/Ceara_SC_CE_vs_Fortaleza_EC_CE/sr:match:69228962/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paraense_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paraense, Serie A",
+    "url": "/ng/m/sport/football/Brazil/Paraense,_Serie_A/Paysandu_SC_PA_vs_Clube_do_Remo_PA/sr:match:69228956/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_carioca_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Carioca, Serie A",
+    "url": "/ng/m/sport/football/Brazil/Carioca,_Serie_A/AA_Portuguesa_RJ_vs_Marica_FC_RJ/sr:match:68780892/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_brasileiro_serie_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Brasileiro Serie B",
+    "url": "/ng/m/sport/football/Brazil/Brasileiro_Serie_B/Nautico_PE_vs_Criciuma_EC_SC/sr:match:68822694/",
+    "match_count": 10,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_candango_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Candango, Serie A",
+    "url": "/ng/m/sport/football/Brazil/Candango,_Serie_A/Sobradinho_DF_vs_Samambaia_FC_DF/sr:match:69507246/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_gaucho_serie_a1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Gaucho, Serie A1",
+    "url": "/ng/m/sport/football/Brazil/Gaucho,_Serie_A1/SC_Internacional_RS_vs_Gremio_FB_Porto_Alegrense_RS/sr:match:69238816/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_mato-grossense_1._divisao",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Mato-Grossense, 1. Divisao",
+    "url": "/ng/m/sport/football/Brazil/Mato-Grossense,_1._Divisao/Luverdense_EC_MT_vs_Mixto_EC_MT/sr:match:69247526/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_mineiro_modulo_i",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Mineiro, Modulo I",
+    "url": "/ng/m/sport/football/Brazil/Mineiro,_Modulo_I/Cruzeiro_EC_MG_vs_Atletico_Mineiro_MG/sr:match:69470870/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paraibano",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paraibano",
+    "url": "/ng/m/sport/football/Brazil/Paraibano/Campinense_PB_vs_Sousa_EC_PB/sr:match:69228892/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_brasileiro_serie_c",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Brasileiro Serie C",
+    "url": "/ng/m/sport/football/Brazil/Brasileiro_Serie_C/AD_Confianca_SE_vs_Amazonas_FC_AM/sr:match:69254904/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_catarinense_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Catarinense, Serie A",
+    "url": "/ng/m/sport/football/Brazil/Catarinense,_Serie_A/Chapecoense_SC_vs_Barra_FC_SC/sr:match:69194766/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_amazonense",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Amazonense",
+    "url": "/ng/m/sport/football/Brazil/Amazonense/Manauara_EC_AM_vs_Nacional_FC_AM/sr:match:69628136/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paulista_serie_a3",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paulista, Serie A3",
+    "url": "/ng/m/sport/football/Brazil/Paulista,_Serie_A3/Portuguesa_Santista_vs_AA_Francana_SP/sr:match:66456680/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paulista_serie_a4",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paulista, Serie A4",
+    "url": "/ng/m/sport/football/Brazil/Paulista,_Serie_A4/EC_Uniao_Suzano_SP_vs_Jabaquara_AC_SP/sr:match:66917626/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_goiano",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Goiano",
+    "url": "/ng/m/sport/football/Brazil/Goiano/AE_Jataiense_GO_vs_Abecat_Ouvidorense_GO/sr:match:69411474/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_paulista_serie_a1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Paulista, Serie A1",
+    "url": "/ng/m/sport/football/Brazil/Paulista,_Serie_A1/Gremio_Novorizontino_SP_vs_SE_Palmeiras_SP/sr:match:69497578/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_pernambucano",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Pernambucano",
+    "url": "/ng/m/sport/football/Brazil/Pernambucano/Nautico_PE_vs_SC_Recife_PE/sr:match:69197590/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_brazil_-_campeonato_capixaba",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Brazil - Campeonato Capixaba",
+    "url": "/ng/m/sport/football/Brazil/Campeonato_Capixaba/Porto_Vitoria_ES_vs_Vitoria_FC_ES/sr:match:69503608/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_bulgaria_-_vtora_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Bulgaria - Vtora Liga",
+    "url": "/ng/m/sport/football/Bulgaria/Vtora_Liga/FC_Fratria_Varna_vs_FK_Sevlievo/sr:match:63465045/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_bulgaria_-_parva_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Bulgaria - Parva Liga",
+    "url": "/ng/m/sport/football/Bulgaria/Parva_Liga/PFC_Dobrudzha_Dobrich_vs_PFK_Beroe_Stara_Zagora/sr:match:63465853/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_chile_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Chile - Primera Division",
+    "url": "/ng/m/sport/football/Chile/Primera_Division/CD_O'Higgins_vs_CD_Universidad_Catolica/sr:match:67681756/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_chile_-_primera_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Chile - Primera B",
+    "url": "/ng/m/sport/football/Chile/Primera_B/Deportes_Iquique_vs_San_Marcos_de_Arica/sr:match:68097758/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_chinese_taipei_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Chinese Taipei - Premier League",
+    "url": "/ng/m/sport/football/Chinese_Taipei/Premier_League/Leopard_Cat_FC_vs_Taiwan_Power_Company/sr:match:62778569/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_colombia_-_liga_dimayor",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Colombia - Liga DIMAYOR",
+    "url": "/ng/m/sport/football/Colombia/Liga_DIMAYOR/Llaneros_FC_vs_Jaguares_de_Cordoba/sr:match:67698060/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_colombia_-_torneo_dimayor",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Colombia - Torneo DIMAYOR",
+    "url": "/ng/m/sport/football/Colombia/Torneo_DIMAYOR/Real_Cartagena_FC_vs_Internacional_de_Palmira/sr:match:68129012/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_costa_rica_-_primera_division_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Costa Rica - Primera Division, Clausura",
+    "url": "/ng/m/sport/football/Costa_Rica/Primera_Division,_Clausura/AD_San_Carlos_vs_Liga_Deportiva_Alajuelense/sr:match:66443242/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_costa_rica_-_primera_division_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Costa Rica - Primera Division, Women",
+    "url": "/ng/m/sport/football/Costa_Rica/Primera_Division,_Women/CS_Herediano_vs_Moravia/sr:match:68126704/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_costa_rica_-_liga_de_ascenso_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Costa Rica - Liga de Ascenso, Clausura",
+    "url": "/ng/m/sport/football/Costa_Rica/Liga_de_Ascenso,_Clausura/AD_Carmelita_vs_CD_Escorpiones_Belen/sr:match:67516360/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_croatia_-_hnl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Croatia - HNL",
+    "url": "/ng/m/sport/football/Croatia/HNL/HNK_Hajduk_Split_vs_GNK_Dinamo_Zagreb/sr:match:61286489/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_croatia_-_prva_nl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Croatia - Prva NL",
+    "url": "/ng/m/sport/football/Croatia/Prva_NL/HNK_Cibalia_Vinkovci_vs_NK_Karlovac_1919/sr:match:61464753/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_croatia_-_croatian_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Croatia - Croatian Cup",
+    "url": "/ng/m/sport/football/Croatia/Croatian_Cup/NK_Slaven_Belupo_vs_NK_Lokomotiva_Zagreb/sr:match:66570184/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_croatia_-_u19_prva_nl_juniori",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Croatia - U19 Prva NL Juniori",
+    "url": "/ng/m/sport/football/Croatia/U19_Prva_NL_Juniori/GNK_Dinamo_Zagreb_vs_Lokomotiva_Zagreb/sr:match:62415550/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_cyprus_-_2nd_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Cyprus - 2nd Division",
+    "url": "/ng/m/sport/football/Cyprus/2nd_Division/Asil_Lysis_vs_PAEEK_Kyrenia/sr:match:67798960/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_cyprus_-_1st_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Cyprus - 1st Division",
+    "url": "/ng/m/sport/football/Cyprus/1st_Division/Apollon_Limassol_vs_AEL_Limassol/sr:match:62116446/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_fnl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - FNL",
+    "url": "/ng/m/sport/football/Czechia/FNL/Sparta_Prague_B_vs_FK_Usti_nad_Labem/sr:match:61326471/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_msfl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - MSFL",
+    "url": "/ng/m/sport/football/Czechia/MSFL/1._FC_Slovacko_B_vs_FK_Hodonin/sr:match:66053536/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_divize_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - Divize B",
+    "url": "/ng/m/sport/football/Czechia/Divize_B/SK_Steti_vs_FK_Banik_Sokolov/sr:match:66606072/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_cfl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - CFL",
+    "url": "/ng/m/sport/football/Czechia/CFL/FK_Teplice_B_vs_FK_Varnsdorf/sr:match:66613918/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_2._liga_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - 2. Liga, Women",
+    "url": "/ng/m/sport/football/Czechia/2._Liga,_Women/SK_Olomouc_Sigma_vs_Dukla_Prague/sr:match:62246408/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_divize_f",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - Divize F",
+    "url": "/ng/m/sport/football/Czechia/Divize_F/MFK_Havirov_vs_1._Bfk_Frydlant_Nad_Ostravici/sr:match:66054320/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_czechia_-_divize_e",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Czechia - Divize E",
+    "url": "/ng/m/sport/football/Czechia/Divize_E/FC_Tvd_Slavicin_vs_FC_Strani/sr:match:66054084/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_denmark_-_1._division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Denmark - 1. Division",
+    "url": "/ng/m/sport/football/Denmark/1._Division/AC_Horsens_vs_Lyngby_BK/sr:match:61321107/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_denmark_-_superliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Denmark - Superliga",
+    "url": "/ng/m/sport/football/Denmark/Superliga/FC_Fredericia_vs_Randers_FC/sr:match:69653754/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_denmark_-_dbu_pokalen",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Denmark - DBU Pokalen",
+    "url": "/ng/m/sport/football/Denmark/DBU_Pokalen/FC_Midtjylland_vs_AGF_Aarhus/sr:match:66788360/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_dominican_republic_-_liga_dominicana_de_futbol",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Dominican Republic - Liga Dominicana de Futbol",
+    "url": "/ng/m/sport/football/Dominican_Republic/Liga_Dominicana_de_Futbol/Univ._Organizacion_y_Metodo_FC_vs_Cibao_CF/sr:match:111111113653379/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ecuador_-_ligapro_primera_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ecuador - LigaPro Primera A",
+    "url": "/ng/m/sport/football/Ecuador/LigaPro_Primera_A/Libertad_Loja_vs_LDU_Quito/sr:match:68687470/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_egypt_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Egypt - Premier League",
+    "url": "/ng/m/sport/football/Egypt/Premier_League/National_Bank_of_Egypt_SC_vs_Pyramids_FC/sr:match:67731240/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_el_salvador_-_primera_division_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "El Salvador - Primera Division, Clausura",
+    "url": "/ng/m/sport/football/El_Salvador/Primera_Division,_Clausura/Inter_Formando_UN_Atleta_vs_Zacatecoluca_FC/sr:match:67603858/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_el_salvador_-_primera_division_reserves_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "El Salvador - Primera Division, Reserves, Clausura",
+    "url": "/ng/m/sport/football/El_Salvador/Primera_Division,_Reserves,_Clausura/CD_Cacahuatique_U20_vs_Municipal_Limeno/sr:match:69621146/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_national_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - National League",
+    "url": "/ng/m/sport/football/England/National_League/Aldershot_Town_FC_vs_Carlisle_United/sr:match:68567432/",
+    "match_count": 18,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_efl_trophy",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - EFL Trophy",
+    "url": "/ng/m/sport/football/England/EFL_Trophy/Luton_vs_Stockport_County_FC/sr:match:69653688/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_league_one",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - League One",
+    "url": "/ng/m/sport/football/England/League_One/AFC_Wimbledon_vs_Northampton_Town/sr:match:61493563/",
+    "match_count": 21,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_championship",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - Championship",
+    "url": "/ng/m/sport/football/England/Championship/Queens_Park_Rangers_vs_Middlesbrough_FC/sr:match:61491159/",
+    "match_count": 25,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_-_league_two",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England - League Two",
+    "url": "/ng/m/sport/football/England/League_Two/Barrow_AFC_vs_Bristol_Rovers/sr:match:67624956/",
+    "match_count": 16,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_england_amateur_-_u21_premier_league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "England Amateur - U21 Premier League 2",
+    "url": "/ng/m/sport/football/England_Amateur/U21_Premier_League_2/Liverpool_U21_vs_Wolverhampton_Wanderers_U21/sr:match:62667383/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_estonia_-_premium_liiga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Estonia - Premium Liiga",
+    "url": "/ng/m/sport/football/Estonia/Premium_Liiga/FCI_Levadia_Tallinn_vs_FC_Kuressaare/sr:match:68195684/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ethiopia_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ethiopia - Premier League",
+    "url": "/ng/m/sport/football/Ethiopia/Premier_League/Mechal_SC_vs_Welwalu_Adigrat/sr:match:69217344/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_faroe_islands_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Faroe Islands - Premier League",
+    "url": "/ng/m/sport/football/Faroe_Islands/Premier_League/07_Vestur_Sorvagur_vs_KI_Klaksvik/sr:match:67849900/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_u19_national",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - U19 National",
+    "url": "/ng/m/sport/football/France/U19_National/Toulouse_FC_vs_Ol._Marseille/sr:match:62276748/",
+    "match_count": 14,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_ligue_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - Ligue 2",
+    "url": "/ng/m/sport/football/France/Ligue_2/USL_Dunkerque_vs_Reims/sr:match:68746322/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_national",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - National",
+    "url": "/ng/m/sport/football/France/National/Dijon_vs_Aubagne_FC/sr:match:62117198/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_france_-_national_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "France - National 2",
+    "url": "/ng/m/sport/football/France/National_2/Blois_Foot_vs_FC_Borgo/sr:match:62214120/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_georgia_-_erovnuli_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Georgia - Erovnuli Liga",
+    "url": "/ng/m/sport/football/Georgia/Erovnuli_Liga/FC_Meshakhte_Tkibuli_vs_FC_Samgurali_Tskaltubo/sr:match:67912566/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_-_2._bundesliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany - 2. Bundesliga",
+    "url": "/ng/m/sport/football/Germany/2._Bundesliga/Hannover_96_vs_Greuther_Furth/sr:match:61515088/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_-_dfb_pokal",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany - DFB Pokal",
+    "url": "/ng/m/sport/football/Germany/DFB_Pokal/Bayer_Leverkusen_vs_Bayern_Munich/sr:match:69191434/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_-_3._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany - 3. Liga",
+    "url": "/ng/m/sport/football/Germany/3._Liga/SV_Waldhof_Mannheim_07_vs_TSV_Havelse/sr:match:61709500/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_amateur_-_regionalliga_southwest",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany Amateur - Regionalliga Southwest",
+    "url": "/ng/m/sport/football/Germany_Amateur/Regionalliga_Southwest/FC_08_Homburg-Saar_vs_Offenbacher_FC_Kickers_1901/sr:match:61859322/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_amateur_-_regionalliga_north",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany Amateur - Regionalliga North",
+    "url": "/ng/m/sport/football/Germany_Amateur/Regionalliga_North/HSC_Hannover_vs_VfB_Oldenburg/sr:match:62284426/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_amateur_-_u19_dfb_nachwuchsliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany Amateur - U19 DFB Nachwuchsliga",
+    "url": "/ng/m/sport/football/Germany_Amateur/U19_DFB_Nachwuchsliga/RB_Leipzig_vs_Bayern_Munich/sr:match:67206532/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_amateur_-_regionalliga_west",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany Amateur - Regionalliga West",
+    "url": "/ng/m/sport/football/Germany_Amateur/Regionalliga_West/VfL_Bochum_II_vs_SC_Wiedenbruck/sr:match:61853292/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_germany_amateur_-_regionalliga_northeast",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Germany Amateur - Regionalliga Northeast",
+    "url": "/ng/m/sport/football/Germany_Amateur/Regionalliga_Northeast/1._FC_Lokomotive_Leipzig_vs_FC_Carl_Zeiss_Jena/sr:match:61712216/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ghana_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ghana - Premier League",
+    "url": "/ng/m/sport/football/Ghana/Premier_League/Hearts_of_Oak_vs_Basake_Holy_Stars/sr:match:63078589/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_greece_-_super_league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Greece - Super League 2",
+    "url": "/ng/m/sport/football/Greece/Super_League_2/Asteras_Tripolis_B_vs_POT_Iraklis/sr:match:68535940/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_greece_-_greece_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Greece - Greece Cup",
+    "url": "/ng/m/sport/football/Greece/Greece_Cup/PAOK_vs_OFI_Crete/sr:match:68884106/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_greece_-_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Greece - Super League",
+    "url": "/ng/m/sport/football/Greece/Super_League/Asteras_Tripolis_vs_Panserraikos_FC/sr:match:61913340/",
+    "match_count": 12,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_greece_-_u19_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Greece - U19 Super League",
+    "url": "/ng/m/sport/football/Greece/U19_Super_League/Volos_NPS_vs_OFI/sr:match:62683977/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_guatemala_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Guatemala - Primera Division",
+    "url": "/ng/m/sport/football/Guatemala/Primera_Division/Csd_Chiquimulilla_vs_Csd_Ipala/sr:match:67766482/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_guatemala_-_liga_nacional_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Guatemala - Liga Nacional, Clausura",
+    "url": "/ng/m/sport/football/Guatemala/Liga_Nacional,_Clausura/CD_Marquense_vs_CD_Malacateco/sr:match:67524656/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_guatemala_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Guatemala - Primera Division",
+    "url": "/ng/m/sport/football/Guatemala/Primera_Division/Deportivo_Gomerano_vs_Deportivo_Nueva_Concepcion/sr:match:111111113589241/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_honduras_-_liga_nacional._clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Honduras - Liga Nacional. Clausura",
+    "url": "/ng/m/sport/football/Honduras/Liga_Nacional._Clausura/Atletico_Choloma_vs_FC_Motagua_Tegucigalpa/sr:match:67981748/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_hong_kong_china_-_1._division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Hong Kong, China - 1. Division",
+    "url": "/ng/m/sport/football/Hong_Kong,_China/1._Division/Resources_Capital_FC_vs_Supreme_FC/sr:match:66795354/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_hong_kong_china_-_fa_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Hong Kong, China - FA Cup",
+    "url": "/ng/m/sport/football/Hong_Kong,_China/FA_Cup/Hong_Kong_Rangers_vs_Lee_Man_FC/sr:match:69691290/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_hungary_-_nb_iii",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Hungary - NB III",
+    "url": "/ng/m/sport/football/Hungary/NB_III/Budapest_Honved_MFA_vs_Dunaharaszti_MTK/sr:match:62180350/",
+    "match_count": 17,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_hungary_-_nb_i",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Hungary - NB I",
+    "url": "/ng/m/sport/football/Hungary/NB_I/MTK_Budapest_vs_Diosgyori_VTK/sr:match:61272831/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_hungary_-_nb_ii",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Hungary - NB II",
+    "url": "/ng/m/sport/football/Hungary/NB_II/Budafoki_Mte_vs_Bekescsaba_1912_Elore/sr:match:61690386/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_india_-_i-league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "India - I-League",
+    "url": "/ng/m/sport/football/India/I-League/Shillong_Lajong_FC_vs_Real_Kashmir/sr:match:69024340/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_india_-_indian_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "India - Indian Super League",
+    "url": "/ng/m/sport/football/India/Indian_Super_League/Mumbai_City_vs_Hyderabad_FC/sr:match:68746382/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_indonesia_-_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Indonesia - Super League",
+    "url": "/ng/m/sport/football/Indonesia/Super_League/Persib_Bandung_vs_Persik_Kediri/sr:match:62083036/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_-_fifa_world_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International - FIFA World Cup",
+    "url": "/ng/m/sport/football/International/FIFA_World_Cup/Mexico_vs_South_Africa/sr:match:66456904/",
+    "match_count": 20,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_-_fifa_world_cup_qualification_uefa",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International - FIFA World Cup Qualification, UEFA",
+    "url": "/ng/m/sport/football/International/FIFA_World_Cup_Qualification,_UEFA/Turkiye_vs_Romania/sr:match:65897796/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_-_afc_asian_cup_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International - AFC Asian Cup, Women",
+    "url": "/ng/m/sport/football/International/AFC_Asian_Cup,_Women/Australia_vs_Korea_Republic/sr:match:62458528/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_-_finalissima",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International - Finalissima",
+    "url": "/ng/m/sport/football/International/Finalissima/Spain_vs_Argentina/sr:match:66737500/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_-_fifa_world_cup_qualification_inter-confederation_playoffs",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International - FIFA World Cup Qualification, Inter-Confederation Playoffs",
+    "url": "/ng/m/sport/football/International/FIFA_World_Cup_Qualification,_Inter-Confederation_Playoffs/Bolivia_vs_Suriname/sr:match:65897732/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_international_youth_-_u20_conmebol_libertadores",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "International Youth - U20 CONMEBOL Libertadores",
+    "url": "/ng/m/sport/football/International_Youth/U20_CONMEBOL_Libertadores/CR_Flamengo_RJ_vs_Estudiantes_de_Merida_U20/sr:match:69068228/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ireland_-_first_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ireland - First Division",
+    "url": "/ng/m/sport/football/Ireland/First_Division/Athlone_Town_AFC_vs_Cobh_Ramblers/sr:match:66854646/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ireland_-_premier_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ireland - Premier Division",
+    "url": "/ng/m/sport/football/Ireland/Premier_Division/Shelbourne_FC_vs_Shamrock_Rovers/sr:match:69511768/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ireland_-_leinster_senior_league_senior_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ireland - Leinster Senior League, Senior Division",
+    "url": "/ng/m/sport/football/Ireland/Leinster_Senior_League,_Senior_Division/Bangor_GG_FC_vs_Tolka_Rovers/sr:match:111111113623095/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_serie_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Serie B",
+    "url": "/ng/m/sport/football/Italy/Serie_B/Frosinone_vs_Sampdoria/sr:match:62484202/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_serie_c_group_c",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Serie C, Group C",
+    "url": "/ng/m/sport/football/Italy/Serie_C,_Group_C/Cosenza_Calcio_vs_Asd_Team_Altamura/sr:match:62411818/",
+    "match_count": 10,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_coppa_italia",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Coppa Italia",
+    "url": "/ng/m/sport/football/Italy/Coppa_Italia/Inter_vs_Como_1907/sr:match:68872112/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_primavera_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Primavera 1",
+    "url": "/ng/m/sport/football/Italy/Primavera_1/AS_Roma_vs_Parma_Calcio_1913_U20/sr:match:61537418/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_italy_-_serie_c_group_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Italy - Serie C, Group B",
+    "url": "/ng/m/sport/football/Italy/Serie_C,_Group_B/Forli_FC_vs_US_Livorno_1915/sr:match:62412626/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_japan_-_j2/j3_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Japan - J2/J3 League",
+    "url": "/ng/m/sport/football/Japan/J2_J3_League/Vanraure_Hachinohe_FC_vs_Yokohama_FC/sr:match:67647862/",
+    "match_count": 12,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_japan_-_we_league_cup_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Japan - WE League Cup, Women",
+    "url": "/ng/m/sport/football/Japan/WE_League_Cup,_Women/Albirex_Niigata_vs_Cerezo_Osaka_Sakai_Ladies/sr:match:68025334/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_jordan_-_jordan_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Jordan - Jordan League",
+    "url": "/ng/m/sport/football/Jordan/Jordan_League/Ramtha_SC_vs_Al_Wehdat/sr:match:69359952/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_kazakhstan_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Kazakhstan - Premier League",
+    "url": "/ng/m/sport/football/Kazakhstan/Premier_League/FC_Kyzylzhar_SK_vs_FK_Kaspii_Aktau/sr:match:69342708/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_kenya_-_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Kenya - Super League",
+    "url": "/ng/m/sport/football/Kenya/Super_League/Kisumu_All_Stars_FC_vs_Nzoia_Sugar_FC/sr:match:69583256/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_korea_rep_-_korea_republic_k4_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Korea Rep - Korea Republic K4 League",
+    "url": "/ng/m/sport/football/Korea_Rep/Korea_Republic_K4_League/Gijang_United_vs_Jincheon_HR_FC/sr:match:111111113580154/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_kosovo_-_superliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Kosovo - Superliga",
+    "url": "/ng/m/sport/football/Kosovo/Superliga/KF_Drenica_Skenderaj_vs_KF_Dukagjini/sr:match:69072160/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_latvia_-_virsliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Latvia - Virsliga",
+    "url": "/ng/m/sport/football/Latvia/Virsliga/FS_Jelgava_vs_FK_Tukums_2000,TSS/sr:match:68492406/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_lithuania_-_a_lyga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Lithuania - A Lyga",
+    "url": "/ng/m/sport/football/Lithuania/A_Lyga/FK_Banga_Gargzdai_vs_FK_Riteriai/sr:match:68954730/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_luxembourg_-_division_nationale",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Luxembourg - Division Nationale",
+    "url": "/ng/m/sport/football/Luxembourg/Division_Nationale/AS_La_Jeunesse_D_Esch,Alzette_vs_FC_Jeunesse_Canach/sr:match:61788774/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mali_-_ligue_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mali - Ligue 1",
+    "url": "/ng/m/sport/football/Mali/Ligue_1/Derby_Academie_vs_Djoliba_AC/sr:match:69251804/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_malta_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Malta - Premier League",
+    "url": "/ng/m/sport/football/Malta/Premier_League/Hamrun_Spartans_FC_vs_Birkirkara_FC/sr:match:67764738/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_malta_-_challenge_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Malta - Challenge League",
+    "url": "/ng/m/sport/football/Malta/Challenge_League/Fgura_United_FC_vs_Balzan_Youths/sr:match:69683238/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mexico_-_liga_premier_serie_b",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mexico - Liga Premier Serie B",
+    "url": "/ng/m/sport/football/Mexico/Liga_Premier_Serie_B/Caja_Oblatos_Cfd_vs_CD_Uruapan/sr:match:69619316/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mexico_-_liga_mx_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mexico - Liga MX, Clausura",
+    "url": "/ng/m/sport/football/Mexico/Liga_MX,_Clausura/Atlas_FC_vs_CD_Guadalajara/sr:match:66856054/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mexico_-_liga_mx_women_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mexico - Liga MX, Women, Clausura",
+    "url": "/ng/m/sport/football/Mexico/Liga_MX,_Women,_Clausura/CD_Guadalajara_vs_Club_America/sr:match:69462546/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mexico_-_liga_de_expansion_mx_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mexico - Liga de Expansion MX, Clausura",
+    "url": "/ng/m/sport/football/Mexico/Liga_de_Expansion_MX,_Clausura/Irapuato_vs_Alebrijes_de_Oaxaca_FC/sr:match:66919474/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_mexico_-_liga_premier_serie_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Mexico - Liga Premier Serie A",
+    "url": "/ng/m/sport/football/Mexico/Liga_Premier_Serie_A/Tigres_de_Alica_FC_vs_Atletico_Cocula/sr:match:62651087/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_moldova_-_super_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Moldova - Super Liga",
+    "url": "/ng/m/sport/football/Moldova/Super_Liga/Petrocub_Hincesti_vs_Dacia_Buiucani/sr:match:66961882/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_montenegro_-_2._cfl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Montenegro - 2. CFL",
+    "url": "/ng/m/sport/football/Montenegro/2._CFL/FK_Berane_vs_FK_Internacional_Podgorica/sr:match:67148224/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_morocco_-_botola_pro_d1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Morocco - Botola Pro D1",
+    "url": "/ng/m/sport/football/Morocco/Botola_Pro_D1/Rs_Berkane_vs_Difaa_Hassani_d'el-Jadida/sr:match:68933362/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_netherlands_-_derde_divisie",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Netherlands - Derde Divisie",
+    "url": "/ng/m/sport/football/Netherlands/Derde_Divisie/ADO_20_Heemskerk_vs_HSC_21/sr:match:62227364/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_netherlands_-_eerste_divisie",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Netherlands - Eerste Divisie",
+    "url": "/ng/m/sport/football/Netherlands/Eerste_Divisie/De_Graafschap_vs_Vitesse_Arnhem/sr:match:61380327/",
+    "match_count": 14,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_nicaragua_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Nicaragua - Primera Division",
+    "url": "/ng/m/sport/football/Nicaragua/Primera_Division/CD_Walter_Ferretti_vs_Diriangen_FC_Diriamba/sr:match:69469324/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_nigeria_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Nigeria - Premier League",
+    "url": "/ng/m/sport/football/Nigeria/Premier_League/Plateau_United_vs_Niger_Tornadoes_FC/sr:match:69119658/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_north_macedonia_-_2._mfl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "North Macedonia - 2. MFL",
+    "url": "/ng/m/sport/football/North_Macedonia/2._MFL/Golemo_Konjari_vs_KF_Shkendija_Haracine/sr:match:68904750/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_north_macedonia_-_1._mfl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "North Macedonia - 1. MFL",
+    "url": "/ng/m/sport/football/North_Macedonia/1._MFL/Bashkimi_Kumanovo_vs_FK_Makedonija_Gjorce_Petrov/sr:match:62487608/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_northern_ireland_-_premiership",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Northern Ireland - Premiership",
+    "url": "/ng/m/sport/football/Northern_Ireland/Premiership/Bangor_FC_vs_Glentoran_FC/sr:match:61447699/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_norway_-_nm_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Norway - NM Cup",
+    "url": "/ng/m/sport/football/Norway/NM_Cup/Tromsdalen_UIL_vs_SK_Brann/sr:match:64050101/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_panama_-_liga_panamena_clausura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Panama - Liga Panamena, Clausura",
+    "url": "/ng/m/sport/football/Panama/Liga_Panamena,_Clausura/CD_Plaza_Amador_Panama_City_vs_San_Francisco_FC/sr:match:69550370/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_panama_-_liga_prom",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Panama - Liga Prom",
+    "url": "/ng/m/sport/football/Panama/Liga_Prom/CA_Independiente_B_vs_CD_Bocas_FC/sr:match:69557190/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_paraguay_-_primera_division_reserve_apertura",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Paraguay - Primera Division Reserve, Apertura",
+    "url": "/ng/m/sport/football/Paraguay/Primera_Division_Reserve,_Apertura/Guarani_Asuncion_vs_Cerro_Porteno_Asuncion/sr:match:69357916/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_paraguay_-_division_de_honor",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Paraguay - Division de Honor",
+    "url": "/ng/m/sport/football/Paraguay/Division_de_Honor/Club_Olimpia_vs_Sportivo_San_Lorenzo/sr:match:68042340/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_peru_-_liga_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Peru - Liga 1",
+    "url": "/ng/m/sport/football/Peru/Liga_1/Cusco_FC_vs_Deportivo_Garcilaso/sr:match:69142178/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_philippines_-_philippines_footb._league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Philippines - Philippines Footb. League",
+    "url": "/ng/m/sport/football/Philippines/Philippines_Footb._League/Tuloy_FC_vs_Davao_Aguilas/sr:match:69093306/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_1._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - 1. Liga",
+    "url": "/ng/m/sport/football/Poland/1._Liga/MKS_Znicz_Pruszkow_vs_Odra_Opole/sr:match:61398823/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_iii_liga_group_3",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - III Liga, Group 3",
+    "url": "/ng/m/sport/football/Poland/III_Liga,_Group_3/Zaglebie_Lubin_II_vs_KS_Gornik_Polkowice/sr:match:62036702/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_iii_liga_group_4",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - III Liga, Group 4",
+    "url": "/ng/m/sport/football/Poland/III_Liga,_Group_4/Sparta_Kazimierza_Wielka_vs_Avia_Swidnik/sr:match:62036084/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_ii_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - II Liga",
+    "url": "/ng/m/sport/football/Poland/II_Liga/KKS_1925_Kalisz_vs_MKS_Chojniczanka_Chojnice/sr:match:61467099/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_poland_-_iii_liga_group_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Poland - III Liga, Group 2",
+    "url": "/ng/m/sport/football/Poland/III_Liga,_Group_2/Elana_Torun_vs_Polonia_Sroda_Wielkopolska/sr:match:62037300/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_portugal_-_campeonato_de_portugal",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Portugal - Campeonato de Portugal",
+    "url": "/ng/m/sport/football/Portugal/Campeonato_de_Portugal/Sport_Benfica_Castelo_Branco_vs_SC_Lusitania_Angra/sr:match:62250520/",
+    "match_count": 23,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_portugal_-_liga_portugal_3",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Portugal - Liga Portugal 3",
+    "url": "/ng/m/sport/football/Portugal/Liga_Portugal_3/CD_Mafra_vs_Vitoria_Guimaraes_B/sr:match:68351310/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_portugal_-_liga_portugal_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Portugal - Liga Portugal 2",
+    "url": "/ng/m/sport/football/Portugal/Liga_Portugal_2/FC_Felgueiras_1932_vs_FC_Vizela/sr:match:61732142/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_republic_of_korea_-_k-league_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Republic of Korea - K-League 1",
+    "url": "/ng/m/sport/football/Republic_of_Korea/K-League_1/Gimcheon_Sangmu_FC_vs_Jeonbuk_FC/sr:match:67817554/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_republic_of_korea_-_k-league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Republic of Korea - K-League 2",
+    "url": "/ng/m/sport/football/Republic_of_Korea/K-League_2/Ansan_Greeners_vs_Busan_I_Park/sr:match:68046356/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_republic_of_korea_-_k3_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Republic of Korea - K3 League",
+    "url": "/ng/m/sport/football/Republic_of_Korea/K3_League/Changwon_City_FC_vs_Dangjin_Citizen/sr:match:68916162/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_romania_-_superliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Romania - Superliga",
+    "url": "/ng/m/sport/football/Romania/Superliga/ASC_Otelul_Galati_vs_AFC_Hermannstadt/sr:match:61510966/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_romania_-_liga_3",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Romania - Liga 3",
+    "url": "/ng/m/sport/football/Romania/Liga_3/Csl_Stefanestii_de_Jos_vs_ACS_Vointa_2024_Crevedia/sr:match:63167145/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_romania_-_liga_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Romania - Liga 2",
+    "url": "/ng/m/sport/football/Romania/Liga_2/AFC_Metalul_Buzau_vs_CS_Gloria_2018_Bistrita-Nasaud/sr:match:62265752/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_romania_-_romania_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Romania - Romania Cup",
+    "url": "/ng/m/sport/football/Romania/Romania_Cup/ACS_Champions_FC_Arges_vs_FC_Universitatea_Cluj/sr:match:69638116/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_russia_-_2._liga_division_a",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Russia - 2. Liga, Division A",
+    "url": "/ng/m/sport/football/Russia/2._Liga,_Division_A/Torpedo_Miass_vs_FC_Irtysh_Omsk/sr:match:69280484/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_russia_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Russia - Premier League",
+    "url": "/ng/m/sport/football/Russia/Premier_League/FC_Orenburg_vs_FK_Zenit_Saint_Petersburg/sr:match:61952210/",
+    "match_count": 14,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_russia_-_1._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Russia - 1. Liga",
+    "url": "/ng/m/sport/football/Russia/1._Liga/FC_Yenisey_Krasnoyarsk_vs_FC_Kamaz_Naberezhnye_Chelny/sr:match:69004632/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_russia_-_russian_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Russia - Russian Cup",
+    "url": "/ng/m/sport/football/Russia/Russian_Cup/FK_Krasnodar_vs_CSKA_Moscow/sr:match:66273020/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_rwanda_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Rwanda - Premier League",
+    "url": "/ng/m/sport/football/Rwanda/Premier_League/Amagaju_vs_Gorilla_FC/sr:match:67782754/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_san_marino_-_campionato_sammarinese",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "San Marino - Campionato Sammarinese",
+    "url": "/ng/m/sport/football/San_Marino/Campionato_Sammarinese/SP_Tre_Fiori_vs_SP_Cailungo/sr:match:68859418/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_saudi_arabia_-_division_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Saudi Arabia - Division 1",
+    "url": "/ng/m/sport/football/Saudi_Arabia/Division_1/Abha_Club_vs_Al-Jabil/sr:match:67953140/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_scotland_-_championship",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Scotland - Championship",
+    "url": "/ng/m/sport/football/Scotland/Championship/Ayr_United_FC_vs_Queens_Park_FC/sr:match:69107184/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_scotland_-_league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Scotland - League 2",
+    "url": "/ng/m/sport/football/Scotland/League_2/Annan_Athletic_FC_vs_Elgin_City_FC/sr:match:68189444/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_scotland_-_league_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Scotland - League 1",
+    "url": "/ng/m/sport/football/Scotland/League_1/Peterhead_FC_vs_Alloa_Athletic_FC/sr:match:68901010/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_scotland_-_scottish_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Scotland - Scottish Cup",
+    "url": "/ng/m/sport/football/Scotland/Scottish_Cup/Rangers_vs_Celtic/sr:match:68778220/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_serbia_-_prva_liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Serbia - Prva Liga",
+    "url": "/ng/m/sport/football/Serbia/Prva_Liga/OFK_Vrsac_vs_FK_Zemun/sr:match:61230429/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_serbia_-_superliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Serbia - Superliga",
+    "url": "/ng/m/sport/football/Serbia/Superliga/FK_Radnik_Surdulica_vs_FK_Radnicki_Nis/sr:match:61231971/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_china_super_league_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - China Super League SRL",
+    "url": null,
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_laliga_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - LaLiga SRL",
+    "url": null,
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_serie_a_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - Serie A SRL",
+    "url": null,
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_k-league_1_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - K-League 1 SRL",
+    "url": null,
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_turkey_super_lig_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - Turkey Super Lig SRL",
+    "url": null,
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_bundesliga_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - Bundesliga SRL",
+    "url": null,
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_eredivisie_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - Eredivisie SRL",
+    "url": null,
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_simulated_reality_league_-_ligue_1_srl",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Simulated Reality League - Ligue 1 SRL",
+    "url": null,
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_singapore_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Singapore - Premier League",
+    "url": "/ng/m/sport/football/Singapore/Premier_League/Young_Lions_FC_vs_BG_Tampines_Rovers/sr:match:62040838/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovakia_-_3._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovakia - 3. Liga",
+    "url": "/ng/m/sport/football/Slovakia/3._Liga/FK_Dukla_Banska_Bystrica_B_vs_TJ_Jednota_Banova/sr:match:61940680/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovakia_-_slovensky_pohar",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovakia - Slovensky Pohar",
+    "url": "/ng/m/sport/football/Slovakia/Slovensky_Pohar/MSK_Zilina_vs_AS_Trencin/sr:match:68897258/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovakia_-_superliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovakia - Superliga",
+    "url": "/ng/m/sport/football/Slovakia/Superliga/KFC_Komarno_vs_MFK_Ruzomberok/sr:match:69463356/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovakia_-_2._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovakia - 2. Liga",
+    "url": "/ng/m/sport/football/Slovakia/2._Liga/FC_Petrzalka_vs_MFK_Zvolen/sr:match:61677744/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovenia_-_2._liga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovenia - 2. Liga",
+    "url": "/ng/m/sport/football/Slovenia/2._Liga/Triglav_Kranj_vs_NK_Brinje_Grosuplje/sr:match:61454523/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_slovenia_-_prvaliga",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Slovenia - PrvaLiga",
+    "url": "/ng/m/sport/football/Slovenia/PrvaLiga/Olimpija_Ljubljana_vs_NK_Maribor/sr:match:61454089/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_soccerspecials_-_kings_league_spain",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "SoccerSpecials - Kings League Spain",
+    "url": "/ng/m/sport/football/SoccerSpecials/Kings_League_Spain/Saiyans_FC_vs_Jijantes_FC/sr:match:69420060/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_south_africa_-_fa_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "South Africa - FA Cup",
+    "url": "/ng/m/sport/football/South_Africa/FA_Cup/TS_Galaxy_FC_vs_Jacksa_Spears/sr:match:69251568/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_south_africa_-_championship",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "South Africa - Championship",
+    "url": "/ng/m/sport/football/South_Africa/Championship/The_Bees_FC_vs_Highbury_FC/sr:match:63157111/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_south_africa_-_diski_challenge_reserves",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "South Africa - Diski Challenge, Reserves",
+    "url": "/ng/m/sport/football/South_Africa/Diski_Challenge,_Reserves/Bloemfontein_Celtic_vs_Orbit_College_Reserves/sr:match:63514523/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_-_segunda_federacion",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain - Segunda Federacion",
+    "url": "/ng/m/sport/football/Spain/Segunda_Federacion/Atletic_Lleida_CE_vs_UD_Poblense/sr:match:63098011/",
+    "match_count": 38,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_-_primera_federacion",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain - Primera Federacion",
+    "url": "/ng/m/sport/football/Spain/Primera_Federacion/CD_Teruel_vs_Villarreal_CF_B/sr:match:61687416/",
+    "match_count": 10,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_-_laliga_hypermotion",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain - LALIGA HYPERMOTION",
+    "url": "/ng/m/sport/football/Spain/LALIGA_HYPERMOTION/Las_Palmas_vs_AD_Ceuta/sr:match:61623664/",
+    "match_count": 11,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_-_copa_del_rey",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain - Copa del Rey",
+    "url": "/ng/m/sport/football/Spain/Copa_del_Rey/Atletico_Madrid_vs_Real_Sociedad/sr:match:69589774/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_10",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 10",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_10/Cadiz_CF_B_vs_Coria_CF/sr:match:63143877/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_8",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 8",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_8/Unionistas_de_Salamanca_CF_B_vs_Palencia_CF/sr:match:63142367/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_9",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 9",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_9/UD_San_Pedro_vs_CR_Granada/sr:match:63143265/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_5",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 5",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_5/Cerdanyola_del_Valles_vs_CF_Vilanova_I_LA_Geltru/sr:match:63138605/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 2",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_2/CD_Colunga_vs_Sporting_Atletico/sr:match:63136215/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_7",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 7",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_7/SAD_Villaverde_San_Andres_vs_CF_Trival_Valderas_Alcoron/sr:match:63139895/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_16",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 16",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_16/CD_Calahorra_vs_CD_Berceo/sr:match:63148681/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_18",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 18",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_18/CD_Cazalegas_vs_CF_La_Solana/sr:match:63150063/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_6",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 6",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_6/AC_Torrellano_vs_CD_Roda/sr:match:63139239/",
+    "match_count": 7,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 1",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_1/Alondras_CF_vs_CD_Estradense/sr:match:63135201/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_15",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 15",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_15/CD_Oberena_vs_CD_Ardoi_FE/sr:match:63147999/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_13",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 13",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_13/Real_Murcia_Imperial_FC_vs_Yeclano_Deportivo_B/sr:match:63146581/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_14",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 14",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_14/CD_Badajoz_vs_Atletico_Club_Pueblonuevo/sr:match:63147287/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_spain_amateur_-_tercera_federacion_group_4",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Spain Amateur - Tercera Federacion, Group 4",
+    "url": "/ng/m/sport/football/Spain_Amateur/Tercera_Federacion,_Group_4/CD_Derio_vs_SD_Zamudio/sr:match:63137493/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_sweden_-_svenska_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Sweden - Svenska Cup",
+    "url": "/ng/m/sport/football/Sweden/Svenska_Cup/Djurgardens_IF_vs_IF_Brommapojkarna/sr:match:66527564/",
+    "match_count": 9,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_sweden_-_allsvenskan",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Sweden - Allsvenskan",
+    "url": "/ng/m/sport/football/Sweden/Allsvenskan/Degerfors_IF_vs_IK_Sirius/sr:match:67091112/",
+    "match_count": 8,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_switzerland_-_1._liga_classic",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Switzerland - 1. Liga Classic",
+    "url": "/ng/m/sport/football/Switzerland/1._Liga_Classic/FC_Widnau_vs_FC_Wettswil-Bonstetten/sr:match:62215356/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_switzerland_-_super_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Switzerland - Super League",
+    "url": "/ng/m/sport/football/Switzerland/Super_League/FC_St._Gallen_1879_vs_Basel/sr:match:67763272/",
+    "match_count": 6,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_switzerland_-_challenge_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Switzerland - Challenge League",
+    "url": "/ng/m/sport/football/Switzerland/Challenge_League/Yverdon-Sport_vs_Stade_Lausanne_Ouchy/sr:match:66626006/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_switzerland_-_promotion_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Switzerland - Promotion League",
+    "url": "/ng/m/sport/football/Switzerland/Promotion_League/FC_Biel-Bienne_vs_SC_Bruhl_St_Gallen/sr:match:63160499/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_thailand_-_thai_league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Thailand - Thai League 2",
+    "url": "/ng/m/sport/football/Thailand/Thai_League_2/Nakhon_SI_United_vs_Sisaket_United_FC/sr:match:66882818/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_thailand_-_thai_league_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Thailand - Thai League 1",
+    "url": "/ng/m/sport/football/Thailand/Thai_League_1/BG_Pathum_United_vs_Chonburi_FC/sr:match:66707700/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_tunisia_-_ligue_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Tunisia - Ligue 1",
+    "url": "/ng/m/sport/football/Tunisia/Ligue_1/JS_Kairouanaise_vs_CA_Bizertin/sr:match:69359918/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_-_1._lig",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye - 1. Lig",
+    "url": "/ng/m/sport/football/Turkiye/1._Lig/Boluspor_vs_Igdir_FK/sr:match:61834136/",
+    "match_count": 11,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_u19_paf_ligi",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - U19 PAF Ligi",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/U19_PAF_Ligi/Caykur_Rizespor_vs_Antalyaspor/sr:match:63039135/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_3._lig_group_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - 3. Lig, Group 1",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/3._Lig,_Group_1/Etimesgut_Belediyespor_vs_Inegol_Kafkas_Genclikspor/sr:match:62041316/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_3._lig_group_4",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - 3. Lig, Group 4",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/3._Lig,_Group_4/Altay_Izmir_vs_Belediye_Kutahyaspor/sr:match:62042862/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_2._lig",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - 2. Lig",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/2._Lig/Karaman_FK_vs_Halide_Edip_Adivarspor/sr:match:61939660/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_3._lig_group_3",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - 3. Lig, Group 3",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/3._Lig,_Group_3/Fatsa_Belediyespor_vs_52_Orduspor_FK/sr:match:62042350/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_turkiye_amateur_-_3._lig_group_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Turkiye Amateur - 3. Lig, Group 2",
+    "url": "/ng/m/sport/football/Turkiye_Amateur/3._Lig,_Group_2/Karakopru_Belediye_SK_vs_Osmaniyespor_FK/sr:match:62041808/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_ukraine_-_premier_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Ukraine - Premier League",
+    "url": "/ng/m/sport/football/Ukraine/Premier_League/FC_Zorya_Luhansk_vs_SC_Poltava/sr:match:61651510/",
+    "match_count": 5,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_united_arab_emirates_-_first_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "United Arab Emirates - First Division",
+    "url": "/ng/m/sport/football/United_Arab_Emirates/First_Division/Dubai_City_Football_Club_vs_Masfoot_Sports_Club/sr:match:62067328/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_uruguay_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Uruguay - Primera Division",
+    "url": "/ng/m/sport/football/Uruguay/Primera_Division/Racing_Club_Montevideo_vs_CA_Cerro/sr:match:69366074/",
+    "match_count": 13,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_usa_-_usl_championship",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "USA - USL Championship",
+    "url": "/ng/m/sport/football/USA/USL_Championship/Sporting_Jax_vs_Hartford_Athletic/sr:match:66802536/",
+    "match_count": 10,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_usa_-_usl_league_one",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "USA - USL League One",
+    "url": "/ng/m/sport/football/USA/USL_League_One/FC_Naples_vs_Fort_Wayne_FC/sr:match:66801556/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_usa_-_national_womens_soccer_league",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "USA - National Womens Soccer League",
+    "url": "/ng/m/sport/football/USA/National_Womens_Soccer_League/Washington_Spirit_vs_Portland_Thorns_FC/sr:match:67911924/",
+    "match_count": 2,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_usa_-_mls_next_pro",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "USA - MLS Next Pro",
+    "url": "/ng/m/sport/football/USA/MLS_Next_Pro/North_Texas_SC_vs_Colorado_Rapids_2/sr:match:68156370/",
+    "match_count": 13,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_venezuela_-_primera_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Venezuela - Primera Division",
+    "url": "/ng/m/sport/football/Venezuela/Primera_Division/Academia_Anzoategui_FC_vs_Academia_Puerto_Cabello/sr:match:67691230/",
+    "match_count": 4,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_venezuela_-_segunda_division",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Venezuela - Segunda Division",
+    "url": "/ng/m/sport/football/Venezuela/Segunda_Division/Academia_Puerto_Cabello_B_vs_Club_Atletico_Barinas/sr:match:69307356/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_vietnam_-_v-league_1",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Vietnam - V-League 1",
+    "url": "/ng/m/sport/football/Vietnam/V-League_1/B._Binh_Duong_vs_The_Cong_-_Viettel_FC/sr:match:68663310/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_vietnam_-_v-league_2",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Vietnam - V-League 2",
+    "url": "/ng/m/sport/football/Vietnam/V-League_2/CS._Dong_Thap_vs_Bac_Ninh/sr:match:63708571/",
+    "match_count": 3,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_wales_-_cymru_championship_north",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Wales - Cymru Championship, North",
+    "url": "/ng/m/sport/football/Wales/Cymru_Championship,_North/Flint_Mountain_vs_CPD_Y_Rhyl_1879/sr:match:69593294/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_wales_-_premier_league_women",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Wales - Premier League, Women",
+    "url": "/ng/m/sport/football/Wales/Premier_League,_Women/Briton_Ferry_Llansawel_AFC_vs_Pontypridd_Town/sr:match:69631700/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  },
+  {
+    "league_id": "football_com_wales_-_faw_welsh_cup",
+    "country_code": "unknown",
+    "continent": "unknown",
+    "name": "Wales - FAW Welsh Cup",
+    "url": "/ng/m/sport/football/Wales/FAW_Welsh_Cup/CPD_Y_Rhyl_1879_vs_Caernarfon_Town_FC/sr:match:68825252/",
+    "match_count": 1,
+    "football_com_available": true,
+    "last_seen": "2026-03-08"
+  }
+]

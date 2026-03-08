@@ -336,6 +336,7 @@ _COMPUTED_STANDINGS_SQL = """
             home_team_id AS team_id,
             home_team_name AS team_name,
             season,
+            date,
             CASE WHEN home_score > away_score THEN 3 WHEN home_score = away_score THEN 1 ELSE 0 END AS points,
             CASE WHEN home_score > away_score THEN 1 ELSE 0 END AS wins,
             CASE WHEN home_score = away_score THEN 1 ELSE 0 END AS draws,
@@ -354,6 +355,7 @@ _COMPUTED_STANDINGS_SQL = """
             away_team_id AS team_id,
             away_team_name AS team_name,
             season,
+            date,
             CASE WHEN away_score > home_score THEN 3 WHEN away_score = home_score THEN 1 ELSE 0 END,
             CASE WHEN away_score > home_score THEN 1 ELSE 0 END,
             CASE WHEN away_score = home_score THEN 1 ELSE 0 END,
@@ -382,7 +384,7 @@ _COMPUTED_STANDINGS_SQL = """
 """
 
 
-def computed_standings(conn=None, league_id=None, season=None):
+def computed_standings(conn=None, league_id=None, season=None, before_date=None):
     """Compute league standings on-the-fly from the schedules table.
 
     Always up-to-date, even during live matches (if scores are propagated).
@@ -392,6 +394,9 @@ def computed_standings(conn=None, league_id=None, season=None):
         conn: SQLite connection (optional, uses default)
         league_id: Filter by league_id (optional)
         season: Filter by season (optional)
+        before_date: Only include matches before this date (YYYY-MM-DD).
+                     Used by RL training to reconstruct historical standings.
+                     Default None = no date filter (live behaviour preserved).
 
     Returns:
         List of dicts with: league_id, team_id, team_name, season,
@@ -407,6 +412,9 @@ def computed_standings(conn=None, league_id=None, season=None):
     if season:
         filters += " AND season = ?"
         params.append(season)
+    if before_date:
+        filters += " AND date < ?"
+        params.append(before_date)
 
     sql = _COMPUTED_STANDINGS_SQL.format(filters=filters)
     cursor = conn.execute(sql, params)

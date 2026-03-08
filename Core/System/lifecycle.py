@@ -85,6 +85,7 @@ def setup_terminal_logging(args):
         elif args.enrich_leagues: prefix = "leo_enrich_leagues_session"
         elif args.upgrade_crests: prefix = "leo_upgrade_crests_session"
         elif args.dry_run: prefix = "leo_dry_run_session"
+        elif args.train_rl: prefix = f"leo_train_rl_p{getattr(args, 'phase', 1)}_session"
 
     TERMINAL_LOG_DIR = LOG_DIR / "Terminal"
     TERMINAL_LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -152,7 +153,10 @@ Examples:
   python Leo.py --enrich-leagues --season 1  Extract only the most recent past season
   python Leo.py --enrich-leagues --all-seasons Extract all available seasons
   python Leo.py --train-rl               Train RL model from historical fixtures
-  python Leo.py --train-rl --league ID   Fine-tune a specific league adapter
+  python Leo.py --train-rl --phase 1     Phase 1: Imitation Learning (Warm-Start)
+  python Leo.py --train-rl --phase 2     Phase 2: PPO Fine-tuning with KL Penalty
+  python Leo.py --train-rl --phase 3     Phase 3: Adapter Fine-tuning (Frozen Trunk)
+  python Leo.py --train-rl --cold        Skip Phase 1 (Control Group)
   python Leo.py --train-rl --league ID   Fine-tune a specific league adapter
   python Leo.py --data-quality           Run diagnostics and immediate gap fixes
   python Leo.py --season-completeness    Refresh and print match coverage report
@@ -215,6 +219,10 @@ Examples:
     # --- RL Training ---
     parser.add_argument('--train-rl', action='store_true',
                         help='Train/retrain the RL model from historical fixtures')
+    parser.add_argument('--phase', type=int, choices=[1, 2, 3], default=1,
+                        help='Training phase (1: Imitation, 2: PPO+KL, 3: Adapters)')
+    parser.add_argument('--cold', action='store_true',
+                        help='Skip Phase 1 (cold start control group)')
     parser.add_argument('--league', type=str, metavar='ID',
                         help='Fine-tune a specific league adapter (use with --train-rl)')
 

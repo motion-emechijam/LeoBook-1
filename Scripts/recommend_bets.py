@@ -30,6 +30,46 @@ from Data.Access.db_helpers import _get_conn
 from Data.Access.league_db import query_all
 from Data.Access.prediction_accuracy import get_market_option
 
+# --- Market Likelihood Priors ---
+_LIKELIHOOD_CACHE = None
+
+def _load_likelihood_map():
+    """Load market likelihood JSON and build a lookup by market_outcome."""
+    global _LIKELIHOOD_CACHE
+    if _LIKELIHOOD_CACHE is not None:
+        return _LIKELIHOOD_CACHE
+    _LIKELIHOOD_CACHE = {}
+    json_path = os.path.join(project_root, "ranked_markets_likelihood_updated_with_team_ou.json")
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        for entry in data.get("ranked_market_outcomes", []):
+            key = entry.get("market_outcome", "")
+            _LIKELIHOOD_CACHE[key] = entry.get("likelihood_percent", 50)
+    except Exception:
+        pass
+    return _LIKELIHOOD_CACHE
+
+def get_market_likelihood(market_name: str) -> float:
+    """Get base likelihood (0-100) for a market outcome string."""
+    lmap = _load_likelihood_map()
+    # Try exact match first, then partial match
+    if market_name in lmap:
+        return lmap[market_name]
+    for key, val in lmap.items():
+        if market_name.lower() in key.lower() or key.lower() in market_name.lower():
+            return val
+    return 50.0  # default mid-range
+
+def classify_tier(likelihood: float) -> int:
+    """Classify market into likelihood tier. 1=anchor, 2=value, 3=specialist."""
+    if likelihood > 70:
+        return 1
+    elif likelihood >= 40:
+        return 2
+    else:
+        return 3
+
 def load_data():
     conn = _get_conn()
     return query_all(conn, 'predictions')
@@ -130,6 +170,19 @@ def get_recommendations(target_date=None, show_all_upcoming=False, **kwargs):
             # Weighted Score: 30% overall reliability, 50% recent momentum, 20% specific match confidence
             total_score = (overall_acc * 0.3) + (recent_acc * 0.5) + (conf_score * 0.2)
             
+            # --- Likelihood Tier Filtering ---
+            likelihood = get_market_likelihood(market)
+            tier = classify_tier(likelihood)
+            
+            # Tier 1 (>70%): anchor — always include if predicted
+            # Tier 2 (40-70%): value — include when score > 0.6
+            # Tier 3 (<40%): specialist — include only when score > 0.8 AND recent accuracy > 60%
+            if tier == 2 and total_score <= 0.6:
+                continue
+            if tier == 3 and (total_score <= 0.8 or recent_acc <= 0.6):
+                continue
+
+            tier_labels = {1: "⚓ Anchor", 2: "💎 Value", 3: "🎯 Specialist"}
             trend_icon = "↗️" if rel_info['trend'] > 0.05 else "↘️" if rel_info['trend'] < -0.05 else "➡️" if rel_info['trend'] != 0 else ""
 
             recommendations.append({
@@ -144,7 +197,10 @@ def get_recommendations(target_date=None, show_all_upcoming=False, **kwargs):
                 'recent_acc': f"{recent_acc:.1%}",
                 'trend': trend_icon,
                 'score': total_score,
-                'league': p.get('region_league', 'Unknown')
+                'league': p.get('region_league', 'Unknown'),
+                'tier': tier,
+                'tier_label': tier_labels.get(tier, ""),
+                'likelihood': likelihood,
             })
         except Exception:
             continue
@@ -154,7 +210,11 @@ def get_recommendations(target_date=None, show_all_upcoming=False, **kwargs):
 
     # ALGO Summary Feedback
     high_conf = [r for r in recommendations if r['score'] >= 0.7]
+    tier_counts = {1: 0, 2: 0, 3: 0}
+    for r in recommendations:
+        tier_counts[r['tier']] = tier_counts.get(r['tier'], 0) + 1
     print(f"[ALGO] Scored {len(recommendations)} matches. High-confidence picks (≥0.7): {len(high_conf)}")
+    print(f"[ALGO] Tiers: ⚓ Anchor={tier_counts[1]} | 💎 Value={tier_counts[2]} | 🎯 Specialist={tier_counts[3]}")
     if recommendations:
         print(f"[ALGO] Top score: {recommendations[0]['score']:.2f} — {recommendations[0]['match']}")
     
@@ -176,7 +236,7 @@ def get_recommendations(target_date=None, show_all_upcoming=False, **kwargs):
             output_lines.append(f"   Time: {rec['date']} {rec['time']}")
             output_lines.append(f"   Prediction: {rec['prediction']} ({rec['confidence']})")
             output_lines.append(f"   Market Confidence: Recent: {rec['recent_acc']} {rec['trend']} (Overall: {rec['overall_acc']})")
-            output_lines.append(f"   Recommendation Score: {rec['score']:.2f}")
+            output_lines.append(f"   Recommendation Score: {rec['score']:.2f} | {rec['tier_label']} (Likelihood: {rec['likelihood']:.0f}%)")
             output_lines.append(f"{'-'*65}")
 
     # Print to console with colors
@@ -191,7 +251,7 @@ def get_recommendations(target_date=None, show_all_upcoming=False, **kwargs):
             print(f"   Time: {rec['date']} {rec['time']}")
             print(f"   Prediction: \033[92m{rec['prediction']}\033[0m ({rec['confidence']})")
             print(f"   Market Confidence: Recent: {rec['recent_acc']} {rec['trend']} (Overall: {rec['overall_acc']})")
-            print(f"   Recommendation Score: {rec['score']:.2f}")
+            print(f"   Recommendation Score: {rec['score']:.2f} | {rec['tier_label']} (Likelihood: {rec['likelihood']:.0f}%)")
             print(f"{'-'*65}")
 
     # Save to file if requested

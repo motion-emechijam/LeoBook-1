@@ -537,16 +537,21 @@ async def run_utility(args):
         print("\n  --- LEO: RL Model Training ---")
         from Core.Intelligence.rl.trainer import RLTrainer
         trainer = RLTrainer()
+        phase = getattr(args, 'phase', 1)
+        cold = getattr(args, 'cold', False)
+        limit = getattr(args, '_limit_count', None) # Use --limit for days if needed
+        
         league_id = getattr(args, 'league', None)
         if league_id:
-            print(f"  [RL] Fine-tuning league adapter: {league_id}")
-            # Load existing model, then fine-tune specific league
+            print(f"  [RL] League-specific training: {league_id} (Phase {phase})")
             trainer.load()
-            trainer.train_from_fixtures()  # Full retrain with league focus
+            trainer.train_from_fixtures(phase=phase, cold=cold, limit_days=limit)
         else:
-            print("  [RL] Full chronological training from historical fixtures...")
-            trainer.train_from_fixtures()
-        print("  [SUCCESS] RL training complete.")
+            print(f"  [RL] Starting Phase {phase} training...")
+            if phase > 1:
+                trainer.load()
+            trainer.train_from_fixtures(phase=phase, cold=cold, limit_days=limit)
+        print("  [SUCCESS] RL training session complete.")
 
 
 # ============================================================

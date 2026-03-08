@@ -47,6 +47,7 @@ playwright-state/
 *.db-shm
 *.db-wal
 Auth/
+Data/Store/models/
 
 # Process locks
 *.lock

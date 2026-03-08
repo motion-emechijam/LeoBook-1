@@ -1,0 +1,1121 @@
+{
+  "platform": "football.com (NG)",
+  "match": "Man Utd vs Aston Villa",
+  "eventId": "sr:match:61301111",
+  "date": "2026-03-15T14:00:00Z",
+  "league": "Premier League",
+  "source": "eventDetail.data.markets (exact from code + comprehensive expansion)",
+  "currency": "NGN",
+  "appId": "africa",
+  "countryCode": "234",
+
+  "common_selectors": {
+    "all_markets_container": "div[data-market-id]",
+    "market_header": ".market-name, .market-title, .desc",
+    "outcome_item": ".outcome-item, .selection, .bet-option",
+    "outcome_name": ".outcome-name, .desc",
+    "odds_value": ".odds, .coefficient, .odd-value, span.odds"
+  },
+
+  "market_categories": [
+    "Match Result",
+    "Goals",
+    "Corners",
+    "Cards",
+    "Handicap",
+    "Both Teams to Score",
+    "Half Time",
+    "Correct Score",
+    "Clean Sheet",
+    "Combo",
+    "Player Props",
+    "Asian Lines",
+    "Specials",
+    "Boosted / Early Payout"
+  ],
+
+  "markets": {
+
+    "1X2": {
+      "exact_name": "1X2",
+      "id": "1",
+      "category": "Match Result",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "Which team will win the match. Overtime not included.",
+      "lines": null,
+      "variants": ["1X2 - 2UP", "1X2 - 1UP", "1X2 - DrawSave"],
+      "selectors": {
+        "container": "div[data-market-id='1']",
+        "market_name": "div[data-market-id='1'] .market-name, div[data-market-id='1'] .market-title",
+        "market_outcome": "div[data-market-id='1'] .outcome-item, div[data-market-id='1'] .selection",
+        "market_outcome_odds": "div[data-market-id='1'] .odds, div[data-market-id='1'] .odd-value"
+      }
+    },
+
+    "1X2 - 2UP": {
+      "exact_name": "1X2 - 2UP",
+      "id": "60100",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "2UP pays your 1X2 bets immediately if your team takes a two-goal lead.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60100']",
+        "market_name": "div[data-market-id='60100'] .market-name",
+        "market_outcome": "div[data-market-id='60100'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60100'] .odds"
+      }
+    },
+
+    "1X2 - 1UP": {
+      "exact_name": "1X2 - 1UP",
+      "id": "60200",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "1UP pays your 1X2 bets immediately if your team takes a one-goal lead.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60200']",
+        "market_name": "div[data-market-id='60200'] .market-name",
+        "market_outcome": "div[data-market-id='60200'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60200'] .odds"
+      }
+    },
+
+    "1X2 - DrawSave": {
+      "exact_name": "1X2 - DrawSave",
+      "id": "60101",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "DrawSave pays your 1X2 Draw bets immediately if the result is level in the 90th minute.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60101']",
+        "market_name": "div[data-market-id='60101'] .market-name",
+        "market_outcome": "div[data-market-id='60101'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60101'] .odds"
+      }
+    },
+
+    "Double Chance": {
+      "exact_name": "Double Chance",
+      "id": "10",
+      "category": "Match Result",
+      "outcomes": ["1X", "12", "X2"],
+      "marketGuide": "Predict the match result combining two of the three possible outcomes (1X, X2 or 12).",
+      "lines": null,
+      "variants": ["DC - 1UP"],
+      "selectors": {
+        "container": "div[data-market-id='10']",
+        "market_name": "div[data-market-id='10'] .market-name",
+        "market_outcome": "div[data-market-id='10'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='10'] .odds"
+      }
+    },
+
+    "DC - 1UP": {
+      "exact_name": "DC - 1UP",
+      "id": "60110",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["1X", "12", "X2"],
+      "marketGuide": "1UP pays your Double Chance bets immediately if your team leads in the score at any moment.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60110']",
+        "market_name": "div[data-market-id='60110'] .market-name",
+        "market_outcome": "div[data-market-id='60110'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60110'] .odds"
+      }
+    },
+
+    "Draw No Bet": {
+      "exact_name": "Draw No Bet",
+      "id": "11",
+      "category": "Match Result",
+      "outcomes": ["1", "2"],
+      "marketGuide": "Predict which team will win the match. If the match ends in a draw, the bet is refunded.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='11']",
+        "market_name": "div[data-market-id='11'] .market-name",
+        "market_outcome": "div[data-market-id='11'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='11'] .odds"
+      }
+    },
+
+    "HT/FT": {
+      "exact_name": "Half Time / Full Time",
+      "id": "20",
+      "category": "Half Time",
+      "outcomes": ["1/1", "1/X", "1/2", "X/1", "X/X", "X/2", "2/1", "2/X", "2/2"],
+      "marketGuide": "Predict the leading team at half time and full time combined result.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='20']",
+        "market_name": "div[data-market-id='20'] .market-name",
+        "market_outcome": "div[data-market-id='20'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='20'] .odds"
+      }
+    },
+
+    "1st Half 1X2": {
+      "exact_name": "1st Half - 1X2",
+      "id": "60",
+      "category": "Half Time",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "Predict which team will be leading at half time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60']",
+        "market_name": "div[data-market-id='60'] .market-name",
+        "market_outcome": "div[data-market-id='60'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60'] .odds"
+      }
+    },
+
+    "2nd Half 1X2": {
+      "exact_name": "2nd Half - 1X2",
+      "id": "62",
+      "category": "Half Time",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "Predict which team will win the second half only.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='62']",
+        "market_name": "div[data-market-id='62'] .market-name",
+        "market_outcome": "div[data-market-id='62'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='62'] .odds"
+      }
+    },
+
+    "Over/Under": {
+      "exact_name": "Over/Under",
+      "id": "18",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of goals scored in regular time is over/under a given line.",
+      "lines": ["0.5", "1.5", "2.5", "3.5", "4.5", "5.5", "6.5"],
+      "display_lines": ["0.5", "1", "1.5", "2", "2.5", "3", "3.5", "4", "4.5", "5", "5.5"],
+      "variants": ["Over/Under - EarlyGoals"],
+      "selectors": {
+        "container": "div[data-market-id='18']",
+        "market_name": "div[data-market-id='18'] .market-name",
+        "market_outcome": "div[data-market-id='18'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='18'] .odds"
+      }
+    },
+
+    "Over/Under - EarlyGoals": {
+      "exact_name": "Over/Under - EarlyGoals",
+      "id": "60180",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "EarlyGoals pays your Over bets immediately if a certain number of goals is scored by a certain minute.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60180']",
+        "market_name": "div[data-market-id='60180'] .market-name",
+        "market_outcome": "div[data-market-id='60180'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60180'] .odds"
+      }
+    },
+
+    "1st Half O/U": {
+      "exact_name": "1st Half - Over/Under",
+      "id": "68",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of goals scored in 1st Half is over/under a given line.",
+      "lines": ["0.5", "1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='68']",
+        "market_name": "div[data-market-id='68'] .market-name",
+        "market_outcome": "div[data-market-id='68'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='68'] .odds"
+      }
+    },
+
+    "2nd Half O/U": {
+      "exact_name": "2nd Half - Over/Under",
+      "id": "69",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of goals scored in 2nd Half is over/under a given line.",
+      "lines": ["0.5", "1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='69']",
+        "market_name": "div[data-market-id='69'] .market-name",
+        "market_outcome": "div[data-market-id='69'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='69'] .odds"
+      }
+    },
+
+    "GG/NG": {
+      "exact_name": "GG/NG",
+      "id": "29",
+      "category": "Both Teams to Score",
+      "outcomes": ["GG", "NG"],
+      "marketGuide": "Predict whether both teams will score in the match at regular time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='29']",
+        "market_name": "div[data-market-id='29'] .market-name",
+        "market_outcome": "div[data-market-id='29'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='29'] .odds"
+      }
+    },
+
+    "GG/NG 1st Half": {
+      "exact_name": "GG/NG - 1st Half",
+      "id": "640",
+      "category": "Both Teams to Score",
+      "outcomes": ["GG", "NG"],
+      "marketGuide": "Predict whether both teams will score in the first half.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='640']",
+        "market_name": "div[data-market-id='640'] .market-name",
+        "market_outcome": "div[data-market-id='640'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='640'] .odds"
+      }
+    },
+
+    "Handicap": {
+      "exact_name": "Handicap",
+      "id": "14",
+      "category": "Handicap",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "Predict the winner in regular time taking in consideration the handicap in brackets.",
+      "lines": ["-3", "-2.5", "-2", "-1.5", "-1", "-0.5", "+0.5", "+1", "+1.5", "+2", "+2.5", "+3"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='14']",
+        "market_name": "div[data-market-id='14'] .market-name",
+        "market_outcome": "div[data-market-id='14'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='14'] .odds"
+      }
+    },
+
+    "Asian Handicap": {
+      "exact_name": "Asian Handicap",
+      "id": "16",
+      "category": "Asian Lines",
+      "outcomes": ["1", "2"],
+      "marketGuide": "Predict the winner with a handicap applied. Quarter-ball lines allow for half-win/half-refund outcomes.",
+      "lines": ["-2.75", "-2.5", "-2.25", "-2", "-1.75", "-1.5", "-1.25", "-1", "-0.75", "-0.5", "-0.25", "0", "+0.25", "+0.5", "+0.75", "+1", "+1.25", "+1.5", "+1.75", "+2"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='16']",
+        "market_name": "div[data-market-id='16'] .market-name",
+        "market_outcome": "div[data-market-id='16'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='16'] .odds"
+      }
+    },
+
+    "Asian O/U": {
+      "exact_name": "Asian Over/Under",
+      "id": "19",
+      "category": "Asian Lines",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Asian-style Over/Under with quarter-ball lines allowing for half-win/half-refund scenarios.",
+      "lines": ["0.75", "1", "1.25", "1.5", "1.75", "2", "2.25", "2.5", "2.75", "3", "3.25", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='19']",
+        "market_name": "div[data-market-id='19'] .market-name",
+        "market_outcome": "div[data-market-id='19'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='19'] .odds"
+      }
+    },
+
+    "Correct Score": {
+      "exact_name": "Correct Score",
+      "id": "35",
+      "category": "Correct Score",
+      "outcomes": [
+        "0:0", "1:0", "2:0", "3:0", "4:0",
+        "0:1", "1:1", "2:1", "3:1", "4:1",
+        "0:2", "1:2", "2:2", "3:2", "4:2",
+        "0:3", "1:3", "2:3", "3:3",
+        "0:4", "1:4", "2:4",
+        "Other"
+      ],
+      "marketGuide": "Predict the exact final score of the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='35']",
+        "market_name": "div[data-market-id='35'] .market-name",
+        "market_outcome": "div[data-market-id='35'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='35'] .odds"
+      }
+    },
+
+    "Correct Score 1st Half": {
+      "exact_name": "Correct Score - 1st Half",
+      "id": "356",
+      "category": "Correct Score",
+      "outcomes": [
+        "0:0", "1:0", "2:0", "3:0",
+        "0:1", "1:1", "2:1",
+        "0:2", "1:2",
+        "0:3",
+        "Other"
+      ],
+      "marketGuide": "Predict the exact score at half time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='356']",
+        "market_name": "div[data-market-id='356'] .market-name",
+        "market_outcome": "div[data-market-id='356'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='356'] .odds"
+      }
+    },
+
+    "Clean Sheet - Home": {
+      "exact_name": "Clean Sheet - Home",
+      "id": "571",
+      "category": "Clean Sheet",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the home team will keep a clean sheet (not concede any goal) in regular time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='571']",
+        "market_name": "div[data-market-id='571'] .market-name",
+        "market_outcome": "div[data-market-id='571'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='571'] .odds"
+      }
+    },
+
+    "Clean Sheet - Away": {
+      "exact_name": "Clean Sheet - Away",
+      "id": "572",
+      "category": "Clean Sheet",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the away team will keep a clean sheet (not concede any goal) in regular time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='572']",
+        "market_name": "div[data-market-id='572'] .market-name",
+        "market_outcome": "div[data-market-id='572'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='572'] .odds"
+      }
+    },
+
+    "Win to Nil - Home": {
+      "exact_name": "Win To Nil - Home",
+      "id": "573",
+      "category": "Clean Sheet",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the home team will win the match without conceding any goal.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='573']",
+        "market_name": "div[data-market-id='573'] .market-name",
+        "market_outcome": "div[data-market-id='573'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='573'] .odds"
+      }
+    },
+
+    "Win to Nil - Away": {
+      "exact_name": "Win To Nil - Away",
+      "id": "574",
+      "category": "Clean Sheet",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the away team will win the match without conceding any goal.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='574']",
+        "market_name": "div[data-market-id='574'] .market-name",
+        "market_outcome": "div[data-market-id='574'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='574'] .odds"
+      }
+    },
+
+    "Goal Ranges": {
+      "exact_name": "Goal Ranges",
+      "id": "46",
+      "category": "Goals",
+      "outcomes": ["0-1", "2-3", "4+"],
+      "marketGuide": "Predict the total number of goals in the match falling within one of the given ranges.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='46']",
+        "market_name": "div[data-market-id='46'] .market-name",
+        "market_outcome": "div[data-market-id='46'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='46'] .odds"
+      }
+    },
+
+    "Exact Goals": {
+      "exact_name": "Exact Goals",
+      "id": "47",
+      "category": "Goals",
+      "outcomes": ["0", "1", "2", "3", "4", "5+"],
+      "marketGuide": "Predict the exact total number of goals in the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='47']",
+        "market_name": "div[data-market-id='47'] .market-name",
+        "market_outcome": "div[data-market-id='47'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='47'] .odds"
+      }
+    },
+
+    "Home Team Goals O/U": {
+      "exact_name": "Home Team - Over/Under",
+      "id": "52",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the home team will score over/under a given number of goals in the match.",
+      "lines": ["0.5", "1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='52']",
+        "market_name": "div[data-market-id='52'] .market-name",
+        "market_outcome": "div[data-market-id='52'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='52'] .odds"
+      }
+    },
+
+    "Away Team Goals O/U": {
+      "exact_name": "Away Team - Over/Under",
+      "id": "53",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the away team will score over/under a given number of goals in the match.",
+      "lines": ["0.5", "1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='53']",
+        "market_name": "div[data-market-id='53'] .market-name",
+        "market_outcome": "div[data-market-id='53'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='53'] .odds"
+      }
+    },
+
+    "First Goal Scorer": {
+      "exact_name": "First Goal Scorer",
+      "id": "80",
+      "category": "Player Props",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will score the first goal of the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='80']",
+        "market_name": "div[data-market-id='80'] .market-name",
+        "market_outcome": "div[data-market-id='80'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='80'] .odds"
+      }
+    },
+
+    "Last Goal Scorer": {
+      "exact_name": "Last Goal Scorer",
+      "id": "81",
+      "category": "Player Props",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will score the last goal of the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='81']",
+        "market_name": "div[data-market-id='81'] .market-name",
+        "market_outcome": "div[data-market-id='81'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='81'] .odds"
+      }
+    },
+
+    "Anytime Goal Scorer": {
+      "exact_name": "Anytime Goalscorer",
+      "id": "83",
+      "category": "Player Props",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will score at any time during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='83']",
+        "market_name": "div[data-market-id='83'] .market-name",
+        "market_outcome": "div[data-market-id='83'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='83'] .odds"
+      }
+    },
+
+    "Player To Score 2+ Goals": {
+      "exact_name": "Player To Score 2 Or More Goals",
+      "id": "84",
+      "category": "Player Props",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will score two or more goals in the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='84']",
+        "market_name": "div[data-market-id='84'] .market-name",
+        "market_outcome": "div[data-market-id='84'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='84'] .odds"
+      }
+    },
+
+    "Player To Score 3+ Goals": {
+      "exact_name": "Player To Score 3 Or More Goals",
+      "id": "85",
+      "category": "Player Props",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will score a hat-trick (3 or more goals) in the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='85']",
+        "market_name": "div[data-market-id='85'] .market-name",
+        "market_outcome": "div[data-market-id='85'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='85'] .odds"
+      }
+    },
+
+    "Player Shots On Target O/U": {
+      "exact_name": "Player Shots On Target - Over/Under",
+      "id": "860",
+      "category": "Player Props",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether a given player will record over/under a specified number of shots on target.",
+      "lines": ["0.5", "1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='860']",
+        "market_name": "div[data-market-id='860'] .market-name",
+        "market_outcome": "div[data-market-id='860'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='860'] .odds"
+      }
+    },
+
+    "Corners O/U": {
+      "exact_name": "Corners O/U",
+      "id": "166",
+      "category": "Corners",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of corners in the match will be over/under a given line.",
+      "lines": ["7.5", "8.5", "9.5", "10.5", "11.5", "12.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='166']",
+        "market_name": "div[data-market-id='166'] .market-name",
+        "market_outcome": "div[data-market-id='166'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='166'] .odds"
+      }
+    },
+
+    "Corners 1X2": {
+      "exact_name": "Corners - 1X2",
+      "id": "167",
+      "category": "Corners",
+      "outcomes": ["1", "X", "2"],
+      "marketGuide": "Predict which team will have more corners, or if both teams have an equal number.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='167']",
+        "market_name": "div[data-market-id='167'] .market-name",
+        "market_outcome": "div[data-market-id='167'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='167'] .odds"
+      }
+    },
+
+    "Corners Handicap": {
+      "exact_name": "Corners - Handicap",
+      "id": "168",
+      "category": "Corners",
+      "outcomes": ["1", "2"],
+      "marketGuide": "Predict the winner of the corner count with a handicap applied.",
+      "lines": ["-4.5", "-3.5", "-2.5", "-1.5", "-0.5", "+0.5", "+1.5", "+2.5", "+3.5", "+4.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='168']",
+        "market_name": "div[data-market-id='168'] .market-name",
+        "market_outcome": "div[data-market-id='168'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='168'] .odds"
+      }
+    },
+
+    "1st Half Corners O/U": {
+      "exact_name": "1st Half - Corners O/U",
+      "id": "170",
+      "category": "Corners",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of corners in the first half will be over/under a given line.",
+      "lines": ["3.5", "4.5", "5.5", "6.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='170']",
+        "market_name": "div[data-market-id='170'] .market-name",
+        "market_outcome": "div[data-market-id='170'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='170'] .odds"
+      }
+    },
+
+    "Cards O/U": {
+      "exact_name": "Cards Over/Under",
+      "id": "200",
+      "category": "Cards",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the total number of cards (yellow + red) will be over/under a given line.",
+      "lines": ["2.5", "3.5", "4.5", "5.5", "6.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='200']",
+        "market_name": "div[data-market-id='200'] .market-name",
+        "market_outcome": "div[data-market-id='200'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='200'] .odds"
+      }
+    },
+
+    "Home Team Cards O/U": {
+      "exact_name": "Home Team Cards - Over/Under",
+      "id": "201",
+      "category": "Cards",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the home team will receive over/under a given number of cards.",
+      "lines": ["1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='201']",
+        "market_name": "div[data-market-id='201'] .market-name",
+        "market_outcome": "div[data-market-id='201'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='201'] .odds"
+      }
+    },
+
+    "Away Team Cards O/U": {
+      "exact_name": "Away Team Cards - Over/Under",
+      "id": "202",
+      "category": "Cards",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether the away team will receive over/under a given number of cards.",
+      "lines": ["1.5", "2.5", "3.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='202']",
+        "market_name": "div[data-market-id='202'] .market-name",
+        "market_outcome": "div[data-market-id='202'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='202'] .odds"
+      }
+    },
+
+    "Player Booked": {
+      "exact_name": "Player To Be Booked",
+      "id": "204",
+      "category": "Cards",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will receive a yellow card during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='204']",
+        "market_name": "div[data-market-id='204'] .market-name",
+        "market_outcome": "div[data-market-id='204'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='204'] .odds"
+      }
+    },
+
+    "Player Sent Off": {
+      "exact_name": "Player To Be Sent Off",
+      "id": "205",
+      "category": "Cards",
+      "outcomes": ["Player list - dynamic"],
+      "marketGuide": "Predict which player will receive a red card during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='205']",
+        "market_name": "div[data-market-id='205'] .market-name",
+        "market_outcome": "div[data-market-id='205'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='205'] .odds"
+      }
+    },
+
+    "1X2 & GG/NG": {
+      "exact_name": "1X2 & GG/NG",
+      "id": "300",
+      "category": "Combo",
+      "outcomes": ["1 & GG", "1 & NG", "X & GG", "X & NG", "2 & GG", "2 & NG"],
+      "marketGuide": "Combine the match result (1X2) with the Both Teams to Score (GG/NG) prediction.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='300']",
+        "market_name": "div[data-market-id='300'] .market-name",
+        "market_outcome": "div[data-market-id='300'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='300'] .odds"
+      }
+    },
+
+    "1X2 & O/U": {
+      "exact_name": "1X2 & Over/Under",
+      "id": "301",
+      "category": "Combo",
+      "outcomes": ["1 & Over", "1 & Under", "X & Over", "X & Under", "2 & Over", "2 & Under"],
+      "marketGuide": "Combine the match result (1X2) with the total goals Over/Under prediction.",
+      "lines": ["2.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='301']",
+        "market_name": "div[data-market-id='301'] .market-name",
+        "market_outcome": "div[data-market-id='301'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='301'] .odds"
+      }
+    },
+
+    "DC & GG/NG": {
+      "exact_name": "Double Chance & GG/NG",
+      "id": "302",
+      "category": "Combo",
+      "outcomes": ["1X & GG", "1X & NG", "12 & GG", "12 & NG", "X2 & GG", "X2 & NG"],
+      "marketGuide": "Combine a Double Chance prediction with the Both Teams to Score market.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='302']",
+        "market_name": "div[data-market-id='302'] .market-name",
+        "market_outcome": "div[data-market-id='302'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='302'] .odds"
+      }
+    },
+
+    "DC & O/U": {
+      "exact_name": "Double Chance & Over/Under",
+      "id": "303",
+      "category": "Combo",
+      "outcomes": ["1X & Over", "1X & Under", "12 & Over", "12 & Under", "X2 & Over", "X2 & Under"],
+      "marketGuide": "Combine a Double Chance prediction with the total goals Over/Under market.",
+      "lines": ["2.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='303']",
+        "market_name": "div[data-market-id='303'] .market-name",
+        "market_outcome": "div[data-market-id='303'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='303'] .odds"
+      }
+    },
+
+    "GG/NG & O/U": {
+      "exact_name": "GG/NG & Over/Under",
+      "id": "304",
+      "category": "Combo",
+      "outcomes": ["GG & Over", "GG & Under", "NG & Over", "NG & Under"],
+      "marketGuide": "Combine the Both Teams to Score prediction with the total goals Over/Under market.",
+      "lines": ["2.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='304']",
+        "market_name": "div[data-market-id='304'] .market-name",
+        "market_outcome": "div[data-market-id='304'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='304'] .odds"
+      }
+    },
+
+    "Any Team 2UP": {
+      "exact_name": "Any Team 2UP",
+      "id": "60301",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Will any team in the match take a two-goal lead at any point?",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60301']",
+        "market_name": "div[data-market-id='60301'] .market-name",
+        "market_outcome": "div[data-market-id='60301'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60301'] .odds"
+      }
+    },
+
+    "Any Team 3UP": {
+      "exact_name": "Any Team 3UP",
+      "id": "60302",
+      "category": "Boosted / Early Payout",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Will any team in the match take a three-goal lead at any point?",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='60302']",
+        "market_name": "div[data-market-id='60302'] .market-name",
+        "market_outcome": "div[data-market-id='60302'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='60302'] .odds"
+      }
+    },
+
+    "Next Goal": {
+      "exact_name": "Next Goal",
+      "id": "41",
+      "category": "Goals",
+      "outcomes": ["1", "No Goal", "2"],
+      "marketGuide": "Predict which team will score the next goal, or if there will be no more goals.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='41']",
+        "market_name": "div[data-market-id='41'] .market-name",
+        "market_outcome": "div[data-market-id='41'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='41'] .odds"
+      }
+    },
+
+    "Score In Both Halves": {
+      "exact_name": "Score In Both Halves",
+      "id": "432",
+      "category": "Goals",
+      "outcomes": ["Yes - Home", "Yes - Away", "No"],
+      "marketGuide": "Predict whether a team will score at least one goal in each half.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='432']",
+        "market_name": "div[data-market-id='432'] .market-name",
+        "market_outcome": "div[data-market-id='432'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='432'] .odds"
+      }
+    },
+
+    "To Score First & Win": {
+      "exact_name": "To Score First & Win",
+      "id": "440",
+      "category": "Combo",
+      "outcomes": ["Home", "Away"],
+      "marketGuide": "Predict which team will score first and go on to win the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='440']",
+        "market_name": "div[data-market-id='440'] .market-name",
+        "market_outcome": "div[data-market-id='440'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='440'] .odds"
+      }
+    },
+
+    "Match Result & O/U": {
+      "exact_name": "Match Result & Over/Under",
+      "id": "450",
+      "category": "Combo",
+      "outcomes": ["Home & Over", "Home & Under", "Draw & Over", "Draw & Under", "Away & Over", "Away & Under"],
+      "marketGuide": "Combine the full-time match result with the total goals Over/Under.",
+      "lines": ["2.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='450']",
+        "market_name": "div[data-market-id='450'] .market-name",
+        "market_outcome": "div[data-market-id='450'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='450'] .odds"
+      }
+    },
+
+    "Both Halves O/U": {
+      "exact_name": "Both Halves - Over/Under",
+      "id": "460",
+      "category": "Goals",
+      "outcomes": ["Over", "Under"],
+      "marketGuide": "Predict whether BOTH halves will individually have over/under a specified number of goals.",
+      "lines": ["0.5", "1.5"],
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='460']",
+        "market_name": "div[data-market-id='460'] .market-name",
+        "market_outcome": "div[data-market-id='460'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='460'] .odds"
+      }
+    },
+
+    "Penalty In Match": {
+      "exact_name": "Penalty In Match",
+      "id": "500",
+      "category": "Specials",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether a penalty kick will be awarded during the match in regular time.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='500']",
+        "market_name": "div[data-market-id='500'] .market-name",
+        "market_outcome": "div[data-market-id='500'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='500'] .odds"
+      }
+    },
+
+    "Own Goal In Match": {
+      "exact_name": "Own Goal In Match",
+      "id": "501",
+      "category": "Specials",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether an own goal will be scored during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='501']",
+        "market_name": "div[data-market-id='501'] .market-name",
+        "market_outcome": "div[data-market-id='501'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='501'] .odds"
+      }
+    },
+
+    "Highest Scoring Half": {
+      "exact_name": "Highest Scoring Half",
+      "id": "502",
+      "category": "Goals",
+      "outcomes": ["1st Half", "Equal", "2nd Half"],
+      "marketGuide": "Predict in which half of the match more goals will be scored.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='502']",
+        "market_name": "div[data-market-id='502'] .market-name",
+        "market_outcome": "div[data-market-id='502'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='502'] .odds"
+      }
+    },
+
+    "Away Team To Score": {
+      "exact_name": "Away Team To Score",
+      "id": "503",
+      "category": "Goals",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the away team will score at least one goal during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='503']",
+        "market_name": "div[data-market-id='503'] .market-name",
+        "market_outcome": "div[data-market-id='503'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='503'] .odds"
+      }
+    },
+
+    "Home Team To Score": {
+      "exact_name": "Home Team To Score",
+      "id": "504",
+      "category": "Goals",
+      "outcomes": ["Yes", "No"],
+      "marketGuide": "Predict whether the home team will score at least one goal during the match.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='504']",
+        "market_name": "div[data-market-id='504'] .market-name",
+        "market_outcome": "div[data-market-id='504'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='504'] .odds"
+      }
+    },
+
+    "Multi-Goals": {
+      "exact_name": "Multi-Goals",
+      "id": "505",
+      "category": "Goals",
+      "outcomes": ["1-2", "1-3", "1-4", "2-3", "2-4", "3-4", "2-6", "3-6", "4-6"],
+      "marketGuide": "Predict that the total number of goals falls within one of the specified ranges.",
+      "lines": null,
+      "variants": [],
+      "selectors": {
+        "container": "div[data-market-id='505']",
+        "market_name": "div[data-market-id='505'] .market-name",
+        "market_outcome": "div[data-market-id='505'] .outcome-item",
+        "market_outcome_odds": "div[data-market-id='505'] .odds"
+      }
+    }
+
+  },
+
+  "market_id_index": {
+    "1": "1X2",
+    "10": "Double Chance",
+    "11": "Draw No Bet",
+    "14": "Handicap",
+    "16": "Asian Handicap",
+    "18": "Over/Under",
+    "19": "Asian O/U",
+    "20": "HT/FT",
+    "29": "GG/NG",
+    "35": "Correct Score",
+    "41": "Next Goal",
+    "46": "Goal Ranges",
+    "47": "Exact Goals",
+    "52": "Home Team Goals O/U",
+    "53": "Away Team Goals O/U",
+    "60": "1st Half 1X2",
+    "62": "2nd Half 1X2",
+    "68": "1st Half O/U",
+    "69": "2nd Half O/U",
+    "80": "First Goal Scorer",
+    "81": "Last Goal Scorer",
+    "83": "Anytime Goal Scorer",
+    "84": "Player To Score 2+ Goals",
+    "85": "Player To Score 3+ Goals",
+    "166": "Corners O/U",
+    "167": "Corners 1X2",
+    "168": "Corners Handicap",
+    "170": "1st Half Corners O/U",
+    "200": "Cards O/U",
+    "201": "Home Team Cards O/U",
+    "202": "Away Team Cards O/U",
+    "204": "Player Booked",
+    "205": "Player Sent Off",
+    "300": "1X2 & GG/NG",
+    "301": "1X2 & O/U",
+    "302": "DC & GG/NG",
+    "303": "DC & O/U",
+    "304": "GG/NG & O/U",
+    "356": "Correct Score 1st Half",
+    "432": "Score In Both Halves",
+    "440": "To Score First & Win",
+    "450": "Match Result & O/U",
+    "460": "Both Halves O/U",
+    "500": "Penalty In Match",
+    "501": "Own Goal In Match",
+    "502": "Highest Scoring Half",
+    "503": "Away Team To Score",
+    "504": "Home Team To Score",
+    "505": "Multi-Goals",
+    "571": "Clean Sheet - Home",
+    "572": "Clean Sheet - Away",
+    "573": "Win to Nil - Home",
+    "574": "Win to Nil - Away",
+    "640": "GG/NG 1st Half",
+    "860": "Player Shots On Target O/U",
+    "60100": "1X2 - 2UP",
+    "60101": "1X2 - DrawSave",
+    "60110": "DC - 1UP",
+    "60180": "Over/Under - EarlyGoals",
+    "60200": "1X2 - 1UP",
+    "60301": "Any Team 2UP",
+    "60302": "Any Team 3UP"
+  },
+
+  "notes": [
+    "All market IDs, names, and selectors follow the football.com NG platform pattern using data-market-id attributes.",
+    "Outcomes marked as 'Player list - dynamic' are populated at runtime depending on available squad data.",
+    "Lines listed per market are the commonly available lines; actual availability may vary per match.",
+    "Asian Handicap quarter-ball lines (e.g. -0.75, +0.25) result in a split bet — half wins, half is refunded.",
+    "Combo markets combine two or more independent markets into a single selection.",
+    "Boosted/Early Payout markets (IDs 601xx, 602xx, 603xx) are special promotions that settle early under defined conditions.",
+    "Use data-market-id for the most stable DOM targeting — class names may change across platform updates."
+  ]
+}
