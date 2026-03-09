@@ -69,7 +69,7 @@ class EnsembleEngine:
             path = "symbolic_fallback"
             reason = "RL failed" if rl_logits is None else f"low confidence ({rl_conf:.2f} < 0.3)"
             
-            logger.info(f"[Ensemble] {league_id} | Path: {path} | Reason: {reason}")
+            logger.debug(f"[Ensemble] {league_id} | Path: {path} | Reason: {reason}")
             
             # Normalize rule_logits for consistency
             total = sum(rule_logits.values()) or 1.0

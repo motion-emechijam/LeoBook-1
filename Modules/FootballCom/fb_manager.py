@@ -62,9 +62,11 @@ async def _create_session_no_login(playwright: Playwright):
     Ch1P1 is anonymous — no ChromeData, no cookies, no session persistence."""
     from Core.Utils.constants import WAIT_FOR_LOAD_STATE_TIMEOUT
 
+    # Auto-detect headless: Codespaces / CI have no display
+    is_headless = os.getenv("CODESPACES") == "true" or (os.name != "nt" and not os.environ.get("DISPLAY"))
+
     browser = await playwright.chromium.launch(
-        channel='chrome',
-        headless=False,
+        headless=is_headless,
         args=[
             "--disable-blink-features=AutomationControlled",
             "--no-sandbox",

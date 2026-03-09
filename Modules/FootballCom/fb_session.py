@@ -27,10 +27,10 @@ async def launch_browser_with_retry(playwright: Playwright, user_data_dir: Path,
     base_timeout = 60000
     backoff_multiplier = 1.2
 
-    # Auto-detect headless: use headed on Windows/macOS with display, headless on Linux without X server
-    use_headless = os.name != 'nt' and not os.environ.get('DISPLAY')
+    # Auto-detect headless: Codespaces / CI have no display
+    use_headless = os.getenv("CODESPACES") == "true" or (os.name != 'nt' and not os.environ.get('DISPLAY'))
     if use_headless:
-        print("  [Launch] No DISPLAY detected — using headless mode.")
+        print("  [Launch] Headless mode (Codespace/CI detected).")
 
     for attempt in range(max_retries):
         timeout = int(base_timeout * (backoff_multiplier ** attempt))
@@ -52,7 +52,6 @@ async def launch_browser_with_retry(playwright: Playwright, user_data_dir: Path,
 
             context = await playwright.chromium.launch_persistent_context(
                 user_data_dir=str(user_data_dir),
-                channel='chrome',
                 headless=use_headless,
                 args=chrome_args,
                 ignore_default_args=["--enable-automation"],
