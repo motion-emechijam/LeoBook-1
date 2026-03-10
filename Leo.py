@@ -604,6 +604,14 @@ async def dispatch(args):
             return
 
         if args.chapter == 2:
+            from Core.System.guardrails import run_all_pre_bet_checks, is_dry_run
+            from Data.Access.league_db import get_connection
+            conn = get_connection()
+            ok, reason = run_all_pre_bet_checks(conn, state.get("current_balance", 0))
+            if not ok:
+                print(f"  [GUARDRAIL] Chapter 2 BLOCKED: {reason}")
+                log_audit_event("GUARDRAIL_BLOCK", reason, status="blocked")
+                return
             if args.page == 1:
                 await run_chapter_2_p1(p)
             elif args.page == 2:
@@ -670,9 +678,8 @@ if __name__ == "__main__":
 
     try:
         if args.dry_run:
-            print("\n" + "=" * 60)
-            print("  DRY-RUN MODE ACTIVE: Actions will be logged but not executed.")
-            print("=" * 60)
+            from Core.System.guardrails import enable_dry_run
+            enable_dry_run()
 
         # ── STARTUP: DB + Supabase sync (must complete before streamer) ──
         if args.data_quality:

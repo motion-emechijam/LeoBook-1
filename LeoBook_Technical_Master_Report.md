@@ -1,4 +1,4 @@
-> **Version**: 8.0.0 "Stairway Engine" · **Last Updated**: 2026-03-09 · **Architecture**: 3-Phase RL (Poisson Grounding) + 30-dim Action Space + Chapter 1 v9.0 Direct Harvesting
+> **Version**: 8.1.0 "Stairway Engine" · **Last Updated**: 2026-03-10 · **Architecture**: 3-Phase RL (Poisson Grounding) + 30-dim Action Space + Chapter 1 v9.0 Direct Harvesting + Safety Guardrails v1.0
 
 ## Table of Contents
 
@@ -65,7 +65,7 @@ LeoBook uses **two external data sources** for distinct purposes:
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `Core/Intelligence/`    | `rule_engine.py`, `learning_engine.py`, `rule_engine_manager.py`, `aigo_engine.py`, `aigo_suite.py`, **`ensemble.py`**                      | AI engine, AIGO self-healing, adaptive learning, **Neuro-Symbolic Ensemble**                                                            |
 | `Core/Intelligence/rl/` | `trainer.py`, `inference.py`, `model.py`, **`market_space.py`**                                                                             | Neural RL engine — 30-dim Multi-Action Space + Phased Training (see [Phased RL Lifecycle](#phased-rl-lifecyle))                         |
-| `Core/System/`          | **`supervisor.py`**, **`worker_base.py`**, **`pipeline_workers.py`**, **`data_readiness.py`**, **`data_quality.py`**, **`gap_resolver.py`** | **Supervisor orchestrator**, **BaseWorker class**, **Chapter Workers**, **Readiness Gates**, **Data Quality Scanner**, **Gap Resolver** |
+| `Core/System/`          | **`supervisor.py`**, **`worker_base.py`**, **`pipeline_workers.py`**, **`data_readiness.py`**, **`data_quality.py`**, **`gap_resolver.py`**, **`guardrails.py`** | **Supervisor orchestrator**, **BaseWorker class**, **Chapter Workers**, **Readiness Gates**, **Data Quality Scanner**, **Gap Resolver**, **Bet Safety Guardrails** |
 | `Core/Utils/`           | `constants.py`                                                                                                                              | Shared constants including `now_ng` (see [Timezone](#timezone-anchor-now_ng))                                                           |
 
 #### Phased RL Lifecycle (v8.0 "Stairway Engine")
@@ -258,27 +258,31 @@ flowchart LR
 
 ## 6. Bet Safety Guardrails
 
-> [!CAUTION]
-> Chapter 2 (automated bet placement) involves real money. The following guardrails are the **intended safety architecture**. Items marked [PLANNED] are not yet implemented in code.
+> [!IMPORTANT]
+> Chapter 2 (automated bet placement) involves real money. All safety guardrails are **implemented and enforced** in `Core/System/guardrails.py` (v1.0, March 10, 2026). Chapter 2 cannot execute without passing all checks.
 
-### Implemented
+### All Implemented (v1.0)
 
-| Guardrail             | Status        | Description                                                                                                                                     |
-| --------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Audit Logging**     | ✅ Implemented | Every bet cycle writes to `audit_log` table in both SQLite and Supabase. Includes balance_before, balance_after, stake, event_type, and status. |
-| **Confidence Gating** | ✅ Implemented | Predictions below a confidence threshold are marked `SKIP` and never progress to betting.                                                       |
-| **Max 1/team/week**   | ✅ Implemented | Data leak guard prevents stale-data predictions.                                                                                                |
+| Guardrail                   | Status         | Module / Function                 | Description                                                                                                  |
+| --------------------------- | -------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Audit Logging**           | ✅ Implemented | `db_helpers.log_audit_event()`     | Every bet cycle writes to `audit_log` with balance_before/after, stake, event_type, status.                  |
+| **Confidence Gating**       | ✅ Implemented | `prediction_pipeline.py`           | Predictions below confidence threshold are marked `SKIP`.                                                    |
+| **Max 1/team/week**         | ✅ Implemented | `prediction_pipeline.py`           | Data leak guard prevents stale-data predictions.                                                             |
+| **Dry-Run Mode**            | ✅ Implemented | `guardrails.enable_dry_run()`      | `--dry-run` flag blocks all bet execution. Logs simulated actions to audit_log.                              |
+| **Kill Switch**             | ✅ Implemented | `guardrails.check_kill_switch()`   | `STOP_BETTING` file halts all betting immediately. Delete file to resume.                                    |
+| **Max Stake Cap**           | ✅ Implemented | `guardrails.StaircaseTracker`      | Stake capped to Stairway table step value (₦1,000 at step 1 → ₦2,048,000 at step 7). Replaces hardcoded 50%. |
+| **Staircase State Machine** | ✅ Implemented | `guardrails.StaircaseTracker`      | 7-step state machine persisted in SQLite. Win → advance, Loss → reset to step 1. Cycle count tracked.        |
+| **Balance Sanity Check**    | ✅ Implemented | `guardrails.check_balance_sanity()`| Blocks betting if balance < ₦500 (configurable via `MIN_BALANCE_BEFORE_BET`).                                |
+| **Daily Loss Limit**        | ✅ Implemented | `guardrails.check_daily_loss_limit()`| Sums today's losses from audit_log. Halts if ≥ ₦5,000 (configurable via `DAILY_LOSS_LIMIT`).               |
 
-### Planned (Not Yet in Code)
+### Guardrail Enforcement Points
 
-| Guardrail                   | Priority | Description                                                                                                                                         |
-| --------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dry-Run Mode**            | CRITICAL | `--dry-run` flag that logs what WOULD be bet without placing real bets. Must be the default mode until full pipeline validation is complete.        |
-| **Max Stake Cap**           | CRITICAL | Hard ceiling on any single bet amount. Tied to the Project Stairway step table (₦1,000 base → ₦2,186,000 max at step 7).                            |
-| **Daily Loss Limit**        | HIGH     | If cumulative daily losses exceed a configurable threshold, halt all betting for the remainder of the day.                                          |
-| **Kill Switch**             | HIGH     | Emergency stop: a flag file (`STOP_BETTING`) that, when present, prevents all bet placement regardless of system state.                             |
-| **Staircase State Machine** | HIGH     | Tracks current step (1-7), current stake, win/loss history. Resets to ₦1,000 on any loss. See `PROJECT_STAIRWAY.md` for the mathematical framework. |
-| **Balance Sanity Check**    | MEDIUM   | Before placing a bet, verify that the Football.com account balance ≥ intended stake. Abort if insufficient.                                         |
+| Location | Check | Effect |
+|----------|-------|--------|
+| `Leo.py` dispatch (Chapter 2) | `run_all_pre_bet_checks()` | Blocks entire chapter if any check fails |
+| `fb_manager.run_automated_booking()` | `check_kill_switch()` + `is_dry_run()` | Blocks booking before browser launch |
+| `placement.place_multi_bet_from_codes()` | `run_all_pre_bet_checks()` | Blocks individual bet execution |
+| `placement.calculate_kelly_stake()` | `StaircaseTracker.get_max_stake()` | Caps stake to current Stairway step |
 
 ---
 
@@ -355,8 +359,10 @@ These questions will be answered by data, not assumption.
 
 ### LLM Health Monitoring
 
-- **Manager**: `llm_health_manager.py` tracks Gemini key rotation (25+ keys × 6 models) and Grok API health.
-- **Circuit Breaker**: `build_search_dict.py` checks `health_manager._gemini_active` before each batch — if all providers are dead, skips remaining work instantly instead of iterating through thousands of guaranteed failures.
+- **Manager**: `llm_health_manager.py` tracks Gemini key rotation (36 keys × 5 models) and Grok API health.
+- **Time-Based Cooldowns**: 429 rate-limited keys auto-recover after 65 seconds (replaced permanent exhaustion). Added March 10, 2026.
+- **Exponential Backoff**: Consecutive 429s trigger `min(2^n, 30)` second delays in `build_search_dict.py` and `api_manager.py`.
+- **Circuit Breaker**: `build_search_dict.py` checks `health_manager._gemini_active` before each batch — if all providers are dead, skips remaining work instantly.
 
 ### Monitoring
 
@@ -375,5 +381,14 @@ These questions will be answered by data, not assumption.
 - **xG Multiplier Alignment**: Unified 1.20 (Home) / 0.82 (Away) multipliers across `goal_predictor.py` and `feature_encoder.py`.
 - **Chapter 1 v9.0 Stable**: Direct harvesting engine refined; concurrent processing capped at 2 in Codespaces to prevent memory exhaustion.
 
-*Last updated: March 9, 2026 (v8.0.0 — March 9 RL Overhaul)*
+### Safety Guardrails v1.0 (March 10, 2026)
+- **6 Guardrails in `Core/System/guardrails.py`**: Dry-run, kill switch, staircase state machine, max stake cap, balance sanity, daily loss limit.
+- **Staircase State Machine**: 7-step compounding tracker persisted in SQLite `stairway_state` table. Win → advance, loss → reset.
+- **Triple Enforcement**: Guardrails checked at Leo.py dispatch, fb_manager booking entry, and placement execution.
+
+### Gemini 429 Rate-Limit Fix (March 10, 2026)
+- **Time-Based Cooldowns**: Replaced permanent key exhaustion with 65-second auto-recovery in `llm_health_manager.py`.
+- **Exponential Backoff**: `min(2^n, 30)` second delays on consecutive 429s in `build_search_dict.py` and `api_manager.py`.
+
+*Last updated: March 10, 2026 (v8.1.0 — Safety Guardrails + 429 Fix)*
 *LeoBook Engineering Team — Materialless LLC*

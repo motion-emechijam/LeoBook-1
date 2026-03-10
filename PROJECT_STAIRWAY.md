@@ -44,6 +44,8 @@ The staircase is a **7-step compounding sequence**, starting from a fixed base s
 3. **Loss at any step**: The cycle resets to Step 1 with a fresh ₦1,000. Maximum loss per cycle: ₦1,000.
 4. **Completion**: A full 7-step winning streak produces ~₦2,186,000 net profit from a ₦1,000 seed.
 
+> **Implementation**: The staircase state machine is coded in `Core/System/guardrails.py` → `StaircaseTracker` class. State is persisted in the `stairway_state` SQLite table. Win → `advance()`, Loss → `reset()`. Current step, cycle count, and last result are tracked.
+
 ---
 
 ## 3. The Mathematics — Honest and Complete
@@ -140,8 +142,9 @@ If it fails — learn, improve, and move forward. If it succeeds — the outcome
 ---
 
 **Document Status**
-- Version: 1.0 — Initial Publication
-- System Status: Active Development — Modular Testing Phase
+- Version: 1.1 — Updated with Implementation Reference
+- System Status: Active Development — Safety Guardrails Landed (March 10, 2026)
+- Staircase State Machine: ✅ Implemented in `Core/System/guardrails.py`
 - Performance Data: Pending — Full Pipeline Testing
 - Next Update: Upon completion of first full end-to-end pipeline test
 - Classification: Internal Development Document — Not for public distribution

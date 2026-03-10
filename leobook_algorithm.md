@@ -1,6 +1,6 @@
 # LeoBook Algorithm & Codebase Reference
  
-> **Version**: 7.3 · **Last Updated**: 2026-03-07 · **Architecture**: Autonomous High-Velocity Architecture (Supervisor-Worker + Neuro-Symbolic Ensemble + Data Quality v7.1)
+> **Version**: 8.1.0 · **Last Updated**: 2026-03-10 · **Architecture**: Autonomous High-Velocity Architecture (Supervisor-Worker + Neuro-Symbolic Ensemble + Safety Guardrails v1.0)
 
 This document maps the **execution flow** of [Leo.py](Leo.py) to specific files and functions.
 
@@ -20,7 +20,7 @@ Leo.py (Orchestrator) v7.3
 │   ├── P1 Worker: Prologue P1
 │   ├── P2 Worker: Prologue P2
 │   ├── C1 Worker: Chapter 1 (Resolution, Ensemble Predict, Sync)
-│   └── C2 Worker: Chapter 2 (Booking, Funds)
+│   └── C2 Worker: Chapter 2 (Guardrails, Booking, Funds)
 ├── Prologue (Materialized Readiness Cache):
 │   ├── P1: Quantity & ID Gate (O(1) lookup)
 │   ├── P2: History & Quality Gate (O(1) lookup)
@@ -114,5 +114,18 @@ Where:
 
 ---
 
-*Last updated: March 7, 2026 (v7.3 — Supervisor-Worker + Neuro-Symbolic Ensemble + Data Quality v7.1)*
+## Safety Guardrails (v1.0)
+
+**Enforcement**: Handled by `Core/System/guardrails.py`. Chapter 2 cannot proceed to execution (`place_multi_bet_from_codes`) unless all 6 gates pass:
+
+1. **Kill Switch**: Blocks if `STOP_BETTING` file exists.
+2. **Dry-Run**: Blocks if `--dry-run` flag is active.
+3. **Daily Loss Limit**: Blocks if today's losses ≥ ₦5,000.
+4. **Balance Sanity**: Blocks if Football.com balance < ₦500.
+5. **Max Stake Cap**: Caps any single bet to the current Stairway step (₦1,000 to ₦2,048,000).
+6. **Staircase Tracker**: Enforces the 1-7 compounding logic with SQLite persistence.
+
+---
+
+*Last updated: March 10, 2026 (v8.1.0 — Supervisor-Worker + Neuro-Symbolic Ensemble + Safety Guardrails v1.0)*
 *LeoBook Engineering Team — Materialless LLC*

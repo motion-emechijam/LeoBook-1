@@ -55,7 +55,7 @@ Leo.py (Orchestrator)
 ### Core Modules
 
 - **`Core/Intelligence/`** — AI engine (rule-based prediction, **neural RL engine**, adaptive learning, AIGO self-healing)
-- **`Core/System/`** — **Task Scheduler**, **Data Readiness Checker**, lifecycle, withdrawal
+- **`Core/System/`** — **Task Scheduler**, **Data Readiness Checker**, **Bet Safety Guardrails**, lifecycle, withdrawal
 - **`Core/Browser/`** — Playwright-based AIGO extractors
 - **`Modules/Flashscore/`** — Schedule extraction, live score streaming, match data processing
 - **`Modules/FootballCom/`** — Betting platform automation (login, odds, booking, withdrawal)
@@ -144,7 +144,21 @@ python Leo.py --enrich-leagues --season 1  # Target ONLY the most recent past se
 python Leo.py --enrich-leagues --seasons 2 # Extract last 2 seasons per league
 python Leo.py --train-rl               # Chronological RL model training
 python Leo.py --rule-engine --backtest # Progressive backtest with default engine
+python Leo.py --dry-run                 # Full pipeline in dry-run mode (no real bets)
 python Leo.py --help                    # Comprehensive CLI command catalog
+```
+
+#### Emergency Controls
+
+```bash
+# Create kill switch (immediately halts all betting)
+echo stop > STOP_BETTING
+
+# Remove kill switch (resume betting)
+del STOP_BETTING
+
+# Check stairway state
+python -c "from Core.System.guardrails import StaircaseTracker; print(StaircaseTracker().status())"
 ```
 
 ---
@@ -158,6 +172,10 @@ python Leo.py --help                    # Comprehensive CLI command catalog
 | `SUPABASE_SERVICE_KEY`     | Backend service key (Admin)                         |
 | `FB_PHONE` / `FB_PASSWORD` | Betting platform credentials                        |
 | `LEO_CYCLE_WAIT_HOURS`     | Default sleep between autonomous tasks (default: 6) |
+| `KILL_SWITCH_FILE`         | Path to kill switch file (default: `STOP_BETTING`)  |
+| `MIN_BALANCE_BEFORE_BET`   | Minimum balance before betting (default: ₦500)      |
+| `DAILY_LOSS_LIMIT`         | Max daily loss before halt (default: ₦5,000)        |
+| `STAIRWAY_SEED`            | Step 1 stake amount (default: ₦1,000)               |
 
 ---
 
@@ -170,8 +188,9 @@ python Leo.py --help                    # Comprehensive CLI command catalog
 | [LeoBook_Technical_Master_Report.md](LeoBook_Technical_Master_Report.md) | File inventory, execution flow, safety guardrails, observability |
 | [leobook_algorithm.md](leobook_algorithm.md)                             | Algorithm reference (RuleEngine + Neural RL)                     |
 | [AIGO_Learning_Guide.md](AIGO_Learning_Guide.md)                         | Self-healing extraction pipeline                                 |
+| [leobook_technical_audit_20260310.md](leobook_technical_audit_20260310.md) | Technical debt audit — codebase status vs project board          |
 
 ---
 
-*Last updated: March 9, 2026 (v7.3.1 — March 9 Stability Fixes: Hydration Polling, Per-Card Date Extraction, SearchDict Batching)*
+*Last updated: March 10, 2026 (v8.1.0 — Safety Guardrails v1.0 + Gemini 429 Fix)*
 *LeoBook Engineering Team — Materialless LLC*

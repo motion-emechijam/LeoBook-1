@@ -182,9 +182,13 @@ def calculate_kelly_stake(balance: float, odds: float, probability: float = 0.60
     # Applied Fractional Kelly (0.25)
     applied_stake = 0.25 * full_kelly * balance
     
-    # Clamp rules: Min = max(1% balance, 1), Max = 50% balance
+    # Clamp rules: Min = max(1% balance, 1), Max = Stairway step stake
     min_stake = int(max(1, balance * 0.01))
-    max_stake = int(balance * 0.50)
+    try:
+        from Core.System.guardrails import StaircaseTracker
+        max_stake = StaircaseTracker().get_max_stake()
+    except Exception:
+        max_stake = int(balance * 0.50)  # Fallback if stairway unavailable
     
     final_stake = int(max(min_stake, min(applied_stake, max_stake)))
     return final_stake
@@ -195,6 +199,18 @@ async def place_multi_bet_from_codes(page: Page, harvested_matches: List[Dict], 
     """
     Chapter 2A (Automated Booking) with AIGO protection.
     """
+    # ── Safety Guardrails ──
+    from Core.System.guardrails import run_all_pre_bet_checks, is_dry_run
+    ok, reason = run_all_pre_bet_checks(balance=current_balance)
+    if not ok:
+        print(f"    [GUARDRAIL] Bet placement BLOCKED: {reason}")
+        log_audit_event("GUARDRAIL_BLOCK", reason, status="blocked")
+        return False
+    if is_dry_run():
+        print(f"    [DRY-RUN] Would place {len(harvested_matches)} bets. No real action taken.")
+        log_audit_event("DRY_RUN", f"Simulated {len(harvested_matches)} bets.", status="dry_run")
+        return True
+
     if not harvested_matches:
         print("    [Execute] No harvested matches to place.")
         return False

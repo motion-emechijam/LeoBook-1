@@ -559,6 +559,15 @@ async def run_automated_booking(playwright: Playwright):
     Chapter 2 Page 1: Automated Booking.
     Reads harvested codes and places multi-bets. Does NOT harvest.
     """
+    # ── Safety Guardrails ──
+    from Core.System.guardrails import check_kill_switch, is_dry_run
+    if check_kill_switch():
+        print("  [KILL SWITCH] STOP_BETTING file detected. Aborting booking.")
+        return
+    if is_dry_run():
+        print("  [DRY-RUN] Automated booking skipped (dry-run mode).")
+        return
+
     print("\n--- Running Automated Booking (Chapter 2A) ---")
 
     from .fb_setup import get_pending_predictions_by_date
