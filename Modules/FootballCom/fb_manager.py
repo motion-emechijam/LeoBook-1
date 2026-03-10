@@ -238,23 +238,22 @@ async def _league_worker(
                     if not fix_date or m.get('date', '') == fix_date
                 ] or all_page_matches
 
-                match_row = resolve_fixture_to_fb_match(
-                    fs_fix, candidates, league_id, matcher
+                # Use the new Three-Layer Cascade Resolver
+                match_row, score, method = await matcher.resolve_with_cascade(
+                    fs_fix, candidates, conn
                 )
 
                 if match_row:
                     # Enrich with FS team IDs for SearchDict batching
                     match_row["home_id"] = fs_fix.get("home_team_id") or fs_fix.get("home_id")
                     match_row["away_id"] = fs_fix.get("away_team_id") or fs_fix.get("away_id")
+                    match_row["resolution_method"] = method
 
                     save_site_matches([match_row])  # immediate SQLite save
                     resolved.append(match_row)
-                    print(
-                        f"    [Match] + {home} vs {away} "
-                        f"→ {match_row.get('url', '?')[:60]}"
-                    )
                 else:
-                    print(f"    [Match] x {home} vs {away} (no fb match)")
+                    # We still want to track failures for the summary
+                    resolved.append({"status": "failed", "resolution_method": "failed"})
 
             return resolved
 
@@ -508,10 +507,23 @@ async def run_odds_harvesting(playwright: Playwright):
                     print(f"  [Sync] [Warning] Supabase push failed: {e}")
 
             # Session Summary
+            all_resolved = [m for sub in league_results for m in sub]
+            method_counts = {
+                "search_terms": sum(1 for m in all_resolved if m.get("resolution_method") == "search_terms"),
+                "fuzzy": sum(1 for m in all_resolved if m.get("resolution_method") == "fuzzy"),
+                "llm": sum(1 for m in all_resolved if m.get("resolution_method") == "llm"),
+                "failed": sum(1 for m in all_resolved if m.get("resolution_method") == "failed"),
+            }
+            resolved_count = method_counts["search_terms"] + method_counts["fuzzy"] + method_counts["llm"]
+            unresolved_count = method_counts["failed"]
+
             print(f"\n    [Ch1 P1] -- Session Summary --------------------------")
             print(f"    [Ch1 P1] Fixtures processed  : {total_fixtures}")
             print(f"    [Ch1 P1] Leagues navigated   : {total_leagues} (was {total_fixtures})")
             print(f"    [Ch1 P1] Resolved            : {resolved_count}")
+            print(f"    [Ch1 P1]   - search_terms    : {method_counts['search_terms']}")
+            print(f"    [Ch1 P1]   - fuzzy           : {method_counts['fuzzy']}")
+            print(f"    [Ch1 P1]   - llm             : {method_counts['llm']}")
             print(f"    [Ch1 P1] Unresolved          : {unresolved_count}")
             print(f"    [Ch1 P1] Odds outcomes       : {session_odds_count}")
             print(f"    [Ch1 P1] MAX_CONCURRENCY     : {MAX_CONCURRENCY}")
