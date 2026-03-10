@@ -62,10 +62,12 @@ class LLMHealthManager:
             cls._instance._gemini_index = 0 # Round-robin pointer
             cls._instance._last_ping = 0.0
             cls._instance._initialized = False
-            # Per-model exhausted keys (model_name -> set of exhausted keys)
-            cls._instance._model_exhausted_keys = {}
+            # Per-model cooldown keys (model_name -> {key: expiry_timestamp})
+            cls._instance._model_cooldowns = {}
             # Permanently dead keys (403) — persists across ping cycles
             cls._instance._dead_keys = set()
+            # Default cooldown duration in seconds (Gemini free-tier resets ~60s)
+            cls._instance.COOLDOWN_SECONDS = 65
             # Thread-safe lock for state mutations (get_next / on_429 / etc) — fixes race conditions in async usage
             cls._instance._state_lock = threading.Lock()
         return cls._instance
@@ -117,37 +119,56 @@ class LLMHealthManager:
         return list(self.MODELS_DESCENDING)
     def get_next_gemini_key(self, model: str = None) -> str:
         """
-        Round-robin through active Gemini keys, skipping keys exhausted for
-        the given model.
+        Round-robin through active Gemini keys, skipping keys on cooldown for
+        the given model. Cooldowns expire automatically after COOLDOWN_SECONDS.
         """
         with self._state_lock:
             pool = self._gemini_active if self._gemini_active else self._gemini_keys
             if not pool:
                 return ""
-            exhausted = self._model_exhausted_keys.get(model, set()) if model else set()
-            available = [k for k in pool if k not in exhausted]
+            now = time.time()
+            cooldowns = self._model_cooldowns.get(model, {}) if model else {}
+            # Prune expired cooldowns
+            if cooldowns:
+                expired = [k for k, exp in cooldowns.items() if exp <= now]
+                for k in expired:
+                    del cooldowns[k]
+            available = [k for k in pool if k not in cooldowns]
             if not available:
-                # All keys exhausted for this model — return empty to trigger model downgrade
                 return ""
             key = available[self._gemini_index % len(available)]
             self._gemini_index += 1
             return key
+    def get_cooldown_remaining(self, model: str) -> float:
+        """Returns seconds until the earliest cooldown for this model expires. 0 if none."""
+        with self._state_lock:
+            cooldowns = self._model_cooldowns.get(model, {})
+            if not cooldowns:
+                return 0.0
+            now = time.time()
+            # Filter to still-active cooldowns
+            active = [exp for exp in cooldowns.values() if exp > now]
+            if not active:
+                return 0.0
+            return min(active) - now
     def on_gemini_429(self, failed_key: str, model: str = None):
         """
         Called when a Gemini key hits 429 for a specific model.
-        Marks the key as exhausted for that model (not globally).
+        Sets a time-based cooldown (COOLDOWN_SECONDS) — key auto-recovers.
         """
         with self._state_lock:
             if model:
-                if model not in self._model_exhausted_keys:
-                    self._model_exhausted_keys[model] = set()
-                self._model_exhausted_keys[model].add(failed_key)
-                remaining = len([k for k in (self._gemini_active or self._gemini_keys)
-                               if k not in self._model_exhausted_keys[model]])
-                print(f" [LLM Health] Key ...{failed_key[-4:]} exhausted for {model}. "
-                      f"{remaining} keys remaining for this model.")
+                if model not in self._model_cooldowns:
+                    self._model_cooldowns[model] = {}
+                expiry = time.time() + self.COOLDOWN_SECONDS
+                self._model_cooldowns[model][failed_key] = expiry
+                pool = self._gemini_active or self._gemini_keys
+                remaining = len([k for k in pool if k not in self._model_cooldowns[model]
+                                 or self._model_cooldowns[model][k] <= time.time()])
+                print(f" [LLM Health] Key ...{failed_key[-4:]} cooling down for {self.COOLDOWN_SECONDS}s on {model}. "
+                      f"{remaining} keys available for this model.")
                 if remaining == 0:
-                    print(f" [LLM Health] [!] All keys exhausted for {model} -- will downgrade model.")
+                    print(f" [LLM Health] [!] All keys on cooldown for {model} -- waiting or downgrading.")
             else:
                 # Legacy: remove from active pool entirely
                 if failed_key in self._gemini_active:
@@ -171,9 +192,9 @@ class LLMHealthManager:
             print(f" [LLM Health] Gemini key permanently removed ({reason}). "
                   f"{len(self._gemini_active)} active, {len(self._gemini_keys)} total.")
     def reset_model_exhaustion(self):
-        """Reset per-model exhaustion tracking (call at start of each cycle)."""
+        """Reset per-model cooldown tracking (call at start of each cycle)."""
         with self._state_lock:
-            self._model_exhausted_keys.clear()
+            self._model_cooldowns.clear()
     # ── Internals ───────────────────────────────────────────────
     async def _ping_all(self):
         """Ping Grok + sample Gemini keys."""

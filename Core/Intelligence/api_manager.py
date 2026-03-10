@@ -228,13 +228,20 @@ async def unified_api_call(prompt_content, generation_config=None, **kwargs):
 
         if provider_name == "Gemini":
             # Model-chain rotation: try each model, exhaust ALL keys per model
+            consecutive_429s = 0
             for model_name in model_chain:
                 while True: # Try all available keys for this model
                     api_key = health_manager.get_next_gemini_key(model=model_name)
                     if not api_key:
-                        # All keys truly exhausted for this model — downgrade
-                        print(f"    [AI] All keys exhausted for {model_name}, downgrading...")
-                        break
+                        # Check if keys are just on cooldown (not permanently dead)
+                        wait_secs = health_manager.get_cooldown_remaining(model_name)
+                        if wait_secs > 0:
+                            print(f"    [AI] All keys cooling down for {model_name}. Waiting {wait_secs:.0f}s...")
+                            await asyncio.sleep(wait_secs + 1)
+                            api_key = health_manager.get_next_gemini_key(model=model_name)
+                        if not api_key:
+                            print(f"    [AI] All keys exhausted for {model_name}, downgrading...")
+                            break
                     try:
                         key_suffix = api_key[-4:]
                         print(f"    [AI] Attempting Gemini {model_name} (key ...{key_suffix})...")
@@ -249,8 +256,10 @@ async def unified_api_call(prompt_content, generation_config=None, **kwargs):
                         err_str = str(e)
                         if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
                             health_manager.on_gemini_429(api_key, model=model_name)
-                            print(f"    [AI] Key ...{key_suffix} rate-limited on {model_name}, rotating...")
-                            await asyncio.sleep(1)
+                            consecutive_429s += 1
+                            backoff = min(2 ** consecutive_429s, 30)
+                            print(f"    [AI] Key ...{key_suffix} rate-limited on {model_name}, backoff {backoff}s...")
+                            await asyncio.sleep(backoff)
                             continue
                         elif "400" in err_str and "INVALID_ARGUMENT" in err_str:
                             health_manager.on_gemini_fatal_error(api_key, "400 Invalid Argument")

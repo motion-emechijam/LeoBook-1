@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import os
 import json
 import time
@@ -39,7 +39,7 @@ LLM_PROVIDERS = [
     },
 ]
 BATCH_SIZE = 10
-SLEEP_BETWEEN_BATCHES = 2
+SLEEP_BETWEEN_BATCHES = 4
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise ValueError("Missing SUPABASE_URL or SUPABASE_KEY in .env")
@@ -211,12 +211,21 @@ def query_llm_for_metadata(items, item_type="team", retries=2):
 
         if provider_name == "Gemini":
             # Model-chain rotation: try each model, exhaust keys per model
+            consecutive_429s = 0
             for model_name in model_chain:
                 while True: # Try all available keys for this model
                     api_key = health_manager.get_next_gemini_key(model=model_name)
                     if not api_key:
-                        print(f"  [LLM] All keys exhausted for {model_name}, downgrading model...")
-                        break
+                        # Check if keys are just on cooldown (not permanently dead)
+                        wait_secs = health_manager.get_cooldown_remaining(model_name)
+                        if wait_secs > 0:
+                            print(f"  [LLM] All keys cooling down for {model_name}. Waiting {wait_secs:.0f}s...")
+                            time.sleep(wait_secs + 1)
+                            # Retry after cooldown expires
+                            api_key = health_manager.get_next_gemini_key(model=model_name)
+                        if not api_key:
+                            print(f"  [LLM] All keys exhausted for {model_name}, downgrading model...")
+                            break
                     provider = {
                         "name": "Gemini",
                         "api_key": api_key,
@@ -230,12 +239,17 @@ def query_llm_for_metadata(items, item_type="team", retries=2):
                             results = _call_llm(provider, prompt)
                             if results:
                                 print(f"  [LLM] Gemini {model_name} returned {len(results)} items.")
+                                consecutive_429s = 0
                                 return results
                         except Exception as e:
                             err_str = str(e)
                             if "429" in err_str:
                                 health_manager.on_gemini_429(api_key, model=model_name)
-                                print(f"  [LLM] Key ...{key_suffix} rate-limited on {model_name}, rotating...")
+                                consecutive_429s += 1
+                                # Exponential backoff: 2, 4, 8, ... capped at 30s
+                                backoff = min(2 ** consecutive_429s, 30)
+                                print(f"  [LLM] Key ...{key_suffix} rate-limited on {model_name}, backoff {backoff}s...")
+                                time.sleep(backoff)
                                 break  # Try next key for this model
                             elif "400" in err_str and "INVALID_ARGUMENT" in err_str:
                                 health_manager.on_gemini_fatal_error(api_key, "400 Invalid Argument")
