@@ -10,8 +10,11 @@ import os
 import sys
 import time
 import logging
+import threading
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
+
+from tqdm import tqdm
 
 from Data.Access.supabase_client import get_supabase_client
 
@@ -123,32 +126,56 @@ class ModelSync:
                 skipped += 1
                 continue
 
-            # Progress indicator for large files
-            if is_large:
-                print(f"    [{i}/{len(files)}] ↑ {remote_path} ({_fmt_size(size_bytes)}) — uploading, please wait...", end="", flush=True)
-            else:
-                print(f"    [{i}/{len(files)}] ↑ {remote_path} ({_fmt_size(size_bytes)})", end="", flush=True)
-
+            # Progress indicator with tqdm
+            t0 = time.time()
             try:
-                t0 = time.time()
                 with open(local_path, "rb") as f:
-                    file_content = f.read()
+                    # Supabase storage.upload can accept a file-like object for streaming.
+                    # We wrap it in a simple class to track progress periodically.
+                    
+                    file_size = local_path.stat().st_size
+                    
+                    with tqdm(
+                        total=file_size,
+                        unit='B',
+                        unit_scale=True,
+                        unit_divisor=1024,
+                        desc=f"    [{i}/{len(files)}] {remote_path}",
+                        leave=False
+                    ) as pbar:
+                        # Simple wrapper to update pbar
+                        class ProgressWrapper:
+                            def __init__(self, fileobj, pbar):
+                                self.fileobj = fileobj
+                                self.pbar = pbar
+                            def read(self, n=-1):
+                                chunk = self.fileobj.read(n)
+                                if chunk:
+                                    self.pbar.update(len(chunk))
+                                return chunk
+                            def __iter__(self):
+                                return self.fileobj
+                            def __len__(self):
+                                return file_size
 
-                self.supabase.storage.from_(BUCKET_NAME).upload(
-                    path=remote_path,
-                    file=file_content,
-                    file_options={"x-upsert": "true", "content-type": "application/octet-stream"},
-                )
+                        wrapped_file = ProgressWrapper(f, pbar)
+
+                        self.supabase.storage.from_(BUCKET_NAME).upload(
+                            path=remote_path,
+                            file=wrapped_file,
+                            file_options={
+                                "x-upsert": "true",
+                                "content-type": "application/octet-stream"
+                            },
+                        )
+
                 elapsed = time.time() - t0
                 uploaded += 1
                 speed = size_mb / elapsed if elapsed > 0 else 0
-                print(f" ✓ ({_fmt_elapsed(elapsed)}, {speed:.1f} MB/s)")
-
-                # Free memory immediately after large file upload
-                del file_content
+                print(f"    [{i}/{len(files)}] ✓ {remote_path} ({_fmt_elapsed(elapsed)}, {speed:.1f} MB/s)")
 
             except Exception as e:
-                print(f" ✗ FAILED: {e}")
+                print(f"    [{i}/{len(files)}] ✗ {remote_path} FAILED: {e}")
 
         print(f"\n  [ModelSync] Push complete: {uploaded} uploaded, {skipped} skipped, {len(files) - uploaded - skipped} failed.")
 
