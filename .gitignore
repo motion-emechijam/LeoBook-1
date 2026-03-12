@@ -195,3 +195,6 @@ Data/Auth/ChromeData_v3/GraphiteDawnCache/data_1
 Data/Auth/ChromeData_v3/ShaderCache/data_1
 Data/Auth/ChromeData_v3/segmentation_platform/ukm_db
 Data/Auth/
+
+
+.devcontainer/

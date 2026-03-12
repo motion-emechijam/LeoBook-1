@@ -243,7 +243,11 @@ Examples:
 
     # --- Paper Trading ---
     parser.add_argument('--paper-summary', action='store_true',
-                        help='Print paper trading log summary')
+                         help='Print paper trading log summary')
+
+    # --- RL Diagnostics ---
+    parser.add_argument('--diagnose-rl', action='store_true',
+                         help='Inspect per-match RL decisions (30-dim action probs, EV, Kelly, Gate)')
 
     # --- Model Sync (Supabase Storage) ---
     parser.add_argument('--push-models', action='store_true',

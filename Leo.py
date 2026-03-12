@@ -577,6 +577,11 @@ async def run_utility(args):
         print(f"    odds as fallback. Treat as directional only.")
         print(f"  {'═' * 50}")
 
+    elif args.diagnose_rl:
+        print("\n  --- LEO: RL Decision Inspector ---")
+        from Scripts.rl_diagnose import main as run_rl_diagnose
+        run_rl_diagnose()
+
 
 # ============================================================
 # DISPATCH — Routes CLI args to the appropriate functions
@@ -687,6 +692,7 @@ if __name__ == "__main__":
                       args.assets,
                       args.logos, args.enrich_leagues, args.upgrade_crests,
                       args.train_rl, args.backtest_rl, args.paper_summary,
+                      args.diagnose_rl,
                       getattr(args, 'push_models', False),
                       getattr(args, 'pull_models', False)])
     is_granular = args.prologue or args.chapter is not None

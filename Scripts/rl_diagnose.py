@@ -1,20 +1,16 @@
-#!/usr/bin/env python3
+# rl_diagnose.py: Per-match RL decision inspector — shows all 30 action probs, EV, Kelly, and Stairway Gate.
+# Part of LeoBook Scripts — Intelligence (RL Diagnostics)
+#
+# Functions: load_model(), run_inference(), display(), main()
+# Called by: Leo.py (--diagnose-rl)
+
 """
-rl_diagnose.py — Per-match RL Decision Inspector
-Part of LeoBook Scripts
-
 Usage:
-  python Scripts/rl_diagnose.py                       # Latest 5 upcoming fixtures
-  python Scripts/rl_diagnose.py --fixture FIXTURE_ID  # Specific fixture
-  python Scripts/rl_diagnose.py --top 10              # Top 10 fixtures
-  python Scripts/rl_diagnose.py --checkpoint path.pth # Use a specific checkpoint
-  python Scripts/rl_diagnose.py --all-played --top 3  # Recent completed matches
-
-Shows exactly what the RL model decides for each match:
-  - All 30 action probabilities (ranked)
-  - Expected Value (EV) and Kelly fraction
-  - Stairway Gate pass/fail for each action
-  - Feature breakdown (what the model sees)
+  python Leo.py --diagnose-rl                                # Latest 5 upcoming fixtures
+  python Leo.py --diagnose-rl --fixture FIXTURE_ID           # Specific fixture
+  python Leo.py --diagnose-rl --top 10                       # Top 10 fixtures
+  python Leo.py --diagnose-rl --checkpoint path.pth          # Use a specific checkpoint
+  python Leo.py --diagnose-rl --all-played --top 3           # Recent completed matches
 """
 
 import sys
@@ -194,13 +190,16 @@ def display(fixture, vision_data, result):
     print()
 
 
-def main():
-    parser = argparse.ArgumentParser(description="LeoBook RL Decision Inspector")
-    parser.add_argument("--fixture", type=str, help="Specific fixture_id")
-    parser.add_argument("--top", type=int, default=5, help="Number of fixtures (default: 5)")
-    parser.add_argument("--checkpoint", type=str, help="Path to .pth checkpoint")
-    parser.add_argument("--all-played", action="store_true", help="Inspect recent played matches")
-    args = parser.parse_args()
+def main(args=None):
+    """Entry point — callable from Leo.py or standalone."""
+    if args is None:
+        parser = argparse.ArgumentParser(description="LeoBook RL Decision Inspector")
+        parser.add_argument("--fixture", type=str, help="Specific fixture_id")
+        parser.add_argument("--top", type=int, default=5, help="Number of fixtures (default: 5)")
+        parser.add_argument("--checkpoint", type=str, help="Path to .pth checkpoint")
+        parser.add_argument("--all-played", action="store_true", help="Inspect recent played matches")
+        args, _ = parser.parse_known_args()
+
 
     hr("═")
     print("  🧠 LeoBook RL Decision Inspector")
