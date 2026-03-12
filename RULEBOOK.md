@@ -1,4 +1,4 @@
-# LeoBook Developer RuleBook v7.3
+# LeoBook Developer RuleBook v8.1
 
 > **This document is LAW.** Every developer and AI agent working on LeoBook MUST follow these rules without exception. Violations will break the system.
 
@@ -14,7 +14,8 @@ Before writing ANY code, ask in this exact order:
 4. **Accelerate** — Can this run concurrently or be parallelized?
 5. **Automate** — Can Leo.py orchestrate this without human intervention?
 
-**Summary of First Principles Thinking** - **Question** every requirements and make it less dumb and **delete** those that are dumb and useless(no "incase-we-need-it" ideology), then **simplify**, **accelerate** and **automate** all those  that remain. This is MUSK do, throughout the entire **LeoBook** codebase -local and cloud.
+**Summary of First Principles Thinking** - **Question** every requirements and make it less dumb and **delete** those that are dumb and useless(no "incase-we-need-it" ideology), then **simplify**, **accelerate** and **automate** all those that remain. This is MUSK do, throughout the entire **LeoBook** codebase — local and cloud.
+
 ---
 
 ## 2. Backend Architecture (Python)
@@ -43,9 +44,10 @@ Operations MUST NOT start (including live streamer) until startup sync completes
 
 Leo.py operates via three sequential gates to ensure data integrity:
 
-1. **Prologue P1 (Quantity & ID Gate)**: Leagues >= 90% coverage AND Teams >= 3 per league (v7.1). Validates Flashscore IDs — fails if invalid ID rate > 5%.
+1. **Prologue P1 (Quantity & ID Gate)**: Leagues >= 90% coverage AND Teams >= 3 per league (v7.1). Validates Flashscore IDs — fails if invalid ID rate > 5%. GapScanner feeds this gate: P1 fails if `critical` gap count across `leagues` or `teams` tables exceeds threshold.
 2. **Prologue P2 (History & Quality Gate)**: Minimum 2+ distinct seasons of fixture data per league.
     - **Logic**: Gate passes if 0 critical gaps AND 0 completed season mismatches. **ACTIVE seasons never block the gate.**
+    - GapScanner feeds this gate: `schedules` table gaps at `critical` severity are reported per `(league_id, season)` pair. Only completed seasons with critical gaps block P2.
 3. **Prologue P3 (AI Gate)**: RL Adapters must be trained and ready.
 
 **Readiness Cache (Materialized)**:
@@ -60,8 +62,8 @@ Leo.py operates via three sequential gates to ensure data integrity:
 Startup Sync: Push-only (local → Supabase, auto-bootstrap if empty)
 Task Scheduler: Execute pending tasks (Weekly Enrichment, predictions)
 Prologue (Data Gates):
-    P1: League/Team Thresholds (90% / 5 teams)
-    P2: Historical Data Check (2+ Seasons)
+    P1: League/Team Thresholds (90% / 5 teams) — fed by GapScanner
+    P2: Historical Data Check (2+ Seasons) — fed by GapScanner
     P3: AI RL Adapter Readiness (Phase Auto-Detection)
 Chapter 1:
     P1: URL Resolution & Odds Harvesting (v9.0 — Direct Harvesting, no login)
@@ -135,19 +137,37 @@ Every Python file MUST have this header format:
 
 ### 2.12 Data Quality & Invalid ID Resolution
 
-- **Scanner**: Every core table undergoes column-by-column NULL/empty/malformed scanning.
-- **Gap Classification**:
-    - `IMMEDIATE`: Fixable via internal lookup (e.g., ISO codes).
-    - `DERIVABLE`: Fixable via cross-table logic (e.g., region flags).
-    - `STAGE_ENRICHMENT`: Requires external scraping.
-    - `DEFERRED`: Low priority/non-critical.
+- **Scanner**: `Data/Access/gap_scanner.py` (`GapScanner`) scans all three core tables — `leagues`, `teams`, `schedules` — at the individual cell level. Every gap is tracked to its originating `(league_id, season)` pair so enrichment is surgical, not wholesale.
+
+- **Gap Severity Tiers** (canonical — used by GapScanner, Prologue gates, enrichment queue, and all documentation):
+    - `critical` — blocks match resolution or prediction pipeline. Prologue P1/P2 will fail. Must fix before pipeline runs.
+    - `important` — degrades app UX or crest display (e.g. missing team crests, `match_status`, `fs_league_id`). Should fix; does not block pipeline.
+    - `enrichable` — nice to have; can be back-filled without a browser session (e.g. `time`, `league_stage`, `region_url`). Fix opportunistically.
+
+- **Gap detection rules**:
+    - `NULL` or empty string `""` → gap on all column types.
+    - URL columns (`crest`, `home_crest`, `away_crest`, `region_url`) → any value not starting with `http` is a gap, including local paths (`Data/Store/...`).
+    - Score columns (`home_score`, `away_score`) → NULL is allowed for `match_status = scheduled`; not a gap.
+
+- **Crest URL integrity**:
+    - Team and league crests MUST be Supabase Storage public URLs in all three tables. Local paths are never synced to Supabase DB.
+    - `_backfill_schedule_crests()` runs immediately after every crest upload batch inside `extract_tab()` to propagate the Supabase URL from `teams.crest` into `schedules.home_crest` / `schedules.away_crest`.
+    - `propagate_crest_urls()` runs before every 20% sync checkpoint AND at the end of every enrichment run as a final safety pass.
+
 - **Invalid ID Detection**:
     - Patterns: `^[A-Z_]+$`, `UNKNOWN_*`, empty, or < 8 chars for teams.
     - Duplicates: Valid IDs overwrite placeholders; multiple valid rows are merged (dependency re-linking).
-- **enrichment_queue**:
+
+- **`enrichment_queue` priorities** (unchanged):
     - `Priority 1 (CRITICAL)`: Invalid IDs blocking remediation.
     - `Priority 5 (NORMAL)`: Missing metadata.
     - `Priority 10 (DEFERRED)`: Old season gaps.
+
+- **CLI flags for gap-driven enrichment**:
+    - `python -m Scripts.enrich_leagues` — default mode; runs GapScanner first, enriches only leagues/seasons with detected gaps.
+    - `python -m Scripts.enrich_leagues --scan-only` — print gap report and exit without modifying data. Use for monitoring.
+    - `python -m Scripts.enrich_leagues --min-severity critical` — only fix pipeline-blocking gaps.
+    - `python -m Scripts.enrich_leagues --min-severity enrichable` — fix everything including minor columns.
 
 ### 2.13 Neuro-Symbolic Ensemble (Intelligence v8.0 "Stairway Engine")
 
@@ -157,6 +177,7 @@ Every Python file MUST have this header format:
 - **Stairway Gate**: Final output must pass the odds gate (1.20 ≤ odds ≤ 4.00) and an EV-positive check before recommendation.
 - **Weights**: Default `W_symbolic=0.7`, `W_neural=0.3`. Overridable per-league in `ensemble_weights.json`.
 - **Symbolic Baseline**: If `RL_Conf < 0.3` or model failure, fallback to `100% Rule Engine`. The system MUST NOT place bets based purely on low-confidence neural signals.
+- **Phase guidance**: The Rule Engine is the reliability backbone throughout Phase 1. RL weights should only be increased beyond 0.3 after Phase 2 completes and RL accuracy on odds-grounded data is verified to exceed the Rule Engine baseline on high-volume days (≥ 200 matches).
 
 ---
 
@@ -190,13 +211,19 @@ Screens are pure dispatchers (`LayoutBuilder` / `Responsive.isDesktop()`). They 
 
 The scheduler MUST trigger `enrich_leagues.py --weekly` every Monday. This mode is lightweight (`MAX_SHOW_MORE=2`) and focuses on schedule updates and missing metadata.
 
+Before enrichment runs, the scheduler MUST also invoke `enrich_leagues.py --scan-only` and persist the gap report to `readiness_cache`. This gives the Prologue gates an up-to-date gap count without triggering a full enrichment pass.
+
 ### 4.2 Before Every Commit
 
 ```bash
-# Verify v7.0 Autonomous Loop
+# Verify v8.0 Autonomous Loop
 python Leo.py --help
 python -c "from Core.System.scheduler import TaskScheduler; print('[OK]')"
 python -c "from Core.System.data_readiness import DataReadinessChecker; print('[OK]')"
+python -c "from Data.Access.gap_scanner import GapScanner; print('[OK]')"
+
+# Verify Tier 1 guardrails are live
+python -c "from Core.System.guardrails import StaircaseTracker; print('[OK]')"
 ```
 
 ---
@@ -260,7 +287,7 @@ python -c "from Core.System.data_readiness import DataReadinessChecker; print('[
 ## 7. Decision-Making Standard
 
 - **Sports Domain Accuracy**: Data MUST match the real-world source of truth.
-- **Crest Integrity**: Team crests/logos MUST always be displayed alongside names.
+- **Crest Integrity**: Team crests/logos MUST always be displayed alongside names. Crest columns in `schedules` MUST contain Supabase Storage URLs — never local paths.
 - **No Hardcoded Proxy Data**: Never use placeholders (e.g., "WORLD"). Use "Unknown" if missing.
 - **Sports-Informed Sorting**: Trust the database `position` column for standings.
 
@@ -270,8 +297,17 @@ python -c "from Core.System.data_readiness import DataReadinessChecker; print('[
 
 > See [PROJECT_STAIRWAY.md](PROJECT_STAIRWAY.md) for the capital strategy and [LeoBook_Technical_Master_Report.md](LeoBook_Technical_Master_Report.md) Section 6 for the full guardrails specification.
 
-- **Dry-Run Mode** (PLANNED): `--dry-run` flag that logs intended bets without placing them. Must be the default until full pipeline validation.
-- **Kill Switch** (PLANNED): A flag file (`STOP_BETTING`) that halts all bet placement when present.
+All six Tier 1 guardrails are **LIVE as of March 10, 2026**. None may be disabled without an explicit Chief Engineer decision recorded in the audit log.
+
+| Guardrail | Status | Implementation |
+| --------- | ------ | -------------- |
+| **Dry-Run Mode** | ✅ LIVE | `--dry-run` flag → `guardrails.enable_dry_run()` in `Leo.py`. Logs all intended bets without placing them. Default until full pipeline validation is complete. |
+| **Kill Switch** | ✅ LIVE | `STOP_BETTING` flag file check in `fb_manager.py`. Creates an immediate halt of all bet placement when the file is present in the project root. |
+| **Max Stake Cap** | ✅ LIVE | `StaircaseTracker.get_max_stake()` in `Core/Pages/placement.py`. Hard ceiling on stake per stair — cannot be overridden at runtime. |
+| **Staircase State Machine** | ✅ LIVE | `StaircaseTracker` in `Core/System/guardrails.py`, persisted to SQLite `stairway_state` table. Enforces the one-stair fallback loss rule. State survives process restarts. |
+| **Balance Sanity Check** | ✅ LIVE | Blocks all bet placement if account balance < ₦500. |
+| **Daily Loss Limit** | ✅ LIVE | Halts all bet placement for the day if cumulative losses reach ₦5,000. Resets at midnight WAT. |
+
 - **Audit Logging** (IMPLEMENTED): Every bet cycle writes to `audit_log` in both SQLite and Supabase.
 - **Confidence Gating** (IMPLEMENTED): Predictions below threshold are marked `SKIP` and never progress to betting.
 
@@ -284,5 +320,6 @@ python -c "from Core.System.data_readiness import DataReadinessChecker; print('[
 
 ---
 
-*Last updated: March 9, 2026 (v8.0 — "Stairway Engine" 30-dim RL + Chapter 1 v9.0 + Poisson Expert Signal)*
+*Last updated: March 12, 2026 (v8.1 — Guardrails all LIVE, GapScanner canonical taxonomy, §2.13 Phase guidance added)*
+*Previous: v8.0 — "Stairway Engine" 30-dim RL + Chapter 1 v9.0 + Poisson Expert Signal (March 9, 2026)*
 *Authored by: LeoBook Engineering Team — Materialless LLC*

@@ -398,6 +398,7 @@ EXTRACT_MATCHES_JS = r"""(ctx) => {
         if (el.matches(s.match_round)) { currentRound = el.innerText.trim(); return; }
         const rowId = el.getAttribute('id') || '';
         if (!rowId || !rowId.startsWith('g_1_')) return;
+        const row = el;
         const fixtureId = rowId.replace('g_1_', '');
         const timeEl = row.querySelector(s.match_time);
         let matchTime = '', matchDate = '', extraTag = '';
@@ -425,7 +426,6 @@ EXTRACT_MATCHES_JS = r"""(ctx) => {
                 }
             }
         }
-        const row = el;
         const homeEl = row.querySelector(s.home_participant);
         const homeName = homeEl ? (homeEl.querySelector(s.participant_name) || homeEl).innerText.trim().replace(/\s*\(.*?\)\s*$/, '') : '';
         const awayEl = row.querySelector(s.away_participant);
@@ -633,17 +633,65 @@ def _select_seasons_from_archive(
 def verify_league_gaps_closed(
     conn, league_id: str, before_gaps: int, idx: int, total: int
 ) -> Tuple[int, int]:
-    """Re-scan a single league after enrichment and report before/after delta.
+    """Count remaining gaps for a single league without a full DB rescan.
+
+    Uses targeted SQL queries scoped to league_id — O(1_league), not O(all_leagues).
+    Checks the same column/condition logic as GapScanner but only for this league.
 
     Returns:
         (remaining_gaps, closed_gaps)
     """
     try:
-        report = GapScanner(conn).scan(
-            # Scan all tables but filter to only this league via post-processing
-        )
-        league_summary = report.summary_by_league.get(league_id)
-        after_gaps = league_summary.total_gaps if league_summary else 0
+        after_gaps = 0
+
+        # schedules gaps for this league (critical columns only for speed)
+        for col, cond in [
+            ("home_team_name", "home_team_name IS NULL OR home_team_name = ''"),
+            ("away_team_name", "away_team_name IS NULL OR away_team_name = ''"),
+            ("home_crest",     "home_crest IS NULL OR home_crest = '' OR home_crest NOT LIKE 'http%'"),
+            ("away_crest",     "away_crest IS NULL OR away_crest = '' OR away_crest NOT LIKE 'http%'"),
+            ("fixture_id",     "fixture_id IS NULL OR fixture_id = ''"),
+            ("date",           "date IS NULL OR date = ''"),
+            ("season",         "season IS NULL OR season = ''"),
+        ]:
+            try:
+                row = conn.execute(
+                    f"SELECT COUNT(*) FROM schedules WHERE league_id = ? AND ({cond})",
+                    (league_id,)
+                ).fetchone()
+                after_gaps += row[0] if row else 0
+            except Exception:
+                pass
+
+        # leagues table gaps for this league
+        for col, cond in [
+            ("name",         "name IS NULL OR name = ''"),
+            ("url",          "url IS NULL OR url = ''"),
+            ("country_code", "country_code IS NULL OR country_code = ''"),
+            ("crest",        "crest IS NULL OR crest = '' OR crest NOT LIKE 'http%'"),
+        ]:
+            try:
+                row = conn.execute(
+                    f"SELECT COUNT(*) FROM leagues WHERE league_id = ? AND ({cond})",
+                    (league_id,)
+                ).fetchone()
+                after_gaps += row[0] if row else 0
+            except Exception:
+                pass
+
+        # teams gaps attributable to this league (via league_ids JSON column)
+        try:
+            row = conn.execute(
+                """SELECT COUNT(*) FROM teams
+                   WHERE (crest IS NULL OR crest = '' OR crest NOT LIKE 'http%'
+                          OR country_code IS NULL OR country_code = '')
+                     AND (league_ids LIKE ? OR league_ids LIKE ? OR league_ids LIKE ?)""",
+                (f'["{league_id}"]', f'"{league_id}",%', f'%,"{league_id}"%')
+            ).fetchone()
+            after_gaps += row[0] if row else 0
+        except Exception:
+            pass
+
         closed = max(0, before_gaps - after_gaps)
 
         if closed > 0 or after_gaps > 0:
