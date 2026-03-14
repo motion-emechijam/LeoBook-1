@@ -152,7 +152,12 @@ Examples:
   python Leo.py --enrich-leagues --seasons 2 Extract last 2 seasons per league
   python Leo.py --enrich-leagues --season 1  Extract only the most recent past season
   python Leo.py --enrich-leagues --all-seasons Extract all available seasons
-  python Leo.py --train-rl               Train RL model from historical fixtures
+  python Leo.py --train-rl               Train RL model (current season, default)
+  python Leo.py --train-rl --resume      Resume from latest checkpoint (current season)
+  python Leo.py --train-rl --train-season all --cold   Full cold retrain, all seasons oldest→newest
+  python Leo.py --train-rl --train-season 1            Most recent past season only
+  python Leo.py --train-rl --train-season 2            Two seasons ago
+  python Leo.py --train-rl --train-season 2024/2025    Explicit season label
   python Leo.py --train-rl --phase 1     Phase 1: Imitation Learning (Warm-Start)
   python Leo.py --train-rl --phase 2     Phase 2: PPO Fine-tuning with KL Penalty
   python Leo.py --train-rl --phase 3     Phase 3: Adapter Fine-tuning (Frozen Trunk)
@@ -204,7 +209,7 @@ Examples:
     parser.add_argument('--seasons', type=int, default=0, metavar='N',
                        help='Number of past seasons to extract (use with --enrich-leagues)')
     parser.add_argument('--season', type=int, default=None, metavar='N',
-                       help='Target a specific Nth past season only (e.g., 1 = most recent)')
+                       help='Target a specific Nth past season only (e.g., 1 = most recent) (use with --enrich-leagues)')
     parser.add_argument('--all-seasons', action='store_true',
                        help='Extract all available seasons (use with --enrich-leagues)')
     parser.add_argument('--upgrade-crests', action='store_true',
@@ -231,6 +236,22 @@ Examples:
                         help='Fine-tune a specific league adapter (use with --train-rl)')
     parser.add_argument('--resume', action='store_true',
                         help='Resume training from latest checkpoint (use with --train-rl)')
+    # ── Season-aware RL training ──────────────────────────────────────────────
+    # Controls which season's fixtures are used as the training window.
+    # "current" (default): per-league season start via leagues.current_season join.
+    # "all": all available seasons oldest-first. Use with --cold for full retraining.
+    # Integer string (e.g. "1"): past season by offset — 1 = most recent past,
+    #   2 = two seasons ago, etc. Matches the --season N convention in --enrich-leagues.
+    # Explicit label (e.g. "2024/2025" or "2025"): target a specific season directly.
+    parser.add_argument('--train-season', dest='train_season', type=str, default='current',
+                        metavar='SEASON',
+                        help=(
+                            'Season scope for RL training. '
+                            '"current" (default) = each league\'s live season start. '
+                            '"all" = all seasons oldest→newest (use with --cold). '
+                            'N (int) = past season offset: 1=most recent past, 2=two seasons ago. '
+                            'Label = explicit season string, e.g. "2024/2025" or "2025".'
+                        ))
 
     # --- RL Backtest ---
     parser.add_argument('--backtest-rl', action='store_true',
@@ -300,6 +321,11 @@ Examples:
         parser.error("--league requires --train-rl")
     if args.season is not None and not args.enrich_leagues:
         parser.error("--season requires --enrich-leagues")
+    # --train-season is only meaningful with --train-rl, but we allow it to pass
+    # silently without --train-rl (it will simply be ignored) to avoid breaking
+    # compound invocations. Emit a warning only.
+    if args.train_season != 'current' and not args.train_rl:
+        print(f"  [Warning] --train-season={args.train_season!r} has no effect without --train-rl")
 
     # Parse --limit: supports single int ("5") or range ("501-1000")
     args._limit_offset = 0
@@ -326,4 +352,3 @@ Examples:
                 parser.error("--limit must be an integer or range (e.g., 5 or 501-1000)")
 
     return args
-

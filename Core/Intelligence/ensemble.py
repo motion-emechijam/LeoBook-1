@@ -125,11 +125,26 @@ def rl_action_to_recommendation(
     action_idx: int,
     model_probs: list,
     live_odds: Optional[Dict[str, float]] = None,
+    rl_ev: Optional[float] = None,
 ) -> Optional[Dict]:
     """
     Convert 30-dim RL output to a structured recommendation.
     Applies stairway gate with live odds if available.
     Returns None if action is no_bet or fails gate.
+
+    Args:
+        action_idx:   Index of the selected action in ACTIONS (0–29).
+        model_probs:  Raw softmax probabilities over all 30 actions.
+                      These represent action *preference*, not outcome win probability.
+        live_odds:    Dict of {market_key: decimal_odds} from the live book (optional).
+        rl_ev:        Expected value from the model's value head (optional).
+                      When provided, the calibrated true win probability is derived as:
+                          true_prob = (rl_ev + 1.0) / odds
+                      and used for gate evaluation and EV computation instead of the
+                      raw softmax action probability (~1/30 ≈ 3.3%), which is too low
+                      to ever pass an EV > 0 gate regardless of model quality.
+                      Falls back to model_probs[action_idx] if rl_ev is None or odds
+                      are unavailable (backward-compatible).
     """
     from Core.Intelligence.rl.market_space import (
         ACTIONS, N_ACTIONS, stairway_gate, SYNTHETIC_ODDS
@@ -144,28 +159,48 @@ def rl_action_to_recommendation(
     if key == "no_bet":
         return None
 
+    # Raw softmax action preference — used as fallback only.
+    # This is NOT the win probability for the outcome; it is the model's
+    # relative preference for this market across the 30-dim action space.
     model_prob = model_probs[action_idx] if action_idx < len(model_probs) else 0.0
+
     live_odds_val = (live_odds or {}).get(key)
     fair_odds_val = SYNTHETIC_ODDS.get(key)
+    odds_to_use   = live_odds_val or fair_odds_val or 0.0
 
-    bettable, reason = stairway_gate(key, live_odds_val, model_prob)
+    # ── Calibrated probability derivation ────────────────────────────────
+    # When the value head EV is available, back-calculate the true win
+    # probability the model has estimated for this outcome:
+    #   EV = true_prob * odds - 1  →  true_prob = (EV + 1) / odds
+    #
+    # This corrects the gate logic, which previously used the ~3.3% softmax
+    # action score and always produced EV ≈ -0.90, causing every selection
+    # to fail the EV > 0 threshold regardless of actual model confidence.
+    if rl_ev is not None and odds_to_use > 0.0:
+        true_prob = (rl_ev + 1.0) / odds_to_use
+        true_prob = max(0.0, min(1.0, true_prob))  # clamp to [0, 1]
+    else:
+        # Fallback: use softmax action probability (backward-compatible).
+        true_prob = model_prob
+
+    bettable, reason = stairway_gate(key, live_odds_val, true_prob)
     if not bettable:
         return None
 
-    odds_to_use = live_odds_val or fair_odds_val or 0.0
-    ev = (model_prob * odds_to_use) - 1.0 if odds_to_use > 0 else None
+    ev = (true_prob * odds_to_use) - 1.0 if odds_to_use > 0 else None
 
     return {
-        "market_key":   key,
-        "market_name":  action["market"],
-        "outcome":      action["outcome"],
-        "line":         action["line"],
-        "market_id":    action["market_id"],
-        "model_prob":   round(model_prob, 4),
-        "live_odds":    live_odds_val,
-        "fair_odds":    fair_odds_val,
-        "is_value_bet": (ev is not None and ev > 0),
-        "ev":           round(ev, 4) if ev is not None else None,
+        "market_key":     key,
+        "market_name":    action["market"],
+        "outcome":        action["outcome"],
+        "line":           action["line"],
+        "market_id":      action["market_id"],
+        "model_prob":     round(true_prob, 4),
+        "raw_action_prob": round(model_prob, 4),  # preserved for diagnostics
+        "live_odds":      live_odds_val,
+        "fair_odds":      fair_odds_val,
+        "is_value_bet":   (ev is not None and ev > 0),
+        "ev":             round(ev, 4) if ev is not None else None,
         "likelihood_pct": action["likelihood"],
     }
 
@@ -183,10 +218,16 @@ def log_paper_trade(
     rl_confidence: float = None,
     rule_confidence: float = None,
     live_odds: Optional[Dict[str, float]] = None,
+    rl_ev: Optional[float] = None,
 ) -> None:
     """
     Log a paper trade for the ensemble's recommendation.
     NEVER blocks or crashes the prediction pipeline.
+
+    Args:
+        rl_ev: Expected value from the model's value head (optional).
+               When provided, the calibrated true win probability is derived and
+               used for gate evaluation, replacing the raw softmax action probability.
     """
     try:
         from Data.Access.db_helpers import save_paper_trade, _get_conn
@@ -201,10 +242,19 @@ def log_paper_trade(
         market_key = ensemble_pick
         synth_odds = SYNTHETIC_ODDS.get(market_key, 0.0)
         live_odds_val = (live_odds or {}).get(market_key)
-
-        bettable, _ = stairway_gate(market_key, live_odds_val, model_prob)
         odds_to_use = live_odds_val or synth_odds or 0.0
-        ev = (model_prob * odds_to_use) - 1.0 if odds_to_use > 0 else 0.0
+
+        # ── Calibrated probability derivation (same logic as rl_action_to_recommendation) ──
+        # model_prob passed in is the raw softmax action probability (~3.3%).
+        # When rl_ev is available, derive the true outcome win probability instead.
+        if rl_ev is not None and odds_to_use > 0.0:
+            true_prob = (rl_ev + 1.0) / odds_to_use
+            true_prob = max(0.0, min(1.0, true_prob))
+        else:
+            true_prob = model_prob
+
+        bettable, _ = stairway_gate(market_key, live_odds_val, true_prob)
+        ev = (true_prob * odds_to_use) - 1.0 if odds_to_use > 0 else 0.0
 
         # Stairway step: read-only, default to 1
         step = 1
@@ -229,7 +279,7 @@ def log_paper_trade(
             "recommended_outcome": outcome,
             "live_odds": live_odds_val,
             "synthetic_odds": synth_odds,
-            "model_prob": round(model_prob, 4),
+            "model_prob": round(true_prob, 4),
             "ev": round(ev, 4),
             "gated": 1 if bettable else 0,
             "stairway_step": step,
@@ -248,4 +298,3 @@ def log_paper_trade(
 
     except Exception as e:
         logger.warning(f"[PaperTrade] Failed to log trade: {e}")
-
