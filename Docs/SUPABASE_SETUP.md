@@ -1,6 +1,6 @@
 # Supabase Setup Guide
 
-> **Version**: 8.1 · **Last Updated**: 2026-03-14
+> **Version**: 8.2 · **Last Updated**: 2026-03-14
 > **One-stop reference** — everything needed to provision a fresh Supabase database for LeoBook from scratch.
 
 ---
@@ -60,9 +60,14 @@ The script is safe to re-run at any time — all statements use `CREATE TABLE IF
 
 ```sql
 -- =============================================================================
--- LEOBOOK SUPABASE BOOTSTRAP v8.1
+-- LEOBOOK SUPABASE BOOTSTRAP v8.2
 -- Run this ONCE on a fresh Supabase project via SQL Editor.
 -- Safe to re-run — all statements are idempotent.
+--
+-- AUTHORITATIVE SOURCE: sync_manager.SUPABASE_SCHEMA
+-- This file must stay in sync with Data/Access/sync_manager.py.
+-- Column names, types, and PRIMARY KEY definitions here must exactly match
+-- the DDL strings in that dict — they control what _ALLOWED_COLS accepts.
 -- =============================================================================
 
 -- =============================================================================
@@ -113,83 +118,89 @@ CREATE TABLE IF NOT EXISTS public.leagues (
 );
 
 CREATE TABLE IF NOT EXISTS public.teams (
-    team_id TEXT PRIMARY KEY,
-    name TEXT,
-    league_ids TEXT,
-    crest TEXT,
-    country_code TEXT,
-    url TEXT,
-    city TEXT,
-    stadium TEXT,
-    other_names TEXT,
-    abbreviations TEXT,
-    search_terms TEXT,
-    last_updated TIMESTAMPTZ DEFAULT now()
+    team_id         TEXT PRIMARY KEY,
+    name            TEXT NOT NULL,
+    league_ids      JSONB,         -- stored as JSON array e.g. ["1_1_8bP2bXmH"]
+    crest           TEXT,
+    country_code    TEXT,
+    url             TEXT,
+    city            TEXT,
+    stadium         TEXT,
+    other_names     TEXT,
+    abbreviations   TEXT,
+    search_terms    TEXT,
+    last_updated    TIMESTAMPTZ DEFAULT now()
 );
 
+-- NOTE: home_team / away_team are the display names.
+-- They are mapped from home_team_name / away_team_name in SQLite via _COL_REMAP
+-- in sync_manager.py. Do NOT rename these columns in Supabase.
+-- home_score / away_score are INTEGER — cast errors will silently NULL the field.
+-- extra JSONB stores match tags: AET, PEN, Postp, Canc, Abn.
 CREATE TABLE IF NOT EXISTS public.schedules (
-    fixture_id TEXT PRIMARY KEY,
-    date TEXT,
-    match_time TEXT,
-    region_league TEXT,
-    league_id TEXT,
-    home_team TEXT,
-    away_team TEXT,
-    home_team_id TEXT,
-    away_team_id TEXT,
-    home_score TEXT,
-    away_score TEXT,
-    match_status TEXT,
-    match_link TEXT,
-    league_stage TEXT,
-    season TEXT,
-    home_crest TEXT,
-    away_crest TEXT,
-    last_updated TIMESTAMPTZ DEFAULT now()
+    fixture_id      TEXT PRIMARY KEY,
+    date            TEXT,
+    match_time      TEXT,
+    league_id       TEXT,
+    home_team_id    TEXT,
+    home_team       TEXT,
+    away_team_id    TEXT,
+    away_team       TEXT,
+    home_score      INTEGER,
+    away_score      INTEGER,
+    extra           JSONB,
+    league_stage    TEXT,
+    match_status    TEXT,
+    season          TEXT,
+    home_crest      TEXT,
+    away_crest      TEXT,
+    match_link      TEXT,
+    region_league   TEXT,
+    last_updated    TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS public.predictions (
-    fixture_id TEXT PRIMARY KEY,
-    date TEXT,
-    match_time TEXT,
-    region_league TEXT,
-    home_team TEXT,
-    away_team TEXT,
-    home_team_id TEXT,
-    away_team_id TEXT,
-    prediction TEXT,
-    confidence TEXT,
-    reason TEXT,
-    xg_home TEXT,
-    xg_away TEXT,
-    btts TEXT,
-    over_2_5 TEXT,
-    best_score TEXT,
-    top_scores TEXT,
-    home_form_n TEXT,
-    away_form_n TEXT,
-    home_tags TEXT,
-    away_tags TEXT,
-    h2h_tags TEXT,
-    standings_tags TEXT,
-    h2h_count TEXT,
-    actual_score TEXT,
-    outcome_correct TEXT,
-    status TEXT,
-    match_link TEXT,
-    odds TEXT,
-    market_reliability_score TEXT,
-    home_crest_url TEXT,
-    away_crest_url TEXT,
-    recommendation_score TEXT,
-    h2h_fixture_ids TEXT,
-    form_fixture_ids TEXT,
-    standings_snapshot TEXT,
-    league_stage TEXT,
-    home_score TEXT,
-    away_score TEXT,
-    generated_at TEXT,
-    last_updated TIMESTAMPTZ DEFAULT now()
+    fixture_id               TEXT PRIMARY KEY,
+    date                     TEXT,
+    match_time               TEXT,
+    region_league            TEXT,
+    home_team                TEXT,
+    away_team                TEXT,
+    home_team_id             TEXT,
+    away_team_id             TEXT,
+    prediction               TEXT,
+    confidence               TEXT,
+    reason                   TEXT,
+    xg_home                  REAL,
+    xg_away                  REAL,
+    btts                     TEXT,
+    over_2_5                 TEXT,
+    best_score               TEXT,
+    top_scores               TEXT,
+    home_form_n              INTEGER,
+    away_form_n              INTEGER,
+    home_tags                TEXT,
+    away_tags                TEXT,
+    h2h_tags                 TEXT,
+    standings_tags           TEXT,
+    h2h_count                INTEGER,
+    actual_score             TEXT,
+    outcome_correct          TEXT,
+    status                   TEXT DEFAULT 'pending',
+    match_link               TEXT,
+    odds                     TEXT,
+    market_reliability_score REAL,
+    home_crest_url           TEXT,
+    away_crest_url           TEXT,
+    recommendation_score     REAL,
+    h2h_fixture_ids          JSONB,
+    form_fixture_ids         JSONB,
+    standings_snapshot       JSONB,
+    league_stage             TEXT,
+    generated_at             TEXT,
+    home_score               TEXT,
+    away_score               TEXT,
+    last_updated             TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS public.fb_matches (
@@ -279,7 +290,7 @@ CREATE TABLE IF NOT EXISTS public.accuracy_reports (
 );
 
 CREATE TABLE IF NOT EXISTS public.paper_trades (
-    id SERIAL,
+    id                  SERIAL PRIMARY KEY,
     fixture_id TEXT NOT NULL,
     trade_date TEXT NOT NULL,
     created_at TEXT NOT NULL,
@@ -361,28 +372,22 @@ CREATE TABLE IF NOT EXISTS public.rule_executions (
 CREATE OR REPLACE VIEW public.computed_standings AS
 WITH all_matches AS (
     SELECT
-        league_id,
-        season,
-        home_team_id AS team_id,
-        home_team AS team_name,
-        CAST(home_score AS INTEGER) AS gf,
-        CAST(away_score AS INTEGER) AS ga
+        league_id, season,
+        home_team_id AS team_id, home_team AS team_name,
+        home_score AS gf, away_score AS ga
     FROM public.schedules
     WHERE home_score IS NOT NULL AND away_score IS NOT NULL
-      AND home_score ~ '^\d+$' AND away_score ~ '^\d+$'
+      AND match_status = 'finished'
 
     UNION ALL
 
     SELECT
-        league_id,
-        season,
-        away_team_id AS team_id,
-        away_team AS team_name,
-        CAST(away_score AS INTEGER) AS gf,
-        CAST(home_score AS INTEGER) AS ga
+        league_id, season,
+        away_team_id AS team_id, away_team AS team_name,
+        away_score AS gf, home_score AS ga
     FROM public.schedules
     WHERE home_score IS NOT NULL AND away_score IS NOT NULL
-      AND home_score ~ '^\d+$' AND away_score ~ '^\d+$'
+      AND match_status = 'finished'
 )
 SELECT
     league_id,
@@ -594,5 +599,5 @@ The Flutter app uses the **Anon Key** configured separately in `leobookapp/lib/c
 
 ---
 
-*Last updated: March 14, 2026 (v8.1 — Bootstrap SQL + exec_sql function + full table inventory)*
+*Last updated: March 14, 2026 (v8.2 — schema synced to sync_manager.SUPABASE_SCHEMA: JSONB types, INTEGER scores, extra column, standings VIEW fixed)*
 *LeoBook Engineering Team — Materialless LLC*
