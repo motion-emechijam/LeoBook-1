@@ -1,0 +1,1099 @@
+Universal UI/UX Design System v2.0 Overhaul: Dark+Light, Semantic Tokens, Enterprise Accessibility, Full Refactor #3
+
+
+Session A Prompt (Paste this into Antigravity first)
+
+@[systematic-debugging] @[component-library] @[theme-factory]
+
+TASK: LeoBook Flutter App — Design System Foundation (Phase 1 of 4)
+CODEBASE: /workspaces/LeoBook/leobookapp/
+CONSTRAINT: flutter_bloc/Cubit state management is SACRED. Do NOT touch any Cubit, BlocProvider, BlocBuilder, BlocListener, or state class. Design layer only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — MANDATORY AUDIT BEFORE WRITING ANY CODE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Read and report the following files IN FULL before touching anything:
+
+1. leobookapp/lib/core/constants/app_colors.dart (or equivalent)
+2. leobookapp/lib/core/theme/app_theme.dart (or equivalent)
+3. leobookapp/lib/core/constants/ — list ALL files in this directory
+4. leobookapp/pubspec.yaml — read the full dependencies block
+5. leobookapp/lib/ — list directory structure 2 levels deep
+
+From this audit, produce a PRE-MIGRATION REPORT:
+- List every hardcoded color hex found (file + line)
+- List every hardcoded font size found (file + line)
+- List every hardcoded spacing value found (file + line)
+- List every existing theme/color/typography file that must be replaced
+- Confirm whether google_fonts package is already in pubspec.yaml
+- Confirm whether Inter is already configured anywhere
+
+Do NOT proceed to Step 1 until this report is complete.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — COLOR SYSTEM
+File: lib/core/constants/app_colors.dart (REPLACE existing)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Implement the following 10-color semantic palette as a final abstract class
+with no instantiation. All values are dark-mode primary, light-mode secondary.
+
+Primary family:
+  primary         = #6C63FF  (electric violet)
+  primaryLight    = #8B85FF
+  primaryDark     = #4B44CC
+
+Secondary family:
+  secondary       = #00D4AA  (emerald teal)
+  secondaryLight  = #33DDBB
+  secondaryDark   = #00A882
+
+Semantic states:
+  success         = #22C55E
+  successLight    = #86EFAC
+  warning         = #F59E0B
+  warningLight    = #FCD34D
+  error           = #EF4444
+  errorLight      = #FCA5A5
+
+Neutral scale (dark theme base):
+  neutral900      = #0A0A0F  (near black — dark bg)
+  neutral800      = #12121A
+  neutral700      = #1A1A26
+  neutral600      = #242432
+  neutral500      = #3D3D52
+  neutral400      = #6B6B8A
+  neutral300      = #9898B3
+  neutral200      = #C4C4D6
+  neutral100      = #E8E8F0
+  neutral50       = #F5F5FA
+
+Glass/overlay:
+  glass           = Color(0x1AFFFFFF)   (10% white)
+  glassBorder     = Color(0x33FFFFFF)   (20% white)
+  glassDark       = Color(0x1A000000)   (10% black)
+
+Text on dark:
+  textPrimary     = #FFFFFF
+  textSecondary   = #C4C4D6
+  textDisabled    = #6B6B8A
+  textInverse     = #0A0A0F
+
+Text on light:
+  textPrimaryLight    = #0A0A0F
+  textSecondaryLight  = #3D3D52
+  textDisabledLight   = #9898B3
+
+Surface colors:
+  surfaceDark     = #12121A
+  surfaceCard     = #1A1A26
+  surfaceElevated = #242432
+
+Divider:
+  divider         = Color(0x1AFFFFFF)
+
+WCAG ENFORCEMENT: Add a static comment block at the top confirming:
+  // primary on neutral900: contrast ratio ~6.2:1 (AA large)
+  // textPrimary on neutral900: 21:1 (AAA)
+  // secondary on neutral900: ~6.8:1 (AAA large)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — TYPOGRAPHY
+Files:
+  lib/core/theme/leo_typography.dart (CREATE)
+  lib/core/constants/typography_constants.dart (CREATE or REPLACE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Add google_fonts to pubspec.yaml if not already present.
+
+Create LeoTypography as a final class with a static ThemeData extension method
+and static TextStyle getters. ALL styles use GoogleFonts.inter().
+
+Type scale (all in logical pixels):
+  displayLarge   : size=57, weight=W300, letterSpacing=-0.25
+  displayMedium  : size=45, weight=W300
+  displaySmall   : size=36, weight=W400
+  headlineLarge  : size=32, weight=W600
+  headlineMedium : size=28, weight=W600
+  headlineSmall  : size=24, weight=W600
+  titleLarge     : size=22, weight=W600
+  titleMedium    : size=16, weight=W500, letterSpacing=0.15
+  titleSmall     : size=14, weight=W500, letterSpacing=0.1
+  bodyLarge      : size=16, weight=W400, letterSpacing=0.5
+  bodyMedium     : size=14, weight=W400, letterSpacing=0.25
+  bodySmall      : size=12, weight=W400, letterSpacing=0.4
+  labelLarge     : size=14, weight=W600, letterSpacing=0.1
+  labelMedium    : size=12, weight=W500, letterSpacing=0.5
+  labelSmall     : size=11, weight=W500, letterSpacing=0.5
+
+Also expose: LeoTypography.toTextTheme(ColorScheme colorScheme) → TextTheme
+that maps each style with the correct color from AppColors.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — SPACING
+File: lib/core/constants/spacing_constants.dart (CREATE or REPLACE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+abstract final class SpacingScale {
+  static const double xs   = 4.0;
+  static const double sm   = 8.0;
+  static const double md   = 12.0;
+  static const double lg   = 16.0;
+  static const double xl   = 20.0;
+  static const double xl2  = 24.0;
+  static const double xl3  = 32.0;
+  static const double xl4  = 40.0;
+  static const double xl5  = 48.0;
+  static const double xl6  = 64.0;
+  static const double xl7  = 80.0;
+  static const double xl8  = 96.0;
+
+  // Semantic aliases
+  static const double cardPadding      = lg;       // 16
+  static const double screenPadding    = xl2;      // 24
+  static const double sectionGap       = xl3;      // 32
+  static const double componentGap     = lg;       // 16
+  static const double iconSize         = xl2;      // 24
+  static const double touchTarget      = xl5;      // 48 (WCAG minimum)
+  static const double borderRadius     = md;       // 12
+  static const double cardRadius       = xl;       // 20
+  static const double chipRadius       = xl3;      // 32
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — RESPONSIVE BREAKPOINTS
+File: lib/core/constants/responsive_constants.dart (CREATE or REPLACE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+enum DeviceType { mobile, tablet, desktop }
+
+abstract final class Breakpoints {
+  static const double mobile  = 480.0;
+  static const double tablet  = 768.0;
+  static const double desktop = 1024.0;
+}
+
+class Responsive {
+  static DeviceType of(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    if (width >= Breakpoints.desktop) return DeviceType.desktop;
+    if (width >= Breakpoints.tablet)  return DeviceType.tablet;
+    return DeviceType.mobile;
+  }
+
+  /// Scale-proportional: returns [mobile] value scaled by breakpoint ratio
+  static double sp(BuildContext context, double base) {
+    final width = MediaQuery.of(context).size.width;
+    return base * (width / Breakpoints.mobile).clamp(1.0, 2.0);
+  }
+
+  /// Density-proportional: logical pixels, clamped for safety
+  static double dp(BuildContext context, double base) {
+    final ratio = MediaQuery.of(context).devicePixelRatio;
+    return (base * ratio / ratio).clamp(base * 0.8, base * 1.5);
+  }
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — CORE THEME
+File: lib/core/theme/app_theme_v2.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Create AppThemeV2 with two static getters: darkTheme and lightTheme.
+
+darkTheme uses:
+  - ColorScheme.dark() seeded from AppColors.primary
+  - background/surface/card from AppColors.neutral900/800/700
+  - All text from LeoTypography.toTextTheme()
+  - InputDecorationTheme with SpacingScale.borderRadius
+  - CardTheme: elevation=0, shape=RoundedRectangleBorder(radius=cardRadius)
+  - AppBarTheme: backgroundColor=AppColors.neutral800, elevation=0
+
+lightTheme uses:
+  - ColorScheme.light() seeded from AppColors.primary
+  - background=AppColors.neutral50, surface=Colors.white
+  - All text adapted for light background from AppColors.textPrimaryLight etc.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — WIRE INTO main.dart / app.dart
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Locate the MaterialApp (or equivalent) in the app entry point.
+- Add themeMode: ThemeMode.dark (default)
+- Set theme: AppThemeV2.lightTheme
+- Set darkTheme: AppThemeV2.darkTheme
+- Do NOT touch any BlocProvider, MultiRepositoryProvider, or router setup.
+  Only replace the theme/darkTheme/themeMode properties.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run:
+  cd /workspaces/LeoBook/leobookapp
+  flutter pub get
+  flutter analyze
+
+Report the full analyze output. If there are errors, fix them before reporting.
+Target: 0 errors, 0 warnings. Info-level hints are acceptable.
+
+Then confirm:
+  ✅ app_colors.dart — replaced with 10-color palette
+  ✅ leo_typography.dart — created, Inter font, full type scale
+  ✅ spacing_constants.dart — SpacingScale with semantic aliases
+  ✅ responsive_constants.dart — DeviceType enum + Responsive class
+  ✅ app_theme_v2.dart — dark + light theme created
+  ✅ main.dart/app.dart — wired to AppThemeV2
+  ✅ flutter analyze — 0 errors
+
+Do NOT proceed to component library (Phase 2) until this checklist is complete.
+Report back to Chief Engineer with the full pre-migration audit and the
+flutter analyze output.
+
+
+
+
+
+
+
+
+What Comes After Session A
+Once you paste that into Antigravity and it reports back with flutter analyze: 0 errors:
+
+Session B covers LeoButton, GlassCard, LeoBadge, LeoChip, LeoTextField, LeoSwitch, LeoCheckbox — each one isolated, each one tested
+Session C does the screen refactor — HomeScreen, MatchCard, StandingsTable, PredictionDetails — using only components from Session B
+Session D handles animations, accessibility semantics, DESIGN_SYSTEM.md, legacy file deletion, and the final commit
+
+
+
+
+Session B — Component Library
+
+@[systematic-debugging] @[component-library] @[theme-factory]
+
+TASK: LeoBook Flutter App — Component Library (Phase 2 of 4)
+CODEBASE: /workspaces/LeoBook/leobookapp/
+PREREQUISITE: Session A (Foundation) must be complete and flutter analyze must
+be passing at 0 errors before starting this session.
+
+CONSTRAINT: flutter_bloc/Cubit state management is SACRED.
+Do NOT touch any Cubit, BlocProvider, BlocBuilder, BlocListener, or state class.
+Do NOT touch main.dart, app.dart, or any routing file.
+Do NOT modify any screen file. Components only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Before writing any component, read and report:
+
+1. lib/presentation/widgets/ — full directory listing, all levels
+2. Any existing button, card, badge, chip, or text field widget files
+   (read each one in full)
+3. Confirm AppColors, SpacingScale, LeoTypography, and Responsive are
+   all importable (spot-check one import each)
+
+Produce a PRE-COMPONENT REPORT:
+- List every existing component that will be REPLACED by a new one
+- List every import path that references the old component (file + line)
+  so they can be updated in Session C
+- Flag any existing component with Cubit/Bloc dependencies so they are
+  NOT replaced in this session (those are handled in Session C with care)
+
+Do NOT write any component until this report is complete.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — ANIMATION LIBRARY
+File: lib/core/animations/leo_animations.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+abstract final class LeoDuration {
+  static const Duration micro      = Duration(milliseconds: 100);
+  static const Duration short      = Duration(milliseconds: 200);
+  static const Duration medium     = Duration(milliseconds: 300);
+  static const Duration long       = Duration(milliseconds: 500);
+  static const Duration xlong      = Duration(milliseconds: 800);
+}
+
+abstract final class LeoCurve {
+  static const Curve smooth        = Curves.easeInOutCubic;
+  static const Curve bouncy        = Curves.easeOutBack;
+  static const Curve sharp         = Curves.easeOutExpo;
+  static const Curve gentle        = Curves.easeInOut;
+}
+
+Also create the following helper widgets in the same file:
+
+LeoFadeIn — StatefulWidget, auto-triggers on mount
+  Parameters: child (Widget), duration (default: LeoDuration.medium),
+              delay (Duration, default: Duration.zero)
+  Implementation: AnimationController + FadeTransition
+
+LeoSlideIn — StatefulWidget, slides from bottom (dy: 0.3 → 0.0)
+  Parameters: child, duration, delay, from (Offset, default: Offset(0, 0.3))
+  Implementation: SlideTransition + FadeTransition combined
+
+LeoScalePulse — StatefulWidget, pulses 1.0 → 1.05 → 1.0 on loop
+  Parameters: child, duration (default: LeoDuration.long)
+  Use case: loading skeletons, empty state illustrations
+
+LeoShimmer — StatelessWidget producing a shimmer placeholder
+  Parameters: width, height, borderRadius
+  Implementation: AnimatedContainer with gradient shimmer via
+  TweenAnimationBuilder cycling gradient stops left→right
+  Use for: loading cards, list placeholders — never use static spinners
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — LEO BUTTON
+File: lib/presentation/widgets/shared/buttons/leo_button.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+StatefulWidget. No Bloc/Cubit dependencies.
+
+Enum: LeoButtonVariant { primary, secondary, tertiary }
+Enum: LeoButtonSize { small, medium, large }
+
+Constructor parameters:
+  required String label
+  required VoidCallback? onPressed
+  LeoButtonVariant variant = LeoButtonVariant.primary
+  LeoButtonSize size = LeoButtonSize.medium
+  Widget? leadingIcon
+  bool isLoading = false
+  bool fullWidth = false
+
+Size mapping (horizontal padding × vertical padding):
+  small  → SpacingScale.md × SpacingScale.sm      (12×8)
+  medium → SpacingScale.lg × SpacingScale.md      (16×12)
+  large  → SpacingScale.xl2 × SpacingScale.lg     (24×16)
+
+Typography: labelLarge for all sizes.
+
+Variant styling:
+  primary   → filled, AppColors.primary bg, white text
+  secondary → outlined, AppColors.primary border (2px), AppColors.primary text,
+              transparent fill
+  tertiary  → no border, no fill, AppColors.primary text, underline on hover
+
+Press animation:
+  Wrap content in GestureDetector. On tap down: AnimatedScale to 0.95,
+  duration: LeoDuration.short, curve: LeoCurve.smooth.
+  On tap up/cancel: AnimatedScale back to 1.0.
+
+Loading state: Replace label + icon with SizedBox(width:20,height:20)
+  containing CircularProgressIndicator(strokeWidth:2,
+  valueColor: always white for primary, primary for secondary).
+  Disable onPressed when isLoading.
+
+Disabled state: when onPressed == null, reduce opacity to 0.4.
+
+Touch target: Ensure minimum 48×48dp via ConstrainedBox.
+
+Semantics wrapper:
+  Semantics(button: true, enabled: onPressed != null, label: label, child: ...)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — GLASS CARD
+File: lib/presentation/widgets/shared/cards/glass_card.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+StatelessWidget. No Bloc/Cubit dependencies.
+
+Constructor parameters:
+  required Widget child
+  EdgeInsetsGeometry? padding          (default: SpacingScale.cardPadding all)
+  double borderRadius                  (default: SpacingScale.cardRadius)
+  double blurRadius                    (default: 12.0)
+  Color? backgroundColor               (default: AppColors.glass)
+  Color? borderColor                   (default: AppColors.glassBorder)
+  VoidCallback? onTap
+  double? width
+  double? height
+
+Implementation:
+  ClipRRect(
+    borderRadius: BorderRadius.circular(borderRadius),
+    child: BackdropFilter(
+      filter: ImageFilter.blur(sigmaX: blurRadius, sigmaY: blurRadius),
+      child: GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: LeoDuration.short,
+          curve: LeoCurve.smooth,
+          padding: padding,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(color: borderColor, width: 1.0),
+          ),
+          child: child,
+        ),
+      ),
+    ),
+  )
+
+If onTap is not null, wrap the whole widget in a press-scale animation
+(0.98× on press, same as LeoButton pattern).
+
+Semantics: if onTap != null → Semantics(button: true, child: ...)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — LEO BADGE
+File: lib/presentation/widgets/shared/badges/leo_badge.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+StatelessWidget. No Bloc/Cubit dependencies.
+
+Enum: LeoBadgeSize { small, medium, large }
+Enum: LeoBadgeVariant { live, finished, scheduled, prediction, betPlaced, custom }
+
+Constructor:
+  required String label
+  LeoBadgeVariant variant = LeoBadgeVariant.custom
+  LeoBadgeSize size = LeoBadgeSize.medium
+  Color? backgroundColor
+  Color? textColor
+  Color? borderColor
+  IconData? icon
+
+Variant → color mapping:
+  live        → bg: AppColors.error (10% alpha), text: AppColors.error,
+                border: AppColors.error (30% alpha), icon: Icons.circle (size 6)
+  finished    → bg: AppColors.neutral700, text: AppColors.textSecondary,
+                border: AppColors.neutral500
+  scheduled   → bg: AppColors.primary (10% alpha), text: AppColors.primary,
+                border: AppColors.primary (30% alpha)
+  prediction  → bg: AppColors.secondary (10% alpha), text: AppColors.secondary,
+                border: AppColors.secondary (30% alpha)
+  betPlaced   → bg: AppColors.success (10% alpha), text: AppColors.success,
+                border: AppColors.success (30% alpha)
+  custom      → use provided backgroundColor/textColor/borderColor params
+
+Size → padding + font:
+  small  → horizontal:6, vertical:2, LeoTypography.labelSmall
+  medium → horizontal:8, vertical:4, LeoTypography.labelMedium
+  large  → horizontal:12, vertical:6, LeoTypography.labelLarge
+
+If icon is provided: Row with Icon(size: 10 for small, 12 for medium, 14 for large)
++ SizedBox(width: SpacingScale.xs) + Text.
+
+Container shape: Stadium (borderRadius: SpacingScale.chipRadius).
+Border: 1px solid borderColor.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — LEO CHIP
+File: lib/presentation/widgets/shared/chips/leo_chip.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+StatelessWidget. No Bloc/Cubit dependencies.
+
+Constructor:
+  required String label
+  IconData? icon
+  VoidCallback? onDelete
+  VoidCallback? onTap
+  Color? backgroundColor    (default: AppColors.neutral700)
+  Color? textColor          (default: AppColors.textSecondary)
+  bool selected = false
+
+If selected: backgroundColor → AppColors.primary (20% alpha),
+             textColor → AppColors.primary,
+             border → AppColors.primary
+
+Layout: Row [ if(icon) Icon, SizedBox(sm), Text, if(onDelete) SizedBox(xs) + 
+             GestureDetector(Icon(Icons.close, size:14)) ]
+
+Padding: horizontal: SpacingScale.md, vertical: SpacingScale.sm
+Shape: RoundedRectangleBorder(radius: SpacingScale.chipRadius)
+Touch target: minimum 48dp height via ConstrainedBox.
+
+Semantics: label includes "selected" state and delete affordance if present.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — LEO TEXT FIELD
+File: lib/presentation/widgets/shared/forms/leo_text_field.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+StatefulWidget with FocusNode. No Bloc/Cubit dependencies.
+
+Constructor:
+  required String label
+  TextEditingController? controller
+  String? hint
+  bool obscureText = false
+  TextInputType? keyboardType
+  Widget? prefixIcon
+  Widget? suffixIcon
+  String? Function(String?)? validator
+  void Function(String)? onChanged
+  int? maxLines           (default: 1)
+  bool enabled = true
+
+FocusNode behavior:
+  - Default border: 1px, AppColors.neutral500
+  - Focused border: 2px, AppColors.primary (focus ring)
+  - Error border: 2px, AppColors.error
+  - Disabled: opacity 0.5, no interaction
+
+Fill color: AppColors.surfaceCard
+Content padding: SpacingScale.md all sides
+Border radius: SpacingScale.borderRadius
+Label style: LeoTypography.bodyMedium (AppColors.textSecondary)
+Focused label: LeoTypography.labelMedium (AppColors.primary)
+Input text style: LeoTypography.bodyLarge (AppColors.textPrimary)
+
+Animate border color transition: AnimatedContainer, LeoDuration.short.
+
+Semantics: label, hint, error message all exposed via Semantics.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — LEO SWITCH & LEO CHECKBOX
+Files:
+  lib/presentation/widgets/shared/toggles/leo_switch.dart (CREATE)
+  lib/presentation/widgets/shared/toggles/leo_checkbox.dart (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LeoSwitch (StatelessWidget wrapper over Switch):
+  required bool value
+  required ValueChanged<bool> onChanged
+  String? semanticLabel
+  
+  Colors:
+    activeColor: AppColors.primary
+    activeTrackColor: AppColors.primaryLight (50% alpha)
+    inactiveThumbColor: AppColors.neutral400
+    inactiveTrackColor: AppColors.neutral600
+
+  Semantics(toggled: value, label: semanticLabel ?? 'Toggle switch', child: Switch(...))
+
+LeoCheckbox (StatelessWidget wrapper over Checkbox):
+  required bool? value
+  required ValueChanged<bool?> onChanged
+  String? semanticLabel
+  bool tristate = false
+
+  Colors:
+    activeColor: AppColors.primary
+    checkColor: Colors.white
+    side: BorderSide(color: AppColors.neutral400, width: 2)
+    focusColor: AppColors.primary (30% alpha)
+
+  Semantics(checked: value ?? false, label: semanticLabel ?? 'Checkbox', child: Checkbox(...))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 8 — VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run:
+  cd /workspaces/LeoBook/leobookapp
+  flutter analyze
+
+Report the full analyze output. Fix all errors before reporting.
+Target: 0 errors, 0 warnings.
+
+Then confirm each file exists and is importable:
+  ✅ lib/core/animations/leo_animations.dart
+  ✅ lib/presentation/widgets/shared/buttons/leo_button.dart
+  ✅ lib/presentation/widgets/shared/cards/glass_card.dart
+  ✅ lib/presentation/widgets/shared/badges/leo_badge.dart
+  ✅ lib/presentation/widgets/shared/chips/leo_chip.dart
+  ✅ lib/presentation/widgets/shared/forms/leo_text_field.dart
+  ✅ lib/presentation/widgets/shared/toggles/leo_switch.dart
+  ✅ lib/presentation/widgets/shared/toggles/leo_checkbox.dart
+  ✅ flutter analyze — 0 errors
+
+Also provide the PRE-COMPONENT REPORT promised in Step 0, listing every
+existing widget file that imports an old component so Session C knows
+exactly which import paths to update.
+
+Report back to Chief Engineer when complete.
+
+
+
+
+
+
+
+
+
+
+
+Session C — Screen Refactor
+
+@[systematic-debugging] @[ui-ux-pro-max] @[component-library]
+
+TASK: LeoBook Flutter App — Screen Refactor (Phase 3 of 4)
+CODEBASE: /workspaces/LeoBook/leobookapp/
+PREREQUISITE: Sessions A and B must be complete. flutter analyze must be
+passing at 0 errors before starting this session.
+
+CONSTRAINT — READ THIS BEFORE TOUCHING ANYTHING:
+  - flutter_bloc/Cubit is SACRED. Do NOT modify any:
+      Cubit class, BlocProvider, BlocBuilder, BlocListener, BlocConsumer,
+      context.read(), context.watch(), context.select(), emit(),
+      any *State class, any *Cubit class, any repository class
+  - You are refactoring PRESENTATION ONLY — layout, styling, spacing, widgets
+  - If a screen widget has a BlocBuilder wrapping its content, you may only
+    modify what is INSIDE the builder's return value — never the BlocBuilder
+    itself, its buildWhen, or its bloc parameter
+  - If you are unsure whether something is Bloc-related, DO NOT TOUCH IT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Read the following files IN FULL before writing any code:
+
+1. lib/presentation/screens/ — list all screen files
+2. Read these screens fully (or their equivalents by name):
+   - home_screen.dart (or dashboard_screen.dart)
+   - predictions_screen.dart (or recommendations_screen.dart)
+   - standings_screen.dart
+   - match_detail_screen.dart (or prediction_detail_screen.dart)
+3. lib/presentation/widgets/ — list all widget files not yet replaced in Session B
+4. Any existing match_card_widget.dart, standings_table_widget.dart, or similar
+
+Produce a PRE-REFACTOR REPORT for each screen/widget you will touch:
+  - Current hardcoded colors (file + line)
+  - Current hardcoded spacing values (file + line)
+  - Current hardcoded text styles (file + line)
+  - Existing Bloc/Cubit bindings (list them — these are NO-TOUCH zones)
+  - Existing components being replaced by Session B components
+
+Do NOT write any screen code until this report is complete.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — MATCH CARD WIDGET
+File: existing match card widget (replace in-place, preserve filename)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Replace the widget's build() method structure with:
+
+GlassCard(
+  padding: EdgeInsets.all(SpacingScale.cardPadding),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      // Teams row
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(homeTeam, style: LeoTypography.titleMedium),
+          Text('vs', style: LeoTypography.bodySmall
+              .copyWith(color: AppColors.textSecondary)),
+          Text(awayTeam, style: LeoTypography.titleMedium),
+        ],
+      ),
+      SizedBox(height: SpacingScale.sm),
+
+      // Status row
+      Row(
+        children: [
+          LeoBadge(label: matchStatus, variant: <mapped variant>),
+          SizedBox(width: SpacingScale.md),
+          Text(matchTime, style: LeoTypography.bodySmall
+              .copyWith(color: AppColors.textSecondary)),
+        ],
+      ),
+      SizedBox(height: SpacingScale.lg),
+
+      // Action row
+      LeoButton(
+        label: 'View Prediction',
+        variant: LeoButtonVariant.secondary,
+        size: LeoButtonSize.small,
+        onPressed: onTap,
+      ),
+    ],
+  ),
+)
+
+Map match status strings to LeoBadgeVariant:
+  'Live' or 'In Progress' → LeoBadgeVariant.live
+  'Finished' or 'FT'      → LeoBadgeVariant.finished
+  'Scheduled' or upcoming → LeoBadgeVariant.scheduled
+
+Preserve ALL existing constructor parameters, Cubit callbacks, and
+data-binding logic. Only the visual structure changes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — HOME SCREEN / DASHBOARD
+File: home_screen.dart or dashboard_screen.dart (refactor in-place)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For every BlocBuilder in this screen:
+  - Keep the BlocBuilder unchanged
+  - Refactor only what is RETURNED from the builder
+
+Refactor rules:
+  - Replace all Container/Card with GlassCard where used as surface elements
+  - Replace all Padding(padding: EdgeInsets.all(16)) with
+    Padding(padding: EdgeInsets.all(SpacingScale.lg))
+  - Replace all Text(..., style: TextStyle(...)) with
+    Text(..., style: LeoTypography.<appropriate scale>)
+  - Replace all hardcoded colors with AppColors tokens
+  - Column/Row item gaps: replace SizedBox(height: 16) →
+    SizedBox(height: SpacingScale.componentGap)
+  - Replace all existing buttons with LeoButton (appropriate variant)
+  - Screen-level padding: wrap scaffold body in
+    Padding(padding: EdgeInsets.symmetric(horizontal: SpacingScale.screenPadding))
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — STANDINGS SCREEN / TABLE WIDGET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Wrap the entire standings table in GlassCard.
+
+Headers row:
+  Text(column, style: LeoTypography.labelLarge
+      .copyWith(color: AppColors.textSecondary))
+
+Data rows:
+  Text(value, style: LeoTypography.bodyMedium)
+  
+Alternating rows:
+  Even rows: backgroundColor = AppColors.neutral800
+  Odd rows:  backgroundColor = AppColors.neutral900
+  (Apply via Container color on each TableRow or ListTile)
+
+Row horizontal padding: SpacingScale.lg
+Row vertical padding: SpacingScale.md
+Divider between rows: Divider(color: AppColors.divider, height: 1)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — PREDICTION DETAILS SCREEN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Wrap prediction breakdown content in GlassCard.
+
+Confidence indicator — replace any existing indicator with:
+  Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text('Confidence', style: LeoTypography.labelMedium
+          .copyWith(color: AppColors.textSecondary)),
+      SizedBox(height: SpacingScale.sm),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(SpacingScale.chipRadius),
+        child: LinearProgressIndicator(
+          value: confidenceValue,          // 0.0 to 1.0
+          minHeight: 8,
+          backgroundColor: AppColors.neutral700,
+          valueColor: AlwaysStoppedAnimation<Color>(
+            confidenceValue >= 0.7 ? AppColors.success :
+            confidenceValue >= 0.4 ? AppColors.warning : AppColors.error,
+          ),
+        ),
+      ),
+      SizedBox(height: SpacingScale.xs),
+      Text('${(confidenceValue * 100).toStringAsFixed(0)}%',
+          style: LeoTypography.labelSmall
+              .copyWith(color: AppColors.textSecondary)),
+    ],
+  )
+
+Add Hero animation on card:
+  Hero(
+    tag: 'prediction_card_${fixture.id}',
+    child: GlassCard(child: ...),
+  )
+  (Use the fixture/match ID as the tag — must be unique per card.
+   The source card in the list must have the same Hero tag.)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — THEME TOGGLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Locate the settings screen or app bar (whichever is appropriate for LeoBook).
+Add a theme mode toggle using LeoSwitch:
+
+  LeoSwitch(
+    value: isDarkMode,
+    onChanged: (val) {
+      // Emit to ThemeCubit or call setState — check which is used
+    },
+    semanticLabel: 'Toggle dark mode',
+  )
+
+If a ThemeCubit or ThemeBloc already exists, use it.
+If no theme state management exists yet, create:
+
+  File: lib/core/theme/theme_cubit.dart
+  
+  class ThemeCubit extends Cubit<ThemeMode> {
+    ThemeCubit() : super(ThemeMode.dark);
+    void toggleTheme() =>
+        emit(state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark);
+    void setDark()  => emit(ThemeMode.dark);
+    void setLight() => emit(ThemeMode.light);
+  }
+
+  Then in main.dart/app.dart:
+    Wrap MaterialApp with BlocProvider<ThemeCubit>
+    Use BlocBuilder<ThemeCubit, ThemeMode> to supply themeMode to MaterialApp.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — WRAP ALL NEW ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For every screen refactored above:
+  - Wrap list items (match cards, standings rows) in LeoFadeIn
+    (staggered delay: index * 50ms where index is the list position)
+  - Wrap page-level hero content in LeoSlideIn (from: Offset(0, 0.15))
+  - Replace any existing CircularProgressIndicator loading states
+    with LeoShimmer (sized to match the content it replaces)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — VERIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run:
+  cd /workspaces/LeoBook/leobookapp
+  flutter analyze
+
+Fix all errors before reporting. Target: 0 errors, 0 warnings.
+
+Then confirm:
+  ✅ MatchCardWidget — GlassCard, LeoBadge, LeoButton, LeoTypography
+  ✅ HomeScreen — GlassCard surfaces, SpacingScale, LeoTypography, LeoButton
+  ✅ StandingsScreen — GlassCard wrapper, alternating rows, LeoTypography headers
+  ✅ PredictionDetailsScreen — GlassCard, Hero animation, confidence indicator
+  ✅ Theme toggle — LeoSwitch, ThemeCubit, wired to MaterialApp
+  ✅ Animations — LeoFadeIn on lists, LeoSlideIn on page heroes, LeoShimmer on loaders
+  ✅ Zero Bloc/Cubit code was touched
+  ✅ flutter analyze — 0 errors
+
+Report back to Chief Engineer when complete.
+
+
+
+
+
+Session D — Animations, Accessibility, Cleanup & Documentation
+
+@[systematic-debugging] @[ui-ux-pro-max]
+
+TASK: LeoBook Flutter App — Accessibility, Cleanup & Documentation (Phase 4 of 4)
+CODEBASE: /workspaces/LeoBook/leobookapp/
+PREREQUISITE: Sessions A, B, and C must be complete. flutter analyze must be
+passing at 0 errors before starting this session.
+
+CONSTRAINT: Do NOT touch Cubit, Bloc, routing, or any repository/data layer.
+This session is presentation polish and documentation only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 0 — FINAL AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Before doing anything, search the entire leobookapp/lib/ directory for:
+
+1. Any remaining hardcoded color hex strings (#XXXXXX or Color(0xFFXXXXXX)
+   not inside app_colors.dart) — list every occurrence (file + line)
+2. Any remaining hardcoded font sizes (fontSize: XX not via LeoTypography)
+   — list every occurrence
+3. Any remaining hardcoded EdgeInsets/padding numbers not via SpacingScale
+   — list every occurrence
+4. Any file that still imports old app_theme.dart or liquid_glass_theme.dart
+   — list every occurrence
+5. Any widget with an onTap/onPressed that is NOT wrapped in Semantics
+
+Produce a FINAL AUDIT REPORT before proceeding.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — ELIMINATE REMAINING HARDCODES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For every hardcoded value found in Step 0:
+  - Colors → replace with nearest AppColors token
+  - Font sizes → replace with LeoTypography.<scale>
+  - EdgeInsets → replace with SpacingScale.<constant>
+
+Do this exhaustively. Zero hardcoded values must remain after this step.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — ACCESSIBILITY PASS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For every custom interactive widget across ALL screens and components:
+
+2a. Semantics wrappers — add where missing:
+  Buttons:
+    Semantics(button: true, label: '<action description>', enabled: <bool>)
+  Cards with onTap:
+    Semantics(button: true, label: '<card content summary>')
+  Form fields:
+    Semantics(label: fieldLabel, hint: hintText)
+  Badges:
+    Semantics(label: '<status>: <label>')
+  Screen titles/headers:
+    Semantics(header: true, label: titleText)
+  Images/icons (meaningful ones):
+    Semantics(image: true, label: '<description>')
+  Decorative icons:
+    ExcludeSemantics(child: Icon(...))
+
+2b. Touch targets — audit every tappable element:
+  Every GestureDetector, InkWell, or onTap widget must have a minimum
+  48×48dp hit area. Enforce via:
+    ConstrainedBox(constraints: BoxConstraints(minWidth: SpacingScale.touchTarget,
+                                               minHeight: SpacingScale.touchTarget))
+  or by wrapping in SizedBox with explicit 48dp where visual size is smaller.
+
+2c. Focus rings — add FocusNode + focus decoration to all interactive
+  non-button widgets (cards, chips, custom toggles) that don't already have it:
+    Focus(
+      focusNode: _focusNode,
+      child: AnimatedContainer(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: _hasFocus ? AppColors.primary : Colors.transparent,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(SpacingScale.borderRadius),
+        ),
+        child: originalWidget,
+      ),
+    )
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — LEGACY FILE CLEANUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Delete the following if they exist and have zero remaining imports:
+  lib/core/theme/app_theme.dart           (replaced by app_theme_v2.dart)
+  lib/core/theme/liquid_glass_theme.dart  (replaced by GlassCard + AppColors)
+  lib/core/constants/colors.dart          (replaced by app_colors.dart)
+  Any file exporting Lexend font references
+  Any unused constant files with 0 imports
+
+Before deleting any file:
+  1. Grep for all imports of that file across the entire project
+  2. Confirm import count = 0
+  3. Only then delete
+
+If import count > 0, update those imports to the new file first, then delete.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — FILE HEADERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Add the following header comment block to every NEW file created across
+Sessions A, B, C, and D (check if missing, add if so):
+
+  // ─────────────────────────────────────────────────────────────────────
+  // <filename>.dart
+  // LeoBook App — <category e.g. "Core Theme" / "Shared Widgets" / "Screens">
+  //
+  // Description: <one sentence>
+  // Classes: <comma-separated list of public classes in this file>
+  // ─────────────────────────────────────────────────────────────────────
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — DESIGN_SYSTEM.md
+File: leobookapp/DESIGN_SYSTEM.md (CREATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Write a complete design system reference document with these sections:
+
+# LeoBook Design System v2.0
+
+## 1. Color Palette
+  Table: Token name | Hex | Role | WCAG note
+  Include all 10 families from AppColors.
+
+## 2. Typography Scale
+  Table: Style | Size | Weight | Line Height | Use case
+  Include all 15 LeoTypography styles.
+
+## 3. Spacing Grid
+  Table: Token | Value (dp) | Semantic use
+  Include all SpacingScale constants.
+
+## 4. Responsive Breakpoints
+  Table: DeviceType | Width threshold | Behavior note
+
+## 5. Component Gallery
+  For each component (LeoButton, GlassCard, LeoBadge, LeoChip,
+  LeoTextField, LeoSwitch, LeoCheckbox):
+    - Purpose
+    - Constructor parameters table
+    - Variants/sizes
+    - Example usage (Dart code block)
+
+## 6. Animation Guidelines
+  Table: Name | Duration | Curve | Use case
+  Include all LeoDuration and LeoCurve values.
+
+## 7. Accessibility Checklist
+  - [ ] 7:1 contrast for all body text on background
+  - [ ] 3:1 contrast for icons and large text
+  - [ ] 48×48dp minimum touch targets
+  - [ ] Semantics wrappers on all interactive widgets
+  - [ ] Focus rings on all keyboard-navigable elements
+  - [ ] Screen reader labels on all images and icons
+  - [ ] Form fields have label, hint, and error Semantics
+
+## 8. Migration Guide
+  Before/after code examples for:
+  - Color: Color(0xFF1E88E5) → AppColors.primary
+  - Spacing: EdgeInsets.all(16) → EdgeInsets.all(SpacingScale.lg)
+  - Typography: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)
+                → LeoTypography.labelLarge
+  - Card: Container(decoration: BoxDecoration(...)) → GlassCard(child: ...)
+  - Button: ElevatedButton(...) → LeoButton(label: ..., onPressed: ...)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — FINAL FLUTTER ANALYZE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Run:
+  cd /workspaces/LeoBook/leobookapp
+  flutter analyze
+
+Fix every error and warning before reporting. Target: 0 errors, 0 warnings.
+Info-level hints are acceptable.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — COMMIT & PUSH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Stage all changes and commit with this exact message:
+
+  refactor: Upgrade LeoBook UI/UX to Universal Design System v2.0
+
+  - Implement 10-color semantic palette (primary, secondary, success,
+    warning, error, neutrals, glass)
+  - Switch typography to Inter font with centralized LeoTypography class
+  - Introduce 4px-based spacing system (SpacingScale constants)
+  - Create reusable component library (LeoButton, GlassCard, LeoBadge,
+    LeoChip, LeoTextField, LeoSwitch, LeoCheckbox)
+  - Add animation library (leo_animations.dart) with standard
+    durations & curves
+  - Ensure WCAG AAA accessibility (7:1 contrast, 48×48dp targets,
+    focus rings, Semantics on all interactive elements)
+  - Refactor all screens to use new theme, components, and spacing
+  - Add light mode support with ThemeCubit toggle
+  - Consolidate responsive breakpoints
+  - Remove legacy design files and hardcoded styles
+  - Add leobookapp/DESIGN_SYSTEM.md
+
+Then push to origin:
+  git push origin main
+
+Report the commit SHA and confirm the push succeeded.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL CHECKLIST — DO NOT CLOSE SESSION UNTIL ALL PASS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✅ Zero hardcoded colors remaining in lib/ (except app_colors.dart)
+  ✅ Zero hardcoded font sizes remaining in lib/
+  ✅ Zero hardcoded spacing values remaining in lib/
+  ✅ All legacy theme files deleted (0 imports confirmed before deletion)
+  ✅ File headers on all new files
+  ✅ Semantics on every interactive widget across all screens
+  ✅ 48×48dp touch targets enforced everywhere
+  ✅ Focus rings on all keyboard-navigable custom elements
+  ✅ leobookapp/DESIGN_SYSTEM.md created and complete
+  ✅ flutter analyze — 0 errors, 0 warnings
+  ✅ Committed and pushed to GitHub
+  ✅ Zero Cubit/Bloc code was touched in any session
+
+Report back to Chief Engineer with the commit SHA.

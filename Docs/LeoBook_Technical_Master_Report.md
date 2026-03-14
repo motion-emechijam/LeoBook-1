@@ -87,7 +87,10 @@ LeoBook uses **two external data sources** for distinct purposes:
 
 The RL model uses a **30-dimensional action space** (defined in `market_space.py`) with a phased training lifecycle:
 
-- **Phase 1 (Imitation Learning)** — *Active: Day 34 of 99*: Bootstraps the model using **Poisson-grounded labels** derived from xG metrics (1.20 home / 0.82 away multiplier). Ensures basic sports logic before RL rewards take over.
+- **Phase 1 (Imitation Learning)** — **Active: Day 50 of 102**
+  - Expert: Poisson Grounding (derived from 2 seasons of historical xG).
+  - Goal: Ground the model in physics-informed selection before PPO exploration.
+  Bootstraps the model using **Poisson-grounded labels** derived from xG metrics (1.20 home / 0.82 away multiplier). Ensures basic sports logic before RL rewards take over.
 - **Phase 2 (Value Learning)**: Introduces KL Divergence penalties against the Poisson expert and real money rewards (PPO). Activates once >100 odds rows are harvested.
 - **Phase 3 (Adapter Specialization)**: Freezes the SharedTrunk and fine-tunes league-specific adapters. Activates once >500 matches are recorded for a league.
 - **Registry**: `AdapterRegistry` tracks all known leagues/teams. Saved to `Data/Store/models/adapter_registry.json`.
@@ -227,8 +230,8 @@ Leo.py orchestrates the cycle with autonomous task management:
 |---------|-----------|
 | Gemini 2.5 Pro daily quota exhausted during Run 7 | Monitored — daily/per-minute distinction now tracked. Await quota reset |
 | Browser crash after Run 7 | Browser restart required before Run 8 |
-| `llm_health_manager.py` Fix 6 | ✅ Resolved — `_ping_key` treats HTTP 400+INVALID_ARGUMENT as FATAL (2026-03-13) |
-| LR scheduler state not persisted in checkpoint | ❌ Open — each `--resume` re-applies 10x LR reduction. Fix: save/load `scheduler.state_dict()` |
+| `llm_health_manager.py` Fix 6 | ✅ Resolved (2026-03-13) — `_ping_key` treats HTTP 400 + INVALID_ARGUMENT as FATAL |
+| LR scheduler state not persisted in checkpoint | ✅ Resolved (2026-03-13) — `scheduler.state_dict()` added to save/load. |
 
 ---
 
@@ -236,8 +239,8 @@ Leo.py orchestrates the cycle with autonomous task management:
 
 The LeoBook Flutter app (`leobookapp/`) reads exclusively from Supabase. It is a pure read client — no data flows from the app back to the backend.
 
-> [!WARNING]
-> The Flutter app currently uses BLoC + Provider + Supabase. This conflicts with mandatory engineering rules (Riverpod 2+ and Firebase). Migration is tracked as a medium-priority tech debt item.
+| **Frontend**     | Flutter 3.29.x (Material 3) — `flutter_bloc` / Cubit architecture. |
+| **State Mgmt**   | Cubit (Provider-based injection) — scalable and production-grade. |
 
 ---
 
