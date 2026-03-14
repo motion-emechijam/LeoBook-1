@@ -222,10 +222,16 @@ for _tbl, _ddl in SUPABASE_SCHEMA.items():
 
 # Column remaps: local name → remote name (applied before schema filtering)
 _COL_REMAP = {
-    'time': 'match_time',
-    'over_2.5': 'over_2_5',
-    'country': 'country_code',
-    'team_name': 'name',
+    'time':           'match_time',
+    'over_2.5':       'over_2_5',
+    'country':        'country_code',
+    'team_name':      'name',
+    # SQLite schedules uses home_team_name / away_team_name.
+    # Supabase schedules schema uses home_team / away_team.
+    # Without these mappings the columns are silently dropped on every sync
+    # and Supabase receives NULL for all team name fields.
+    'home_team_name': 'home_team',
+    'away_team_name': 'away_team',
 }
 
 # ── Per-table batch sizes ─────────────────────────────────────────────────────
