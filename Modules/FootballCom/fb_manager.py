@@ -38,6 +38,28 @@ from Data.Access.league_db import LEAGUES_JSON_PATH
 _ENRICHMENT_IN_PROGRESS: set[str] = set()
 _ENRICHMENT_LOCK: asyncio.Lock = asyncio.Lock()
 
+# ── Batch resume checkpoint ─────────────────────────────────────────────
+_CHECKPOINT_PATH = Path("Data/Logs/batch_checkpoint.json")
+
+def _load_checkpoint() -> int:
+    """Return last completed batch index for today (0 = start fresh)."""
+    if _CHECKPOINT_PATH.exists():
+        try:
+            c = json.loads(_CHECKPOINT_PATH.read_text(encoding='utf-8'))
+            if c.get("date") == now_ng().strftime("%Y-%m-%d"):
+                return int(c.get("last_batch", 0))
+        except Exception:
+            pass
+    return 0
+
+def _save_checkpoint(batch_idx: int) -> None:
+    """Persist last completed batch index for today."""
+    _CHECKPOINT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    _CHECKPOINT_PATH.write_text(
+        json.dumps({"date": now_ng().strftime("%Y-%m-%d"), "last_batch": batch_idx}),
+        encoding='utf-8',
+    )
+
 
 # ── Shared session helpers ──────────────────────────────────────────────
 
@@ -402,9 +424,17 @@ async def run_odds_harvesting(playwright: Playwright):
     league_ids = list(leagues_to_extract.keys())
     batches = [league_ids[i:i + BATCH_SIZE] for i in range(0, len(league_ids), BATCH_SIZE)]
 
+    # Resume from last completed batch (same calendar day only)
+    resume_from = _load_checkpoint()
+    if resume_from > 0:
+        print(f"  [Resume] Checkpoint found — skipping batches 1–{resume_from}, "
+              f"starting at batch {resume_from + 1}/{len(batches)}")
+
     print(f"  [System] Processing {total_leagues} leagues in {len(batches)} batches (Size: {BATCH_SIZE})...")
 
     for batch_idx, batch_ids in enumerate(batches):
+        if batch_idx < resume_from:   # already completed today
+            continue
         batch_num = batch_idx + 1
         print(f"\n  [Batch {batch_num}/{len(batches)}] Starting extraction for {len(batch_ids)} leagues...")
         
@@ -501,6 +531,10 @@ async def run_odds_harvesting(playwright: Playwright):
         
         # Small cooldown between batches
         await asyncio.sleep(2)
+        _save_checkpoint(batch_idx + 1)  # mark this batch complete
+
+    # Full session completed — clear checkpoint so next day starts fresh
+    _CHECKPOINT_PATH.unlink(missing_ok=True)
 
     # 8. Post-Harvest Processing (SearchDict + Sync)
     print("\n  [Post-Harvest] Starting global enrichment and sync...")
