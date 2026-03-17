@@ -183,11 +183,8 @@ async def _expand_all_markets(page: Page) -> int:
     Expands every collapsed market container on the page.
 
     CRITICAL: Do NOT click .m-market-title or the container — they contain
-    <a> links that navigate away from the match page. Instead:
-      1. Try clicking ONLY the .toggle-all-icon SVG (safe, no <a>).
-      2. If no icon, use JS to force-expand by toggling display/aria.
+    <a> links that navigate away from the match page. Uses JS-only expand.
     """
-    toggle_icon_sel = _sel("market_toggle_icon") or ".m-market-title .toggle-all-icon"
 
     expanded_count = 0
     containers = await page.locator("[data-market-id]").all()
@@ -212,34 +209,24 @@ async def _expand_all_markets(page: Page) -> int:
             if not is_collapsed:
                 continue
 
-            # Strategy 1: Click ONLY the toggle icon (SVG, safe — no navigation)
-            clicked = False
-            try:
-                toggle = container.locator(toggle_icon_sel).first
-                if await toggle.count() > 0:
-                    await toggle.click(force=True)
-                    clicked = True
-            except Exception:
-                pass
+            # JS-only expand — NEVER click anything (click events bubble
+            # up to <a> parents inside .m-market-title and navigate away)
+            await container.evaluate("""(el) => {
+                // Force-show the market content table
+                const table = el.querySelector('.m-table.market-content, .market-content');
+                if (table) {
+                    table.style.display = '';
+                    table.style.maxHeight = 'none';
+                    table.style.overflow = 'visible';
+                }
+                // Flip aria-expanded
+                const hdr = el.querySelector('[aria-expanded="false"]');
+                if (hdr) hdr.setAttribute('aria-expanded', 'true');
+                // Remove .collapsed class
+                el.querySelectorAll('.collapsed').forEach(c => c.classList.remove('collapsed'));
+            }""")
 
-            # Strategy 2: JS-only expand (never triggers navigation)
-            if not clicked:
-                await container.evaluate("""(el) => {
-                    // Force-show the market content table
-                    const table = el.querySelector('.m-table.market-content, .market-content');
-                    if (table) {
-                        table.style.display = '';
-                        table.style.maxHeight = 'none';
-                        table.style.overflow = 'visible';
-                    }
-                    // Flip aria-expanded
-                    const hdr = el.querySelector('[aria-expanded="false"]');
-                    if (hdr) hdr.setAttribute('aria-expanded', 'true');
-                    // Remove .collapsed class
-                    el.querySelectorAll('.collapsed').forEach(c => c.classList.remove('collapsed'));
-                }""")
-
-            await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
             expanded_count += 1
 
         except Exception:
