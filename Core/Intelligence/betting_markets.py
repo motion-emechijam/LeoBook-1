@@ -236,8 +236,8 @@ class BettingMarkets:
         if dc and " or Draw" in dc["market_prediction"]:
             has_directional_dc = True
 
-        # High-confidence safe markets first
-        high_conf = [p for p in predictions.values() if p["confidence_score"] >= 0.80]
+        # High-confidence safe markets first (Stairway Rule: min 70% confidence)
+        high_conf = [p for p in predictions.values() if p["confidence_score"] >= 0.70]
         if high_conf:
             high_conf.sort(key=lambda x: x["confidence_score"], reverse=True)
             valid = []
@@ -330,8 +330,9 @@ class BettingMarkets:
         if not gated:
             return None
 
-        # Sort by EV descending, break ties by higher probability
-        gated.sort(key=lambda x: (x["ev"], x["prob"]), reverse=True)
+        # Sort by higher probability first (Stairway Rule: probability-first, not EV)
+        # Break ties with higher EV.
+        gated.sort(key=lambda x: (x["prob"], x["ev"]), reverse=True)
         best = gated[0]
 
         return {

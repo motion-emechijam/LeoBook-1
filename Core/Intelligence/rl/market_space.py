@@ -25,7 +25,8 @@ from typing import Dict, List, Tuple, Optional
 # ── Project Stairway hard constraints ────────────────────────
 STAIRWAY_ODDS_MIN: float = 1.20
 STAIRWAY_ODDS_MAX: float = 4.00
-STAIRWAY_MIN_EV:   float = 0.00
+STAIRWAY_MIN_EV:   float = -0.10  # Reduced to allow slightly negative EV if prob is very high (>80%)
+STAIRWAY_PRIORITY: str   = "PROBABILITY" # Hard priority for Stairway v2
 
 # ── Project Stairway stake ladder (NGN) ──────────────────────
 STAIRWAY_STAKES: dict = {

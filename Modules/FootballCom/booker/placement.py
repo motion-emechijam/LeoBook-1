@@ -16,6 +16,10 @@ from Data.Access.db_helpers import update_prediction_status
 from Core.Utils.utils import log_error_state, capture_debug_snapshot
 from Core.Intelligence.selector_manager import SelectorManager
 from Core.Intelligence.aigo_suite import AIGOSuite
+from Core.Safety.safety_gate import (
+    is_stairway_safe, validate_accumulator, get_stairway_stake,
+    filter_and_rank_candidates, ACCA_MAX_LEGS, _conf_to_pct,
+)
 from .ui import wait_for_condition
 from .slip import get_bet_slip_count, force_clear_slip
 from Data.Access.db_helpers import log_audit_event
@@ -192,12 +196,15 @@ def calculate_kelly_stake(balance: float, odds: float, probability: float = 0.60
     return final_stake
 
 
-# ── Stairway Accumulator Constants ────────────────────────────────────────
-STAIRWAY_ODDS_MIN = 1.20   # Per PROJECT_STAIRWAY.md + user spec
-STAIRWAY_ODDS_MAX = 4.00
-STAIRWAY_TOTAL_MIN = 3.5
-STAIRWAY_TOTAL_MAX = 5.0
-STAIRWAY_MAX_SELECTIONS = 8
+# ── Stairway Accumulator Constants (deferred to Core.Safety.safety_gate) ──
+# Kept here for backward compat; safety_gate.py is the source of truth.
+from Core.Safety.safety_gate import (
+    SINGLE_ODDS_MIN as STAIRWAY_ODDS_MIN,
+    SINGLE_ODDS_MAX as STAIRWAY_ODDS_MAX,
+    ACCA_TOTAL_ODDS_MIN as STAIRWAY_TOTAL_MIN,
+    ACCA_TOTAL_ODDS_MAX as STAIRWAY_TOTAL_MAX,
+    ACCA_MAX_LEGS as STAIRWAY_MAX_SELECTIONS,
+)
 
 
 @AIGOSuite.aigo_retry(max_retries=2, delay=3.0, context_key="fb_match_page", element_key="betslip_place_bet_button")
@@ -266,7 +273,14 @@ async def place_stairway_accumulator(
     ]
     candidates = [dict(zip(columns, r)) for r in rows]
 
-    # ── Greedy accumulator selection ───────────────────────────────────────
+    # ── Safety gate: filter + rank by confidence DESC ─────────────────────
+    candidates = filter_and_rank_candidates(candidates)
+    if not candidates:
+        print("    [Stairway] No candidates passed safety gate.")
+        log_audit_event("STAIRWAY_SKIP", "All candidates rejected by safety gate", status="rejected")
+        return False
+
+    # ── Greedy accumulator selection (max 4 legs, confidence-first) ───────
     seen_fixtures = set()
     accumulator = []
     total_odds = 1.0
@@ -323,12 +337,10 @@ async def place_stairway_accumulator(
         raise ValueError("Slip is empty after loading all booking URLs.")
     print(f"    [Stairway] Slip loaded: {total_in_slip} selection(s) in betslip")
 
-    # ── Get stairway stake ────────────────────────────────────────────────
-    tracker = StaircaseTracker()
-    stairway_stake = tracker.get_current_step_stake()
+    # ── Get stairway stake (fixed ₦1,000 via safety gate) ─────────────────
+    stairway_stake = get_stairway_stake(current_balance)
     from Core.Utils.constants import CURRENCY_SYMBOL
-    print(f"    [Stairway] Stake: {CURRENCY_SYMBOL}{stairway_stake:,} "
-          f"(Step {tracker.current_step})")
+    print(f"    [Stairway] Stake: {CURRENCY_SYMBOL}{stairway_stake:,} (fixed safety gate)")
 
     # ── Open slip drawer ──────────────────────────────────────────────────
     slip_trigger = SelectorManager.get_selector_strict("fb_match_page", "slip_trigger_button")
